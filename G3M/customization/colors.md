@@ -1,71 +1,19 @@
-# Theme Colors
+# Theme colors
 
-G3M uses seven core color channels. Together they control almost everything the
-player sees, so this is the fastest way to change the app's mood.
+The **Colors** section in **Settings > Appearance** has seven editable channels. Select a color with the picker or type a hexadecimal RGB value such as `#58B878`.
 
----
+| Channel | What it controls | Default |
+| --- | --- | --- |
+| Background | Background layer and panel backdrop. | `#282828` |
+| Elements | Buttons, fields, and other control backgrounds. | `#222222` |
+| Border | Control and panel outlines. | `#039D5B` |
+| Hover | Highlight for hovered controls and items. | `#616B78` |
+| Selection | Selected-item appearance. | `#ECEDEF` |
+| Main text | Primary labels and content. | `#E8E9EB` |
+| Secondary text | Secondary labels and metadata. | `#6DE985` |
 
-## The Seven Channels
+Colors apply across the main interface and themed dialogs. An empty stored override uses the default channel color. Use a color's reset control to remove the override rather than trying to reproduce the default by eye.
 
-- **Channel:** Background
-  - **Setting Key:** `custom_background_color`
-  - **Default:** `#282828`
-  - **Typical Use:** Main surfaces behind panels and content
+Selection and hover have different roles. Test both against the main text color, including a selected library card, a checked control, and a focused text field. Check dialogs as well as the main window, because long descriptions and disabled controls can expose unreadable combinations.
 
-- **Channel:** Elements
-  - **Setting Key:** `custom_elements_color`
-  - **Default:** `#222222`
-  - **Typical Use:** Buttons, inputs, cards, controls
-
-- **Channel:** Border
-  - **Setting Key:** `custom_border_color`
-  - **Default:** `#039d5b`
-  - **Typical Use:** Borders, dividers, outlines
-
-- **Channel:** Hover
-  - **Setting Key:** `custom_hover_color`
-  - **Default:** `#616b78`
-  - **Typical Use:** Hover state feedback
-
-- **Channel:** Select
-  - **Setting Key:** `custom_select_color`
-  - **Default:** `#ecedef`
-  - **Typical Use:** Active and selected UI state
-
-- **Channel:** Main Text
-  - **Setting Key:** `custom_main_text_color`
-  - **Default:** `#e8e9eb`
-  - **Typical Use:** Primary readable text
-
-- **Channel:** Secondary Text
-  - **Setting Key:** `custom_secondary_text_color`
-  - **Default:** `#6de985`
-  - **Typical Use:** Hints, softer labels, secondary details
-
----
-
-## Good Practical Rule
-
-If you want a theme that still feels readable:
-
-- keep `Main Text` high-contrast
-- keep `Elements` darker or calmer than `Select`
-- use `Border` and `Secondary Text` as accents, not as the main reading color
-
----
-
-## How Changes Apply
-
-When you pick a color, G3M rewrites the active Qt stylesheet and updates the UI
-immediately. These values are stored as hex strings in settings.
-
-The background channel is intentionally translucent in several surfaces so a
-custom background image or video can still show through.
-
----
-
-## Resetting
-
-If `Show reset buttons` is enabled, each color field gets its own reset control.
-You can also get back to a cleaner baseline by importing a simpler theme package
-or clearing your custom color values.
+Exporting a [theme package](theme-packages.md) stores all seven color overrides. It does not export a custom stylesheet.

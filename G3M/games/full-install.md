@@ -1,59 +1,19 @@
 # Full Install
 
-Full Install is the launcher flow that downloads a clean game package into a
-folder you choose and then sets that folder as the active game path.
+**Full Install** downloads a game package into a folder you choose and sets the resulting installation as the selected game's path.
 
----
+The feature is available for DELTARUNEdemo, UNDERTALE Yellow, Sugary Spire, and FRICKBEARS3. It is disabled on macOS. It does not download paid games or appear for custom games.
 
-## Supported Games
+## Install a game
 
-Games with `supports_full_install = True` are:
+1. Select a supported game and enable **Full Install**.
+2. Click the main install action.
+3. Choose the destination in the installation dialog.
+4. Wait for the download and extraction to finish.
+5. Check the configured game folder and launch the installed game.
 
-- `deltarunedemo`
-- `undertaleyellow`
-- `sugaryspire`
-- `frickbears3`
+The checkbox clears after the installation finishes. Download availability depends on the game package provided through G3M's online settings. A download failure does not establish that a local mod is broken.
 
-Built-in games without that flag and all custom games do not expose the feature.
+Install into a dedicated folder. If the destination already contains an installation, review the dialog and keep your own copy of files you want to preserve.
 
----
-
-## UI Behavior
-
-When the selected game supports Full Install, G3M shows the `Full Install`
-checkbox in the main window. If the checkbox is enabled, the primary action
-becomes install instead of launch.
-
-The setting is stored in profile state as `full_install_enabled`.
-
----
-
-## Install Flow
-
-The current flow is:
-
-1. choose a parent folder
-2. let G3M create or reuse the target game folder inside it
-3. resolve the game-specific download URL from global settings
-4. download the archive
-5. extract the files
-6. set the installed folder as the active path for that game
-7. clear the Full Install checkbox
-
-The worker uses different global setting keys depending on the selected game:
-
-- `demo_full_install_url`
-- `undertaleyellow_full_install_url`
-- `sugaryspire_full_install_url`
-- `full_install_url` for `frickbears3`
-
----
-
-## Platform Notes
-
-On macOS, turning the checkbox on is rejected immediately and the UI turns it
-back off. The code path does not allow Full Install to proceed there.
-
-On other platforms, behavior depends on whether the configured download URL is
-available and whether the downloaded package matches the current platform's
-launch requirements.
+On Linux, the downloaded game's executable may require Wine or PortProton. Full Install does not change the executable's operating system or architecture.

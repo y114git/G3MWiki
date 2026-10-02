@@ -1,115 +1,34 @@
 # Game Versions
 
-Game Versions lets you save restore points for a game installation and bring
-them back later. Use it when you want a clean baseline before modding, a backup
-before experimenting, or a quick way to roll a game folder back to a known
-state.
+**Game Versions** saves snapshots of the selected game's installation files. Snapshots remain available until deleted; they are separate from temporary launch backups and Mod Versions.
 
-## Where to find it
+Open the Game Versions control near the game selector. The dialog's game selector chooses which game's saved versions are shown.
 
-1. Open G3M.
-2. Pick the game you want from the game selector.
-3. Click the small **Game Versions** button next to the game controls. The icon
-   is a small version/archive-style button near the selected game area.
-4. The **Game Versions** dialog opens for the currently selected game.
+## Create
 
-If you cannot find the button, first make sure the game is visible in **Settings
--> Game Manager** and that a game folder is configured in **Settings -> Game
-Settings**.
+Use the add control and choose **Create Game Version**. Enter a name and select the profile option:
 
-## Storage paths
+- **Without profile** saves the files currently in the configured game folder.
+- A named profile builds a snapshot with that profile's selected mods applied to a temporary copy. The real installation is not the patching output for this operation.
 
-On Windows, saved versions are stored under:
+For a clean baseline, choose Without profile while the game folder contains the clean installation. A folder that already contains kept mod changes produces a snapshot of those changes.
 
-`%LOCALAPPDATA%\G3M\game_versions\`
+The game executable and configured executable override are protected from snapshot replacement. Saves outside the installation folder are not included. Keep those separately if you need a complete backup of a playthrough.
 
-The saved-version index is:
+## Apply
 
-`%LOCALAPPDATA%\G3M\game_versions\game_versions_data.json`
+Choose **Apply** on a saved version and confirm the destination. Files from the snapshot overwrite corresponding installation files.
 
-The actual version archives are also stored in:
+**Settings > Library > Game Versions > Full file replacement on apply** also removes unprotected files absent from the snapshot. With that option off, unrelated files can remain in the folder. Save the current state before applying a version if you want to retain it.
 
-`%LOCALAPPDATA%\G3M\game_versions\`
+Applying a snapshot changes the game folder, not the active profile's installed mods or selected-mod state. Do not apply one while a game session or launch restoration is running.
 
-On Linux the same files are under `~/.local/share/G3M/game_versions/`. On macOS
-they are under `~/Library/Application Support/G3M/game_versions/`.
+## Import, export, and delete
 
-## What you can do
+**Import Game Version** reads an exported version ZIP with `game_version_data.json`. An arbitrary game ZIP without that manifest is not a Game Versions export. The game recorded in the manifest must match the selected game.
 
-The current dialog and manager support:
+Export copies the saved archive for external storage. Delete removes the saved record and archive after confirmation; it does not remove the game installation.
 
-- create a new saved version
-- import an external `.zip`
-- apply a saved version back to the game
-- export a saved version
-- delete a saved version
+Use **Cancel** on a working record to request cancellation. A missing-archive status means the indexed file is unavailable. An error recorded while creating a patched snapshot deserves inspection before you use that snapshot as a baseline.
 
-The create flow can also associate the saved version with a profile name.
-
-## Create a saved version
-
-1. Open **Game Versions**.
-2. Click **Create** or the create/add button.
-3. Enter a name that will still make sense later, for example
-   `Clean install before Ch5 mods`.
-4. Confirm.
-
-G3M archives the current game folder and adds a record to
-`game_versions_data.json`. This does not enable or disable mods. It only saves
-the current files as a restorable snapshot.
-
-Create a version when the game folder is in the state you want to keep. If the
-folder is already modded, the saved version will contain that modded state.
-
-## Apply or restore a version
-
-1. Open **Game Versions**.
-2. Select the saved version in the list.
-3. Click **Apply** or **Restore**.
-4. Confirm the warning.
-
-G3M replaces the current game files with the files from that saved version. This
-is intentionally destructive for the current game folder, so export or create
-another version first if you need to keep the current state.
-
-## Import and export
-
-Use **Import** when you already have a saved-version `.zip` and want G3M to add
-it to the list.
-
-Use **Export** when you want to copy a saved version somewhere else, send it to
-another machine, or keep an external backup. Exporting does not remove the saved
-version from G3M.
-
-## Delete a saved version
-
-1. Select the version.
-2. Click **Delete**.
-3. Confirm.
-
-Deleting removes the saved-version record and its archive from
-`%LOCALAPPDATA%\G3M\game_versions\`. It does not delete the game itself and does
-not remove installed mods from profiles.
-
-## Why it is useful
-
-Typical uses:
-
-- keep a clean unmodded baseline
-- keep a checkpoint before testing new mods
-- quickly roll back to a known-good state
-
-## Recovery behavior
-
-Game version storage has startup recovery logic, so interrupted or broken
-records are cleaned up or normalized on the next start.
-
-## Common confusion
-
-Game Versions is not the same as launch-time backups. Launch-time backups are
-temporary safety files used while a modded session is running. Game Versions are
-user-managed snapshots that stay until you delete them.
-
-Game Versions is also not the same as Mod Versions. Mod Versions are saved
-variants of a mod folder. Game Versions are saved variants of an installed game
-folder.
+Archives and their index live in `game_versions/` under the [data directory](../advanced/data-directory.md).

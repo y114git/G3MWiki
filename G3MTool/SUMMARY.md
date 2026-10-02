@@ -1,19 +1,22 @@
 # Table of contents
 
-- [Overview](README.md)
-- [Getting Started](getting-started.md)
+- [G3MTool](README.md)
+- [Getting started](getting-started.md)
+- [Graphical application](gui.md)
+- [Use G3MTool in scripts](automation.md)
+- [FAQ](faq.md)
 
 ## Commands
 
-- [Commands Overview](commands/README.md)
+- [Command reference](commands/README.md)
 - [patch](commands/patch.md)
 - [xpatch](commands/xpatch.md)
 - [execute](commands/execute.md)
 - [info](commands/info.md)
 - [diff](commands/diff.md)
-- [version](commands/version.md)
+- [Version](commands/version.md)
 
-## Reference
+## Formats and scripting
 
-- [G3M Patch Format](patch-format.md)
-- [CSX Scripting](csx-scripting.md)
+- [Resource patch format](patch-format.md)
+- [CSX scripting](csx-scripting.md)

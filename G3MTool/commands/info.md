@@ -1,52 +1,16 @@
 # info
 
-Show metadata for a data file or `.g3mpatch`.
-
-```bash
-G3MTool info <target> [-v] [--json] [--cache <dir>]
+```text
+G3MTool info <data-or-patch> [--cache <directory>] [--verbose] [--json]
 ```
 
-- **Argument:** `target`
-  - **Required:** Yes
-  - **Description:** Data file (`.win`, `.ios`, `.unx`, `.droid`) or `.g3mpatch`
+Info reads a GameMaker DATA file or a `.g3mpatch` archive, including a patch ZIP with `g3mpatch.json`.
 
-- **Option:** `--verbose`
-  - **Alias:** `-v`
-  - **Description:** Print full per-resource listings
+The normal view reports metadata, counts, and short resource breakdowns. **Verbose**, also `-v`, requests per-resource listings. **Cache** reads and writes reusable DATA analysis. **JSON** emits structured information for another program to read.
 
-- **Option:** `--cache <dir>`
-  - **Alias:** —
-  - **Description:** Store and reuse the standard non-verbose data-file info
-    snapshot
+```text
+G3MTool info data.win --cache cache
+G3MTool info interface.g3mpatch --json
+```
 
-`--json` is a global option and is also supported by `info`.
-
-## Data file output
-
-Without `--verbose`, `info` prints:
-
-- file name, size, game name, bytecode version, and interpreted GameMaker
-  version
-- resource counts
-- selected GeneralInfo fields
-- variable counts by instance type
-- first and last function names
-- code parent/child counts
-- audio group names
-- extension names
-- room-order preview
-
-With `--verbose`, G3MTool reads the live data file and prints extended
-per-resource listings for the resource families implemented in `InfoCommand`.
-
-## Patch output
-
-For `.g3mpatch`, `info` validates the manifest and prints:
-
-- creation time
-- tool name and version
-- original file metadata
-- patch statistics
-- per-resource-type counts in verbose mode
-
-With `--json`, G3MTool prints the manifest as JSON.
+Info does not apply a patch. To check compatibility with a specific original, run `patch validate <patch> --data <original>`.

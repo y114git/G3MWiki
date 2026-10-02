@@ -1,31 +1,19 @@
 # Audio
 
-G3M supports two kinds of custom audio:
+**Settings > Appearance > Audio** has separate controls for background music and the startup sound. Each control selects a file or removes the active custom file.
 
-- startup sound
-- background music
-
-## Supported formats
-
-The current code looks for these extensions:
-
-- `.mp3`
-- `.wav`
-- `.ogg`
-- `.flac`
-- `.m4a`
-- `.aac`
+Supported extensions are `.mp3`, `.wav`, `.ogg`, `.flac`, `.m4a`, and `.aac`. The actual file must use a codec available to the platform's media playback.
 
 ## Startup sound
 
-Startup sound can be muted without deleting the file through the
-`disable_startup_sound` setting.
+The startup sound plays when G3M starts. **Disable startup sound** suppresses it without removing the custom file. Removing the file and disabling playback are separate actions.
+
+A theme names this file `startup_sound.<extension>`. It is included in theme export when present.
 
 ## Background music
 
-Background music is managed by the customization service and can be paused
-automatically when the app loses focus through:
+Background music repeats while G3M is running. **Stop music when unfocused** stops it when G3M loses focus or is minimized. Returning to the application starts the track from its beginning; it does not resume the previous playback position.
 
-- `pause_background_music_unfocused`
+Removing the custom music file stops using that track. Background music is tied to G3M's lifetime and stops when G3M exits, including when its main process terminates unexpectedly.
 
-The same service also stops music while a game session is running.
+A theme names this file `background_music.<extension>`. The file is exported with the theme. The unfocused-playback preference is an application setting rather than a standard theme-export field.

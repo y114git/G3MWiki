@@ -1,33 +1,9 @@
-# Status Bar
+# Status and launch controls
 
-The bottom status area is where G3M reports what it is doing right now.
+The main action starts a launch or installation for the selected game. Its adjacent mode menu selects normal Launch, Launch and keep changes, Patching only, or actions supplied by plugins.
 
-## What lives there
+The status area displays task progress and messages for downloads, patching, launch, restoration, and failures. A completed download is separate from a completed mod import.
 
-- a status text label
-- a progress indicator for long operations
-- shortcut, main action and Community buttons
+Launch can remain unavailable while a game is running or cleanup is unfinished. Wait for restoration rather than starting the game independently during that interval.
 
-## What it is used for
-
-The status area updates during tasks such as:
-
-- downloads
-- patching
-- launch and restore flow
-- update checks
-- imports and conversions
-
-## Main action button
-
-The action button changes with context. Depending on state, it can be used to:
-
-- launch the current game
-- install a full build
-- cancel a running operation
-- close a running game
-
-This area shows the action available in the current state.
-
-**Shortcut** creates a launcher for the selected setup. **Community** opens the
-recent or featured GameBanana feed.
+When **Full Install** is enabled for a supported game, the main action installs that game instead of launching it. See [launch modes](../games/launch-modes.md) and [Full Install](../games/full-install.md).

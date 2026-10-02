@@ -1,111 +1,21 @@
-# Update System
+# Application and mod updates
 
-G3M includes an automatic update checker that notifies you when a new version is
-available.
+G3M checks online update information during startup and offers an available application update. The package is chosen for the current operating system and architecture: Windows, Linux, or macOS, with x64 or ARM64 variants.
 
----
+## Application update
 
-## How Update Checking Works
+Review the offered version and release information before starting the update. G3M downloads the package and hands over to the platform's installation or replacement process. Allow the application to close when required, and avoid updating during an active game or file operation.
 
-### Automatic Check
+On Windows, the update can start the supplied installer. On Linux and macOS, it stages the release contents for replacement and restart. Write permission to the installation is required.
 
-On every launch (after initialization), G3M fetches global settings from the G3M
-cloud backend, which includes update information. The check runs in the
-background and does not block the UI.
+**Settings > General > Beta Updates** selects the beta update channel. Enable it only if you want packages from that channel. A package unavailable for your platform or a failed download is reported rather than substituted with another architecture.
 
-### Manual Check
+If automatic update fails, download the appropriate release package from [GitHub](https://github.com/y114git/G3M/releases). Keep the separate G3M data directory when replacing application files.
 
-You can manually trigger an update check from the settings view with the **Check
-for updates** button.
+## Mod updates
 
----
+GameBanana-backed mods can be checked for available updates. **Settings > Library > Update Mods** controls automatic checks, their scope, and whether the update control is visible.
 
-## Version Comparison
+The scope can cover the selected game, active profile, or all profiles. **Update current versions directly** installs updates without creating the usual saved fallback version. Export or save a version first if you need a copy of the current mod.
 
-G3M compares version strings by splitting them into numeric components (e.g.,
-"3.0.3" → [3, 0, 3]) and comparing from left to right. The current version is
-defined in `pyproject.toml` and compiled into the application.
-
----
-
-## Beta Updates
-
-If **Enable beta updates** is enabled, G3M also considers pre-release versions
-when checking the remote launcher file list.
-
----
-
-## Update Dialog
-
-When an update is found, a dialog appears with:
-
-- **Current version:** Your installed version (currently `3.3.4` on this
-  codebase).
-- **New version** — The available version.
-- **Release notes** — The changelog/notes provided by the cloud settings
-  payload.
-- **Install** button — Downloads and installs the update.
-- **Skip** button — Dismisses the dialog. The update is not installed but may be
-  shown again on the next launch.
-
----
-
-## Update Installation
-
-### Windows
-
-1. G3M downloads the update archive from the URL provided in the cloud settings.
-2. Saves it to a temporary directory.
-3. Extracts and launches the InnoSetup installer.
-4. Requests the application to quit so the installer can proceed.
-5. After updating, G3M restarts.
-
-### macOS
-
-1. G3M downloads the new `.dmg` or `.zip` release.
-2. Extracts the new `G3M.app`.
-3. On macOS, a Python symlink fix may be applied to ensure the app bundle is
-   valid.
-4. Replaces the current installation.
-5. Restarts.
-
-### Linux
-
-1. G3M downloads the new release archive.
-2. Extracts it alongside the current installation.
-3. Restarts.
-
----
-
-## Network Requirements
-
-Update checks require an internet connection and access to the G3M cloud
-backend. If the network is unavailable, the check silently fails and no
-notification is shown.
-
-The request timeout is 5 seconds (`NETWORK_TIMEOUT_SHORT`). If the cloud server
-is slow to respond, the check may be skipped.
-
-Recent G3M builds also try to classify update download failures more clearly
-where possible, for example:
-
-- request timeout
-- SSL or certificate failure
-- DNS failure
-- connection refused
-- HTTP `403`, `404`, `429`, or `5xx`
-- permission denied while replacing files
-- missing or unreadable update archive
-
----
-
-## Signals
-
-The update system emits these events internally:
-
-- **update_available** — New version found.
-- **status_changed** — Progress messages during download.
-- **progress_updated** — Download percentage.
-- **update_finished** — Update process completed.
-- **update_error** — An error occurred during the update.
-- **quit_requested** — The application should quit for the updater to proceed.
+An updated mod may target a different game release. Read its requirements and recheck dependent addons before launching a combined selection.

@@ -1,26 +1,16 @@
-# Drag and Drop
+# Drag and drop
 
-G3M accepts drag-and-drop input in several places.
+| Destination | Accepted task |
+| --- | --- |
+| Main window or Library | Import supported local archives, patches, DATA files, folders, and download links |
+| Downloads | Add local files or download URLs to the queue |
+| Profile Manager | Import profile ZIPs; reorder existing profiles |
+| Mod Versions | Import supported version files |
+| Game Versions | Import exported game-version ZIPs |
+| Priority & Steps | Move selected mods into their intended step and priority |
+| Mod Editor operation tree | Rearrange operations and groups |
+| Catalog's plugin import area | Import a local plugin folder or ZIP |
 
-## Main use
+The receiving view determines the operation. A profile ZIP belongs in Profile Manager; a game-version ZIP belongs in Game Versions. Dropping either as a mod does not give it the same meaning.
 
-The main window can accept local files, folders, and supported URLs for
-import-style flows.
-
-## Typical accepted content
-
-- mod archives
-- raw patch files
-- GameMaker data files
-- folders that already contain recognizable mod content
-- supported download URLs
-
-## Other dialogs
-
-Dedicated version-management dialogs also accept dropped archives for their own
-import flows.
-
-## Practical meaning
-
-If you already have the file in Explorer or your file manager, drag and drop is
-usually the fastest way to get it into G3M.
+External files and folders still pass the destination's import validation. Dropping content does not bypass an existing-ID confirmation or configuration error. See the [web editor](../mods/web-editor.md) for its browser-specific drop controls.

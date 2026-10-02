@@ -1,75 +1,40 @@
 # execute
 
-Run a `.csx` script, invoke bundled xdelta, or launch an external program.
-
-```bash
-G3MTool execute <target> [args...] \
-  [--data <data-file>] [--output <output>] [--input <dir>]
+```text
+G3MTool execute <target> [--data <file>] [--output <file>]
+    [--input <directory>] -- [arguments...]
 ```
 
-| Argument | Required | Description                                            |
-| -------- | -------- | ------------------------------------------------------ |
-| `target` | Yes      | `.csx` script path, `xdelta`, or external program path |
-| `args`   | No       | Arguments passed to the target                         |
+Target can be a `.csx` script, an external program, or the literal `xdelta`. Put forwarded arguments after `--` so their flags are not parsed as G3MTool options.
 
-- **Option:** `--data <path>`
-  - **Alias:** `-d`
-  - **Description:** Data file to load before running a `.csx` script
+## C# script
 
-- **Option:** `--output <path>`
-  - **Alias:** `-o`
-  - **Description:** Output file path; required in practice for write-producing
-    script workflows
+| Option | Alias | Effect |
+| --- | --- | --- |
+| `--data` | `-d` | Load GameMaker DATA for the script |
+| `--output` | `-o` | Write resulting DATA to this file; also supplies its containing output directory |
+| `--input` | `-i` | Supplies the first script input argument and InputDir |
 
-- **Option:** `--input <dir>`
-  - **Alias:** `-i`
-  - **Description:** Input directory passed to the script as the first script
-    argument
-
-## `.csx` scripts
-
-```bash
-G3MTool execute script.csx --data data.win --output patched.win
-G3MTool execute import_sprites.csx --data data.win \
-  --input sprites --output patched.win
-G3MTool execute report.csx
+```text
+G3MTool execute resize-room.csx --data original.win --output test.win
 ```
 
-Current behavior:
+Provide Output explicitly with Data. Although the CLI can fall back to the original basename beside its executable, that path may be unsuitable or overlap an input. A script without Data can still perform its own file operations; DATA-dependent code must call `EnsureDataLoaded()`.
 
-- If `--data` is set, G3MTool loads the file into the script globals.
-- If `--input` is set, the directory path is prepended to script arguments.
-- If `--data` is set and `--output` is omitted, the command falls back to a file
-  path next to the executable using the same file name as the input data file.
-- If `--data` is omitted, the script can still run, but data-dependent helpers
-  must handle the missing loaded file.
+See [CSX scripting](../csx-scripting.md) for globals, nested scripts, and CLI interaction limits.
 
-## xdelta passthrough
+## External program
 
-```bash
-G3MTool execute xdelta -d -s original.win patch.xdelta output.win
+```text
+G3MTool execute ./asset-checker -- --input assets --strict
 ```
 
-Use this for raw xdelta arguments. For the common create/apply workflow,
-[`xpatch`](xpatch.md) is simpler.
+The target is started directly with the supplied arguments, without shell interpretation. Its stdout and stderr are forwarded, and its exit status is returned. Shell pipelines and redirects belong in the calling shell, not the forwarded argument list.
 
-## External programs
+## Raw xdelta
 
-```bash
-G3MTool execute some_tool.exe --arg value
+```text
+G3MTool execute xdelta --xdelta-path ./xdelta -- -d -s original.bin change.xdelta output.bin
 ```
 
-G3MTool starts the program, forwards stdout and stderr, and returns the child
-process exit code.
-
-## Built-in scripts
-
-G3MTool embeds import and export scripts under `G3MToolCLI/Assets/scripts/`.
-They cover the resource families currently represented by those embedded script
-files, including sprites, sounds, code entries, game objects, rooms,
-backgrounds, fonts, shaders, paths, timelines, extensions, GeneralInfo, audio
-groups, embedded textures, texture page items, texture group info, asset order,
-and tilesets.
-
-See [CSX Scripting](../csx-scripting.md) for script globals and compatibility
-details.
+The literal xdelta target resolves the configured or bundled xdelta executable. Execute does not guarantee JSON output from a script or external process.

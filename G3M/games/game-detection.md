@@ -1,132 +1,27 @@
-# Game Detection
+# Game detection and paths
 
-G3M validates game paths by matching each game definition against
-platform-specific executable names and known data file names.
+G3M needs the installation folder to find the executable and GameMaker resources. The **data folder** setting identifies the game's per-user files, such as saves and configuration. These folders serve different purposes.
 
----
+## Installation folder
 
-## Executable Candidates
+Set the path in **Settings > Game**. For built-in games, G3M checks known executable names and supported layouts. Automatic detection searches supported installations; it does not find every manually moved or renamed copy.
 
-The current built-in executable candidates are:
+On macOS, use the game's application bundle and check that its resource files are present. GameMaker resources commonly use `.win`, `.unx`, `.ios`, or `.droid`; a file extension alone does not prove compatibility with a patch.
 
-- **Game:** DELTARUNE
-  - **Windows:** `DELTARUNE.exe`, `DELTARUNE`
-  - **Linux:** `DELTARUNE`, `DELTARUNE.exe`
-  - **macOS:** `DELTARUNE.app`, `DELTARUNEdemo.app`
+A custom game uses the executable and data file names recorded in [Game Manager](game-manager.md).
 
-- **Game:** DELTARUNEdemo
-  - **Windows:** `DELTARUNE.exe`, `DELTARUNE`
-  - **Linux:** `DELTARUNE`, `DELTARUNE.exe`
-  - **macOS:** `DELTARUNEdemo.app`, `DELTARUNE.app`
+## User-data folder
 
-- **Game:** UNDERTALE
-  - **Windows:** `UNDERTALE.exe`, `UNDERTALE`
-  - **Linux:** `UNDERTALE`, `UNDERTALE.exe`
-  - **macOS:** `UNDERTALE.app`
+Set the separate game **data folder** when automatic detection does not locate it. G3M checks the platform's user-data directories and, for applicable Steam installations on Linux, Proton's user-data location.
 
-- **Game:** UNDERTALE Yellow
-  - **Windows:** `Undertale Yellow.exe`, `Undertale Yellow`, `UNDERTALE.exe`,
-    `UNDERTALE`
-  - **Linux:** `Undertale Yellow`, `UNDERTALE`, `Undertale Yellow.exe`,
-    `UNDERTALE.exe`
-  - **macOS:** `UNDERTALE.app`
+Mods using `${game_data_path}` depend on this setting. Selecting the installation folder as the user-data folder can direct their changes to the wrong location.
 
-- **Game:** Pizza Tower
-  - **Windows:** `PizzaTower.exe`, `PizzaTower`
-  - **Linux:** `PizzaTower`, `PizzaTower.exe`
-  - **macOS:** `PizzaTower.app`
+## Custom executable
 
-- **Game:** Sugary Spire
-  - **Windows:** `SugarySpire_ExhibitionNight.exe`,
-    `SugarySpire_ExhibitionNight`
-  - **Linux:** `SugarySpire_ExhibitionNight`, `SugarySpire_ExhibitionNight.exe`
-  - **macOS:** `SugarySpire_ExhibitionNight.app`
+**Custom EXE** overrides the executable used for the selected game. It does not change the game's resource folder or the contents of a mod. Use it for an installation with a different executable name or a required local launcher.
 
-- **Game:** FRICKBEARS3
-  - **Windows:** `Frickbears3.exe`, `Frickbears3`
-  - **Linux:** `Frickbears3`, `Frickbears3.exe`
-  - **macOS:** `Frickbears3.app`
+For Linux Windows-game installations, configure Wine or PortProton as appropriate. A working G3M installation cannot run a Windows executable without the required runtime.
 
-Custom games contribute exactly one executable candidate per platform: the file
-name stored in their registry record.
+## Path checks
 
----
-
-## Auto-Detection
-
-`autodetect_path()` only returns built-in paths for:
-
-- DELTARUNE
-- DELTARUNEdemo
-- UNDERTALE
-- Pizza Tower
-
-It intentionally does not auto-detect:
-
-- UNDERTALE Yellow
-- Sugary Spire
-- FRICKBEARS3
-
-On Windows the search checks common Steam locations across drive letters. On
-Linux and macOS it checks known Steam roots and a small set of additional
-platform-specific locations.
-
----
-
-## Data File Resolution
-
-The preferred game data file names are platform-aware:
-
-- Windows: `data.win`
-- Linux: `game.unx`, then `data.win`, then `game.ios`
-- macOS: `game.ios`, then `data.win`
-
-If the preferred file is missing, G3M falls back to any file in the folder with
-one of these extensions:
-
-- `.win`
-- `.unx`
-- `.ios`
-- `.droid`
-
-Custom games use the configured `data_file_name` as the preferred match.
-
----
-
-## Process Names
-
-Process monitoring starts with the names declared by each game definition and
-tracks the matching processes created after launch. It also follows known
-launcher relationships so Steam, Wine and PortProton do not leave G3M waiting
-after the game has closed.
-
-The built-in set currently includes:
-
-- `DELTARUNE.exe`
-- `DELTARUNE`
-- `UNDERTALE.exe`
-- `UNDERTALE`
-- `Undertale Yellow.exe`
-- `Undertale Yellow`
-- `PizzaTower.exe`
-- `PizzaTower`
-- `SugarySpire_ExhibitionNight.exe`
-- `SugarySpire_ExhibitionNight`
-- `Frickbears3.exe`
-- `Frickbears3`
-- `runner`
-
----
-
-## Chapter Resource Paths
-
-DELTARUNE is the only built-in game with multiple tabs. Its current folder
-mapping is:
-
-- `deltarune_0` -> `chapter_0`
-- `deltarune_1` -> `chapter_1`
-- `deltarune_2` -> `chapter_2`
-- `deltarune_3` -> `chapter_3`
-- `deltarune_4` -> `chapter_4`
-
-Single-tab games use their own game id as the folder key.
+If launch reports a missing executable or DATA file, open the chosen folder and compare its contents with the configured game. Check the selected game, executable override, and available chapter files before changing patch settings.

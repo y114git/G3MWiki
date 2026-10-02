@@ -1,59 +1,29 @@
-# Custom Games
+# Custom games
 
-Custom games let you teach G3M about another GameMaker-based game without
-changing G3M's source code.
+A custom game connects a GameMaker installation to G3M's Library, editor, launch controls, and optional online mod browsing.
 
----
+## Add an entry
 
-## When a Custom Game Makes Sense
+Open **Game Manager** and choose its add action. Fill in the game information:
 
-Use a custom game when:
+| Field | Value |
+| --- | --- |
+| Display name | The name shown in the game selector |
+| Executable or app name | Exact executable filename, such as `ExampleGame.exe`, or macOS bundle name, such as `ExampleGame.app`. |
+| Target DATA file name | Exact GameMaker resource filename, such as `data.win`, `game.unx`, or `game.ios`. |
+| Steam App ID | Optional numeric application ID for Steam launching |
+| GameBanana game ID | Optional numeric game ID or GameBanana game-page URL for Mods Browser results. |
 
-- the game is not one of G3M's built-in entries
-- you still know its main executable name
-- you know which data file should be patched
-- you want it to behave like a normal single-tab launcher target
+Executable and data fields identify file names; configure the installation folder in **Settings > Game** after saving. The game's ID is used by mod configurations, so use that entry's ID when choosing a game in the editor.
 
-This is the fastest path for getting an unsupported GameMaker game into the
-launcher.
+Names and online IDs must be unique among game entries. Steam IDs contain digits only. Leave an online ID empty when the game has no matching entry on that service.
 
----
+For example, an installation containing `ExampleGame.exe` and `data.win` uses those two names. If the game stores its resources in another location or requires a specialized launcher, check detection and launch behavior before distributing mods for it.
 
-## What You Need to Provide
+## Capabilities and limits
 
-The creation form asks for:
+Custom entries have a game path, user-data path, executable override, mod selection, and priority steps. A GameBanana ID enables browsing for that game; a Steam ID enables Steam launch.
 
-- display name
-- executable file name
-- data file name
-- optional Steam App ID
-- optional GameBanana ID
+A custom game has one section. It does not provide chapter splitting, direct chapter launching, or Full Install. Adding an entry does not add support for a game engine other than GameMaker or make an unsupported DATA format readable.
 
-The executable and data file fields are file names, not arbitrary folder paths.
-
----
-
-## What You Get
-
-A custom game becomes a normal launcher target with:
-
-- its own game path setting
-- its own custom executable override
-- its own used-mod state
-- optional Steam launch support
-- optional Mods Browser presence if you gave it a GameBanana ID
-
----
-
-## Limits
-
-Custom games are intentionally simpler than some built-in ones.
-
-Current limits:
-
-- single-tab only
-- no full install
-- no built-in chapter splitting
-
-So custom games fit best when the target game behaves like one main data file
-plus one main executable.
+Hide an entry when you want to keep it without displaying it in the main selector. The delete confirmation has **Remove from registry only** and **Remove and clean related data** choices. Cleanup also removes related profile selections and saved Game Versions. It does not uninstall the game. Export any Game Versions you want to retain before choosing cleanup.

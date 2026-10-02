@@ -1,48 +1,7 @@
-# Title Bar
+# Title bar
 
-G3M uses a custom Qt title bar widget instead of relying on the platform
-default.
+**Windows** opens auxiliary windows such as the log viewer and Support Packager. **Help** opens About, the changelog, and **Run Onboarding**.
 
----
+The window controls minimize, maximize or restore, and close G3M. Drag empty title-bar space to move the window. Double-click empty space to toggle maximization.
 
-## Current Layout
-
-The widget has two left-side menu buttons and three right-side window buttons.
-
-Left side:
-
-- `Windows` menu
-- `Help` menu
-
-Right side:
-
-- minimize
-- maximize or restore
-- close
-
-The `Windows` menu opens the log viewer and Support Packager. The `Help` menu
-opens the changelog, About dialog and first-run tour.
-
----
-
-## Window Actions
-
-Empty space in the title bar can:
-
-- start a system window move on left-click drag
-- toggle maximize or restore on double-click
-
-Buttons themselves do not trigger dragging.
-
----
-
-## Theming and Scaling
-
-The title bar applies the current theme text color to the window control icons
-and rescales its metrics from the UI scale setting. The widget updates:
-
-- margins
-- spacing
-- button size
-- icon size
-- overall height
+If a task is running, review any close confirmation before exiting. For a modded game session, keep G3M available until [restoration](../advanced/patching-process.md) finishes.

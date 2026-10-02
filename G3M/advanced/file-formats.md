@@ -1,60 +1,19 @@
-# File Formats
+# File reference
 
-This page is a quick map of the file types G3M actually cares about.
+| File or format | Meaning | Reference |
+| --- | --- | --- |
+| `mod_config.json` | Mod package configuration, format `2.0.0` | [Mod configuration](../mods/mod-config.md) |
+| `.g3mpatch`, `g3mpatch.json` | Resource patch archive and its manifest | [Patch format](../../G3MTool/patch-format.md) |
+| `.xdelta`, `.vcdiff` | Binary patch | [xpatch](../../G3MTool/commands/xpatch.md) |
+| `.csx` | Executable C# script | [Scripting](../../G3MTool/csx-scripting.md) |
+| `.win`, `.unx`, `.ios`, `.droid` | GameMaker resource DATA | [Patch inputs](../mods/patching-formats.md) |
+| `plugin_config.json` | Plugin manifest, integer configuration version `1`, API `1.3.0` | [Plugin development](../features/plugins-development.md) |
+| `theme_config.json` | Theme manifest, format `1.0.0` | [Theme packages](../customization/theme-packages.md) |
+| `game_version_data.json` | Exported game-snapshot manifest | [Game Versions](../features/game-versions.md) |
+| Profile ZIP | Profile state and its mod library | [Profiles](../features/profiles.md) |
 
-## Main game data files
+A ZIP's manifest determines its role. A mod ZIP, patch ZIP, plugin ZIP, theme ZIP, and game-version ZIP are not interchangeable.
 
-- `.win`
-- `.ios`
-- `.unx`
-- `.droid`
+Use `files` operations in a mod configuration to deploy content. Bundled files without an operation can serve as script dependencies or documentation without being copied to the game.
 
-## Main patch formats
-
-- `.g3mpatch`
-- `.xdelta`
-- `.vcdiff`
-- `.csx`
-
-Archive-style G3M patches may also be plain `.zip` files that contain
-`g3mpatch.json`.
-
-## Core metadata files
-
-- `mod_config.json` for G3M mods
-- `plugin_config.json` for plugins
-- `theme_config.json` for theme packages
-- legacy `theme.json` is still recognized during theme import
-
-### Extra-file status
-
-An installed extra file keeps the compact string form:
-
-```json
-"extra_files": ["runtime/config.json"]
-```
-
-A dependency-only entry uses an object so scripts can read it inside the mod
-folder without deploying it:
-
-```json
-"extra_files": [
-  {"file_path": "scripts/", "status": "dependency"}
-]
-```
-
-Readers preserve unknown status strings for format compatibility. Runtime
-deployment selects entries whose status is `install`.
-
-## Settings and state files
-
-- `%LOCALAPPDATA%\G3M\settings\settings.json`
-- `%LOCALAPPDATA%\G3M\settings\blocklist.json`
-- `%LOCALAPPDATA%\G3M\settings\custom_games.json`
-- `%LOCALAPPDATA%\G3M\downloads\downloads_history.json`
-- `%LOCALAPPDATA%\G3M\game_versions\game_versions_data.json`
-- `%LOCALAPPDATA%\G3M\plugins\plugins_data.json`
-
-## Plugin API note
-
-The current plugin API version is `1.1.0`.
+For application settings and saved-state locations, see the [data directory reference](data-directory.md).

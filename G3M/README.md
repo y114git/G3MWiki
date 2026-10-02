@@ -1,47 +1,22 @@
 # G3M
 
-G3M is a PyQt6 desktop mod manager for GameMaker games.
+G3M manages mods for GameMaker games. Install a mod, select it in the Library, and launch the game with that selection. The normal launch mode restores the game files after the game closes.
 
-Version: 3.3.4
-License: GPL-3.0
+The application is version **3.4.0**, distributed under GPL-3.0. Release packages support Windows, Linux, and macOS on x64 and ARM64.
 
-## Supported built-in games
+## Choose a guide
 
-- **DELTARUNE**
-- **DELTARUNEdemo**
-- **UNDERTALE**
-- **UNDERTALE Yellow**
-- **Pizza Tower**
-- **Sugary Spire**
-- **FRICKBEARS3**
+| Task | Page |
+| --- | --- |
+| Install G3M and play a mod | [Getting started](getting-started.md) |
+| Find and manage mods | [Mods Browser](interface/mods-browser.md), [Library](interface/library.md) |
+| Combine mods or use addons | [Priority and steps](mods/modpacks.md) |
+| Create or edit a mod | [Desktop editor](mods/mod-editor.md), [web editor](mods/web-editor.md) |
+| Write a mod configuration | [mod_config.json reference](mods/mod-config.md) |
+| Install plugins or themes | [Catalog](features/catalog.md) |
+| Create a plugin or theme | [Plugin API](features/plugins-development.md), [theme packages](customization/theme-packages.md) |
+| Investigate a failed launch | [Diagnostics](features/diagnostics.md), [troubleshooting](advanced/troubleshooting.md) |
 
-G3M also supports custom single-tab games added through the in-app Game Manager.
+Built-in game entries cover DELTARUNE, DELTARUNEdemo, UNDERTALE, UNDERTALE Yellow, Pizza Tower, Sugary Spire, and FRICKBEARS3. [Custom games](games/custom-games.md) provide a single-game entry for other GameMaker games.
 
-## Main functions
-
-- Install mods from GameBanana, links, folders, and archives.
-- Manage profiles, mod versions, game snapshots, downloads, blocklist rules,
-  plugins, and themes.
-- Apply `.g3mpatch`, `.xdelta`, `.vcdiff`, `.csx`, full DATA files, and Extra
-  files. G3M manages backups and launch state; G3MTool reads and merges DATA
-  inputs.
-- Run patch, merge, diff, and inspection commands from Modding Tools.
-- Launch games directly, through Steam, or from shortcuts.
-
-## Quick links
-
-| Resource | URL                                                      |
-| -------- | -------------------------------------------------------- |
-| Discord  | [discord.gg/2MFdvFfD9a](https://discord.gg/2MFdvFfD9a)   |
-| Telegram | [t.me/y_maintg](https://t.me/y_maintg)                   |
-| GitHub   | [github.com/y114git/G3M](https://github.com/y114git/G3M) |
-
-## Guides
-
-- [Getting Started](getting-started.md)
-- [Interface](interface/README.md)
-- [Games](games/README.md)
-- [Mods](mods/README.md)
-- [Features](features/README.md)
-- [Customization](customization/README.md)
-- [Advanced](advanced/README.md)
+Download the application from [GitHub releases](https://github.com/y114git/G3M/releases). Community help is available on [Discord](https://discord.gg/2MFdvFfD9a) and [Telegram](https://t.me/y_maintg).

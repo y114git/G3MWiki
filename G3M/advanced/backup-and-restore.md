@@ -1,38 +1,25 @@
-# Backup and Restore
+# Backup and restore
 
-G3M backs up files a modded launch replaces and records files it adds. Backups
-live in `<data-root>/patching_backups/`; active session data lives in
-`<data-root>/settings/session.lock`.
+## Back up your G3M setup
 
-After patching finishes, G3M records the size and SHA-256 hash of every deployed
-file. Directory entries use a hash built from each relative file path and its
-contents. G3M starts the game only after it saves these fingerprints.
+Close the game and let normal restoration finish. Close G3M, then copy the [data directory](data-directory.md) to another location.
 
-## Normal exit
+This copy includes profiles and mods, shared settings, plugin data, themes, downloads, and game snapshots. Game installations and save folders outside the data directory require separate backups.
 
-After the game exits, G3M compares the deployed files with their saved
-fingerprints. A match lets G3M restore replaced files and remove files that the
-mod added. G3M writes restored files through a temporary file and `os.replace`
-so another process cannot observe a partial copy.
+Use Profile Manager's export for a single Library setup. Use Game Versions for an installation snapshot. Neither is a complete substitute for backing up the data directory and game saves.
 
-G3M skips a tracked path if its deployed fingerprint changed. The status bar
-reports external changes and archives recovery data instead of overwriting it.
+## Normal launch restoration
 
-## Crash recovery
+G3M backs up affected existing files and records files added by a modded session. In normal Launch mode, it restores matching session files after the game ends and removes additions that still match what G3M deployed.
 
-G3M checks `session.lock` during the next startup. It restores the previous
-session only when all tracked paths still match the deployed fingerprints.
+If another process changes a tracked file, G3M avoids overwriting that changed file and reports the conflict. Recovery material is retained for inspection. This includes changes made by a game, external editor, updater, or another modding tool.
 
-If a tracked path changed, G3M keeps the backup and session record under
-`<data-root>/patching_backups/recovery_conflicts/` and removes the active lock.
-It does not overwrite the changed game files. You can inspect archived recovery
-data manually.
+**Launch and keep changes** and **Patching only** intentionally retain deployed files. Their confirmation is a choice to keep changes, rather than a request for normal post-exit restoration.
 
-Old manifests without deployed fingerprints retain the legacy restore behavior.
-An empty manifest has no work to perform, so G3M removes its backup directory and
-lock.
+## Interrupted sessions
 
-## Game Versions
+G3M checks pending session information on startup. It restores a recoverable session when the tracked files match the deployed state. If tracked files have changed externally, it retains recovery data under `patching_backups/recovery_conflicts/` and leaves the changed files for review.
 
-Backup and Restore protects one launch session. Game Versions stores snapshots
-that you create and restore from the Game Versions dialog.
+Keep that directory and its accompanying session information if you need manual recovery. Do not delete it to clear an error. Compare the recorded target paths and backup copies, or attach the relevant log to a support request before replacing files.
+
+For a paid game's clean installation, its distributor's verification or reinstall feature can restore distributed game files. Back up saves and personal additions first; distribution verification is not a G3M profile backup.

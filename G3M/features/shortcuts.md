@@ -1,52 +1,22 @@
-# Desktop Shortcuts
+# Desktop shortcuts
 
-Desktop shortcuts launch a saved setup without reopening the full launcher.
+The **Shortcut** action saves the current game, profile, selected mods, section selections, and priority steps into a launcher file. Use it to start a chosen setup without selecting the mods again in the main window.
 
----
+## Create a shortcut
 
-## What a Shortcut Is
+1. Configure the game path and select the intended profile.
+2. Select the mods and review **Priority & Steps**.
+3. Set Chapter Mode, direct section launch, Steam, or PortProton where applicable.
+4. Click **Shortcut** and review the summary.
+5. Choose whether plugin actions are included, and fill in any controls contributed by plugins.
+6. Save the launcher file.
 
-A shortcut is a small launcher file that remembers:
+Shortcut files use `.vbs` on Windows, `.command` on macOS, and `.sh` on Linux. G3M makes the Unix launcher executable. Run only shortcut files whose contents and origin you trust.
 
-- which game to run
-- which profile to use
-- which launch options matter for that run
-- which mod setup should be applied
+## What the shortcut depends on
 
-They avoid recreating the same setup in the UI.
+The shortcut refers to the local G3M installation, profile, mod IDs, and installed plugin code. It contains launch choices rather than a portable copy of the mods or game.
 
----
+Shortcuts support several mods within a step as well as several steps. The saved selections remain tied to the referenced mod IDs; editing those mods changes the files used by the shortcut. Removing a mod or moving the G3M executable can make the shortcut unusable.
 
-## Why People Use Them
-
-Shortcuts are most useful for:
-
-- a stable personal modded playthrough
-- a dedicated testing setup
-- keeping separate launch icons for separate profiles or games
-
-They avoid rebuilding the same loadout for every session.
-
----
-
-## Limitation
-
-Shortcuts depend on the referenced setup still existing.
-
-A shortcut can store several priority steps, but each step can contain only one
-mod. Use the main window when one step must merge several mods.
-
-If you later:
-
-- remove the mod
-- change the profile in a way that breaks the saved setup
-- move the launcher install in a way the shortcut no longer expects
-
-then the shortcut may stop working correctly and should be recreated.
-
----
-
-## Troubleshooting Tip
-
-If a shortcut launch fails, check the shortcut-specific log in the G3M logs
-area first.
+Create another shortcut after changing the setup you want it to represent. For failures, inspect the shortcut log in the [logs directory](../advanced/logging.md).

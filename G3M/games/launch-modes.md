@@ -1,96 +1,51 @@
-# Launch Modes
+# Launch modes
 
-`Launch` in G3M can mean a few different things depending on your current game,
-selected mods, and launch settings.
+The menu beside the main launch action selects what G3M does with the applied mod files.
 
----
+| Mode | Starts the game | Restores files when the game closes |
+| --- | --- | --- |
+| Launch | Yes | Yes |
+| Launch and keep changes | Yes | No |
+| Patching only | No | No |
 
-## The Simple Mental Model
+The latter two modes ask for confirmation because they leave mod changes in place. Use a separate game installation when producing a patched copy or testing persistent changes.
 
-There are four launch situations most users care about:
+## Launch
 
-- launch the game with no mods
-- launch with selected mods
-- launch DELTARUNE in chapter mode
-- launch through Steam or another platform helper
+With no selected mods, G3M starts the game without applying a mod selection. With mods selected, it backs up affected files, applies the selection, starts the game, and restores affected files after the monitored game session ends.
 
-Everything else is a variation of those.
+Let cleanup finish before starting another session. Launch remains unavailable while restoration is in progress, even if the main window is visible.
 
----
+### Required mods and suggested order
 
-## Vanilla vs Modded Launch
+G3M checks the dependencies and conflicts declared by the selected mods before applying them. The prompts distinguish installed requirements that are not selected from requirements absent from the profile.
 
-If nothing is selected, G3M mostly just resolves the executable and starts the
-game.
+- **Activate dependencies** adds installed requirements to the selection. **Launch without dependencies** keeps the current selection, and **Cancel** stops the launch.
+- **Install and activate dependencies** downloads supported missing requirements from GameBanana and selects them after installation. **Launch selected mods** continues with the existing selection. Requirements that need manual setup are identified in the prompt and Downloads.
+- **Apply recommendation** saves a suggested arrangement of selected mods when their dependency conditions can be satisfied by changing priority or steps. **Launch without changes** retains the current arrangement.
 
-If mods are selected, G3M does more work:
+Automatic downloading applies to GameBanana IDs such as `gb_mod_12345` and `gb_wip_12345`. An arbitrary mod ID does not tell G3M where to obtain its package. Install those requirements yourself from the author's documented source.
 
-1. prepares backups
-2. applies patch or replacement data
-3. copies any extra files a mod needs
-4. launches the game
-5. restores the original state after exit
+If a download fails or needs manual setup, finish its installation in Downloads and check the selection before retrying. Continuing without a requirement can leave a mod incomplete even if its files apply successfully. A suggested order cannot resolve incompatible gameplay changes or conflicting requirements.
 
-So the important rule is simple: selected mods turn launch into a
-patch-and-restore session.
+Mod authors define these conditions in [mod_config.json](../mods/mod-config.md#dependencies-and-conflicts). You can inspect and edit the selection in [Priority & Steps](../mods/modpacks.md).
 
----
+## Launch and keep changes
 
-## Chapter Mode
+G3M applies the selected mods and starts the game, then keeps their changes after exit. Use this mode only when you intend to keep the patched installation. A later launch starts from the files that are currently on disk.
 
-Chapter mode matters mainly for DELTARUNE.
+## Patching only
 
-With chapter mode on:
+G3M applies the selection without starting the game. The resulting files stay in the installation. This mode is useful for creating a patched copy to inspect or run separately.
 
-- chapter selections can differ from each other
-- chapter tabs become the place where you decide what is active
-- launch uses those per-chapter choices instead of one shared selection
+## Chapter selection
 
-If chapter mode is off, the setup is simpler and behaves more like one shared
-mod stack.
+In DELTARUNE **Chapter Mode**, sections have independent mod selections and steps. The direct-launch selector chooses the section to open rather than the normal game startup screen. Direct chapter launching and Steam launching cannot be combined for DELTARUNE.
 
----
+Outside Chapter Mode, G3M uses the shared selection and applies each mod to the sections it supports.
 
-## Direct Launch
+## Launch options and plugins
 
-Direct launch is the shortcut-style DELTARUNE flow that tries to jump straight
-into a chosen chapter instead of starting at the normal title flow.
+Steam, Wine, and PortProton control how the game starts. They do not establish mod compatibility. Plugins can add launch options or their own actions to the menu; a plugin action follows the plugin's behavior rather than automatically running the standard launch.
 
-For most users, the only thing to remember is:
-
-- it is DELTARUNE-specific
-- it is tied to chapter choice
-- if you do not need it, you can ignore it completely
-
----
-
-## Steam and Platform Helpers
-
-If a game has a Steam App ID and you enabled Steam launch, G3M can patch first
-and then ask Steam to start the game.
-
-On Linux, PortProton can also be part of the launch path when you configured it.
-
-Those options change how the executable is started, but they do not change the
-basic idea that selected mods are applied before the game begins.
-
----
-
-## Mod Order Still Matters
-
-Open **Priority & Steps** when selected mods need a specific order. Mods inside
-one step are merged against the same starting DATA file. The next step starts
-from the previous step's result.
-
-If two mods touch the same thing and the result looks wrong, order is one of the
-first things to check.
-
-## After the game exits
-
-G3M tracks the launched process and related launcher processes on Windows,
-macOS and Linux. Steam, Wine and PortProton launches use the same
-patch-and-restore flow.
-
-The window becomes available after G3M confirms that the game has stopped.
-File restoration can finish in the background, but another launch remains
-blocked until cleanup completes.
+Read [Priority & Steps](../mods/modpacks.md) when selecting multiple mods, and [restoration](../advanced/patching-process.md) before using a mode that keeps changes.

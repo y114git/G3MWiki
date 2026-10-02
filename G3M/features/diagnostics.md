@@ -1,36 +1,37 @@
-# Launch Diagnostics
+# Launch diagnostics
 
-Open **Diagnostics** from the Library when you need to check a mod setup before
-launching it.
+Open **Diagnostics** from the Library after choosing a game, section, profile, and mod selection. The initial inspection reads mod contents; **Analyze Actual Launch Result** additionally applies them to temporary copies. The window is labelled **Mod Diagnostics (BETA)**.
 
-## Quick inspection
+## Inspection views
 
-The dialog can inspect installed files without running the patcher. Use this
-view to check mod contents, patch formats, extra-file destinations and obvious
-conflicts.
+Use the mod checkboxes to choose which mods to inspect and the resource-type controls to narrow DATA results. Selecting a file, resource, or issue shows its details in the inspector.
 
-## Analyze Launch
+| View | Contents |
+| --- | --- |
+| Overview | Selection summary and counts |
+| File Tree | Operations, source files, destinations, and overlaps |
+| DATA Impact | Available patch-resource information |
+| Preview / Compare | Supported resource previews for comparison |
+| Problems | Missing files, invalid targets, relationships, and reported conflicts |
 
-**Analyze Launch** performs the same ordered patching work as a normal launch
-against a temporary copy of the game files. It does not start the game or
-replace files in the configured game folder.
+Double-click a supported file or DATA entry to open its inspection view. Audio previews provide Play and Stop controls. Preview availability depends on the resource type and readable patch data; a binary patch cannot list its final resource changes without application.
 
-The report includes:
+Two operations targeting the same file are an overlap to investigate. They are not always incompatible: priority, steps, and operation type determine the result.
 
-- every priority step and the mods assigned to it
-- changed DATA resources and extra files
-- the winning mod when several mods target the same file
-- hashes and source paths used during the analysis
-- G3MTool, xdelta and script warnings or errors
-- incomplete scans and permission failures
+## Analyze the actual launch result
 
-This is the most accurate check available before launch because `.xdelta`,
-`.csx` and raw DATA inputs must run before G3M can know their final changes.
+Click **Analyze Actual Launch Result** to prepare temporary game files and execute the selected operations and priority steps. The action does not start the game or install the result into the configured game folder.
 
-## Exporting a report
+The analysis can invoke G3MTool, xdelta, and bundled scripts. Scripts are executable code, so analyze only content you trust. Temporary output is not a sandbox for arbitrary scripts.
 
-Export as JSON when another tool needs to read the result. Export as HTML when
-you want a report that is easier to open or attach to a bug report.
+The resulting views are **Actual Steps**, **Actual Resources**, and **Actual Files**. Actual Steps shows completion, duration, selected mods, and errors for each section and step. Actual Resources identifies affected resources and contributing mods. Actual Files lists changed paths with their before and after sizes and checksums.
 
-An analysis result only describes the selected profile, game section, priority
-order and files present at that time. Run it again after changing any of them.
+Use the resource search to find a name, operation, or mod. Select a result to read its details.
+
+**Cancel Analysis** requests cancellation. **Export Exact Report** asks for an HTML destination and writes the HTML report and an accompanying JSON report. Check warnings, failed operations, incomplete scans, and inaccessible paths before treating the analysis as successful.
+
+## What the result establishes
+
+A successful analysis establishes that the inspected files can be processed with that selection and tool configuration. It does not playtest the game or prove that merged scripts behave correctly.
+
+Run the analysis again after changing mod contents, game files, order, steps, or profile. For a launch that fails despite successful application, check game logs and reduce the selected mods to isolate the interaction.

@@ -1,130 +1,41 @@
-# Getting Started
+# Getting started
 
-## Requirements
+## Install G3M
 
-G3M's source project currently targets:
+Choose the release package for your operating system and processor from [GitHub releases](https://github.com/y114git/G3M/releases). x64 and ARM64 are separate downloads; select the architecture of the machine running G3M.
 
-- **Python:** `>=3.14.6`
-- **UI:** `PyQt6==6.7.1`
-- **Other pinned runtime dependencies:** `defusedxml`, `playsound3`, `psutil`,
-  `py7zr`, `python-dotenv`, `rarfile`, `requests`, `urllib3`
+| Operating system | Minimum requirement | Architectures |
+| --- | --- | --- |
+| Windows | Windows 10 version 1809 | x64, ARM64 |
+| Linux | glibc 2.34 | x64, ARM64 |
+| macOS | macOS 13 | x64, ARM64 |
 
-The repository includes packaging for Windows, macOS, and Linux. The exact
-release artifact set is covered by the current project release process, while
-the source tree itself is cross-platform.
+Extract the package into a folder you can write to, and open G3M. Keep the accompanying files together. Release packages contain the application runtime; Python is not required.
 
-## Install from source
+The requirements apply to G3M. A game's executable and a mod can have different platform requirements. An ARM64 G3M package does not convert an x64 game into an ARM64 game.
 
-```bash
-git clone https://github.com/y114git/G3M.git
-cd G3M
-python -m pip install -e ".[dev,test,build]"
-python src/main.py
-```
+## Set the game folder
 
-Useful extras from `pyproject.toml`:
+1. Choose your game in the Library.
+2. Open **Settings > Game**.
+3. Select the game's installation folder. This is the folder containing the executable and game resources, rather than its save folder.
+4. Check the separate **data folder** setting if a mod changes saves or other per-user game files.
+5. Launch without selected mods once to check the path.
 
-- `.[build]` installs `pyinstaller`
-- `.[test]` installs `pytest`, `pytest-qt`, `pytest-cov`, `pytest-html`,
-  `pytest-mock`, and `responses`
-- `.[dev]` installs `ruff`
+G3M attempts to locate supported installed games automatically. Set the path manually if detection does not find your installation. See [game detection](games/game-detection.md) for executable overrides and platform-specific layouts.
 
-## First launch behavior
+## Install and play a mod
 
-- G3M enforces a **single running instance** using the key
-  `g3m.single-instance-lock`.
-- A first-run tour opens the relevant tabs and settings while pointing to the
-  controls it describes. Finishing or skipping it records the tour as
-  completed.
-- It accepts both `g3m://` and legacy `deltahub://` protocol links.
-- On first startup it can migrate user data from the legacy **DELTAHUB** folder
-  into the current **G3M** data directory.
-- It attempts automatic game-path detection only for built-in games that have
-  autodetection support in the current codebase.
+1. Find a mod in **Mods Browser**, open its details, and select a download. Alternatively, drop a mod archive or folder into the Library.
+2. Complete the import dialog. Files without a G3M configuration require you to specify the game and intended file operations.
+3. Open **Library**, locate the imported mod, and click **Use**.
+4. Keep the normal **Launch** mode selected, and launch the game.
+5. Let G3M finish restoring files after the game closes before launching another session.
 
-Open **Help > Run Onboarding** to repeat the tour. It covers game paths, the
-Mods Browser, Library, profiles, Priority & Steps, Diagnostics, Modding Tools,
-downloads, shortcuts and Game Versions.
+For several selected mods, review [Priority & Steps](mods/modpacks.md). A dependency can require a separate step, and matching game names alone do not establish compatibility.
 
-## Built-in games
+## Find the main controls
 
-The built-in runtime registry currently includes:
+**Settings** controls game paths, appearance, download behavior, and the Catalog. The profile selector switches independent mod libraries. **Windows** opens auxiliary windows, including logs and the Support Packager. **Help > Run Onboarding** opens the guided tour.
 
-- `deltarune`
-- `deltarunedemo`
-- `undertale`
-- `undertaleyellow`
-- `pizzatower`
-- `sugaryspire`
-- `frickbears3`
-
-Only visible games appear in the main UI. Additional custom games can be created
-in the Game Manager and stored on Windows in
-`%LOCALAPPDATA%\G3M\settings\custom_games.json`.
-
-## Data directory
-
-User data lives under the platform-specific G3M root:
-
-| Platform | Default location                    |
-| -------- | ----------------------------------- |
-| Windows  | `%LOCALAPPDATA%\\G3M`               |
-| macOS    | `~/Library/Application Support/G3M` |
-| Linux    | `~/.local/share/G3M`                |
-
-You can change this root in **Settings > App > Advanced**. The selected folder
-is used directly for settings, profiles, mods, versions, plugins, downloads,
-cache, and logs.
-
-Important subpaths in the current code:
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\settings\settings.json`
-  - **Purpose:** Main app settings
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\settings\blocklist.json`
-  - **Purpose:** Blocklist rules
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\settings\custom_games.json`
-  - **Purpose:** Custom game registry
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\profiles\`
-  - **Purpose:** Profile folders
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\downloads\downloads_history.json`
-  - **Purpose:** Download history and queue persistence
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\game_versions\game_versions_data.json`
-  - **Purpose:** Saved game version index
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\plugins\plugins_data.json`
-  - **Purpose:** Plugin state and settings
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\lang\`
-  - **Purpose:** External language files
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\themes\`
-  - **Purpose:** User theme archives
-
-- **Windows path:** `%LOCALAPPDATA%\G3M\cache\G3MTool\`
-  - **Purpose:** G3MTool cache files used by patching workflows
-
-## Configure a game
-
-1. Open **Settings**.
-2. Select the target game.
-3. Set the game folder path.
-4. Optionally set a custom executable path for that game.
-
-Validation is game-aware. G3M checks executable candidates from the current
-built-in registry and resolves supported data files by platform.
-
-## Full install support
-
-Built-in full-install support is enabled in the current registry for:
-
-- **DELTARUNEdemo**
-- **UNDERTALE Yellow**
-- **Sugary Spire**
-- **FRICKBEARS3**
-
-Games without that flag do not expose the same full-install workflow.
+G3M keeps settings and mods in a separate [data directory](advanced/data-directory.md). Replacing the application package does not replace that directory.

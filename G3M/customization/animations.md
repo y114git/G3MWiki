@@ -1,14 +1,7 @@
 # Animations
 
-G3M has a small amount of UI animation, and it can be turned off.
+**Disable animations** in **Settings > Appearance > Graphics** turns off interface animation effects, such as animated transitions when expanding sections.
 
-## Current setting
+The preference affects interface motion. **Disable background** separately controls whether the background media is displayed. Use that setting to hide a GIF or video background.
 
-The controlling setting is:
-
-- `disable_animations`
-
-## What changes when it is off
-
-Turning animations off mainly affects visual polish rather than behavior. It is
-useful if you prefer a snappier interface or want fewer transitions.
+The standard theme field for interface animation is `disable_animations`. Background visibility uses `background_disabled`, so a theme can specify these choices independently.

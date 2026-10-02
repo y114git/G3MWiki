@@ -1,106 +1,38 @@
 # Downloads
 
-The Downloads page is the place to watch anything G3M fetched for you: browser
-downloads, one-click installs, direct URLs, and optionally local imports.
+Open **Downloads** to view downloaded mods, plugins, themes, and local imports recorded by G3M. Each item reports file transfer and installation status separately.
 
----
+## Actions
 
-## What You See
+| Action | Purpose |
+| --- | --- |
+| Install | Imports a completed package |
+| Reinstall | Imports a downloaded package again if its file is available |
+| Cancel | Stops an active download |
+| Retry | Tries a failed transfer again |
+| Overwrite | Resolves an import waiting for replacement confirmation |
+| Cancel install | Cancels the pending installation decision |
+| Continue setup | Opens the manual configuration required by the package |
+| Delete | Removes the download record and its associated downloaded file after confirmation |
+| Open folder | Opens the downloads directory |
+| Clear downloads | Clears completed records through the dialog's cleanup action |
 
-Each record tells you three things:
+Only actions applicable to the item's state are displayed. A ready file is downloaded but not necessarily installed. An overwrite-pending or manual-setup item needs a decision before it becomes a Library mod.
 
-- where the file came from
-- whether the file finished downloading
-- whether G3M already turned it into an installed mod or plugin
+Drop local files or download URLs into this window to add them. Online files must have an accessible download URL.
 
-That matters because a download can succeed, but still need your attention
-before it becomes usable.
+## Automatic import
 
----
+**Settings > Mods Browser > Downloads** has three options:
 
-## Most Common States
+- **Do not install downloaded files automatically** leaves completed files ready for an explicit Install action.
+- **Delete downloaded file after use** removes the downloaded package after successful installation. The installed mod remains in its profile.
+- **Save local imports in Downloads** records imports from disk in download history.
 
-Use this quick mental model:
+History is stored in `downloads/downloads_history.json` under the data directory. Removing an archive outside G3M can leave a record without a usable file; download it again rather than using Reinstall.
 
-- `Queued` or `Downloading`: still in progress
-- `Downloaded`: file is on disk
-- `Pending Auto` or `Using`: G3M is trying to install it
-- `Ready`: file is waiting for you because auto-use is off
-- `Overwrite Pending`: G3M found an existing mod with the same ID and needs your
-  decision
-- `Needs Manual Install`: the file was downloaded, but G3M could not confidently
-  map it to a supported import flow
-- `Failed` or `Cancelled`: the flow stopped before completion
+## Failed transfers
 
----
+Read the item's error before retrying. A missing local source, denied write access, HTTP 404, certificate failure, and server rate limit require different fixes. HTTP 429 means the server is limiting requests; repeated immediate retries can prolong the problem.
 
-## Typical Flow
-
-For a normal mod download, the flow is:
-
-1. G3M creates a download record
-2. the file is downloaded into the downloads area
-3. G3M tries to auto-use it unless you disabled that behavior
-4. the file is either installed, left ready for manual use, or flagged for
-   manual attention
-
-Auto-use goes through the same import pipeline as manual mod import, including
-conversion paths for supported external mod formats.
-
----
-
-## Settings That Matter
-
-The three download settings are:
-
-- `No auto-use`: keep finished downloads in a ready state instead of importing
-  them immediately
-- `Delete after use`: remove the downloaded archive after a successful install
-- `Save local imports`: create download history records for files you imported
-  manually from disk
-
-If you want a cleaner, more manual workflow, turn on `No auto-use`. If you want
-the smoothest browser-to-library flow, leave it off.
-
----
-
-## Where Files Live
-
-Downloads use the user data directory:
-
-- records: `%LOCALAPPDATA%\G3M\downloads\downloads_history.json`
-- downloaded files: `%LOCALAPPDATA%\G3M\downloads\`
-
-The records survive restarts. On startup, G3M checks whether the physical file
-still exists and updates the record accordingly.
-
----
-
-## When You Need to Act
-
-Usually you only need to touch this page when:
-
-- a mod wants to overwrite an existing install
-- a file needs manual install
-- you want to retry or inspect a failed download
-- you disabled auto-use and want to process the file later
-
----
-
-## Error Messages
-
-Recent G3M builds try to show a more specific reason when a download or local
-copy fails.
-
-Examples of precise cases:
-
-- network timeout
-- SSL or certificate failure
-- server refused connection
-- DNS or name resolution failure
-- HTTP `403`, `404`, `429`, or `5xx`
-- local file missing
-- permission denied while copying a local file
-
-When G3M can identify the cause reliably, the Downloads record shows the
-friendly reason. Raw details still remain available in logs for debugging.
+For a completed archive that needs configuration, use Continue setup. Downloading the same file again does not supply a missing `mod_config.json` or infer an unknown destination.

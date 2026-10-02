@@ -1,24 +1,9 @@
-# Mod Details
+# Mod details
 
-When you open a browser mod in detail view, G3M shows a richer panel with the
-information it has for that entry.
+Open a Mods Browser card to read the upload's title, authors, description, screenshots, tags, and available version information.
 
-## What the panel focuses on
+Use its download action to select a file. Multiple upload files can represent different game releases, platforms, optional components, or previous mod versions; choose by the author's description rather than file order.
 
-- title, author, version, and basic metadata
-- screenshots and media where available
-- description content fetched for the online entry
-- download actions
-- homepage or external page links
+Available homepage and GameBanana actions open external pages. A Library-related action is shown when G3M identifies the upload as installed in the active profile.
 
-## Installed-state awareness
-
-The details flow also checks whether the same GameBanana-backed mod is already
-represented in your local library, so the UI can react differently for install
-or update scenarios.
-
-## File choice
-
-If a mod has more than one downloadable file, G3M can open a separate
-file-picker flow so you can choose the archive that actually matches what you
-want.
+Screenshots and descriptions come from the online entry. Their presence does not validate the downloaded package. Review any import confirmation and check the mod's game requirement before selecting **Use**.

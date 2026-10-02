@@ -1,113 +1,29 @@
 # Library
 
-The Library is where your installed mods become an actual playable setup.
+The Library displays mods installed in the active profile. Select the game and profile before choosing mods for launch.
 
-If the Mods Browser is for finding things, the Library is for choosing what gets
-applied when you press launch.
+## Mod cards
 
----
+**Use** includes a mod in the current selection; the corresponding unuse action removes it. Selected cards remain selected even when a search or filter hides them.
 
-## What You Do Here
+Card actions let you edit the mod, export it, open Mod Versions, open its folder, or delete it. Homepage and GameBanana links appear when the mod supplies them. Deleting removes the local mod from the profile; unusing only changes the launch selection.
 
-In practice, the Library is used for four jobs:
+The summary shows available metadata, including version, author information, and [playtime](../games/playtime.md).
 
-- switch game
-- switch profile
-- choose which installed mods are active
-- manage local mod files
-- run preflight diagnostics on the current mod selection
+## Library controls
 
-That makes it the most important tab once you already have mods on disk.
+| Control | Action |
+| --- | --- |
+| Game selector | Chooses the game whose mods are displayed |
+| Profile selector and manager | Switches or manages independent libraries |
+| Add Mod | Imports content or creates a mod in the editor |
+| Priority & Steps | Sets order and groups for selected mods |
+| Create Modpack | Builds one local package from the current selection and steps |
+| Diagnostics | Inspects the selection and can test its application |
+| Game Versions | Saves or applies snapshots of the selected game installation |
+| Shortcut | Saves a launcher for the selected setup |
+| Search, tags, sort direction | Changes the displayed list |
 
----
+In DELTARUNE **Chapter Mode**, choose a section tab before changing that section's mod selection. Without Chapter Mode, the shared selection is applied to supported sections.
 
-## Core Flow
-
-The normal player flow is:
-
-1. choose a game
-2. choose a profile
-3. mark one or more mods as used
-4. launch from the status bar
-
-The used mods are the set G3M patches into the selected game before launch.
-
----
-
-## DELTARUNE Chapter Tabs
-
-DELTARUNE is special because it can work in chapter mode.
-
-In chapter mode:
-
-- each chapter keeps its own used-mod selection
-- a mod can appear in multiple chapter tabs if it has data for multiple chapters
-- direct launch can be tied to a specific chapter
-
-If chapter mode is off, the selection is simpler and behaves like one shared
-launch setup.
-
----
-
-## What Mod Cards Are For
-
-Installed mod cards are meant to answer three questions quickly:
-
-- what is this mod
-- is it currently used
-- what can I do with it
-
-From there you can usually:
-
-- use or unuse it
-- edit it
-- export it
-- open versions
-- open its folder
-- delete it
-
-Some mods also expose extra context actions such as homepage or GameBanana
-links.
-
----
-
-## Filters
-
-The filter bar helps once your collection grows:
-
-- search narrows by common mod metadata
-- tag buttons narrow by category
-- sorting changes the order
-
-If you prefer a cleaner view, the filter bar can be hidden from settings.
-
----
-
-## Add Mod
-
-When you press `Add Mod`, you are really choosing one of two paths:
-
-- import something that already exists
-- create a new mod from scratch
-
-So the Library is both your play space and your starting point for local
-modding.
-
-## Diagnostics
-
-The Library header also exposes a **Diagnostics** button.
-
-The initial view reads the installed mod files and helps you inspect:
-
-- file conflicts between selected mods
-- target paths for extra-file overrides
-- DATA patch types
-- `.g3mpatch` resource summaries and previews
-- obvious missing-file issues before launch
-
-Use **Analyze Launch** for a deeper check. It runs the selected priority steps
-on a temporary copy, then reports the files and resources that would change.
-The original game folder remains untouched. Reports can be exported as JSON or
-HTML.
-
-See [Launch Diagnostics](../features/diagnostics.md) for the full workflow.
+Check the [launch mode](../games/launch-modes.md) before applying mods: normal Launch restores affected files, while the other modes keep changes.

@@ -1,37 +1,16 @@
-# Glossary
+# Terms
 
-## G3M
-
-The main launcher and mod manager documented by this wiki.
-
-## G3MTool
-
-The bundled command-line helper that handles patching, conversion, diff, info,
-and script execution work for GameMaker data files.
-
-## Profile
-
-A separate mod-library context inside G3M. Profiles keep their own installed
-mods, metadata, and selected-mod state.
-
-## Game Version
-
-A saved restore point for a game installation.
-
-## Mod Version
-
-A saved restore point for one installed mod.
-
-## g3mpatch
-
-G3M's native patch format.
-
-## Extra files
-
-Files a mod copies alongside its main data patch, such as additional assets or
-supporting files.
-
-## One-click install
-
-A protocol-based download handoff using the `g3m` or legacy `deltahub` URL
-scheme.
+| Term | Meaning in G3M |
+| --- | --- |
+| DATA | A GameMaker resource file, commonly `data.win` or `game.unx` |
+| Mod package | Configuration plus bundled payload and support files |
+| Operation | One configured patch, copy, extraction, or information entry |
+| Priority | Which mod wins an unmergeable overlap within a step; higher rows have higher priority |
+| Step | A group applied against one starting state; later steps use preceding results |
+| Profile | A separate mod library and launch selection |
+| Mod version | A saved copy of one mod's files |
+| Game version | A saved snapshot of game installation files |
+| User-data folder | The game's per-user files, separate from its installation |
+| Placeholder | A named path root such as `${game_path}` or `${game_data_path}` |
+| Virtual archive path | A destination inside an archive, such as `${game_path}/assets.zip/textures/menu.png` |
+| Launch restoration | Returning tracked session files to their backed-up state after a normal launch |

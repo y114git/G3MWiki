@@ -1,51 +1,19 @@
 # xpatch
 
-Create or apply xdelta patches. xdelta stores byte-level differences and expects
-the matching original file when applying.
+`xpatch` creates and applies binary xdelta patches. These operate on file bytes rather than GameMaker resources and can be used for other file types.
 
-G3MTool bundles xdelta for supported platforms, and xpatch also honors the
-global `--xdelta-path <path>` override.
-
-## xpatch create
-
-```bash
-G3MTool xpatch create <original> <modified> [output] [--xdelta-path <path>]
+```text
+G3MTool xpatch create <original> <modified> [patch-output]
+G3MTool xpatch apply <original> <patch> [file-output]
 ```
 
-- **Argument:** `original`
-  - **Required:** Yes
-  - **Description:** Source file
+Create defaults to the modified input's basename with an `.xdelta` extension next to the executable. Apply defaults to `<original-stem>_patched` next to the executable. It preserves a recognized DATA extension; otherwise its default extension is `.win`. For other file types, always supply the output filename you want.
 
-- **Argument:** `modified`
-  - **Required:** Yes
-  - **Description:** Modified file
-
-- **Argument:** `output`
-  - **Required:** No
-  - **Description:** Output `.xdelta`. Default: `<modified_name>.xdelta` next to
-    the executable
-
-## xpatch apply
-
-```bash
-G3MTool xpatch apply <original> <patch> [output] [--xdelta-path <path>]
+```text
+G3MTool xpatch create original.bin modified.bin change.xdelta
+G3MTool xpatch apply original.bin change.xdelta result.bin
 ```
 
-- **Argument:** `original`
-  - **Required:** Yes
-  - **Description:** Source file expected by the xdelta patch
+The original must match what the binary patch requires. A different game release or already modified file commonly fails to decode.
 
-- **Argument:** `patch`
-  - **Required:** Yes
-  - **Description:** `.xdelta` file
-
-- **Argument:** `output`
-  - **Required:** No
-  - **Description:** Output file. Default: `<original_name>_patched.<ext>` next
-    to the executable
-
-## Notes
-
-- xdelta is exact only when applied to the expected source file.
-- xdelta does not carry resource-level metadata for merge-aware workflows.
-- Use `patch create` when you need inspectable or mergeable `.g3mpatch` output.
+Use `--xdelta-path <executable>` to override the bundled binary. For raw xdelta arguments, use [Execute](execute.md). Global logging options apply, but `--json` does not convert xpatch's result to the patch command's JSON contract.

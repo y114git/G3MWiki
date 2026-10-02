@@ -1,23 +1,19 @@
 # Mod Versions
 
-Mod Versions is a per-mod snapshot system. It helps you keep checkpoints for a
-mod without duplicating the whole library.
+Open **Mod Versions** on a Library card to keep and switch between saved copies of that mod. Versions belong to the mod in the active profile.
 
-## Where snapshots live
+## Add a version
 
-Each mod keeps its own snapshots in:
+**Add version** offers saving the current mod as a version or importing a mod version from a file. Give each checkpoint a useful name, such as `Translation test` or `Before texture edits`.
 
-`<mod folder>/mod_versions/`
+For a GameBanana-backed mod, **Download from GameBanana** can fetch another available file into its version list. Importing a package with an already installed ID and choosing **Merge** also adds a version.
 
-## What you can do
+Drop supported version files into the dialog to import them. Local archives are kept in the mod's `mod_versions/` folder.
 
-- save the current mod as a new version archive
-- restore a previous version
-- delete old version archives
-- import version archives into the mod's version list
+## Switch or delete
 
-## Best use cases
+**Switch** replaces the current mod files with the selected version. Save the current files as a version first if you want to keep edits that are not already saved.
 
-- keep a fallback before editing a mod
-- preserve a version before updating from GameBanana
-- test multiple variants of the same mod safely
+**Delete** removes that saved archive after confirmation. It does not switch the active mod to a different version.
+
+A version saves the mod package, not the game installation, profile selection, or save files. For a whole profile or game snapshot, use [Profiles](../features/profiles.md) or [Game Versions](../features/game-versions.md).

@@ -1,13 +1,10 @@
-# version
+# Version
 
-Print the installed G3MTool version and exit.
-
-```bash
+```text
 G3MTool --version
 G3MTool -V
 ```
 
-Current code version: `1.2.9`
+Both print the CLI version and exit. There is no `version` subcommand. Use the displayed version in a bug report.
 
-Use this when a bug report, patch manifest, or support request needs the exact
-tool version.
+The GUI displays its own application version in the window. GUI and CLI version numbers identify separate applications, even when they perform similar operations.

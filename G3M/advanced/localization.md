@@ -1,27 +1,41 @@
 # Localization
 
-G3M ships with built-in translations and can also load external language files.
+Choose the interface language in **Settings > General > Language**. Bundled language codes are `en`, `ru`, `es`, `ja`, `ko`, `zh_cn`, and `zh_tw`. Missing translated text falls back to English.
 
-## Bundled languages
+## External language files
 
-The current bundled set is:
+G3M reads `lang/lang_<code>.json` under its data directory. Start with a copy of the English file so you have the actual keys and formatting placeholders.
 
-- `en`
-- `ru`
-- `es`
-- `ko`
-- `ja`
-- `zh_cn`
-- `zh_tw`
+For a separate translation, use a distinct code such as `lang_example.json`. Its `metadata` can specify `language_name`, `qt_translation`, and `font`. A font path is relative to the language file's folder.
 
-## Where files live
+Example fragment showing the structure:
 
-Bundled language files are inside `src/assets/lang/`.
+```json
+{
+  "metadata": {
+    "language_name": "Example language",
+    "qt_translation": "qtbase_en"
+  },
+  "common": {
+    "close": "Close"
+  }
+}
+```
 
-At runtime, G3M also syncs language files into the user data `lang/` folder so
-they can be customized outside the bundle.
+Preserve substitutions such as `{game}`, `{count}`, and `{error}` exactly. Translate the surrounding text. Keep required HTML markup valid where a value uses it. Save UTF-8 JSON and restart G3M to select the external language.
 
-## Plugin support
+## Customize a bundled translation
 
-Plugins can ship their own `lang/` folder and merge extra strings into the app
-localization system.
+Bundled keys are synchronized into the external files. To keep an intentional text override, replace its leaf key with an underscore-prefixed key rather than leaving both keys present:
+
+```json
+{
+  "common": {
+    "_close": "Dismiss"
+  }
+}
+```
+
+This is a fragment inside the full external language file. The ordinary `close` key must be absent in that object for `_close` to be used. Metadata for bundled language files is synchronized from the bundled version; use a separate language file for a different name or font.
+
+Plugins provide their own language files through the [plugin API](../features/plugins-development.md). They use their plugin's translation namespace rather than modifying unrelated application keys.

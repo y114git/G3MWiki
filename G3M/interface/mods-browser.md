@@ -1,76 +1,19 @@
 # Mods Browser
 
-The Mods Browser is the discovery tab. Its job is simple: help you find a mod,
-inspect it, and get it into your library with as little friction as possible.
+Mods Browser lists GameBanana uploads for the selected game. Games need a GameBanana ID to appear; add one to a custom entry in Game Manager when applicable.
 
----
+## Find a mod
 
-## What It Searches
+Choose a game, enter search terms, select tags, and choose the sort order. The direction button reverses that order. Content filters and [Blocklist](../features/blocklist.md) rules further limit displayed results.
 
-The browser only shows games that currently have a GameBanana ID in the runtime
-registry.
+Open a mod card to view its [details](mod-details.md). Select the intended download file when an upload offers several choices. Read the author's game-version and prerequisite instructions before installing.
 
-That means:
+## Download and import
 
-- supported built-in games with GameBanana IDs appear automatically
-- custom games can appear if you gave them a GameBanana ID
-- games without a GameBanana ID do not show up here
+The file enters [Downloads](../features/downloads.md). With automatic use enabled, G3M attempts import after downloading. Otherwise, choose **Install** on the completed record.
 
-So if a game is supported by G3M but missing from the browser, the usual reason
-is that there is no GameBanana mapping for it.
+A successful download can still need manual setup. GameBanana hosts many package formats; appearing in search does not guarantee that G3M can infer their file destinations or that they work on your platform.
 
----
+## Missing or failed results
 
-## How Most People Use It
-
-The common flow is:
-
-1. pick a game
-2. narrow results with search, tags, sort, or NSFW filter
-3. open a mod card
-4. inspect the details and screenshots
-5. download it
-6. let Downloads import it into your Library
-
-That makes the Browser and Downloads work as a pair.
-
----
-
-## Filters That Matter
-
-The filter bar answers different kinds of questions:
-
-- game selector: "show me mods for this game"
-- search: "find this mod or keyword"
-- tags: "show only a certain kind of mod"
-- sort: "show popular, newer, or recently updated items first"
-- NSFW toggle: "hide or include adult-marked content"
-
-The browser uses the same broad tag family the rest of G3M uses, with extra
-special cases such as `CYOP/AFOM` where relevant.
-
----
-
-## Mod Details
-
-Opening a mod gives you the richer view:
-
-- description
-- screenshots
-- tags
-- version-related metadata
-- homepage or mod-page links when available
-- download and library-related actions
-
-If the mod has multiple downloadable files, G3M asks which file you want instead
-of guessing.
-
----
-
-## Compatibility Reality
-
-Not every GameBanana upload is something G3M can auto-install cleanly.
-
-When a file is compatible, the Browser-to-Downloads-to-Library flow is smooth.
-When it is not, G3M can still tell you that the mod exists, but it may need a
-manual install path or an external format conversion first.
+Check the selected game, search, tags, adult-content filter, and blocklist. If the request fails, inspect the status message and retry after checking connectivity. Local Library mods do not need online search to remain installed.

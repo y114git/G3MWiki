@@ -1,26 +1,31 @@
-# Importing Mods
+# Importing mods
 
-Import adds a mod to Library.
+Import adds a mod to the active profile's Library. Downloading an archive and importing its contents are separate actions; [Downloads](../features/downloads.md) reports both.
 
-## Sources
+## Choose a source
 
-Import from Mods Browser, a local file or folder, a URL, or drag and drop. All
-sources use the same import pipeline.
+Use **Add Mod > Import**, drop files or folders into the Library, or select a download in Mods Browser. The import dialog accepts local content and download URLs. A URL must point to downloadable content, rather than a web page containing a download button.
 
-G3M recognizes native G3M mods, `.g3mpatch`, raw DATA files, supported patch
-files, and supported archives. It also converts current TOML and legacy JSON
-DELTAMOD packages when their paths stay inside the package.
+Supported archive inputs include ZIP, 7z, RAR, TAR and compressed TAR variants, and LZMA where applicable. A package with `mod_config.json` supplies its own metadata and operations. G3M can also open supported DATA files, `.g3mpatch`, `.xdelta`, `.vcdiff`, and `.csx` inputs for manual configuration.
 
-For a converted DELTAMOD mod, G3M keeps script dependencies in the mod folder.
-It does not copy dependency-only files into the game installation. A CSX DATA
-entry can therefore use relative `#load` imports and resource paths.
+## Packages with configuration
 
-## Manual Install
+G3M reads and validates the configuration, checks package paths, and copies the prepared mod into the active profile. Invalid configurations require correction; selecting another game does not make an invalid operation valid.
 
-Open Manual Install when G3M cannot map an archive to game targets. Assign DATA
-files, Extra files, and xdelta patches to explicit targets there.
+Supported G3M configurations in the older 1.x formats are converted to the current `2.0.0` structure during import. DELTAMOD packages with JSON or TOML metadata are also converted. Script dependencies remain in the mod folder so relative `#load` and resource paths can resolve without installing dependency-only files into the game.
 
-## Existing mods
+Keep the original archive if you need an untouched copy. The installed mod uses the [current configuration format](mod-config.md).
 
-When an import matches an installed mod ID, choose **Merge** to retain the
-existing folder or **Replace** to install the imported folder as-is.
+## Files without configuration
+
+**Manual Mod Installation** collects the input files into a mod. Enter the game, name, and authors, then choose **Create and configure** to open the editor.
+
+Only add operations for files that actually modify the game. Documentation and script dependencies can remain bundled without copy operations. Set each operation's type, source, and destination in the [Files tab](mod-editor.md); a loose patch does not describe its destination by itself.
+
+Several dropped inputs without configuration can be collected into one manual installation. Complete the editor and save before using the mod.
+
+## An installed ID already exists
+
+The duplicate dialog offers **Merge** and **Replace**. Merge saves the incoming package as a version of the installed mod; it does not combine both configurations into one launch selection. Replace installs the incoming package in place of the existing mod.
+
+Save or export the current mod if you want an independent backup. Review [Mod Versions](mod-versions.md) before switching to a merged import.

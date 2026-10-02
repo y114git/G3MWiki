@@ -1,26 +1,18 @@
-# UI Customization Guide
+# Create an appearance preset
 
-If you want the fastest route to a custom look, do it in this order:
+This guide prepares an appearance preset that you can reapply or share as a theme.
 
-1. pick your color set
-2. decide whether you want a custom background
-3. add logo and font only if they help readability
-4. add audio last
-5. export the result as a theme package if you want to reuse it
+1. Open **Settings > Appearance**.
+2. Select your colors in **Colors**.
+3. Select a background, logo, and font in **Graphics** if the preset uses them.
+4. Select music and a startup sound in **Audio** if the preset uses audio.
+5. Set **Border Radius** and the background, animation, and startup-sound checkboxes.
+6. Open **Im/Export Theme** and choose **Export**.
 
-## The main pieces you can change
+Before sharing the ZIP, apply it from disk and check the library, mod details, settings, and a dialog with a long error message. Selected and hovered items need readable text as well as a visible border.
 
-- colors
-- background
-- logo
-- font
-- startup sound
-- background music
-- border radius
-- animation toggle
-- UI scale
+Test the font against the preset's intended languages. Test audio and animated media on each platform you claim to support. If you use a video, report any codec requirements that matter to users.
 
-## Best practical advice
+The export does not contain your library or game paths. It also does not carry every personal application preference. See [Theme packages](theme-packages.md) for the exact fields and filenames.
 
-Keep text contrast strong first. A theme that looks stylish but makes Library or
-Browser text harder to read is a bad trade for everyday use.
+To keep a theme available locally, import it with **Do not save theme in list after import** unchecked. To publish it in the catalog, prepare the separate catalog metadata described in the package reference.

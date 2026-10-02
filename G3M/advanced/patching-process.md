@@ -1,60 +1,19 @@
-# Patching Process
+# Applying and restoring mods
 
-G3M applies mod files for the launch session, then restores backups after the
-game exits.
+The selected launch mode determines whether applied changes are temporary or retained.
 
-## Normal flow
+In normal Launch, G3M checks the selected setup, backs up affected files, applies mod operations and priority steps, then starts and monitors the game. After exit it restores eligible files before another launch is allowed.
 
-The current launch pipeline is:
+Operations can patch DATA, copy files or directories, extract archives, or provide documentation. Their destinations can refer to the game installation, game user-data folder, or user home. Read the [operation reference](../mods/mod-config.md) when authoring a package or inspecting an unusual destination.
 
-1. Check the game path and selected mods.
-2. Back up files G3M may replace.
-3. Apply DATA inputs in priority order and copy Extra files.
-4. Start the game and monitor its process.
-5. Restore files after exit.
+Mods in one step derive changes from the same starting DATA. Steps run in sequence. See [Priority & Steps](../mods/modpacks.md) for ordering and addons.
 
-## Patch types G3M can apply
+## Failed application
 
-G3M accepts these DATA inputs:
+If patching fails, G3M attempts to undo changes from the interrupted application. Read the error and check that rollback finishes before retrying. Missing sources, an incorrect original game version, denied write access, and script failures require different corrections.
 
-- `.g3mpatch`
-- `.xdelta`
-- `.vcdiff`
-- `.csx`
-- raw GameMaker data files such as `.win`, `.ios`, `.unx`, `.droid`
+## Changes made outside G3M
 
-Extra files from mods are copied separately from the main data patching step.
+Files altered after deployment can be retained rather than overwritten by restoration. Review [backup and restore](backup-and-restore.md) for conflict recovery. Avoid running another patcher or updating the game during an active G3M session.
 
-## Multiple mods
-
-For one target with several DATA mods, G3M calls `G3MTool patch merge`. Each
-input starts from the same original file. Order runs from low to high priority.
-
-The **Merge Properties** and **Merge Code** settings also affect how some
-overlapping changes are combined.
-
-## Safety and recovery
-
-- Backups are stored before patching starts.
-- If patching fails, G3M attempts to restore the original files immediately.
-- After deployment, G3M stores SHA-256 fingerprints in
-  `%LOCALAPPDATA%\G3M\settings\session.lock`.
-- After a crash, G3M restores the previous session only if every tracked path
-  still matches its deployed fingerprint.
-- If another process changed a tracked path, G3M archives recovery data and
-  leaves that path unchanged.
-- Backup work also uses `%LOCALAPPDATA%\G3M\patching_backups\`.
-
-See [Backup and Restore](backup-and-restore.md) for the recovery rules.
-
-## G3MTool
-
-G3MTool interprets inputs and creates, applies, or merges DATA patches. G3M
-handles targets, backups, Extra files, progress, and final placement.
-
-The bundled G3MTool also supports batch CLI workflows for advanced users.
-`patch batch apply` and `patch batch create` run repeated jobs against one
-original file, while `patch batch merge` accepts multiple quoted merge sets such
-as `"mod_a.g3mpatch,mod_b.xdelta"`. Batch jobs hash their inputs first and skip
-repeated identical work by copying the first generated result to later duplicate
-output names.
+Use **Analyze Actual Launch Result** for a temporary application test. Use **Patching only** only when you want changes written to the actual installation and kept there.

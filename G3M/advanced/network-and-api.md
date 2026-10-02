@@ -1,49 +1,23 @@
-# Network & API
+# Network use
 
-G3M mixes local features with a few online ones. Local library management keeps
-working offline. Browser-style features depend on the network.
+| Feature | Connection purpose |
+| --- | --- |
+| Mods Browser and downloads | GameBanana requests and package downloads |
+| Catalog | GitHub plugin/theme indexes, icons, and archives |
+| Community | GameBanana feeds and enabled plugin RSS feeds |
+| Updates and announcements | G3M online settings and release information |
+| Polls | Submitting selected choices with a persistent hashed voting identity |
+| Online count | Session presence requests to the G3M service |
+| Discord Rich Presence | Activity handoff to the local Discord client |
 
-## What uses the network
+The online count uses a session identifier. Poll voting uses its own persistent local identity in hashed form. Requests also expose the connection information normally visible to their receiving server. Avoid interpreting a local Library as meaning the whole application makes no network requests.
 
-- GameBanana browsing and downloads
-- Discord Rich Presence handoff through the local Discord IPC pipe when
-  available
-- Announcements and polls
-- Update checks
-- Online presence count and global settings
-- Plugin catalog and plugin downloads
-- Community feeds
+**Disable Discord Rich Presence** in Appearance prevents that integration from publishing G3M activity through Discord. It does not disable GameBanana, updates, or other internet features.
 
-## GameBanana
+## Offline use
 
-G3M talks to the GameBanana API through the built-in adapter and uses the
-current API base configured in the app. GameBanana-backed browsing is what
-powers the Mods Browser for supported games.
+Installed mods, local import, editing, profile switching, and configured local launches work offline when their tools and game files are available locally. Apply saved themes from **Settings > Appearance**. Catalog discovery and downloads require an internet connection.
 
-The UI also has an explicit rate-limit message for the documented `250` requests
-per hour limit.
+A cached online response is not a promise that remote files remain accessible. Check Downloads for transfer errors and retry rate-limited requests later.
 
-## G3M cloud services
-
-G3M uses cloud endpoints for:
-
-- announcements and poll voting
-- online presence and global settings
-
-G3M does not collect or upload usage analytics.
-
-## Session and availability
-
-G3M keeps a shared network session and tracks overall connectivity with
-`app_state.has_internet`.
-
-When that flag is false, online features degrade gracefully, but local actions
-such as:
-
-- managing installed mods
-- switching profiles
-- importing local files
-- editing mods
-- launching already configured games
-
-still remain available.
+Support packages are saved locally and are not uploaded by the build action. Plugins and executable scripts can make their own requests beyond the application features listed here.

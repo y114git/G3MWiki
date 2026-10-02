@@ -1,34 +1,17 @@
-# Steam Integration
+# Steam launching
 
-G3M can launch supported games through Steam when the current game has a Steam
-App ID and the Steam launch option is enabled.
+Enable **Launch via Steam** in **Settings > Game** or the launch options for a game with a Steam App ID.
 
-## Built-in Steam-backed games
+G3M applies the selected mods before asking Steam to start the game. In the normal launch mode, G3M restores the affected files after the monitored game session ends. Keep G3M running until restoration finishes.
 
-Current built-in Steam App IDs:
+The built-in Steam entries are DELTARUNE, DELTARUNEdemo, UNDERTALE, and Pizza Tower. A custom game can specify a Steam App ID in Game Manager.
 
-- DELTARUNE: `1671210`
-- DELTARUNEdemo: `1690940`
-- UNDERTALE: `391540`
-- Pizza Tower: `2231450`
+Steam must be installed and able to launch that game. An App ID does not install the game, replace its configured folder, or prove that the selected patch matches the installed release.
 
-Games without a Steam App ID launch directly instead.
+## DELTARUNE direct launch
 
-## How Steam launch works
+DELTARUNE's direct section launch cannot run through Steam. Choose normal game startup to use Steam, or disable Steam launch to open a section directly.
 
-When Steam launch is active, G3M uses:
+## Linux
 
-`steam://rungameid/<app_id>`
-
-The app still prepares the game files first, then hands the actual start over to
-Steam.
-
-## Custom games
-
-Custom games can also have an optional Steam App ID. If you set one, the same
-Steam launch path becomes available for that custom entry.
-
-## Path detection
-
-G3M also contains Steam-library path discovery helpers for supported platforms,
-which are used during game detection and setup.
+Check that G3M's game folder is the installation Steam actually launches. Windows games may use a Proton prefix with a separate save directory. Set the game **data folder** to that prefix's user-data folder when mods require `${game_data_path}`.

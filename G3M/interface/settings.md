@@ -1,155 +1,100 @@
 # Settings
 
-The Settings view is split into several sections and also mirrors some controls
-that appear in the main window.
+Settings are grouped into **General**, **Appearance**, **Game**, **Mods Browser**, **Library**, and **Catalog**. Most changes apply when a control changes or when you finish editing a field. There is no separate save-all step.
 
----
-
-## Where to find it
-
-1. Open G3M.
-2. Open the **Settings** tab or settings view from the main interface.
-3. Use the visible sections for general settings, game settings, appearance,
-   library/browser options, downloads, tools, and plugin-provided settings.
-
-Most settings are saved immediately or when the control changes. At the default
-Windows data location, shared settings are stored in:
-
-`%LOCALAPPDATA%\G3M\settings\settings.json`
-
----
+Click a section heading to collapse or expand it. **Show Reset Buttons** reveals reset controls beside individual settings and section headings. A section reset affects that section's settings; it is not an uninstall or a library deletion.
 
 ## General
 
-Current shared settings include:
+| Control | Effect |
+| --- | --- |
+| Language | Select the interface language. Translated views and plugin translations use the selection. |
+| Beta Updates | Include beta application updates in update checks. |
+| Fullscreen | Toggle the main window's fullscreen state. |
+| UI Scale | Scale text and controls from 50% to 200%, in 10% increments. |
+| Show Reset Buttons | Show individual and section reset controls. |
+| G3M data location | Choose the root folder for G3M's settings, profiles, mods, downloads, themes, and plugins. |
 
-- language
-- update check button
-- `beta_updates_enabled`
-- UI scale
-- fullscreen
-- hide mods browser tab
-- hide library tab
-- hide library filters
-- show reset buttons
-- disable Discord Rich Presence
-- G3M data location under **App > Advanced**
+Changing the data location offers copying existing data or using the selected location without copying. Copying refuses conflicting destination entries rather than replacing them. The application restarts to use the chosen location. The original data remains available. See [Data directory](../advanced/data-directory.md) before moving a large library or using an external drive.
 
-The data-location control accepts any folder and uses it directly. On change,
-G3M can copy the current data or start with the selected folder as-is. The
-change takes effect after restart; the previous folder is not removed.
+## Appearance
 
-Available bundled languages are currently:
+### Themes
 
-- English
-- Russian
-- Spanish
-- Korean
-- Japanese
-- Chinese Simplified
-- Chinese Traditional
+**Im/Export Theme** opens the theme management dialog. **Import** applies a package; **Export** saves the current appearance as a ZIP. The saved-theme list has controls to apply, save, and delete a theme.
 
----
+**Do not save theme in list after import** applies an imported file without adding a saved copy to the theme list. It does not mean "do not apply."
 
-## Game Settings
+Download optional packages from [Catalog](../features/catalog.md). Installed catalog themes also appear in the Appearance list.
 
-Per-game settings are driven by the selected runtime game entry and include:
+### Graphics, audio, styling, and colors
 
-- game folder path
-- custom executable override
-- optional Steam launch
-- PortProton options on Linux
-- optional custom Wine path on Linux
-- optional custom PortProton path on Linux
-- visibility of the Full Install checkbox when the game supports it
+The background, logo, and font controls select a custom file. When a custom file is active, the corresponding control offers removal. The audio controls select or remove background music and a startup sound.
 
-The game manager dialog is also launched from this area.
+**Border Radius** controls corner rounding from 0 to 999 pixels. It does not change border thickness. The seven color controls change the background, elements, border, hover, selection, main text, and secondary text. Each accepts a color picker selection or a valid hexadecimal color.
 
-Typical setup:
+| Checkbox | Effect |
+| --- | --- |
+| Disable animations | Disable interface animations. |
+| Disable background | Hide the background image or video while retaining its setting. |
+| Disable startup sound | Suppress the startup sound without removing its file. |
+| Stop music when unfocused | Stop background music while G3M is unfocused or minimized. Returning to G3M restarts playback from the beginning. |
+| Disable Discord Rich Presence | Stop G3M from publishing activity to Discord. |
 
-1. Select the game in the game selector.
-2. Open **Settings**.
-3. Set the game folder path.
-4. Optionally choose a custom executable if G3M should launch a different
-   executable inside that folder.
-5. On Linux, decide whether Windows `.exe` launches should use Wine or
-   PortProton.
+See [Customization](../customization/README.md) for supported files and theme packaging.
 
-If a Linux target executable is native and does not end in `.exe`, G3M launches
-it directly instead of adding Wine or PortProton.
+## Game
 
-For Windows executables on Linux, G3M now resolves launchers in this order:
+Select the game whose paths you want to edit. **Game Manager** controls built-in visibility, ordering, and custom games.
 
-1. custom Wine path
-2. `wine`
-3. `wine64`
+| Control | Effect |
+| --- | --- |
+| Game path | Installation folder or game location used for launching and `${game_path}`. |
+| Game data folder | User-data location used by `${game_data_path}`. This is not the installed `data.win` file. |
+| Launch via Steam | Use Steam for a game with a configured Steam app ID. |
+| Don't hide window on launch | Keep G3M visible while the game runs. |
+| Use PortProton instead of Wine | Use PortProton for Windows executables on Linux. |
+| Properties merge | Combine supported structured property changes when merging patches in the same step. |
+| Code merge | Attempt three-way merging of GML changes when patches edit the same code. |
+| Manage Warnings | Select which patching and merging warnings interrupt an operation. |
+| Clear G3MTool Cache | Remove reusable data-file analysis to free space or discard unwanted cached analysis. |
+| Custom EXE | Override the game's executable. Saved per game. |
+| Custom G3MTool | Override the bundled G3MTool for tool operations. |
+| Custom XDELTA | Pass a chosen XDelta executable to G3MTool for XDelta operations. |
+| Custom Wine | Prefer this Wine executable when launching a Windows game on Linux. |
+| Custom PortProton | Override the PortProton command used when that launch option is enabled. |
 
-If G3M cannot find a usable launcher, it now reports a more specific error
-instead of only surfacing a raw `errno 2`.
+Platform-specific launch controls are relevant only on platforms that support them. Changing a tool path does not install that tool. Selecting a data folder does not select or convert a game data file.
 
----
+Warnings can be suppressed individually or as a group. Suppression lets an operation continue without those prompts; it does not repair failed patches or make conflicting edits compatible. See [Manage Warnings](../features/warnings.md) for each choice.
 
-## Theme and Appearance
+## Mods Browser
 
-The current theme color keys are:
+| Checkbox | Effect |
+| --- | --- |
+| Hide Mods Browser tab | Hide the online browsing view. Installed mods remain in the library. |
+| Do not install downloaded files automatically | Keep a finished download ready for an explicit install or use action. |
+| Delete downloaded file after use | Remove the downloaded source after it has been used. The installed mod is separate. |
+| Save local imports in Downloads | Retain local import sources in Downloads as well. |
 
-- `background`
-- `elements`
-- `border`
-- `hover`
-- `select`
-- `main_text`
-- `secondary_text`
+See [Downloads](../features/downloads.md) for the difference between a source archive and an installed package.
 
-Other appearance settings include:
+## Library
 
-- custom background path
-- background disabled flag
-- custom border radius
-- disable animations
-- custom font, logo, and theme package actions
-- custom startup sound and background music
-- pause background music when unfocused
+| Control | Effect |
+| --- | --- |
+| Hide Library tab | Hide the library view. |
+| Hide filters in library | Hide the library's filtering controls. |
+| Full file replacement on apply | When applying a Game Version, remove files absent from its archive. Protected game-original and custom-executable paths are retained. |
+| Hide "Update Mods" button | Hide the mod-update button even when updates are available. |
+| Automatically update GameBanana mods | Check and update eligible GameBanana-linked library mods without opening the update dialog. |
+| Update current versions directly | Skip creation of a Mod Version backup during automatic updates. |
+| Automatic update scope | Choose the selected game, every game in the selected profile, or all profiles. |
 
-The default border radius in settings is `7`.
+A Game Version is an installation snapshot, not a Mod Version. **Full file replacement on apply** can remove extra files from the installation. Read [Game Versions](../features/game-versions.md) before enabling it.
 
-Custom files selected here are copied to the G3M data folder using fixed names,
-for example:
+Automatic mod updates apply only to eligible linked mods. A local mod without a recognized online source is not updated by this option.
 
-- `%LOCALAPPDATA%\G3M\custom_background.<ext>`
-- `%LOCALAPPDATA%\G3M\custom_logo.<ext>`
-- `%LOCALAPPDATA%\G3M\custom_font.<ext>`
-- `%LOCALAPPDATA%\G3M\custom_startup_sound.<ext>`
-- `%LOCALAPPDATA%\G3M\custom_background_music.<ext>`
+## Catalog
 
----
-
-## Library and Browser Options
-
-Profile-aware and library-facing settings include:
-
-- merge properties
-- merge code
-- chapter mode
-- show NSFW in the browser
-- blocklist manager
-
-For DELTARUNE, chapter mode and direct launch behavior are profile-specific.
-
----
-
-## Downloads and Tools
-
-The Downloads section currently exposes:
-
-- `downloads_no_auto_use`
-- `downloads_delete_after_use`
-- `downloads_save_local_imports`
-
-The settings view also includes a **Clear G3MTool Cache** action that removes
-cached G3MTool analysis files from:
-
-`%LOCALAPPDATA%\G3M\cache\G3MTool\`
-
-Use it when patch analysis seems stale or when you simply want to free cache
-space. It does not delete installed mods or saved game versions.
+The **Plugins** and **Themes** subtabs have installed-only and type-specific tag filters. See [Catalog](../features/catalog.md) for installation, applying themes, and plugin settings.

@@ -1,25 +1,15 @@
-# Advanced
+# Reference and troubleshooting
 
-This section is for the questions that show up after the basics are already
-working: where files live, how patching really works, what gets backed up, what
-network features do, and what to do when something goes wrong.
+These pages describe file locations, import links, localization, restoration, and problems that can affect a local setup.
 
----
-
-## Start Here If You Need Help
-
-- safer launches and file recovery: [Backup & Restore](backup-and-restore.md)
-- the real patch flow: [Patching Process](patching-process.md)
-- file and manifest details: [File Formats Reference](file-formats.md)
-- one-click links: [One-Click Install](one-click-install.md)
-- migration from older data: [Migration](migration.md)
-- troubleshooting: [Troubleshooting](troubleshooting.md)
-
----
-
-## More Technical Topics
-
-- [Localization](localization.md)
-- [Network & API](network-and-api.md)
-- [Building & Packaging](builds.md)
-- [Architecture](architecture.md)
+| Topic | Page |
+| --- | --- |
+| Find settings, mods, snapshots, and logs | [Data directory](data-directory.md) |
+| Back up personal data or recover game files | [Backup and restore](backup-and-restore.md) |
+| Understand session changes | [Applying and restoring mods](patching-process.md) |
+| Share an import link | [One-click install](one-click-install.md) |
+| Translate interface text | [Localization](localization.md) |
+| Use input shortcuts | [Keyboard controls](keyboard-shortcuts.md), [drag and drop](drag-and-drop.md) |
+| Identify a file format | [File reference](file-formats.md) |
+| Check connections and trust requirements | [Network use](network-and-api.md), [security](security.md) |
+| Investigate an error | [Logging](logging.md), [troubleshooting](troubleshooting.md), [FAQ](faq.md) |

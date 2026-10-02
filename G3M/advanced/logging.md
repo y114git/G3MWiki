@@ -1,37 +1,18 @@
-# Logging
+# Logs
 
-G3M writes logs to the user data directory so problems can be inspected after
-the fact.
+Open the log viewer from **Windows**. Its application, patching, and conflict views show the relevant log stream. Select current output or an available archived log in the history control.
 
-## Main files
+Use the folder action to open the log directory and the export action to save the selected output. The live view follows output when you are at the bottom; scrolling upward lets you inspect earlier messages.
 
-- `%LOCALAPPDATA%\G3M\logs\g3m.log`
-- `%LOCALAPPDATA%\G3M\logs\shortcut.log`
+| Path under the data directory | Purpose |
+| --- | --- |
+| `logs/g3m.log` | Main application session |
+| `logs/patching.log` | Patching information where a separate stream is available |
+| `logs/conflicts.log` | Conflict information |
+| `logs/shortcut.log` | Desktop shortcut runner |
+| `logs/g3m/` | Archived application sessions |
+| `logs/patching/` | Archived patching output where available |
 
-## Archived logs
+For a failure, include the error and the preceding operation messages. A final generic failure line alone may omit the missing source or tool error that explains it.
 
-Older session logs are kept under:
-
-`%LOCALAPPDATA%\G3M\logs\g3m\`
-
-## When to check logs
-
-Logs are the first place to look for:
-
-- import failures
-- patching failures
-- download issues
-- plugin errors
-- launch and restore problems
-
-## Which log to open
-
-Open `%LOCALAPPDATA%\G3M\logs\g3m.log` for normal app usage: imports, UI
-actions, plugin loading, settings, downloads, and regular launches.
-
-Open `%LOCALAPPDATA%\G3M\logs\shortcut.log` when you launched from a desktop
-shortcut. Shortcut launches run through a smaller headless runner, so
-shortcut-specific failures are usually easiest to diagnose there.
-
-Archived logs under `%LOCALAPPDATA%\G3M\logs\g3m\` are older main-session logs.
-Use them when the current log has already been overwritten by a restart.
+Logs can contain local paths and mod names. Review exported text before sharing, or use [Support Packager](../features/support-packages.md) for selectable diagnostic collection and recognized-value redaction.

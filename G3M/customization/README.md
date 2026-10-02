@@ -1,43 +1,16 @@
 # Customization
 
-Customization is where G3M becomes yours. The current app lets you change
-colors, background media, audio, logo, font, border radius, and animation
-behavior without editing code.
+**Settings > Appearance** controls G3M's colors, background, font, logo, audio, corner rounding, and interface animations. Themes package those choices for reuse or sharing.
 
----
+Use [Catalog](../features/catalog.md) to install optional themes. Use **Im/Export Theme** in Appearance to import a package from disk or export your current appearance.
 
-## Fast Overview
+| What you want to change | Reference |
+| --- | --- |
+| Text, borders, selected items, and panel colors | [Theme colors](colors.md) |
+| Static image, GIF, or video behind the interface | [Background](background.md) |
+| Music and sound on startup | [Audio](audio.md) |
+| Text appearance, main logo, or corner rounding | [Fonts and logo](fonts-and-logo.md) |
+| Interface motion | [Animations](animations.md) |
+| A reusable ZIP for yourself or other users | [Theme packages](theme-packages.md) |
 
-If you only want the short version:
-
-- use [Theme Colors](colors.md) for the overall palette
-- use [Background](background.md) for image or video backdrops
-- use [Audio](audio.md) for startup sound and looping background music
-- use [Fonts & Logo](fonts-and-logo.md) to change the app's personality
-- use [Theme Packages](theme-packages.md) to move the whole look between
-  installs
-
----
-
-## What Is Stored
-
-Most customization lives in the user data folder:
-
-- color values live in settings
-- background, logo, font, and audio files are copied into the data folder under
-  stable names
-- imported theme packages reapply those settings and files together
-
-G3M stores theme settings in its data directory.
-
----
-
-## Best Starting Point
-
-For most people, the pleasant order is:
-
-1. set your seven theme colors
-2. pick a background
-3. adjust border radius and animation settings
-4. add audio only if you actually want it
-5. export a theme package once you like the result
+Appearance settings are application-wide. Switching a library profile does not give each profile a separate theme.

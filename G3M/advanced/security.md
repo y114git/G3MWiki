@@ -1,22 +1,13 @@
-# Security
+# Community content and trust
 
-G3M downloads community content and can run plugin or script-style extensions,
-so trust still matters.
+Plugins and `.csx` scripts execute local code. They are not sandboxed and can access files and network resources with the permissions of the running application.
 
-## Practical trust model
+Opening an installed plugin's settings can load its module even when its working hooks are disabled. Disabling a plugin is not equivalent to removing untrusted code from the installation.
 
-- install mods from sources you trust
-- treat plugins as full-power local code
-- treat `.csx` content as something to trust before running
+Mods can write to destinations described in their operations. Review targets outside the game folder, especially `${game_data_path}`, `${user_path}`, custom placeholders, and absolute paths. Hard copy and extraction operations can clear their destination before writing.
 
-## Helpful built-in protections
+Import validation checks format and package paths. It is not malware scanning. A one-click confirmation confirms the requested source; it does not certify the package's author or behavior.
 
-- one-click install asks for confirmation
-- launch flow creates backups before patching
-- restore logic tries to return files after the session
-- settings corruption handling exists for broken config files
+**Analyze Actual Launch Result** uses temporary game copies, but script execution still has local permissions. Only inspect executable content this way when you trust it.
 
-## Limitation
-
-Plugins are not sandboxed. A plugin runs with the same general local permissions
-as the app process.
+Keep game saves and important personal files backed up independently. Restoration protects tracked mod operations; arbitrary code can perform changes outside that tracking.

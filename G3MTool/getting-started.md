@@ -1,72 +1,34 @@
-# Getting Started
+# Getting started
 
-G3MTool targets .NET 10.
+Extract the release package for your system into a writable folder. Open the graphical application, or run the CLI from a terminal. Keep accompanying release files together.
 
-To build from source:
+Open a terminal in the extracted folder. Examples below use `./G3MTool` on Linux and macOS. In Windows PowerShell, replace that executable prefix with `.\G3MTool.exe`. If the executable is on `PATH`, the folder prefix is unnecessary.
 
-```bash
-dotnet publish G3MToolCLI -c Release -r <runtime>
-```
+## Create a resource patch
 
-Common publish runtimes:
-
-| Runtime       | Platform            |
-| ------------- | ------------------- |
-| `win-x64`     | Windows 64-bit      |
-| `linux-x64`   | Linux 64-bit        |
-| `linux-arm64` | Linux ARM64         |
-| `osx-x64`     | macOS Intel         |
-| `osx-arm64`   | macOS Apple Silicon |
-
-## Basic usage
-
-```bash
-G3MTool patch create original.win modified.win mod.g3mpatch
-G3MTool patch create original.win script.csx mod.xdelta --xdelta
-G3MTool patch apply original.win mod.g3mpatch patched.win
-G3MTool patch batch apply original.win mod1.g3mpatch mod2.xdelta \
-  --out-dir patched
-G3MTool patch batch merge original.win "mod1.g3mpatch,mod2.xdelta" \
-  "mod3.win,mod4.csx" --apply merged --out merged-patches
-G3MTool info data.win
-G3MTool diff original.win modified.win reports
-```
-
-Run `G3MTool` without arguments for interactive prompt.
+Keep a clean original and a modified copy from the same game release:
 
 ```text
-G3MTool (1.2.9) - by Y114
-Type 'help' for available commands or 'exit' to quit
+./G3MTool patch create original.win modified.win interface.g3mpatch
+./G3MTool patch validate interface.g3mpatch --data original.win
+./G3MTool patch apply original.win interface.g3mpatch test-output.win
 ```
 
-Inside the prompt:
+The create command records resource differences. Validation checks the patch and its compatibility with the supplied original. Apply writes the test result to a separate output.
 
-- `help` is translated to `--help`
-- `exit` and `quit` close the prompt
-- `clear` and `cls` clear the console
-- quoted paths are supported by the built-in argument splitter
+Start the game using a separate test installation containing the resulting DATA file and any required external resources. Validation and successful writing are file checks, not a gameplay test.
 
-## Version
+## Compare the result
 
-```bash
-G3MTool --version
-G3MTool -V
+```text
+./G3MTool info interface.g3mpatch
+./G3MTool diff modified.win test-output.win reports --full
 ```
 
-## Global options
+Diff writes a Markdown report under `reports/`. Resource patching can reconstruct an equivalent resource state without reproducing every byte of the modified input. Use the report and playtesting to assess the result; use an xdelta patch when exact byte reproduction is the requirement.
 
-- `--verbose`, `-v`: verbose output.
-- `--log <path>`, `-l <path>`: log file; `default` writes beside executable.
-- `--json`: JSON output where supported.
-- `--xdelta-path <path>`: override bundled xdelta.
-- `--version`, `-V`: print version and exit.
+## Package for G3M
 
-## Optional cache
+A `.g3mpatch` is a patch, not a complete Library mod. Put it into a mod package with `mod_config.json`, or import the patch into G3M and configure its destination. See [creating mods](../G3M/mods/creating-mods.md).
 
-Commands that accept `--cache <dir>` can reuse `.g3mcache` analysis files across
-runs. In the current codebase those cache files are used for repeated data-file
-analysis and identity checks; they do not replace resource payloads.
-
-Batch commands also keep a per-run hash cache. If the same input file or same
-merge set appears more than once, G3MTool performs the expensive job once and
-copies the resulting output for later duplicates.
+Use explicit output paths. Several commands default to files next to the executable, and apply can use the original file's basename there. An explicit separate output avoids accidentally choosing an original as your destination.

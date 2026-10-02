@@ -1,131 +1,31 @@
-# G3M Patch Format
+# Resource patch format
 
-`.g3mpatch` stores a manifest, changed resource payloads, and apply metadata.
-It can also contain an xdelta fallback.
-
-G3MTool is the reference implementation for this format.
+A `.g3mpatch` is a ZIP archive with `g3mpatch.json` and exported changed resources. It describes the difference between original and modified GameMaker DATA.
 
 ## Manifest
 
-The current manifest model includes these top-level fields:
+| Key | Contents |
+| --- | --- |
+| `createdAt` | Creation timestamp |
+| `tool` | Tool name and version |
+| `library` | Library information when recorded |
+| `original`, `modified` | Filename, size, MD5, bytecode version, GameMaker version, and general information |
+| `resources` | Changes grouped by resource type |
+| `statistics` | Counts of changed, new, and deleted resources and payload files |
+| `applyPlan` | Application information generated for the resource changes |
 
-| Field        | Description                                 |
-| ------------ | ------------------------------------------- |
-| `createdAt`  | Patch creation timestamp                    |
-| `tool`       | Tool name and version                       |
-| `original`   | Source data-file metadata                   |
-| `modified`   | Modified data-file metadata                 |
-| `resources`  | Changed, new, and deleted resources by type |
-| `statistics` | Resource and file counts                    |
-| `applyPlan`  | Apply hints used by G3MTool                 |
+Resource-type entries describe `changed`, `new`, and `deleted` resources. Payloads can include JSON metadata, GML or assembly code, images, audio, and supporting data needed to reconstruct references and resource order.
 
-The example tool version in this repository is `1.2.9`.
+Create patches with the tool rather than writing a partial manifest by hand. Resource references, companion files, and ordering can matter even when the visible edit changes one sprite or room.
 
-## Data-file metadata
+## Resource patches and exact bytes
 
-The `original` and `modified` entries can include:
+Resource application reconstructs DATA from the recorded changes. It is intended for resource-aware editing and merging; equivalent reconstructed resources need not have identical serialized bytes.
 
-- `filename`
-- `size`
-- `md5`
-- `bytecodeVersion`
-- `gmsVersion`
-- `generalInfo`
+`patch create --xdelta-fallback` adds an exact binary alternative under `Xdelta/`. That increases package size and ties the binary path to its original bytes. Use `xpatch` or `patch create --xdelta` when the binary patch itself is your desired output.
 
-`generalInfo` maps to the current `GeneralInfoData` model and may include fields
-such as:
+## Inspect and distribute
 
-- `displayName`
-- `name`
-- `fileName`
-- `config`
-- `gameID`
-- `directPlayGuid`
-- `major`
-- `minor`
-- `release`
-- `build`
-- `defaultWindowWidth`
-- `defaultWindowHeight`
-- `infoFlags`
-- `licenseCRC32`
-- `timestamp`
-- `activeTargets`
-- `functionClassifications`
-- `steamAppID`
-- `debuggerPort`
-- `gms2FPS`
-- `gms2AllowStatistics`
-- `roomOrderCount`
+Use `info` for metadata, `patch validate` for validity and original compatibility, and `diff` for comparison. Editing archive contents can invalidate recorded file checks or omit required support files.
 
-## Resource changes
-
-Each resource type can contain:
-
-- **Field:** `changed`
-  - **Description:** Resources present in both original and modified data with
-    different content
-
-- **Field:** `new`
-  - **Description:** Resources present only in the modified data
-
-- **Field:** `deleted`
-  - **Description:** Resource names present only in the original data
-
-Each changed or new resource entry stores its resource name plus a `files` map
-of logical file names to paths inside the archive.
-
-Patch creation omits unchanged code and asset-order metadata when index-aware
-apply does not need them. Patches retain full metadata when a change, duplicate
-name, or resource type needs it.
-
-## Statistics
-
-The current statistics model contains:
-
-- `totalChanged`
-- `totalNew`
-- `totalDeleted`
-- `totalChangedFiles`
-- `totalNewFiles`
-
-## Apply plan
-
-The current apply-plan model contains:
-
-- `mode`
-- `requiresCodePipeline`
-- `requiresTexturePipeline`
-- `requiresAssetReorder`
-- `requiresHeavyFinalize`
-- `supportsDirectResourceApply`
-- `simpleResourceTypes`
-- `heavyResourceTypes`
-
-These flags tell G3MTool which expensive import or finalize stages can be
-skipped safely.
-
-## Xdelta fallback
-
-`patch create --xdelta-fallback` stores an embedded xdelta fallback built from
-the original and modified data files.
-
-`patch apply` behavior:
-
-- **Mode:** Default
-  - **Behavior:** Try normal `.g3mpatch` apply first, then try embedded xdelta
-    if normal apply fails
-
-- **Mode:** `--xdelta-fallback`
-  - **Behavior:** Try embedded xdelta first, then continue with normal
-    `.g3mpatch` apply if xdelta fails
-
-## `.g3mcache`
-
-`.g3mcache` is not part of `.g3mpatch`. It is a separate reusable analysis cache
-used only when the caller passes `--cache <dir>`.
-
-Batch commands add a second, temporary layer of caching for the current process.
-They hash the original and inputs before processing, deduplicate identical jobs,
-and copy the first output to later duplicate output names. This batch cache is
-not stored inside `.g3mpatch`.
+G3M's `mod_config.json` is a separate package format. A mod can bundle this patch and a configured destination. Do not rename the patch manifest to turn it into a Library mod.

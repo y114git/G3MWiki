@@ -1,256 +1,103 @@
 # patch
 
-Create, apply, batch-process, validate, or merge `.g3mpatch` files.
+`patch` works with resource patches and compatible inputs: GameMaker DATA, `.g3mpatch`, patch ZIPs with `g3mpatch.json`, `.xdelta`, `.vcdiff`, and `.csx`. A script is executed while deriving its modified DATA; run trusted scripts only.
 
-## patch create
+## Create
 
-```bash
-G3MTool patch create <original> <input> [output] \
-  [--xdelta] [--xdelta-fallback] [--cache <dir>] [--xdelta-path <path>]
+```text
+G3MTool patch create <original> <modified-or-input> [output]
+    [--xdelta] [--xdelta-fallback] [--cache <directory>]
 ```
 
-- **Argument:** `original`
-  - **Required:** Yes
-  - **Description:** Original data file (`.win`, `.ios`, `.unx`, `.droid`)
+The original supplies the starting DATA. A modified DATA input is compared directly; another supported patch or script input is first applied against that original.
 
-- **Argument:** `input`
-  - **Required:** Yes
-  - **Description:** `.g3mpatch`, `.xdelta`, `.vcdiff`, `.csx`, or data file
+| Option | Effect |
+| --- | --- |
+| `--xdelta` | Create a binary xdelta patch instead of `.g3mpatch` |
+| `--xdelta-fallback` | Embed an exact binary fallback in a resource patch |
+| `--cache <directory>` | Read and write reusable analysis data |
 
-- **Argument:** `output`
-  - **Required:** No
-  - **Description:** Output `.g3mpatch`. Default: `patch_{timestamp}.g3mpatch`
-    next to the executable
+`--xdelta` and `--xdelta-fallback` cannot be combined. Without an output argument, the result is `patch_<timestamp>.g3mpatch` or `.xdelta` next to the executable.
 
-- **Option:** `--xdelta-fallback`
-  - **Description:** Store an embedded xdelta fallback built from `original` and
-    the modified result
-
-- **Option:** `--xdelta`
-  - **Description:** Create `.xdelta` instead of `.g3mpatch`
-
-`--xdelta` and `--xdelta-fallback` are mutually exclusive.
-
-- **Option:** `--cache <dir>`
-  - **Description:** Read and write `.g3mcache` analysis files for reusable
-    data-file analysis
-
-G3MTool materializes the input against `original` and validates the resulting
-data before creating the output.
-
-## patch apply
-
-```bash
-G3MTool patch apply <data> <patch> [output] \
-  [--xdelta-fallback] [--cache <dir>] [--xdelta-path <path>]
+```text
+G3MTool patch create original.win texture-edit.win textures.g3mpatch --cache cache
+G3MTool patch create original.win existing.xdelta converted.g3mpatch
 ```
 
-- **Argument:** `data`
-  - **Required:** Yes
-  - **Description:** Base data file
+## Apply
 
-- **Argument:** `patch`
-  - **Required:** Yes
-  - **Description:** `.g3mpatch`, `.xdelta`, `.vcdiff`, `.csx`, or data file
-
-- **Argument:** `output`
-  - **Required:** No
-  - **Description:** Output data file. Default: same file name as `data`, next
-    to the executable
-
-- **Option:** `--xdelta-fallback`
-  - **Description:** For `.g3mpatch` input, try the embedded xdelta copy first;
-    if it fails, continue with normal apply
-
-- **Option:** `--cache <dir>`
-  - **Description:** Reuse `.g3mcache` analysis only when `patch` must first be
-    converted from a data file or `.xdelta` into `.g3mpatch`
-
-Input behavior:
-
-| Input       | Behavior                                             |
-| ----------- | ---------------------------------------------------- |
-| `.g3mpatch` | Apply resource-level changes                         |
-| `.xdelta`, `.vcdiff` | Apply the binary patch                    |
-| `.csx`      | Run against `data`, save, reopen, and validate        |
-| data file   | Convert it to `.g3mpatch` against `data`, then apply |
-
-Default `.g3mpatch` apply tries the normal G3MTool flow first. If that fails and
-the patch contains fallback data, G3MTool can fall back to xdelta.
-
-## patch validate
-
-```bash
-G3MTool patch validate <patch> [--data <data-file>] [--cache <dir>]
+```text
+G3MTool patch apply <original> <input> [output]
+    [--xdelta-fallback] [--cache <directory>]
 ```
 
-- **Argument / Option:** `patch`
-  - **Required:** Yes
-  - **Description:** `.g3mpatch` file
+The result is a DATA file. Direct xdelta and CSX inputs are applied to the original; other supported inputs follow resource-patch application.
 
-- **Argument / Option:** `--data`, `-d`
-  - **Required:** No
-  - **Description:** Data file to compare against manifest compatibility
-    metadata
+`--xdelta-fallback` tries an embedded binary copy first and falls back to resource application if that attempt fails. Resource application can also use an available binary fallback after its own failure. Neither route makes an arbitrary original compatible with the binary patch.
 
-- **Argument / Option:** `--cache <dir>`
-  - **Required:** No
-  - **Description:** Reuse cached data-file identity when checking `--data`
+The default output is next to the executable with the original's basename. Specify a separate output explicitly if that default could overlap an input.
 
-Validation checks that the patch can be read and that the manifest is
-structurally valid. With `--data`, G3MTool also compares the supplied data file
-to manifest identity fields.
-
-## patch merge
-
-```bash
-G3MTool patch merge <original> <patch1> <patch2> [patch3 ...] \
-  [options] [--cache <dir>] [--xdelta-path <path>]
+```text
+G3MTool patch apply original.win textures.g3mpatch patched.win
 ```
 
-- **Argument:** `original`
-  - **Required:** Yes
-  - **Description:** Data file used as merge context
+## Validate
 
-- **Argument:** `patch1`, `patch2`, ...
-  - **Required:** Yes, at least 2
-  - **Description:** Inputs in priority order, lowest first and highest last
-
-Accepted merge inputs:
-
-- `.g3mpatch`
-- `.xdelta` and `.vcdiff`
-- `.csx`
-- data files (`.win`, `.ios`, `.unx`, `.droid`)
-
-- **Option:** `--apply <path>`
-  - **Alias:** `-a`
-  - **Description:** Write the merged data file
-
-- **Option:** `--out <path>`
-  - **Alias:** `-o`
-  - **Description:** Also keep the merged `.g3mpatch`
-
-- **Option:** `--code`
-  - **Alias:** —
-  - **Description:** Enable Git-style 3-way merge for GML code files
-
-- **Option:** `--properties`
-  - **Alias:** —
-  - **Description:** Enable deep merge for JSON property files
-
-When two patches make non-overlapping changes to `GeneralInfo`, G3MTool merges
-them with the original DATA file as the common base. Changes to the same value
-remain a conflict and are reported normally.
-
-- **Option:** `--report <path>`
-  - **Alias:** `-r`
-  - **Description:** Write a Markdown merge report
-
-- **Option:** `--sequential`
-  - **Description:** Use low-memory merge pipeline. It does not support `--code`
-    or `--properties`.
-
-- **Option:** `--cache <dir>`
-  - **Alias:** —
-  - **Description:** Reuse `.g3mcache` analysis while converting `.xdelta` or
-    data-file inputs
-
-If `--apply` is omitted, G3MTool writes the merged data file to the current
-directory as `<original>_merged<ext>`. Add `--out` when you also want to keep
-the intermediate merged `.g3mpatch`.
-
-Normal merges use faster pipeline. On out-of-memory failure, G3MTool retries
-with low-memory pipeline when its options allow it. Both pipelines keep required
-`audiogroup*.dat` files beside temporary and final DATA files.
-
-## patch batch
-
-Batch commands run multiple independent jobs against the same original data
-file. They are still plain CLI commands; there is no interactive selection
-layer.
-
-Common batch options:
-
-| Option                | Description                             |
-| --------------------- | --------------------------------------- |
-| `--out-dir <dir>`     | Required for batch apply/create         |
-| `--cache <dir>`       | Reuse `.g3mcache` analysis across jobs  |
-| `--continue-on-error` | Keep running later jobs after a failure |
-
-Before processing, batch mode hashes the original and all inputs. If two jobs
-have the same effective inputs and flags, G3MTool runs the expensive job once
-and copies the first output to the later output name.
-
-### patch batch apply
-
-```bash
-G3MTool patch batch apply <original> <patches...> --out-dir <dir> \
-  [--cache <dir>] [--continue-on-error] [--xdelta-fallback]
+```text
+G3MTool patch validate <patch> [--data <original>] [--cache <directory>]
 ```
 
-Each patch is applied independently to the same original data file. This does
-not merge patches.
+Validation checks the patch's structure and contents. `--data`, also `-d`, adds original-file compatibility checks. A valid archive without an original-file check does not establish that it can be applied to your game release.
 
-Example:
+## Merge
 
-```bash
-G3MTool patch batch apply game.win mod1.g3mpatch mod2.xdelta mod3.win \
-  --out-dir patched
+```text
+G3MTool patch merge <original> <low-priority-input> <higher-priority-input>...
+    [--out <patch>] [--apply <data>] [--code] [--properties]
+    [--sequential] [--report <markdown>] [--cache <directory>]
 ```
 
-Outputs are named from the original and patch file names, for example
-`game_mod1.win`, `game_mod2.win`, and `game_mod3.win`. The data-file extension
-matches the original extension.
+Supply at least two inputs, **lowest priority first**. Each describes changes against the same original. A later input wins an overlapping change that is not combined. For an addon targeting an already patched game, separate application steps are required instead.
 
-### patch batch create
+| Option | Effect |
+| --- | --- |
+| `--out`, `-o` | Save the merged resource patch |
+| `--apply`, `-a` | Apply the merged result and write DATA to this path |
+| `--code` | Attempt three-way merging of GML code changes |
+| `--properties` | Merge supported JSON property changes |
+| `--sequential` | Use lower-memory processing; incompatible with `--code` and `--properties` |
+| `--report`, `-r` | Write a Markdown merge report |
+| `--cache` | Reuse analysis files in the supplied directory |
 
-```bash
-G3MTool patch batch create <original> <modified...> --out-dir <dir> \
-  [--xdelta] [--cache <dir>] [--continue-on-error] [--xdelta-fallback]
+`--sequential` controls memory use; it does not make each mod target the preceding mod's patched DATA.
+
+With neither output option, the command saves `merged_<timestamp>.g3mpatch` beside the original. With only Apply, it writes DATA without retaining a merged patch. With both options, it produces both outputs.
+
+```text
+G3MTool patch merge original.win audio.g3mpatch interface.g3mpatch --out combined.g3mpatch --apply combined.win --report merge.md
 ```
 
-Creates one `.g3mpatch` for each supported input. Add `--xdelta` to create
-xdelta outputs instead.
+## Batch operations
 
-Example:
+Each job uses the same original independently. It does not turn a list into a sequential mod stack.
 
-```bash
-G3MTool patch batch create original.win modified_a.win modified_b.win \
-  mod_c.xdelta --out-dir patches
+```text
+G3MTool patch batch create <original> <inputs...> --out-dir <directory>
+G3MTool patch batch apply <original> <inputs...> --out-dir <directory>
+G3MTool patch batch merge <original> "low,high" "other-low,other-high"
+    [--apply <data-directory>] [--out <patch-directory>]
 ```
 
-### patch batch merge
+Create accepts `--xdelta` or `--xdelta-fallback`; Apply accepts `--xdelta-fallback`. Both require `--out-dir`. Merge accepts `--code`, `--properties`, and the boolean `--report`, which writes a report beside each merged patch. Batch merge does not accept the single-merge `--sequential` flag.
 
-```bash
-G3MTool patch batch merge <original> <sets...> \
-  [--apply <data-dir>] [--out <patch-dir>] [--cache <dir>] \
-  [--continue-on-error] [--code] [--properties] [--report]
+All three accept `--cache <directory>` and `--continue-on-error`. Without Continue on error, a failed job stops the remaining queue. With it, remaining jobs run, but failed jobs still make the overall operation fail.
+
+For batch merge, each quoted argument is one comma-separated set in low-to-high priority order. Paths in a merge set cannot contain commas. The DATA output directory defaults to the current working directory. `--out` optionally retains merged patch packages.
+
+```text
+G3MTool patch batch create original.win edit-a.win edit-b.win --out-dir patches
+G3MTool patch batch apply original.win a.g3mpatch b.xdelta --out-dir builds --continue-on-error
+G3MTool patch batch merge original.win "audio.g3mpatch,ui.g3mpatch" "audio.g3mpatch,colours.g3mpatch" --apply builds --out packages --report
 ```
 
-Each set is one quoted, comma-separated list of patches. Patch order inside a
-set is low to high priority, matching `patch merge`.
-
-Example:
-
-```bash
-G3MTool patch batch merge game.win "base.xdelta,ui.g3mpatch" \
-  "combat.win,localization.xdelta,hotfix.g3mpatch" \
-  --apply merged --out merged-patches
-```
-
-Rules:
-
-- every set must contain at least two patches
-- use commas as the only separator
-- spaces around commas are ignored
-- paths with spaces are supported because the whole set is quoted
-- paths containing commas are not supported in this mode
-- patched data outputs are written to the current directory by default, or to
-  `--apply <data-dir>` when it is set
-- `--out <patch-dir>` also saves each intermediate merged `.g3mpatch`
-- `--code`, `--properties`, and `--report` apply to every set
-
-Batch merge writes both a merged `.g3mpatch` and a patched data file for each
-set. If a merge report is created, duplicate jobs also copy the report to the
-duplicate output name.
+Batch outputs use generated names based on their jobs. Check the reported output paths rather than assuming a job overwrites its source. Repeated identical jobs may reuse a generated result.

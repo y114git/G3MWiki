@@ -1,14 +1,7 @@
-# About and Changelog
+# About and changelog
 
-Both dialogs are available from title-bar Help menu.
+Open **Help > About** for the installed G3M version, application information, and project links.
 
-## About
+**Help > Changelog** displays release notes. Use the version shown in About when reporting a problem; an available update's version does not identify the application currently running.
 
-Shows app and plugin API versions, language, operating system, Python version,
-and resolved data directory. It also links to Releases, Wiki, Issues, G3M data
-directory, Telegram, and Discord.
-
-## Changelog
-
-Loads Markdown from changelog URL in global settings. G3M shows loading and
-error messages, renders Markdown, and opens external links.
+For task instructions and file formats, use this wiki. Release notes describe releases rather than replacing the configuration or command references.

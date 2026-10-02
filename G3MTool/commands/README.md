@@ -1,37 +1,39 @@
-# Commands Overview
+# Command reference
 
-- **Command:** [`patch`](patch.md)
-  - **Description:** Create, apply, batch-process, validate, or merge
-    `.g3mpatch`, `.xdelta` / `.vcdiff`, `.csx`, and GameMaker data inputs
+| Command | Purpose |
+| --- | --- |
+| `patch create` | Create a resource patch or convert a supported input to a patch |
+| `patch apply` | Write patched DATA |
+| `patch validate` | Check a resource patch, optionally against original DATA |
+| `patch merge` | Combine changes from at least two inputs |
+| `patch batch create/apply/merge` | Run independent jobs against one original |
+| `xpatch create/apply` | Create or apply a binary patch |
+| `execute` | Run a CSX script, external program, or raw xdelta arguments |
+| `info` | Inspect a DATA file or patch |
+| `diff` | Write a Markdown difference report |
+| `--version` | Print the CLI version |
 
-- **Command:** [`xpatch`](xpatch.md)
-  - **Description:** Create or apply xdelta patches
+Append `--help` to the command or subcommand for its arguments. Paths with spaces require shell quoting. Arguments shown in angle brackets are values you supply; square brackets indicate optional arguments.
 
-- **Command:** [`execute`](execute.md)
-  - **Description:** Run a `.csx` script, invoke `xdelta`, or launch an external
-    program
+## Global options
 
-- **Command:** [`info`](info.md)
-  - **Description:** Show metadata for a data file or `.g3mpatch`
+| Option | Effect |
+| --- | --- |
+| `--help`, `-h`, `-?` | Print usage |
+| `--version`, `-V` | Print version at the root command |
+| `--verbose`, `-v` | Request detailed log output |
+| `--log <path>`, `-l <path>` | Save a log; use `--log default` for a timestamped file under the executable's `logs/` folder |
+| `--json` | Machine-readable output for supported patch, info, and diff commands |
+| `--xdelta-path <path>` | Use the specified xdelta executable instead of the bundled one |
 
-- **Command:** [`diff`](diff.md)
-  - **Description:** Compare data files or `.g3mpatch` files and write a
-    Markdown report
+`xpatch` and `execute` do not provide the same JSON result contract. External programs can produce their own output. Check command support before parsing stdout as JSON.
 
-- **Command:** [`--version`](version.md)
-  - **Description:** Print the installed G3MTool version
+Success returns exit code 0. Tool or argument failures return a nonzero code. An external program's exit status is returned by Execute. A successful merge can still report conflicts; inspect the requested merge report.
 
-All data-file arguments accept `.win`, `.ios`, `.unx`, and `.droid`.
-`patch create` writes `.g3mpatch` by default; `--xdelta` selects xdelta output.
-`--xdelta` and `--xdelta-fallback` cannot be used together.
+For shell and Python examples, see [Use G3MTool in scripts](../automation.md).
 
-Global options are documented in
-[Getting Started](../getting-started.md#global-options). Commands that support
-`--cache <dir>` reuse `.g3mcache` analysis; commands that support `--json` emit
-machine-readable JSON; commands that use xdelta can also take the global
-`--xdelta-path <path>` override.
+## Interactive prompt
 
-`patch batch apply`, `patch batch create`, and `patch batch merge` are for
-non-interactive bulk work and deduplicate identical jobs during the run. Batch
-apply/create require `--out-dir`; batch merge writes data outputs by default and
-uses `--out` only when you also want merged `.g3mpatch` files.
+Starting the CLI without arguments opens its prompt. Type commands without the executable prefix. `help` prints usage, `clear` or `cls` clears the terminal, and `exit` or `quit` closes the prompt.
+
+The prompt supports double-quoted paths. It is not a shell: do not expect shell variables, pipelines, or redirection inside it. Use the system terminal for scripted workflows.

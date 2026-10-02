@@ -1,25 +1,7 @@
 # Playtime
 
-G3M tracks playtime for installed mods that were active during a launch.
+The Library's mod summary displays hours recorded for that mod in the active profile.
 
-## How it is recorded
+G3M adds the monitored session's duration to the mods active in that session. With several active mods, each receives the session duration; the values are not shares of one total.
 
-When a launch finishes, G3M calculates the session length and adds that time to
-the active mod IDs from that session.
-
-The stored field is:
-
-- `playtime_hours`
-
-It is saved in the current profile's mod metadata.
-
-## Where you see it
-
-Playtime is shown in the Library UI through the mod summary panel. The value is
-formatted as hours for display.
-
-## Limitation
-
-This is G3M-side tracking. It reflects sessions launched and monitored through
-G3M, not every possible way the game might have been started outside the
-launcher.
+The count covers sessions launched and tracked through G3M. It does not include sessions started independently, and it does not synchronize Steam's playtime. Profiles hold their own mod metadata, so the same mod can show different totals in different profiles.

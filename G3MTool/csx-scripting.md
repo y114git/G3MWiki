@@ -1,186 +1,57 @@
-# CSX Scripting
+# CSX scripting
 
-G3MTool can execute `.csx` C# scripts against a loaded GameMaker data file.
-Scripts are compiled and run at runtime through the Roslyn scripting engine and
-receive a `ScriptGlobals` instance as their global context.
+A `.csx` file runs C# against optional loaded GameMaker DATA. The script has local file, process, and network permissions. G3MTool does not sandbox it.
 
-Scripts are used by [`execute`](commands/execute.md) and can be supplied directly
-to `patch create`, `patch apply`, `patch merge`, and their batch variants.
-G3MTool also embeds import and export scripts for UndertaleModTool-style
-workflows.
+## First script
 
-## Using a script as a patch input
+Save this as `resize-room.csx`:
 
-```bash
-G3MTool patch apply original.win mod.csx patched.win
-G3MTool patch create original.win mod.csx mod.g3mpatch
-G3MTool patch merge original.win base.xdelta mod.csx --apply merged.win
+```csharp
+EnsureDataLoaded();
+if (Data!.Rooms.Count == 0)
+{
+	ScriptError("The data file has no rooms.");
+}
+Data.Rooms[0].Width += 16;
+ScriptMessage("Increased the first room's width by 16 pixels.");
 ```
 
-For patch commands, G3MTool loads the current DATA into the script globals,
-runs the script, saves its result to a temporary DATA file, and verifies that
-the file can be reopened before continuing. A script failure or invalid saved
-DATA stops the operation with an error.
+Run it on a copy of the intended game's DATA:
 
-## Running a script
-
-```bash
-G3MTool execute my_script.csx --data data.win --output patched.win
-G3MTool execute my_export.csx --data data.win --output output_dir/
-G3MTool execute my_import.csx --data data.win --input sprites/ --output patched.win
+```text
+G3MTool execute resize-room.csx --data original.win --output test.win --verbose
 ```
 
-Current behavior:
+The runner writes Data after successful execution. Inspect the result and test it in a separate game installation. A script can also be supplied to patch create/apply/merge as an input that produces modified DATA.
 
-- `--data` loads the data file before the script runs.
-- `--input` becomes the first script argument and is also exposed as
-  `ScriptGlobals.InputDir`.
-- `--output` is converted into `ScriptGlobals.OutputDir` as a directory path.
-- If `--data` is omitted, scripts still run, but data-dependent code must call
-  `EnsureDataLoaded()` first and handle the failure.
+## Globals
 
-## ScriptGlobals surface
+| Name | Purpose |
+| --- | --- |
+| `Data` | Loaded `GameMakerData`, or null without Data input |
+| `FilePath` | Input DATA path, or script path when no DATA is loaded |
+| `DataFilePath` | DATA input path, or an empty string |
+| `ScriptPath` | Executing script path |
+| `ExePath` | Script's directory; it is not necessarily the G3MTool executable directory |
+| `InputDir` | First script argument, including the value supplied by Input |
+| `OutputDir` | Directory derived from the output path |
+| `MainThreadAction` | Executes an action through the host; the CLI executes it synchronously |
+| `Verbose` | Whether detailed logging is enabled |
 
-### Properties
+The environment imports common System namespaces and G3MLib DATA/model, utility, compiler, decompiler, and scripting namespaces. Use explicit `using` statements when referencing additional public APIs.
 
-- **Member:** `Data`
-  - **Type:** `UndertaleData`
-  - **Description:** Loaded GameMaker data file
+## Host helpers
 
-- **Member:** `FilePath`
-  - **Type:** `string`
-  - **Description:** Data-file path when data is loaded; otherwise script or
-    fallback path
+`EnsureDataLoaded()` rejects a missing DATA model. `ScriptError(message)` fails the script. `ScriptMessage` and `ScriptWarning` write log messages; use Verbose when you need their CLI trace output.
 
-- **Member:** `DataFilePath`
-  - **Type:** `string`
-  - **Description:** Absolute path to the loaded data file, or empty string
+`GetDisassemblyText` accepts a code name or code entry. `RunUMTScript(path)` runs another script with the current globals. Relative script dependencies can use `#load` resolved from the script directory; include those files when distributing the script.
 
-- **Member:** `ScriptPath`
-  - **Type:** `string?`
-  - **Description:** Absolute path to the `.csx` script
+Progress helpers include SetProgressBar, UpdateProgressBar, AddProgress, IncrementProgress, IncrementProgressParallel, StartProgressBarUpdater, and StopProgressBarUpdater. They report progress rather than changing game data.
 
-- **Member:** `OutputDir`
-  - **Type:** `string`
-  - **Description:** Output directory derived from `--output`
+## Interaction limits
 
-- **Member:** `InputDir`
-  - **Type:** `string`
-  - **Description:** Input directory derived from `--input`, or empty string
+In the CLI, `ScriptQuestion` logs the question and returns true. ScriptInputDialog and SimpleTextInput return the supplied default. File and directory prompts return null. A script expecting a desktop dialog must handle those results or accept explicit input paths.
 
-- **Member:** `Verbose`
-  - **Type:** `bool`
-  - **Description:** Mirrors G3MTool verbose mode
+The [GUI](gui.md) provides interactive script questions, text input, and file or folder selection. Test a script in its intended host. The same helper can return a default in the CLI and open a dialog in the GUI.
 
-- **Member:** `ExePath`
-  - **Type:** `string`
-  - **Description:** Directory that contains the current script
-
-### Validation and messaging
-
-- **Method:** `EnsureDataLoaded()`
-  - **Description:** Throws `ScriptException` if no data file is loaded
-
-- **Method:** `ScriptError(string message, string? title = null)`
-  - **Description:** Throws `ScriptException`
-
-- **Method:** `ScriptMessage(string message)`
-  - **Description:** Writes a script log message
-
-- **Method:** `ScriptWarning(string message)`
-  - **Description:** Writes a script warning
-
-- **Method:** `RunUMTScript(string path)`
-  - **Description:** Runs another CSX file with the same loaded DATA and globals
-
-## Relative scripts and resources
-
-G3MTool resolves `#load`, metadata references, and `RunUMTScript()` paths from
-the script directory. Nested scripts can call other scripts under the main
-script's directory tree. G3MTool rejects a nested path that escapes that tree.
-
-Keep helper scripts and resource folders beside the entry script. In a G3M mod,
-mark those folders as dependency-only extra entries so G3M keeps them in the mod
-folder without copying them into the game.
-
-- **Method:** `ScriptQuestion(string message)`
-  - **Description:** Logs the question and returns `true`
-
-- **Method:** `ScriptInputDialog(...)`
-  - **Description:** Logs the prompt and returns the default input
-
-- **Method:** `SimpleTextInput(...)`
-  - **Description:** Same behavior as `ScriptInputDialog(...)`
-
-- **Method:** `PromptLoadFile(...)`
-  - **Description:** Logs and returns `null`
-
-- **Method:** `PromptSaveFile(...)`
-  - **Description:** Logs and returns `null`
-
-- **Method:** `PromptChooseDirectory()`
-  - **Description:** Logs and returns `null`
-
-### Progress helpers
-
-- **Method:** `SetProgressBar(...)`
-  - **Description:** Set progress state
-
-- **Method:** `UpdateProgressBar(...)`
-  - **Description:** Alias for `SetProgressBar(...)`
-
-- **Method:** `AddProgress(int amount)`
-  - **Description:** Increment progress by an amount
-
-- **Method:** `IncrementProgress()`
-  - **Description:** Increment progress by one
-
-- **Method:** `IncrementProgressParallel()`
-  - **Description:** Thread-safe increment
-
-- **Method:** `StartProgressBarUpdater()`
-  - **Description:** Start periodic console progress output in verbose mode
-
-- **Method:** `StopProgressBarUpdater()`
-  - **Description:** Stop the background progress updater
-
-- **Method:** `HideProgressBar()`
-  - **Description:** Reset progress state
-
-- **Method:** `GetProgress()`
-  - **Description:** Return the current progress value
-
-### Compatibility stubs
-
-These methods exist for compatibility with GUI-oriented scripts and are no-ops
-in G3MTool:
-
-- `SetFinishedMessage(bool enabled)`
-- `ChangeSelection(object obj, bool isRecursive = false)`
-- `SyncBinding(string name, bool value)`
-- `SyncBinding(bool condition, bool value)`
-- `DisableAllSyncBindings()`
-
-## Built-in scripts
-
-The current embedded scripts are the files under `G3MToolCLI/Assets/scripts/`,
-including import and export helpers for:
-
-- asset order
-- audio groups
-- backgrounds
-- code entries
-- embedded textures
-- extensions
-- fonts
-- game objects
-- GeneralInfo
-- paths
-- rooms
-- shaders
-- sounds
-- sprites
-- texture group info
-- texture page items
-- tilesets
-- timelines
+Reference scripts for exporting and importing resource types are available in [the project source](https://github.com/y114git/G3MTool/tree/main/G3MToolCLI/Assets/scripts). Save the scripts you need locally and invoke their actual file paths.

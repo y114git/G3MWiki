@@ -1,26 +1,19 @@
-# PizzaOven and CYOP/AFOM Conversion
+# PizzaOven and CYOP/AFOM imports
 
-G3M has built-in conversion paths for some Pizza Tower community formats.
+G3M recognizes supported PizzaOven-style packages and CYOP/AFOM level content for Pizza Tower. GMLoader packages are detected as unsupported rather than treated as ordinary G3M packages.
 
-## Supported import paths
+## PizzaOven
 
-The current code recognizes:
+Open the package through import. If the conversion dialog appears, configure the Pizza Tower game folder and choose **Start PO Conversion**.
 
-- normal PizzaOven-style mod imports
-- CYOP or AFOM custom level imports
+Use original game files matching the mod's requirements. G3M prepares a temporary game copy, applies the package's PizzaOven changes there, and builds a G3M mod from that result. The configured game folder is not used as the conversion output.
 
-It also explicitly detects unsupported GMLoader-style packages and does not
-treat them as normal G3M-ready content.
+The converted mod can be edited, selected in the Library, saved as a mod version, and exported. A successful conversion does not establish compatibility with other selected mods.
 
-## What conversion does
+## CYOP and AFOM levels
 
-For supported PizzaOven content, G3M prepares an equivalent local G3M mod by
-turning changed game data into a form G3M can launch and restore.
+Custom level imports use the game's user-data location for tower content. Check **Settings > Game > data folder** and install the framework required by the level itself.
 
-For CYOP or AFOM content, G3M treats the level files as extra content that is
-installed for the play session and then cleaned up afterward.
+The imported level is a Library mod with file operations, rather than a replacement for CYOP or AFOM. Select it for the play session. Normal launch restoration removes session-installed content or restores files that it replaced; a mode that keeps changes retains them.
 
-## Why this matters
-
-Players can bring some Pizza Tower community mods into the normal G3M library
-flow instead of managing them completely by hand.
+If import cannot identify the package, use manual installation and review the intended destination in the editor rather than mapping all files to the game root.

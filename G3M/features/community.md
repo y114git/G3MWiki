@@ -1,24 +1,9 @@
 # Community
 
-Community shows GameBanana submissions without opening a separate browser first.
+Community displays GameBanana submissions. The **Game** selector limits results to a configured game; **All games** combines available feeds. **New** selects recent submissions, and **Featured** selects featured submissions.
 
-## Choosing a feed
+Built-in and custom games need a GameBanana ID for their feeds. Plugins can supply additional HTTPS RSS feeds while enabled.
 
-Use the two selectors at the top of the dialog:
+Items can be mods, tools, sounds, skins, or other submissions. Open an item to visit its source page. Viewing a feed item does not import it into the Library.
 
-- **Game** limits the feed to one configured game. **All games** combines the
-  available feeds.
-- **New** shows recent submissions. **Featured** shows submissions selected by
-  GameBanana.
-
-Built-in games appear when G3M has a GameBanana ID for them. A custom game
-appears after you add its GameBanana ID in Game Manager.
-
-The feed can contain mods, tools, sounds, skins and other submission types.
-Open an item to view its GameBanana page.
-
-## When a feed cannot load
-
-Press **Refresh** after checking the connection. In **All games**, a failed feed
-for one game does not stop the feeds that loaded successfully. If nothing can
-be loaded, the dialog shows an error and leaves the local library unchanged.
+Use **Refresh** to request the selected feeds again. With All games selected, results from successful feeds can still appear if another feed fails. If no feed loads, check connectivity and the reported error.
