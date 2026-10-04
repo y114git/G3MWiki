@@ -14,7 +14,9 @@ Read the Downloads record. Check the source URL, network connection, destination
 
 ## A package needs manual setup
 
-The archive may lack supported configuration. Use **Continue setup** or Manual Mod Installation, select the game, and define only the operations needed to apply the content. A game web page is not a download archive.
+The archive may lack supported configuration. Use **Continue setup** or [Manual Mod Installation](../mods/importing.md#files-without-configuration), select the game, and assign an action to each file or folder. Use **Skip** for bundled files that should not be installed. A game web page is not a download archive.
+
+A patch verification warning allows **Save** or **Cancel**. Check the selected destination and required game version before saving anyway. If a save button is disabled, hover over it for the reason. Incomplete choices and an active check or save still prevent saving.
 
 For an invalid `mod_config.json`, compare the error with the [configuration reference](../mods/mod-config.md). Check required fields, source existence, destinations, group names, and relationships.
 

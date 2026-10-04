@@ -18,11 +18,37 @@ Keep the original archive if you need an untouched copy. The installed mod uses 
 
 ## Files without configuration
 
-**Manual Mod Installation** collects the input files into a mod. Enter the game, name, and authors, then choose **Create and configure** to open the editor.
+**Manual Mod Installation** collects the input files into a mod. Configure its contents on **Installation** and read bundled documents on **Files and instructions**. Available GameBanana metadata, including the description, icon, and selected download's version, is retained.
 
-Only add operations for files that actually modify the game. Documentation and script dependencies can remain bundled without copy operations. Set each operation's type, source, and destination in the [Files tab](mod-editor.md); a loose patch does not describe its destination by itself.
+### Installation
 
-Several dropped inputs without configuration can be collected into one manual installation. Complete the editor and save before using the mod.
+Select the game and enter the mod name. G3M checks XDelta and G3MPatch inputs against files in the configured game installation and data folders, including subfolders. A confirmed match fills in the patch's destination. The check does not change game files. Switching games repeats it. Choices without a confirmed match remain available for manual configuration.
+
+Matching replacement files and documentation can also receive actions automatically. Review each assignment before saving.
+
+| Action | Effect |
+| --- | --- |
+| Copy / Replace | Copy a file or folder to the selected destination. |
+| Apply patch | Apply the patch to the selected destination file. |
+| INFO/README file | Include documentation without installing it into the game. |
+| Extract | Place a folder's or archive's contents into a destination folder or supported writable archive. |
+| Skip | Keep the item in the package without installing it. |
+
+Choose an action for every file or folder and a destination where required. Expand a folder to configure its files individually, or assign an action to the whole folder. Use **Ctrl** + click to select several rows and set their actions or destinations together. **Browse** selects a destination file or folder and stores the appropriate folder reference.
+
+The filter searches the file list. **Hide configured files** shows only items that still need a choice; G3M remembers this option between installations and restarts.
+
+### Files and instructions
+
+Select a bundled file to read TXT, Markdown, HTML, or PDF content. **Open externally** opens the selected file in the system's default application.
+
+### Save
+
+**Save** validates the setup and adds the mod to the Library. **Save and configure** also opens [Mod Editor](mod-editor.md) for metadata, action order, placeholders, and compatibility. Hover over a disabled save button to read why saving is unavailable.
+
+If an XDelta or G3MPatch cannot be verified against the selected game files, saving shows a warning. Choose **Save** to keep the configuration anyway, or **Cancel** to revise it. Saving does not establish that the patch will work at launch.
+
+Several dropped inputs without configuration can be collected into one manual installation. Documentation and script dependencies can remain bundled without copy operations.
 
 ## An installed ID already exists
 

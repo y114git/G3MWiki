@@ -16,4 +16,4 @@ Custom level imports use the game's user-data location for tower content. Check 
 
 The imported level is a Library mod with file operations, rather than a replacement for CYOP or AFOM. Select it for the play session. Normal launch restoration removes session-installed content or restores files that it replaced; a mode that keeps changes retains them.
 
-If import cannot identify the package, use manual installation and review the intended destination in the editor rather than mapping all files to the game root.
+If import cannot identify the package, use [manual installation](importing.md#files-without-configuration) and review each action's destination before saving. Use the intended tower folder for level content.

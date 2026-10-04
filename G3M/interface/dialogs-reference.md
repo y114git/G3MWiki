@@ -15,4 +15,6 @@
 | Support Packager | Save selected diagnostic information locally | [Support packages](../features/support-packages.md) |
 | Blocklist | Hide matching mod entries | [Blocklist](../features/blocklist.md) |
 
+Open dialogs update their language, theme, font, and scale when those settings change. Entered text, selections, and operation progress are preserved.
+
 Dialogs with destructive actions show confirmations. Read the named target: deleting a download, a mod version, a Library mod, and a game snapshot removes different files.

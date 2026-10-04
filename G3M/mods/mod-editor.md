@@ -13,7 +13,7 @@ The five tabs are **Metadata**, **Compatibility**, **Files**, **Placeholders**, 
 | Authors | Author names, separated by commas in the desktop editor. |
 | Short description | Description of the mod. |
 | Homepage | HTTP or HTTPS project or download page. |
-| Icon | Bundled image path or HTTP or HTTPS image URL. The browse button selects a local image, and the preview shows it. |
+| Icon | Bundled image path or HTTP or HTTPS image URL. The browse button selects a local image. The preview updates when you edit the path or URL. |
 | Tags | Mark text edits, customization, gameplay changes, or other content. |
 | Overall mod version | Version label for this package. |
 | Game version | Label describing the intended game release. |

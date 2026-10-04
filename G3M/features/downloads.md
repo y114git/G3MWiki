@@ -35,4 +35,4 @@ History is stored in `downloads/downloads_history.json` under the data directory
 
 Read the item's error before retrying. A missing local source, denied write access, HTTP 404, certificate failure, and server rate limit require different fixes. HTTP 429 means the server is limiting requests; repeated immediate retries can prolong the problem.
 
-For a completed archive that needs configuration, use Continue setup. Downloading the same file again does not supply a missing `mod_config.json` or infer an unknown destination.
+For a completed archive that needs configuration, use **Continue setup** to open [Manual Mod Installation](../mods/importing.md#files-without-configuration). Configure its actions and choose **Save**, or **Save and configure** to continue in Mod Editor. Cancelling setup leaves the download available for another attempt. Downloading the same file again does not supply a missing `mod_config.json` or infer an unknown destination.

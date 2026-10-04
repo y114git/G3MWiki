@@ -1,6 +1,6 @@
 # Localization
 
-Choose the interface language in **Settings > General > Language**. Bundled language codes are `en`, `ru`, `es`, `ja`, `ko`, `zh_cn`, and `zh_tw`. Missing translated text falls back to English.
+Choose the interface language in **Settings > General > Language**. The main window and open dialogs update without restarting G3M. Bundled language codes are `en`, `ru`, `es`, `ja`, `ko`, `zh_cn`, and `zh_tw`. Missing translated text falls back to English.
 
 ## External language files
 
@@ -22,7 +22,7 @@ Example fragment showing the structure:
 }
 ```
 
-Preserve substitutions such as `{game}`, `{count}`, and `{error}` exactly. Translate the surrounding text. Keep required HTML markup valid where a value uses it. Save UTF-8 JSON and restart G3M to select the external language.
+Preserve substitutions such as `{game}`, `{count}`, and `{error}` exactly. Translate the surrounding text. Keep required HTML markup valid where a value uses it. Save the file as UTF-8 JSON. Refresh the mod list to rescan language files, then select the external language in Settings.
 
 ## Customize a bundled translation
 

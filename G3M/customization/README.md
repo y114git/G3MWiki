@@ -13,4 +13,4 @@ Use [Catalog](../features/catalog.md) to install optional themes. Use **Im/Expor
 | Interface motion | [Animations](animations.md) |
 | A reusable ZIP for yourself or other users | [Theme packages](theme-packages.md) |
 
-Appearance settings are application-wide. Switching a library profile does not give each profile a separate theme.
+Appearance settings are application-wide. Colors, fonts, and themes update the main window and open dialogs without restarting G3M. Switching a library profile does not give each profile a separate theme.

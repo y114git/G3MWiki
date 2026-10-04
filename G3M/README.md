@@ -2,7 +2,7 @@
 
 G3M manages mods for GameMaker games. Install a mod, select it in the Library, and launch the game with that selection. The normal launch mode restores the game files after the game closes.
 
-The application is version **3.4.0**, distributed under GPL-3.0. Release packages support Windows, Linux, and macOS on x64 and ARM64.
+The application is version **3.4.1**, distributed under GPL-3.0. Release packages support Windows, Linux, and macOS on x64 and ARM64.
 
 ## Choose a guide
 

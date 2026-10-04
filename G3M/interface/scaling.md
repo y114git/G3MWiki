@@ -1,6 +1,6 @@
 # Interface scaling
 
-Set **Settings > General > UI Scale** from 50% to 200% in 10% increments. The setting changes G3M's interface size, including controls, icons, and dialogs.
+Set **Settings > General > UI Scale** from 50% to 200% in 10% increments. The setting changes G3M's interface size, including controls, icons, and open dialogs, without restarting the application.
 
 Operating-system display scaling also affects the window. Start with the system's normal scaling, then adjust G3M if its controls are too large or small for your display.
 
