@@ -8,7 +8,7 @@
 | UNDERTALE Yellow | `undertaleyellow` | Yes | Yes |
 | Pizza Tower | `pizzatower` | Yes | No |
 | Sugary Spire | `sugaryspire` | Yes | Yes |
-| FRICKBEARS3 | `frickbears3` | No | Yes |
+| FRICKBEARS3 | `frickbears3` | Yes | Yes |
 
 **Full Install** downloads a game package where that feature is available. It is disabled on macOS. See [Full Install](full-install.md) for its requirements.
 
