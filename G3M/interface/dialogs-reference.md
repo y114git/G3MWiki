@@ -2,7 +2,7 @@
 
 | Dialog | When to use it | Guide |
 | --- | --- | --- |
-| Import and Manual Mod Installation | Add a package or configure loose files | [Importing](../mods/importing.md) |
+| Import and Manual Mod Installation | Add a package or configure loose files | [Importing](../mods/importing.md), [Manual Mod Installation](../mods/importing.md#files-without-configuration) |
 | Mod Editor | Edit metadata, operations, placeholders, and relationships | [Editor](../mods/mod-editor.md) |
 | Mod Versions | Save, import, switch, or delete mod checkpoints | [Mod Versions](../mods/mod-versions.md) |
 | Profile Manager | Create, copy, use, reorder, and share libraries | [Profiles](../features/profiles.md) |

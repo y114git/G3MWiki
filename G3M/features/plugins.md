@@ -22,7 +22,7 @@ G3M marks a plugin incompatible when it cannot use the plugin's API requirement.
 
 | Plugin | Package version | Purpose |
 | --- | --- | --- |
-| [DR Save Manager](deltarune-save-manager.md) | 1.2.2 | Manage save collections and edit DELTARUNE save data from G3M. |
+| [DR Save Manager](deltarune-save-manager.md) | 1.2.3 | Manage save collections and edit DELTARUNE save data from G3M. |
 | [Custom Save Folders](custom-save-folders.md) | 1.1.5 | Choose separate save folders and assign save-folder rules to mods. |
 
 These are optional downloads from the catalog. Their settings and panels are supplied by the plugins, so they can have controls specific to save editing or folder management.

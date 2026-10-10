@@ -7,6 +7,7 @@ A Library mod is a folder containing `mod_config.json` and its payload files. Th
 | Task | Guide |
 | --- | --- |
 | Install an archive, folder, patch, or URL | [Importing](importing.md) |
+| Configure files without a `mod_config.json` | [Manual Mod Installation](importing.md#files-without-configuration) |
 | Describe operations and dependencies | [Configuration reference](mod-config.md) |
 | Change metadata or files | [Mod Editor](mod-editor.md) |
 | Work in a browser | [Web editor](web-editor.md) |

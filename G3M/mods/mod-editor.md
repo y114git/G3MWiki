@@ -10,6 +10,7 @@ The five tabs are **Metadata**, **Compatibility**, **Files**, **Placeholders**, 
 | --- | --- |
 | Game | Select a built-in game or a visible custom game. The mod belongs to that game's library. |
 | Mod name | Name displayed in the library. |
+| Mod ID | Stable identifier used by the library, dependencies, and conflicts. Keep it unchanged for a published mod. |
 | Authors | Author names, separated by commas in the desktop editor. |
 | Short description | Description of the mod. |
 | Homepage | HTTP or HTTPS project or download page. |

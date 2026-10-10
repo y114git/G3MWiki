@@ -31,6 +31,7 @@
 
 - [Mods](mods/README.md)
 - [Importing](mods/importing.md)
+- [Manual Mod Installation](mods/importing.md#files-without-configuration)
 - [Filtering and sorting](mods/mod-filtering.md)
 - [Priority and steps](mods/modpacks.md)
 - [Create a modpack](mods/creating-modpacks.md)

@@ -4,15 +4,15 @@
 
 ## Create or open a mod
 
-Choose **Create Mod** for an empty package or **Edit Mod** to open a G3M ZIP, Deltamod ZIP, or `mod_config.json`. You can also drop an archive or config onto the start page or import area.
+Choose **Create Mod** for an empty package or **Edit Mod** to open a G3M ZIP, Deltamod ZIP, an ordinary ZIP, `mod_config.json`, or any individual file. You can also drop archives, files, or folders onto the start page or import area.
 
-Supported G3M input configurations are converted into `mod_config.json 2.0.0`. Deltamod packages can contain JSON or TOML metadata and `Modding.XML` instructions. Opening a configuration file alone does not include the files it references; add those files before exporting.
+Supported G3M input configurations are converted into `mod_config.json 2.0.0`. Deltamod packages can contain JSON or TOML metadata and `Modding.XML` instructions. An ordinary ZIP or individual file starts a new mod with an empty configuration and its contents already bundled. Opening a configuration file alone does not include the files it references; add those files before exporting.
 
 The editor has **Metadata**, **Compatibility**, **Files**, **Placeholders**, and **Help** tabs. The [desktop editor guide](mod-editor.md) explains the corresponding configuration values.
 
 ## Add files and actions
 
-**Add files** adds package files, and **Add folder** retains directory structure. Files remain in the ZIP even when no operation points to them. This is useful for scripts that load helper files.
+**Add files** adds package files, and **Add folder** retains directory structure. You can also drop several files or a folder into the editor. Files remain in the ZIP even when no operation points to them. This is useful for scripts that load helper files.
 
 You can drop files or folders anywhere in the editor to bundle them. More specific drop targets have these meanings:
 
@@ -31,7 +31,7 @@ Author names use one line per author in the web editor. The mod ID is editable a
 
 ## Save ZIP
 
-**Save ZIP** validates all editable tabs and package references, then downloads the package. Invalid fields are highlighted. Error links open the relevant tab and field, including operations inside collapsed groups.
+**Save ZIP** validates all editable tabs and package references, then downloads the package. Invalid fields are highlighted after you edit them or try to save. Error links open the relevant tab and field, including operations inside collapsed groups.
 
 The ZIP contains `mod_config.json`, bundled files, and directories, including empty directories. It does not include the original game files used only to calculate target hashes.
 
