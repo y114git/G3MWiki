@@ -27,7 +27,7 @@ Use **Install** to save a theme package, **Apply** to use an installed theme, an
 
 Installed themes also remain available in **Settings > Appearance**. Deleting a saved theme package does not itself undo the appearance already applied to G3M. Apply another theme or reset the relevant appearance controls to change that appearance.
 
-The catalog includes CLEANG3M, DELTAG3M, PIZZAG3M, and SUGARYG3M. Their packages are downloads, not assets bundled into the application.
+The catalog includes CLEANG3M, DELTAG3M, PIZZAG3M, SUGARYG3M, and FRICKG3M. Their packages are downloads, not assets bundled into the application.
 
 ## Connection and local use
 

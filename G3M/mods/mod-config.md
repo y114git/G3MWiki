@@ -49,7 +49,7 @@ my-mod.zip
 | `homepage` | No | Absolute HTTP or HTTPS URL. |
 | `icon` | No | Bundled image path such as `${mod_path}/icon.png`, or an HTTP or HTTPS image URL. |
 | `game_version` | No | Human-readable label for the intended game version. It does not replace a file hash check. |
-| `tags` | No | Array containing `textedit`, `customization`, `gameplay`, `other`, or `CYOP/AFOM`. |
+| `tags` | No | Array containing `textedit`, `customization`, `gameplay`, `other`, `CYOP/AFOM` (Pizza Tower), or `FB-Addon` (FRICKBEARS3). Mod Editor offers the last two only for their game. When G3M imports a config, other labels are converted to the closest tag (`Translation` becomes `textedit`), unrecognized labels become `other`, and duplicates are removed. |
 | `placeholders` | No | Named paths built from the standard path roots. |
 | `dependencies` | No | Array of required mod IDs, optionally with an ordering condition. |
 | `conflicts` | No | Array of incompatible mod IDs, optionally with an ordering condition. |

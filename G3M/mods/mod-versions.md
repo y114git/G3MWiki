@@ -16,4 +16,6 @@ Drop supported version files into the dialog to import them. Local archives are 
 
 **Delete** removes that saved archive after confirmation. It does not switch the active mod to a different version.
 
+Exporting a mod and installing a package that carries versions both let you choose which versions are included; see [Exporting mods](exporting.md) and [Importing mods](importing.md).
+
 A version saves the mod package, not the game installation, profile selection, or save files. For a whole profile or game snapshot, use [Profiles](../features/profiles.md) or [Game Versions](../features/game-versions.md).

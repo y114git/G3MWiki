@@ -4,7 +4,7 @@ Search, tags, and sorting affect the displayed list. They do not enable or disab
 
 Search checks mod names, descriptions, authors, dates, categories, and tags. Each space-separated search term must occur in that metadata. Matching ignores case.
 
-Selecting several tags includes mods matching any selected tag. Other filters, including the selected game and search, still apply. Mod tags are **Text edit**, **Customization**, **Gameplay**, and **Other**; **CYOP/AFOM** appears for Pizza Tower content.
+Selecting several tags includes mods matching any selected tag. Other filters, including the selected game and search, still apply. Mod tags are **Text edit**, **Customization**, **Gameplay**, and **Other**; **CYOP/AFOM** appears for Pizza Tower content and **FB-Addon** for FRICKBEARS3 content.
 
 Sort by downloads, update date, or addition date where those choices are available. The adjacent direction button reverses the order. Library sorting does not change launch priority; use [Priority & Steps](modpacks.md) for that.
 

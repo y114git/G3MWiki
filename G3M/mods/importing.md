@@ -14,6 +14,11 @@ G3M reads and validates the configuration, checks package paths, and copies the 
 
 Supported G3M configurations in the older 1.x formats are converted to the current `2.0.0` structure during import. DELTAMOD packages with JSON or TOML metadata are also converted. Script dependencies remain in the mod folder so relative `#load` and resource paths can resolve without installing dependency-only files into the game.
 
+If the package also contains a `mod_versions/` folder, G3M asks which of its versions to install before anything is written. All versions are ticked at first, at least one must stay ticked, and the **Active** option picks the version the mod starts with. The package's own files are the default; choosing another version makes it active and, if the package's own files stay ticked, saves them as a version. Cancelling installs nothing. Updates of an installed mod keep your existing versions and skip this question. **When importing** in **Settings → Library → Mod Versions** can be set to *Only the active version* (the package's own files, other versions dropped) or *All versions* to skip the question.
+ Only versions whose `mod_config.json` is current or migrates to the current format are offered; the others are left out of the install.
+
+If a G3M mod is made for a game that G3M does not know, whether from a file, a link or the Mods Browser, G3M asks what to do before installing. **Install manually** treats the mod as a regular archive. **Add game** opens the custom game dialog with the game ID taken from the mod's `game` field and, for GameBanana downloads, the GameBanana game ID filled in. Enter the display name, the executable name and the data file name (a Steam App ID is optional), and the mod is installed as soon as the game exists. A game that was added earlier with the same ID needs no question.
+
 Keep the original archive if you need an untouched copy. The installed mod uses the [current configuration format](mod-config.md).
 
 ## Files without configuration
