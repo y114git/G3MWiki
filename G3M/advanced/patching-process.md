@@ -14,6 +14,6 @@ If patching fails, G3M attempts to undo changes from the interrupted application
 
 ## Changes made outside G3M
 
-Files altered after deployment can be retained rather than overwritten by restoration. Review [backup and restore](backup-and-restore.md) for conflict recovery. Avoid running another patcher or updating the game during an active G3M session.
+Files altered after deployment are not overwritten by restoration unless you choose **Force restore**. Review [backup and restore](backup-and-restore.md) for conflict recovery. Avoid running another patcher or updating the game during an active G3M session.
 
 Use **Analyze Actual Launch Result** for a temporary application test. Use **Patching only** only when you want changes written to the actual installation and kept there.

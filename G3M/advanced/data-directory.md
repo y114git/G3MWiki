@@ -35,8 +35,8 @@ If the selected drive is unavailable at startup, the main application offers ret
 | `lang/` | External language files and fonts |
 | `logs/` | Application, patching, conflict, and shortcut logs |
 | `cache/G3MTool/` | Reusable analysis cache |
-| `patching_backups/` | Temporary launch backups and retained recovery data |
-| `settings/session.lock` | Information needed to recover an interrupted modded session |
+| `settings/operation-session/` | Journal and backups of the modded session in progress; shortcut launches use `settings/operation-shortcut-session/` |
+| `g3m.instance.lock` | Lock that keeps a single G3M instance running |
 
 Each profile's mod folders sit directly under its profile folder. Custom appearance assets use `custom_background.*`, `custom_logo.*`, `custom_font.*`, `custom_startup_sound.*`, and `custom_background_music.*` at the data root.
 

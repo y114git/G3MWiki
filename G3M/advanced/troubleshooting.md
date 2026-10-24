@@ -36,7 +36,7 @@ A supported game process can still be running, or restoration can still be finis
 
 ## Restoration reports external changes
 
-Keep `patching_backups/recovery_conflicts/` and the associated logs. Back up the changed game files before attempting manual recovery. See [backup and restore](backup-and-restore.md).
+G3M asks you to choose **Force restore** or **Keep external changes**. Keeping external changes never overwrites your files and lets the game launch. Back up game files you changed on purpose before choosing **Force restore**. See [backup and restore](backup-and-restore.md).
 
 ## Report a reproducible problem
 

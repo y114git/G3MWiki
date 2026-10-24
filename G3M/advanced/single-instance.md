@@ -6,4 +6,4 @@ Import links are forwarded to the running window for confirmation. This keeps re
 
 Different application folders do not provide independent games or user data by themselves. Use profiles for separate selections and separate game installations when you need independent on-disk game states.
 
-If a second launch appears to do nothing, check the taskbar and the existing G3M window before trying to remove any lock or session files.
+If a second launch appears to do nothing, check the taskbar and the existing G3M window before trying to remove any lock or session files. The lock file is `g3m.instance.lock` in the [data directory](data-directory.md).
