@@ -27,7 +27,7 @@ Keep the original archive if you need an untouched copy. The installed mod uses 
 
 ### Installation
 
-Select the game and enter the mod name. G3M checks XDelta and G3MPatch inputs against files in the configured game installation and data folders, including subfolders. A confirmed match fills in the patch's destination. The check does not change game files. Switching games repeats it. Choices without a confirmed match remain available for manual configuration.
+Select the game and enter the mod name. The **+** button beside the game list opens the custom game dialog, so a game that is not listed yet can be added without leaving the installation; the new game is selected right away. G3M checks XDelta and G3MPatch inputs against files in the configured game installation and data folders, including subfolders. A confirmed match fills in the patch's destination. The check does not change game files. Switching games repeats it. Choices without a confirmed match remain available for manual configuration.
 
 Matching replacement files and documentation can also receive actions automatically. Review each assignment before saving.
 

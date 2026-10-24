@@ -8,6 +8,6 @@ Selecting several tags includes mods matching any selected tag. Other filters, i
 
 Sort by downloads, update date, or addition date where those choices are available. The adjacent direction button reverses the order. Library sorting does not change launch priority; use [Priority & Steps](modpacks.md) for that.
 
-The available controls can hide adult-marked content, exclude installed browser entries, limit results to GameBanana-backed mods, or filter blocked content. Content filtering depends on the supplied metadata, so it cannot identify every unlabelled upload.
+The available controls can hide adult-marked content, exclude installed browser entries, limit results to GameBanana-backed mods, or filter blocked content. Mods Browser lists only GameBanana mods; a mod you imported or made yourself appears in the Library, not in the browser. Content filtering depends on the supplied metadata, so it cannot identify every unlabelled upload.
 
 Use [Blocklist](../features/blocklist.md) for persistent rules by ID, name, or category. **Settings > Library** can hide the filter bar without deleting its installed mods.
