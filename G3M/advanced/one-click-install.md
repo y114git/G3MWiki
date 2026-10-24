@@ -29,3 +29,13 @@ The [web editor](../mods/web-editor.md) uses this route after you download its Z
 The operating system must register G3M as the handler, and the browser can request permission to open an external application. If no application opens, use normal local import while checking that registration.
 
 `deltahub://` links are also accepted. Both schemes require review of the target and use the same download/import confirmation.
+
+## GameBanana Remote Install
+
+Remote Install lets you send a mod to G3M from the GameBanana website, even from another device, while G3M is running.
+
+1. On a GameBanana file, open the arrow next to the G3M 1-click button and choose **Enroll & Pair**.
+2. Click **Enroll**, then **Pair**. The browser opens a `g3m://gb_pair/...` link. G3M asks once whether to link this account.
+3. Choose **Remote Install** on any file. G3M checks the queue about once a minute and downloads each mod it finds, with no further prompt. The download appears in the Downloads list and installs like any other.
+
+Only GameBanana files are accepted from the queue. The key is stored in G3M's settings file. If GameBanana rejects it, G3M stops checking until you pair again.
