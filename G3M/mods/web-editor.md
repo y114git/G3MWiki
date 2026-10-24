@@ -27,7 +27,7 @@ Drag a bundled file onto a path or hash field to reuse it. Hover another tab dur
 
 **Browse bundled ZIP** selects a file or folder within a ZIP already included in the package. A source hash can use that member's extracted contents. Hashes for members of other archive formats require desktop G3M.
 
-Author names use one line per author in the web editor. The mod ID is editable and follows the [ID rules](mod-config.md#top-level-fields). Keep the ID unchanged when editing a published mod.
+Choose the game from the list. **Custom game ID** lets you type the ID of a custom game instead, for example the one shown in G3M's [Game Manager](../games/game-manager.md). Author names use one line per author in the web editor. The mod ID is editable and follows the [ID rules](mod-config.md#top-level-fields). Keep the ID unchanged when editing a published mod.
 
 ## Save ZIP
 

@@ -58,7 +58,7 @@ Unknown fields are rejected. Omit optional values that you do not use. Empty `ta
 
 IDs contain lowercase ASCII letters, digits, underscores, or hyphens. They begin with a letter and contain at most 64 characters. This rule applies to both `id` and `game`. Do not change a published mod's ID when issuing another version.
 
-Built-in game IDs are `deltarune`, `deltarunedemo`, `undertale`, `undertaleyellow`, `pizzatower`, `sugaryspire`, and `frickbears3`. A custom game's ID comes from [Game Manager](../games/game-manager.md).
+Built-in game IDs are `deltarune`, `deltarunedemo`, `undertale`, `undertaleyellow`, `pizzatower`, `sugaryspire`, and `frickbears3`. A custom game's ID is the one entered when it was added, or one created from its display name that starts with `custom_`. See [Custom games](../games/custom-games.md).
 
 ## Path roots
 

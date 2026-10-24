@@ -9,14 +9,17 @@ Open **Game Manager** and choose its add action. Fill in the game information:
 | Field | Value |
 | --- | --- |
 | Display name | The name shown in the game selector |
+| Game ID | Optional short ID that mod configurations store, such as `examplegame`. Lowercase letters, digits, underscores, and hyphens; it starts with a letter and has at most 64 characters. IDs of built-in games cannot be used. Leave it empty to have one created from the display name. |
 | Executable or app name | Exact executable filename, such as `ExampleGame.exe`, or macOS bundle name, such as `ExampleGame.app`. |
 | Target DATA file name | Exact GameMaker resource filename, such as `data.win`, `game.unx`, or `game.ios`. |
 | Steam App ID | Optional numeric application ID for Steam launching |
 | GameBanana game ID | Optional numeric game ID or GameBanana game-page URL for Mods Browser results. |
 
-Executable and data fields identify file names; configure the installation folder in **Settings > Game** after saving. The game's ID is used by mod configurations, so use that entry's ID when choosing a game in the editor.
+Executable and data fields identify file names; configure the installation folder in **Settings > Game** after saving. The game's ID is stored in the `game` field of mod configurations, so a mod made for this game selects it by that ID in the editor.
 
-Names and online IDs must be unique among game entries. Steam IDs contain digits only. Leave an online ID empty when the game has no matching entry on that service.
+Names, game IDs, and online IDs must be unique among game entries. Steam IDs contain digits only. Leave an online ID empty when the game has no matching entry on that service.
+
+Editing a custom game lets you change its game ID. G3M then moves its settings, profile selections, installed mods, and saved Game Versions to the new ID. Mods you already shared keep the old ID in their `game` field, so settle the ID before you distribute mods for the game.
 
 For example, an installation containing `ExampleGame.exe` and `data.win` uses those two names. If the game stores its resources in another location or requires a specialized launcher, check detection and launch behavior before distributing mods for it.
 
