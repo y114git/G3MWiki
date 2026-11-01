@@ -16,7 +16,22 @@ using var data = GameMakerIO.Read(input,
 
 The warning callback receives the message and an `isImportant` flag. Keep both available if your interface distinguishes warnings that require attention from other reader messages.
 
-Retain warning information. Some unusual or unsupported files can produce warnings or throw during parsing. Suppressing a warning does not establish that a later write is valid.
+Retain warning information. Some unusual or unsupported files can produce warnings or throw during parsing. Hiding a warning does not make a later write valid.
+
+## Read and write asynchronously
+
+```csharp
+using G3MLib.DataFile;
+
+var progress = new Progress<GameMakerProgress>(
+	step => Console.WriteLine($"{step.Chunk}: {step.Fraction:P0}"));
+using var data = await GameMakerIO.ReadAsync("original.win", progress, cancellationToken);
+await GameMakerIO.WriteAsync("output/copy.win", data, progress, cancellationToken);
+```
+
+`ReadAsync` and `WriteAsync` run on a thread-pool thread and accept a stream or a path. Progress is reported after each chunk and once more with fraction 1 when the work is done. A cancelled call throws `OperationCanceledException`. The path overload of `WriteAsync` writes a temporary file and moves it over the target on success, so a cancelled or failed write leaves an existing target untouched. A cancelled write to a stream leaves that stream partly written. `WriteAsync` does not validate the result or handle audio groups; use `PatchInputService.WriteDataFile` below when you need that.
+
+Chunks the library does not know are kept and written back unchanged.
 
 ## Edit and write
 
@@ -47,4 +62,23 @@ Resource objects refer to other resources and shared strings. Reordering, deleti
 
 `data["Rooms"]` provides a resource collection by its property name. Unknown names throw; typed properties are preferable when the resource type is known at compile time.
 
-Dispose loaded DATA after use. Do not modify the same model concurrently from several operations. Reopen the result with GameMakerIO and test with the matching game runner before distributing it.
+Dispose loaded DATA after use. Reopen the result with GameMakerIO and test with the matching game runner before distributing it.
+
+## Share one model between threads
+
+`GameMakerData` does not lock. A host that runs background jobs while the user edits keeps one `ModelLock` next to the model. A job that reads the model (decompile, export, search, diff, patch) holds `Read()` while it works, and every edit holds `Write()`. Several readers run together; a writer runs alone.
+
+```csharp
+using var modelLock = new ModelLock();
+
+using (modelLock.Read())
+{
+	// decompile, export, search
+}
+using (modelLock.Write())
+{
+	data.Rooms![0].Width += 16;
+}
+```
+
+The lock is not reentrant: taking it again on the same thread throws `LockRecursionException`. A job that must not block edits works on a snapshot, a second `GameMakerData` read from the same file. Do not edit one model from several jobs without this lock, and do not share an output path between jobs.

@@ -1,5 +1,13 @@
 # FAQ
 
+## Is it safe to read and edit one model from several threads?
+
+Not without a lock. `GameMakerData` does not lock itself. Keep a `ModelLock` next to the model, hold `Read()` in background jobs, and hold `Write()` for edits. See [DATA files](data-files.md#share-one-model-between-threads).
+
+## Do sprite page layouts match 1.0.1?
+
+No. Sprite import in 1.1.0 packs new sprites in file name order with a 2 pixel border, so the pages differ from the ones 1.0.1 produced. Unknown chunks and resource ids outside the table are kept as they were.
+
 ## Does G3MLib launch games or manage mods?
 
 No. It supplies DATA and modding APIs. The host manages games, profiles, downloads, backups around play sessions, and its own user interface.
@@ -14,7 +22,7 @@ No. G3MTool provides a script execution layer around the library. A direct libra
 
 ## Why does a merge succeed with conflicts?
 
-The service can resolve an overlap by priority and still report it. Inspect TotalConflicts and the report; successful processing does not establish that both mods' intended behavior survives.
+The service can resolve an overlap by priority and still report it. Inspect TotalConflicts and the report; a merge that succeeds can still lose part of what a mod does.
 
 ## Why are dialogs unavailable in ProjectContext scripts?
 

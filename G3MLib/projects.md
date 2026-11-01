@@ -1,6 +1,45 @@
 # Projects and scripts
 
-`G3MLib.DataFile.Project.ProjectContext` works with serialized assets and a project JSON file. It is a library resource-project format, separate from G3M's `mod_config.json` and G3MTool's `.g3mpatch`.
+G3MLib has two project formats, both separate from G3M's `mod_config.json` and G3MTool's `.g3mpatch`:
+
+- `G3MProjectService` writes a game as a `.g3mproj` file plus one folder per resource, laid out like a GameMaker project, and rebuilds a DATA file from it.
+- `ProjectContext` works with serialized assets, a project JSON file, and import scripts.
+
+## G3M project (.g3mproj)
+
+```csharp
+using G3MLib.DataFile;
+using G3MLib.DataFile.Project;
+
+using var data = await GameMakerIO.ReadAsync("original.win");
+var exported = G3MProjectService.Export(data, "project", "original.win",
+	new G3MProjectOptions { Name = "Interface" });
+Console.WriteLine($"{exported.Resources} resources, project file {exported.Path}");
+
+var built = G3MProjectService.Build("project/Interface.g3mproj",
+	"original.win", "output/rebuilt.win");
+Console.WriteLine($"{built.Resources} imported, {built.Unchanged} unchanged");
+```
+
+A full `Export` writes every resource into the project folder: `sprites`, `rooms`, `objects`, `scripts`, `code`, `sounds`, `fonts`, `shaders`, and more, plus `options` for game information and settings. The project file is `<Name>.g3mproj` in that folder. Resource files come from the same serializers as the [resource export](resources.md), so one format serves projects, exports, and patches. A resource that cannot be exported is left out and listed in `Warnings`.
+
+`Export` takes an `IProgress<BatchProgress>` (resources done, total, and the name of the resource just written) and a `CancellationToken`. Resources are written to a staging folder and moved into place at the end, so a cancelled export leaves the project folder as it was.
+
+`Build` reads the project file and imports it over the data file you name as the base. In a full project that is opened against its recorded base file, resources whose files have not changed since the export are left alone, so an untouched project rebuilds the base file byte for byte. A project written by a newer library version, or one that cannot be read, throws `ProjectException`.
+
+### Delta projects and updates
+
+Set `Mode = ProjectExportMode.Delta` and list the resources to write in `Only` (resource names per type, for example `"Sprites"`). Types missing from `Only` are skipped. `Deleted` records resources to remove from the game on build.
+
+`G3MProjectService.Update` writes only the resources named in `Only` into an existing project folder, with the same files a full export writes for them. A rename then needs the renamed resource and the resources that refer to it, not a full export. Folders of other resources keep their recorded hashes, so a file you edited by hand still counts as changed on the next build. `Update` throws `ProjectException` when the folder has no project file with that name.
+
+### Open a project for an editor
+
+`G3MProjectService.OpenAsync(projectFile, progress, cancellationToken)` reads the project file and returns its resource index without reading the resource folders, so the time depends on the project file only.
+
+## Scripted resource project (ProjectContext)
+
+`G3MLib.DataFile.Project.ProjectContext` works with serialized assets and a project JSON file.
 
 ## Create a resource project
 

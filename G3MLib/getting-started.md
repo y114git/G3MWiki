@@ -5,7 +5,7 @@ Create a .NET 10 application and reference the package:
 ```text
 dotnet new console --framework net10.0 --name DataInspector
 cd DataInspector
-dotnet add package G3MLib --version 1.0.1
+dotnet add package G3MLib --version 1.1.0
 ```
 
 ## Read a DATA file
@@ -40,8 +40,10 @@ Use the same file you intend to inspect or patch, including its platform and gam
 
 ## Pick the API level
 
-Use `GameMakerData` for direct resource edits. Use `PatchService` when the result should be a distributable changeset. Use `MergeService` for combining patches against one original. Use `ProjectContext` for a project of exported assets and configured installation actions.
+Use `GameMakerData` for direct resource edits. Use `PatchService` when the result should be a distributable changeset. Use `MergeService` for combining patches against one original. Use `G3MProjectService` to export a game as a folder of resource files and rebuild a DATA file from it. Use `ProjectContext` for a project of exported assets and configured installation actions.
 
-These outputs have different formats. A `.g3mpatch` manifest is not `mod_config.json`, and a resource project is not a G3M profile.
+Reading and writing also have async forms, `GameMakerIO.ReadAsync` and `WriteAsync`, with progress and a cancellation token. See [DATA files](data-files.md#read-and-write-asynchronously).
+
+These outputs have different formats. A `.g3mpatch` manifest is not `mod_config.json`, and a `.g3mproj` project is not a G3M profile.
 
 Examples in this section use separate outputs. Keep the original and companion resources until the result has been read back and playtested.

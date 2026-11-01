@@ -58,6 +58,22 @@ This example deliberately fails if that exact call is absent. Adapt the search t
 
 `Import()` throws on failed compilation by default. `Import(throwOnFailedCompile: false)` returns a CompileResult whose `Successful` value must be checked. Compile errors expose the code entry and GenerateDetailedMessage for reporting.
 
+`Import(CodeImportMode mode, progress, cancellationToken)` returns a `CodeImportResult` with one result per queued operation, including the line and column of a compiler error:
+
+| Mode | Effect |
+| --- | --- |
+| `Apply` | Compiles and links every operation into the data. |
+| `DryRun` | Compiles only; nothing in the data changes. An operation counts as applied when it compiled and would apply. |
+| `Stage` | Runs a dry run first and applies only when no operation failed. |
+
+Use `Stage` when one failed edit should leave the whole data file untouched.
+
+## Diagnostics and tokens
+
+The compiler reports structured diagnostics as `GmlDiagnostic` records with a severity, a code, a message, and a source span. Compile and lint fail when the compiler reports an error. `GmlTokenizer` is public, so an editor can highlight GML without compiling it.
+
+The compiler accepts `return` directly before `}`, indexing the result of a call such as `f()[i]`, and template strings in LTS data.
+
 AutoCreateAssets and AutoCreateGlobalInitScripts control creation associated with new names. Ambiguous event names, including collisions, can require explicit asset setup. Do not enable speculative name-based creation for edits to unrelated existing code.
 
 For replacement-only work, the lower-level CompileGroup provides QueueCodeReplace and Compile. Both editing interfaces require a synchronous MainThreadAction callback when the host supplies one: it must execute the supplied action before returning.

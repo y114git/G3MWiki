@@ -35,7 +35,9 @@ Supply at least two inputs in **low-to-high priority order**. Each describes cha
 
 Without either output path, a timestamped merged patch is written beside the original. With only ApplyPath, the DATA result is written without retaining the patch. Explicit paths make host behavior easier to review.
 
-A successful MergeResult can have `TotalConflicts > 0`. `AutoMerged` records automatic merges. Inspect the report and test the game; Success does not certify gameplay compatibility.
+A successful MergeResult can have `TotalConflicts > 0`. `AutoMerged` records automatic merges. Inspect the report and test the game; Success does not mean the game plays correctly.
+
+`MergePatchesAsync` and `DiffService.CompareAsync` accept an optional `cancellationToken`; see [Host integration](hosting.md#cancellation).
 
 Sequential processing is a memory strategy, not an addon pipeline. For an addon requiring a base mod's output, first apply the base and then use that DATA as the addon's original.
 

@@ -53,6 +53,8 @@ if (!applied.Success)
 
 The output can include external audio groups. Test it with the corresponding runner and resources rather than assuming the main `.win` file is the whole game.
 
+Create, validate, and apply accept an optional `cancellationToken` as their last parameter. A cancelled apply keeps an existing output as it was. See [Host integration](hosting.md#cancellation).
+
 ## Normalize another input
 
 `EnsureG3MPatchAsync(originalPath, inputPath, tempDir, ..., cacheOptions)` returns a resource-patch path. `PatchInputService.MaterializeDataAsync(originalPath, inputPath, tempDir)` returns derived DATA for supported DATA/resource/binary patch inputs.

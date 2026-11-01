@@ -22,6 +22,17 @@ BeginScope routes messages for the current asynchronous operation and returns a 
 
 Global MessageLogged and ProgressReported events are available for process-wide listeners. Unsubscribe when the host listener is disposed. Prefer scopes when concurrent jobs require separate displays.
 
+## Cancellation
+
+Patch create, validate and apply, merge, diff, resource export, import and hashing, `GameMakerIO.ReadAsync` and `WriteAsync`, and project export take a `CancellationToken`. A cancelled call throws `OperationCanceledException`. What a cancelled call leaves behind depends on the operation:
+
+- Patch apply and `WriteAsync` to a path keep an existing target as it was and remove their temporary files.
+- A cancelled `G3MProjectService.Export` or `Update` leaves the project folder as it was.
+- A cancelled resource export removes what that run wrote. A cancelled import changes nothing in its input folder.
+- Moving a finished project into place and writing the project file are not interrupted.
+
+Pass the token that your Cancel button owns, and catch `OperationCanceledException` separately from real failures.
+
 ## Analysis cache
 
 ```csharp

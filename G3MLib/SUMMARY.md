@@ -6,6 +6,7 @@
 ## APIs and examples
 
 - [DATA files](data-files.md)
+- [References and renaming](references.md)
 - [Patch API](patches.md)
 - [Merge and diff](merge-and-diff.md)
 - [Resource export and import](resources.md)
