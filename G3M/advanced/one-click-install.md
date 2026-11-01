@@ -36,6 +36,10 @@ Remote Install lets you send a mod to G3M from the GameBanana website, even from
 
 1. On a GameBanana file, open the arrow next to the G3M 1-click button and choose **Enroll & Pair**.
 2. Click **Enroll**, then **Pair**. The browser opens a `g3m://gb_pair/...` link. G3M asks once whether to link this account.
-3. Choose **Remote Install** on any file. G3M checks the queue about once a minute and downloads each mod it finds, with no further prompt. The download appears in the Downloads list and installs like any other.
+3. Choose **Remote Install** on any file. G3M checks the queue about once a minute and downloads each mod it finds, with no further prompt. The download appears in the Downloads list and installs like any other. The **Refresh** button checks the queue immediately and restarts the one-minute wait.
 
-Only GameBanana files are accepted from the queue. The key is stored in G3M's settings file. If GameBanana rejects it, G3M stops checking until you pair again.
+Only GameBanana files are accepted from the queue. The key is stored in G3M's settings file.
+
+To switch to another GameBanana account, sign in to that account on GameBanana and use **Enroll & Pair** again. G3M asks the same question, and after you confirm, the new account replaces the previous one. The previous account's queue is no longer read.
+
+If GameBanana rejects the key, G3M stops checking the queue. **Refresh** tries again, and pairing again replaces the key.

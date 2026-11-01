@@ -1,6 +1,6 @@
 # Application and mod updates
 
-G3M checks online update information during startup and offers an available application update. The package is chosen for the current operating system and architecture: Windows, Linux, or macOS, with x64 or ARM64 variants.
+G3M checks online update information during startup and offers an available application update. It repeats the check when the **Refresh** button loads fresh server settings, and when it receives updated settings while it is open, so an update published after you started G3M is offered without a restart. While the game is running, the prompt waits so G3M can still restore the game's files. The package is chosen for the current operating system and architecture: Windows, Linux, or macOS, with x64 or ARM64 variants.
 
 ## Application update
 
