@@ -47,7 +47,7 @@ G3MTool patch apply original.win textures.g3mpatch patched.win
 G3MTool patch validate <patch> [--data <original>] [--cache <directory>]
 ```
 
-Validation checks the patch's structure and contents. `--data`, also `-d`, adds original-file compatibility checks. A valid archive without an original-file check does not establish that it can be applied to your game release.
+Validation checks the patch's structure and contents. `--data`, also `-d`, adds original-file compatibility checks. Without `--data`, a valid archive may still not apply to your game release.
 
 ## Merge
 

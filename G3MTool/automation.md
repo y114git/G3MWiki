@@ -63,7 +63,7 @@ DATA metadata from `info` uses keys such as `File` and `Resources`; patch manife
 
 ## Failures, conflicts, and batches
 
-A successful command returns exit code `0`; argument and tool failures return a nonzero code. `execute` returns the external program's exit status. Error output is not guaranteed to be a JSON object, so inspect the exit code before parsing stdout.
+A successful command returns exit code `0`; argument and tool failures return a nonzero code. A run stopped with Ctrl+C returns `130`. `execute` returns the external program's exit status. Error output is not guaranteed to be a JSON object, so inspect the exit code before parsing stdout.
 
 A successful merge can contain conflicts. Decide whether to accept them by checking `conflicts` and the [merge report](commands/patch.md#merge), rather than treating exit code `0` as proof that the mods agree.
 

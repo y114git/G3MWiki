@@ -20,6 +20,10 @@ CLI prompt helpers return their documented defaults or null. Supply inputs expli
 
 It still needs the matching game runner and companion files. Keep external audio groups and resources together, inspect tool warnings, and test the result in a separate installation.
 
+## How do I stop a running operation?
+
+In the CLI, press Ctrl+C while a patch apply, merge, diff, or batch run is working. The exit code is 130, existing outputs stay as they were, and temporary files are removed. In the GUI, use **Cancel**. Other commands finish on their own; do not end the process while it writes an output.
+
 ## Can I clear the cache?
 
 Yes, when no operation is using it. It stores reusable analysis, not your original DATA or mod package. The next operation rebuilds the needed analysis.

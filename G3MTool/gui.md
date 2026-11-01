@@ -41,6 +41,6 @@ Options appear only for operations that support them. Leaving the merge checkbox
 
 The progress bar and messages report the current operation. **Expand** enlarges the log view, **Save** writes its text to a file, and the Activity **Clear** action clears displayed log content without removing results.
 
-The run action is unavailable during a job. Closing the window while working waits for the operation before closing; it is not a Cancel button. Avoid terminating the process while outputs are being written.
+While a job runs, the run action is unavailable and a **Cancel** button appears. Cancel stops patch apply, merge, comparison, and batch jobs, and Activity reports **Cancelled**. A cancelled job does not leave a finished result. Closing the window during a job waits for it to end first. Avoid terminating the process while outputs are being written.
 
 Script operations can display questions, text input, and file or directory dialogs. Program arguments are passed directly, without shell interpretation. Only run trusted code.

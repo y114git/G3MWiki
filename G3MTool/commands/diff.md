@@ -15,4 +15,4 @@ G3MTool diff original.win modified.win reports --full --cache cache
 
 **JSON** prints the command result and report location in machine-readable form; the generated report remains Markdown. A successful comparison returns 0 whether or not differences exist. Diff is not a byte-equality exit-code test.
 
-Patch-to-patch comparison describes their declared and packaged resource changes. It does not prove that both patches run successfully on a particular original file.
+Patch-to-patch comparison describes their declared and packaged resource changes. It does not show whether either patch applies to a given original file.

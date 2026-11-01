@@ -30,6 +30,8 @@ Append `--help` to the command or subcommand for its arguments. Paths with space
 
 Success returns exit code 0. Tool or argument failures return a nonzero code. An external program's exit status is returned by Execute. A successful merge can still report conflicts; inspect the requested merge report.
 
+Ctrl+C cancels `patch apply`, `patch merge`, `diff`, and batch runs. Existing outputs stay untouched, temporary files are removed, and the exit code is 130.
+
 For shell and Python examples, see [Use G3MTool in scripts](../automation.md).
 
 ## Interactive prompt
