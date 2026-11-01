@@ -7,7 +7,7 @@ Choose the release package for your operating system and processor from [GitHub 
 | Operating system | Minimum requirement | Architectures |
 | --- | --- | --- |
 | Windows | Windows 10 version 1809 | x64, ARM64 |
-| Linux | glibc 2.34 | x64, ARM64 |
+| Linux | glibc 2.38 | x64, ARM64 |
 | macOS | macOS 13 | x64, ARM64 |
 
 Extract the package into a folder you can write to, and open G3M. Keep the accompanying files together. Release packages contain the application runtime; Python is not required.
