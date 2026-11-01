@@ -12,7 +12,7 @@ The feature is available for DELTARUNEdemo, UNDERTALE Yellow, Sugary Spire, and 
 4. Wait for the download and extraction to finish.
 5. Check the configured game folder and launch the installed game.
 
-The checkbox clears after the installation finishes. Download availability depends on the game package provided through G3M's online settings. A download failure does not establish that a local mod is broken.
+The checkbox clears after the installation finishes. Download availability depends on the game package provided through G3M's online settings. A download failure says nothing about your local mods.
 
 Install into a dedicated folder. If the destination already contains an installation, review the dialog and keep your own copy of files you want to preserve.
 

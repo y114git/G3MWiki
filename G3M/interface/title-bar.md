@@ -1,6 +1,6 @@
 # Title bar
 
-**Windows** opens auxiliary windows such as the log viewer and Support Packager. **Help** opens About, the changelog, and **Run Onboarding**.
+**Windows** opens auxiliary windows such as the log viewer and Support Packager. **Help** opens About, the changelog, and **Getting Started**.
 
 The window controls minimize, maximize or restore, and close G3M. Drag empty title-bar space to move the window. Double-click empty space to toggle maximization.
 

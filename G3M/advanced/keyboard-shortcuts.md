@@ -11,6 +11,6 @@
 | Double-click a DELTARUNE section tab | Toggle direct launch for that section |
 | Double-click empty title-bar space | Maximize or restore the main window |
 
-During onboarding, Enter, Right, and Left move through the tour; Escape dismisses it. **Help > Run Onboarding** reopens it.
+During onboarding, Enter, Right, and Left move through the tour; Escape dismisses it. **Help > Getting Started** reopens it.
 
 Desktop launch files are a separate feature: see [Shortcuts](../features/shortcuts.md).

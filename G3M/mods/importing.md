@@ -51,7 +51,7 @@ Select a bundled file to read TXT, Markdown, HTML, or PDF content. **Open extern
 
 **Save** validates the setup and adds the mod to the Library. **Save and configure** also opens [Mod Editor](mod-editor.md) for metadata, action order, placeholders, and compatibility. Hover over a disabled save button to read why saving is unavailable.
 
-If an XDelta or G3MPatch cannot be verified against the selected game files, saving shows a warning. Choose **Save** to keep the configuration anyway, or **Cancel** to revise it. Saving does not establish that the patch will work at launch.
+If an XDelta or G3MPatch cannot be verified against the selected game files, saving shows a warning. Choose **Save** to keep the configuration anyway, or **Cancel** to revise it. A saved patch can still fail at launch.
 
 Several dropped inputs without configuration can be collected into one manual installation. Documentation and script dependencies can remain bundled without copy operations.
 

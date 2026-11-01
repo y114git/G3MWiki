@@ -6,7 +6,7 @@ G3M needs the installation folder to find the executable and GameMaker resources
 
 Set the path in **Settings > Game**. For built-in games, G3M checks known executable names and supported layouts. Automatic detection searches supported installations; it does not find every manually moved or renamed copy.
 
-On macOS, use the game's application bundle and check that its resource files are present. GameMaker resources commonly use `.win`, `.unx`, `.ios`, or `.droid`; a file extension alone does not prove compatibility with a patch.
+On macOS, use the game's application bundle and check that its resource files are present. GameMaker resources commonly use `.win`, `.unx`, `.ios`, or `.droid`; the extension alone does not tell you whether a patch fits the file.
 
 A custom game uses the executable and data file names recorded in [Game Manager](game-manager.md).
 

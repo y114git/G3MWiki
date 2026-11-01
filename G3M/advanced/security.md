@@ -6,7 +6,7 @@ Opening an installed plugin's settings can load its module even when its working
 
 Mods can write to destinations described in their operations. Review targets outside the game folder, especially `${game_data_path}`, `${user_path}`, custom placeholders, and absolute paths. Hard copy and extraction operations can clear their destination before writing.
 
-Import validation checks format and package paths. It is not malware scanning. A one-click confirmation confirms the requested source; it does not certify the package's author or behavior.
+Import validation checks format and package paths. It is not malware scanning. A one-click confirmation shows where the file comes from. It says nothing about the author or what the package does.
 
 **Analyze Actual Launch Result** uses temporary game copies, but script execution still has local permissions. Only inspect executable content this way when you trust it.
 

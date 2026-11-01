@@ -2,7 +2,7 @@
 
 ## Can I select several mods?
 
-Yes. Put compatible changes in one step or place addons in a later step when they require another mod's output. [Priority & Steps](../mods/modpacks.md) describes the distinction. A patch applying successfully does not prove that every gameplay interaction is compatible.
+Yes. Put compatible changes in one step or place addons in a later step when they require another mod's output. [Priority & Steps](../mods/modpacks.md) describes the distinction. A patch that applies can still conflict with another mod in play.
 
 ## Why is a supported game absent from Mods Browser?
 

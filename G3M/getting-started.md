@@ -32,10 +32,10 @@ G3M attempts to locate supported installed games automatically. Set the path man
 4. Keep the normal **Launch** mode selected, and launch the game.
 5. Let G3M finish restoring files after the game closes before launching another session.
 
-For several selected mods, review [Priority & Steps](mods/modpacks.md). A dependency can require a separate step, and matching game names alone do not establish compatibility.
+For several selected mods, review [Priority & Steps](mods/modpacks.md). A dependency can require a separate step, and mods for the same game can still conflict.
 
 ## Find the main controls
 
-**Settings** controls game paths, appearance, download behavior, and the Catalog. The profile selector switches independent mod libraries. **Windows** opens auxiliary windows, including logs and the Support Packager. **Help > Run Onboarding** opens the guided tour.
+**Settings** controls game paths, appearance, download behavior, and the Catalog. The profile selector switches independent mod libraries. **Windows** opens auxiliary windows, including logs and the Support Packager. **Help > Getting Started** opens the guided tour.
 
 G3M keeps settings and mods in a separate [data directory](advanced/data-directory.md). Replacing the application package does not replace that directory.

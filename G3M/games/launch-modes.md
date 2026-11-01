@@ -46,6 +46,6 @@ Outside Chapter Mode, G3M uses the shared selection and applies each mod to the 
 
 ## Launch options and plugins
 
-Steam, Wine, and PortProton control how the game starts. They do not establish mod compatibility. Plugins can add launch options or their own actions to the menu; a plugin action follows the plugin's behavior rather than automatically running the standard launch.
+Steam, Wine, and PortProton control how the game starts. They do not change which mods work together. Plugins can add launch options or their own actions to the menu; a plugin action follows the plugin's behavior rather than automatically running the standard launch.
 
 Read [Priority & Steps](../mods/modpacks.md) when selecting multiple mods, and [restoration](../advanced/patching-process.md) before using a mode that keeps changes.

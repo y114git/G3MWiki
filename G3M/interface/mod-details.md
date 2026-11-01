@@ -6,4 +6,4 @@ Use its download action to select a file. Multiple upload files can represent di
 
 Available homepage and GameBanana actions open external pages. A Library-related action is shown when G3M identifies the upload as installed in the active profile.
 
-Screenshots and descriptions come from the online entry. Their presence does not validate the downloaded package. Review any import confirmation and check the mod's game requirement before selecting **Use**.
+Screenshots and descriptions come from the online entry. They say nothing about the package you download. Review any import confirmation and check the mod's game requirement before selecting **Use**.

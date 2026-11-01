@@ -8,7 +8,7 @@ Open the package through import. If the conversion dialog appears, configure the
 
 Use original game files matching the mod's requirements. G3M prepares a temporary game copy, applies the package's PizzaOven changes there, and builds a G3M mod from that result. The configured game folder is not used as the conversion output.
 
-The converted mod can be edited, selected in the Library, saved as a mod version, and exported. A successful conversion does not establish compatibility with other selected mods.
+The converted mod can be edited, selected in the Library, saved as a mod version, and exported. A converted mod can still conflict with other selected mods.
 
 ## CYOP and AFOM levels
 

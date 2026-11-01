@@ -8,10 +8,10 @@ Open the Game Versions control near the game selector. The dialog's game selecto
 
 Use the add control and choose **Create Game Version**. Enter a name and select the profile option:
 
-- **Without profile** saves the files currently in the configured game folder.
+- **None** saves the files currently in the configured game folder.
 - A named profile builds a snapshot with that profile's selected mods applied to a temporary copy. The real installation is not the patching output for this operation.
 
-For a clean baseline, choose Without profile while the game folder contains the clean installation. A folder that already contains kept mod changes produces a snapshot of those changes.
+For a clean baseline, choose **None** while the game folder contains the clean installation. A folder that already contains kept mod changes produces a snapshot of those changes.
 
 The game executable and configured executable override are protected from snapshot replacement. Saves outside the installation folder are not included. Keep those separately if you need a complete backup of a playthrough.
 
