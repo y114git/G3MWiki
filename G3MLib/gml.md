@@ -19,6 +19,8 @@ var text = new DecompileContext(context, code,
 Console.WriteLine(text);
 ```
 
+`DecompileContext.DecompileToSourceMap()` returns a `DecompiledSource(Text, Map)`. `SourceMap.Entries` lists every printed node with its text span and the bytecode it came from, and `SourceMap.Lines` converts offsets to line and column, so an editor can jump between text and instructions. `Disassembler.Disassemble(code, variables, locals, ignoreMissingCodeLocals, out lines)` returns a `DisassemblyLine(InstructionOffset, TextOffset, Line)` map for the assembly text. `ScriptGlobals.GetDecompiledText` wraps the decompiler for scripts.
+
 Child code entries can belong to a parent code entry; do not treat each child as an independent top-level replacement. Games without supported GML bytecode cannot provide the same decompilation/editing flow.
 
 ## Queue code changes
@@ -70,10 +72,46 @@ Use `Stage` when one failed edit should leave the whole data file untouched.
 
 ## Diagnostics and tokens
 
-The compiler reports structured diagnostics as `GmlDiagnostic` records with a severity, a code, a message, and a source span. Compile and lint fail when the compiler reports an error. `GmlTokenizer` is public, so an editor can highlight GML without compiling it.
+The compiler reports structured diagnostics as `GmlDiagnostic(Severity, Code, Message, Span, MacroName = null)` records. `Span` is a `SourceSpan` with start and end offsets, line and column, and `LineMap` converts offsets to positions. Codes are listed in [Limits and defaults](limits-and-defaults.md#compiler-diagnostics). Compile and lint fail when the compiler reports an error. A `CompileResult` has `Successful` and `Errors`; each `CompileError` has the `Code` entry, `BaseMessage`, `Diagnostic` and `GenerateDetailedMessage()`, and `PrintAllErrors(codeEntryNames)` joins them.
 
-The compiler accepts `return` directly before `}`, indexing the result of a call such as `f()[i]`, and template strings in LTS data.
+`GmlTokenizer.Tokenize(text, gms2OrLater = true)` returns `GmlToken(Kind, Span)` values, so an editor can highlight GML without compiling it.
 
-AutoCreateAssets and AutoCreateGlobalInitScripts control creation associated with new names. Ambiguous event names, including collisions, can require explicit asset setup. Do not enable speculative name-based creation for edits to unrelated existing code.
+The compiler accepts `return` directly before `}`, indexing the result of a call such as `f()[i]`, nested ternaries, chained `??`, and template strings in LTS data. An empty `#macro` does not swallow the next line.
 
-For replacement-only work, the lower-level CompileGroup provides QueueCodeReplace and Compile. Both editing interfaces require a synchronous MainThreadAction callback when the host supplies one: it must execute the supplied action before returning.
+`AutoCreateAssets` and `AutoCreateGlobalInitScripts` (both `true` by default) control creation associated with new names. Ambiguous event names, including collisions, can require explicit asset setup. Do not enable speculative name-based creation for edits to unrelated existing code. `GameMakerEventActions` (default `false`) writes new object event actions with an empty action name, as GameMaker does, instead of naming them after the code entry.
+
+For replacement-only work, the lower-level `CompileGroup` provides `QueueCodeReplace` and `Compile`. `Check(cancellationToken)` compiles without linking and changes nothing, `Compile(cancellationToken)` has a cancel point before each operation, and `PersistLinkingLookups` (default `false`) keeps string and asset lookups between compiles; leave it off unless no data changes between compiles. Both editing interfaces require a synchronous MainThreadAction callback when the host supplies one: it must execute the supplied action before returning.
+
+## Macros
+
+GameMaker expands macros while compiling, so the data file keeps no record of them. When an entry is compiled, macros declared in other code entries must be supplied:
+
+```csharp
+using G3MLib.DataFile;
+using G3MLib.DataFile.Compiler;
+
+using var input = File.OpenRead("original.win");
+using var data = GameMakerIO.Read(input);
+var group = new CompileGroup(data);
+group.AddMacros("#macro MAX_HP 100\n#macro MIN_HP 1");
+group.Macros["START_ROOM"] = "0";
+var code = data.Code!.First(entry => entry.ParentEntry is null);
+group.QueueCodeReplace(code, "var hp = MAX_HP - MIN_HP;");
+var result = group.Check();
+Console.WriteLine(result.Successful);
+```
+
+- `CompileGroup.Macros` maps a name to the GML expression it stands for. `AddMacros(gmlSource)` reads the `#macro NAME value` declarations of GML source with the compiler's lexer and adds them (a name already present is kept). Line continuations and CRLF work, and `#macro` inside comments and strings is ignored.
+- Macros declared with `#macro` in code queued in the same group are added automatically and do not override the table.
+- `CodeImportGroup.Macros` is the same table for the import interface and is copied to its compile group.
+- `CompileContext.ExternalMacros` (init-only) takes the same table for a single compile.
+- A macro applies only where its name would otherwise be read as an instance variable. A declared local of the same name, a member access such as `a.NAME`, and macros declared by the code itself take precedence.
+- A macro that names itself or grows without end is reported as an error.
+
+## Compile context
+
+`CompileContext(code, scriptKind, globalScriptName, gameContext)` is one compile of one code entry. `CompileScriptKind` is `Script`, `GlobalScript`, `RoomCreationCode`, `ObjectEvent` or `Timeline`. After `Parse()`, `Compile(initialPosition = 0)` and `Link()` it exposes `Errors`, `Diagnostics`, `HasErrors`, `Macros`, `Enums`, `OutputInstructions`, `OutputFunctionEntries`, `OutputGlobalFunctionNames` and `OutputLength`. Most hosts use `CodeImportGroup` or `CompileGroup` instead and never create one directly.
+
+## Debugger data
+
+`DebugDataGenerator.Generate(data, mode, progress = null, cancellationToken = default)` builds GameMaker 1.4 debugger data (`.yydebug`) with one source text, one debug info list and the locals of every code entry, in code list order. An entry that cannot be decompiled gets its error as a comment. `DebugDataMode` selects the source text: `Decompiled` (decompiled GML, one debug info pair per entry), `Assembler` (disassembly with a pair at stores, jumps and returns) or `FullAssembler` (a pair at every instruction). `GameMakerDebugIO.Write(stream, debugData)` saves the result, and `GameMakerDebugIO.Read` reads one.

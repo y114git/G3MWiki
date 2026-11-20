@@ -1,6 +1,6 @@
 # Theme packages
 
-A theme ZIP contains `theme_config.json` and optional media files at the package root. G3M uses the configuration to set colors and appearance options, then copies the media into its data directory.
+A theme ZIP contains `theme_config.json` (the older name `theme.json` is also read) and optional media files at the package root. G3M uses the configuration to set colors and appearance options, then copies the media into its data directory.
 
 The theme configuration version is `1.0.0`. This is separate from the mod configuration and plugin API versions.
 

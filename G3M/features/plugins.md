@@ -4,9 +4,9 @@ Plugins extend G3M with Python code, settings, panels, and launch actions. Manag
 
 ## Install and enable
 
-Select a catalog entry to read its description, author, version, API requirement, and homepage. **Install** downloads its package through [Downloads](downloads.md). Installation and enabling are separate actions.
+Select a catalog entry to read its description, author, version, API requirement, and homepage. **Download** fetches its package. Downloading and enabling are separate actions.
 
-Enable a plugin to use its operation hooks and main interface. G3M checks its API requirement and declared plugin dependencies. A required plugin must be available and enabled. Conflicting plugins cannot remain enabled together.
+Press **Use** on an installed plugin to enable it (**Unuse** disables it). An enabled plugin provides its operation hooks and main interface. G3M checks its API requirement and declared plugin dependencies. A required plugin must be available and enabled. Conflicting plugins cannot remain enabled together.
 
 A local plugin can be imported from a ZIP or folder through the plugin import workflow. The package needs `plugin_config.json`; a mod ZIP or theme ZIP is not a plugin package. Local plugins also appear in the installed list.
 
@@ -14,7 +14,7 @@ A local plugin can be imported from a ZIP or folder through the plugin import wo
 
 The plugin details dialog shows generated settings or the plugin's own settings interface. Plugin settings persist independently of the current game profile unless the plugin implements per-profile settings itself.
 
-**Update** replaces the installed package when the catalog offers a higher plugin version. **Disable** stops its enabled hooks. **Delete** removes the installed plugin package. Review any plugin-specific data or backups before deleting a plugin that manages saves or files.
+**Update** replaces the installed package when the catalog offers a higher plugin version. **Unuse** stops its enabled hooks. **Delete plugin** removes the installed plugin package. Review any plugin-specific data or backups before deleting a plugin that manages saves or files.
 
 G3M marks a plugin incompatible when it cannot use the plugin's API requirement. A broken entry includes an error rather than functioning as an enabled plugin. Check [Logs](../advanced/logging.md) for import or hook failures.
 

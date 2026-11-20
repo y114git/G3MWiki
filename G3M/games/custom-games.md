@@ -4,7 +4,7 @@ A custom game connects a GameMaker installation to G3M's Library, editor, launch
 
 ## Add an entry
 
-Open **Game Manager** and choose its add action. Fill in the game information:
+Open **Game Manager** and choose its add action (**Add custom game**). In Manual installation, the **+** button beside the game list opens the same form. Fill in the game information:
 
 | Field | Value |
 | --- | --- |
@@ -30,3 +30,5 @@ Custom entries have a game path, user-data path, executable override, mod select
 A custom game has one section. It does not provide chapter splitting, direct chapter launching, or Full Install. Adding an entry does not add support for a game engine other than GameMaker or make an unsupported DATA format readable.
 
 Hide an entry when you want to keep it without displaying it in the main selector. The delete confirmation has **Remove from registry only** and **Remove and clean related data** choices. Cleanup also removes related profile selections and saved Game Versions. It does not uninstall the game. Export any Game Versions you want to retain before choosing cleanup.
+
+When you install a G3M mod made for a game that is not set up, G3M shows **Game not added** with **Add game** and **Install manually**. **Add game** opens this form with the game's ID filled in from the mod, and the mod installs as soon as you save.

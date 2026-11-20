@@ -28,7 +28,7 @@ The [web editor](../mods/web-editor.md) uses this route after you download its Z
 
 The operating system must register G3M as the handler, and the browser can request permission to open an external application. If no application opens, use normal local import while checking that registration.
 
-`deltahub://` links are also accepted. Both schemes require review of the target and use the same download/import confirmation.
+While a game is running, G3M ignores import links and shows **The game is already running. Close it first.** `deltahub://` links are also accepted. Both schemes require review of the target and use the same download/import confirmation.
 
 ## GameBanana Remote Install
 

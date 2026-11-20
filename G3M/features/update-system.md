@@ -4,7 +4,7 @@ G3M checks online update information during startup and offers an available appl
 
 ## Application update
 
-Review the offered version and release information before starting the update. G3M downloads the package and hands over to the platform's installation or replacement process. Allow the application to close when required, and avoid updating during an active game or file operation.
+G3M asks **Want to download and install it now?** in a dialog titled **Update available**. It shows the new version, the **Current version**, and **What's new:**. Answer Yes to update (the application restarts) or No, which shows **Update declined.** Review the offered version and release information before starting the update. G3M downloads the package and hands over to the platform's installation or replacement process. Allow the application to close when required, and avoid updating during an active game or file operation.
 
 On Windows, the update can start the supplied installer. On Linux and macOS, it stages the release contents for replacement and restart. Write permission to the installation is required.
 
@@ -13,6 +13,8 @@ On Windows, the update can start the supplied installer. On Linux and macOS, it 
 If automatic update fails, download the appropriate release package from [GitHub](https://github.com/y114git/G3M/releases). Keep the separate G3M data directory when replacing application files.
 
 ## Mod updates
+
+The **Update mods (N)** button in the Library opens **Update Mods**. Choose the **Profile:**; G3M checks GameBanana and lists **Available updates**. Tick the mods to update and press **Update selected**. **Update the current version directly** skips saving the old files to Mod Versions. Mods that download but need manual setup are reported for Downloads. **Close** shuts the dialog.
 
 GameBanana-backed mods can be checked for available updates. **Settings > Library > Update Mods** controls automatic checks, their scope, and whether the update control is visible.
 

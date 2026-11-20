@@ -1,12 +1,12 @@
 # Launch modes
 
-The menu beside the main launch action selects what G3M does with the applied mod files.
+The arrow beside the main action button opens a menu that selects what G3M does with the applied mod files. The menu also holds the **Launch via Steam** checkbox and any options or actions added by plugins. The choice is saved and used by shortcuts.
 
-| Mode | Starts the game | Restores files when the game closes |
+| Menu item | Starts the game | Restores files when the game closes |
 | --- | --- | --- |
-| Launch | Yes | Yes |
-| Launch and keep changes | Yes | No |
-| Patching only | No | No |
+| **Launch** | Yes | Yes |
+| **Launch and keep changes** | Yes | No |
+| **Launch patching only** | No | No |
 
 The latter two modes ask for confirmation because they leave mod changes in place. Use a separate game installation when producing a patched copy or testing persistent changes.
 
@@ -30,17 +30,17 @@ If a download fails or needs manual setup, finish its installation in Downloads 
 
 Mod authors define these conditions in [mod_config.json](../mods/mod-config.md#dependencies-and-conflicts). You can inspect and edit the selection in [Priority & Steps](../mods/modpacks.md).
 
-## Launch and keep changes
+## Launch and keep changes (**Launch and keep changes**)
 
 G3M applies the selected mods and starts the game, then keeps their changes after exit. Use this mode only when you intend to keep the patched installation. A later launch starts from the files that are currently on disk.
 
-## Patching only
+## Patching only (**Launch patching only**)
 
 G3M applies the selection without starting the game. The resulting files stay in the installation. This mode is useful for creating a patched copy to inspect or run separately.
 
 ## Chapter selection
 
-In DELTARUNE **Chapter Mode**, sections have independent mod selections and steps. The direct-launch selector chooses the section to open rather than the normal game startup screen. Direct chapter launching and Steam launching cannot be combined for DELTARUNE.
+In DELTARUNE **Chapter Mode**, sections have independent mod selections and steps. Double-click a chapter tab to turn direct launch on or off for it; the game then opens on that chapter instead of the main menu. Direct launch is not available for the Main Menu tab. Direct chapter launching and Steam launching cannot be combined for DELTARUNE.
 
 Outside Chapter Mode, G3M uses the shared selection and applies each mod to the sections it supports.
 
@@ -49,3 +49,7 @@ Outside Chapter Mode, G3M uses the shared selection and applies each mod to the 
 Steam, Wine, and PortProton control how the game starts. They do not change which mods work together. Plugins can add launch options or their own actions to the menu; a plugin action follows the plugin's behavior rather than automatically running the standard launch.
 
 Read [Priority & Steps](../mods/modpacks.md) when selecting multiple mods, and [restoration](../advanced/patching-process.md) before using a mode that keeps changes.
+
+## Changed game files after a session
+
+If game files changed after G3M applied the mods, for example because another program edited them, G3M does not overwrite them silently. A **Patching Warning** dialog offers **Force restore**, which restores the backup, and **Keep external changes**, which leaves the files as they are and removes the leftover backup. Closing the dialog keeps the files. Choosing **Keep external changes** does not block the next launch. If a restore fails, G3M reports **Could not restore game files from the previous mod session** and does not start the game; the recovery backup is kept. G3M clears the read-only flag on files and folders that Windows marked read-only before it restores them.

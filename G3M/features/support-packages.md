@@ -2,6 +2,10 @@
 
 Open **Windows > Support Packager** to save diagnostic information to a local ZIP. Building a package does not upload it.
 
+![Support Packager](../images/support-packager.png)
+
+The window has the groups below, **Log range**, **Custom package settings**, **Cancel**, and **Build**.
+
 ## Choose contents
 
 With **Custom package settings** disabled, every available item is included. Enable it to select individual items, especially when collecting a report to share.

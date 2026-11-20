@@ -6,7 +6,9 @@ Game paths, appearance, plugin settings, downloads, and saved Game Versions are 
 
 ## Switch or create
 
-Use the main window's profile selector to switch. **Profile Manager** provides these actions:
+Use the main window's profile selector to switch. **Profile Manager** (the button beside the profile selector) has icon buttons whose tooltips are **Create Profile**, **Duplicate Profile**, **Rename Profile**, **Delete Profile**, **Export**, and **Import**. Each row has a **Use** button, and **Close** shuts the dialog. The actions:
+
+![Profile Manager with one profile](../images/profiles-manager.png)
 
 | Action | Result |
 | --- | --- |

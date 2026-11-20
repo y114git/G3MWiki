@@ -31,4 +31,8 @@ Diff writes a Markdown report under `reports/`. Resource patching can reconstruc
 
 A `.g3mpatch` is a patch, not a complete Library mod. Put it into a mod package with `mod_config.json`, or import the patch into G3M and configure its destination. See [creating mods](../G3M/mods/creating-mods.md).
 
-Use explicit output paths. Several commands default to files next to the executable, and apply can use the original file's basename there. An explicit separate output avoids accidentally choosing an original as your destination.
+Use explicit output paths. Several commands default to files next to the executable, and apply uses the original file's name there. An explicit separate output avoids accidentally choosing an original as your destination. See [Default output locations](commands/README.md#default-output-locations).
+
+## Use the graphical application
+
+Start `G3MToolGUI.exe` (Windows) or `G3MToolGUI` (Linux and macOS), keep **Create a patch** selected, fill **Original data**, **Modified input**, and **Output patch**, and press **Create patch**. Progress and results appear in Activity. See the [GUI guide](gui.md).

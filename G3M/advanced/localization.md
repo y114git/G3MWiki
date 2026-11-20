@@ -6,7 +6,7 @@ Choose the interface language in **Settings > General > Language**. The main win
 
 G3M reads `lang/lang_<code>.json` under its data directory. Start with a copy of the English file so you have the actual keys and formatting placeholders.
 
-For a separate translation, use a distinct code such as `lang_example.json`. Its `metadata` can specify `language_name`, `qt_translation`, and `font`. A font path is relative to the language file's folder.
+For a separate translation, use a distinct code such as `lang_example.json`. Its `metadata` can specify `language_name` (default: the code in capitals), `qt_translation` (default `qtbase_<code>`), and `font`. The underscore form (`_language_name`, `_qt_translation`, `_font`) takes priority and survives synchronization. A font path is relative to the language file's folder.
 
 Example fragment showing the structure:
 

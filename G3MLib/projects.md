@@ -29,6 +29,8 @@ A full `Export` writes every resource into the project folder: `sprites`, `rooms
 
 ### Delta projects and updates
 
+The project file and folder layout are described in [Project format](project-format.md). Moving the staging folders into place is retried for a short time when a virus scanner or sync tool holds fresh files, so such tools do not fail an export.
+
 Set `Mode = ProjectExportMode.Delta` and list the resources to write in `Only` (resource names per type, for example `"Sprites"`). Types missing from `Only` are skipped. `Deleted` records resources to remove from the game on build.
 
 `G3MProjectService.Update` writes only the resources named in `Only` into an existing project folder, with the same files a full export writes for them. A rename then needs the renamed resource and the resources that refer to it, not a full export. Folders of other resources keep their recorded hashes, so a file you edited by hand still counts as changed on the next build. `Update` throws `ProjectException` when the folder has no project file with that name.
@@ -68,6 +70,10 @@ Mark selected IProjectAsset resources with MarkAssetForExport, then call `Export
 Code-source edits use TryGetCodeSource and UpdateCodeSource. RecompileAllCodeSources compiles the project's edited source into its DATA context. Inspect compilation errors before writing game output.
 
 The example writes a project containing the changed room. It does not write `output/edited.win` during export.
+
+`ExportAll()` marks and exports every exportable asset and records full mode in the project's main file. `ExportMode` reports the recorded mode (`Full` or `Delta`; a project without a record is `Delta`). `Warnings` lists non-fatal problems found while importing, such as a base data file that differs from the one the project was exported from, and `ScriptWarningHandler` receives them too. This layout cannot hold some data (the library, kind, apply-to, relative and argument settings of object event actions other than code actions, room layer effect flags, and sprite texture page rectangles), so a warning says so. Use the [g3mproj format](project-format.md) to keep it all. `HasUnexportedAssets` and the `UnexportedAssetsChanged` event report the pending set. `Name`, `Flags`, `LoadDirectory`, `SaveDirectory`, `LoadDataPath`, `SaveDataPath`, `MainFilePath` and `MainDirectory` describe the project.
+
+Set `AllowScripts = false` before importing a project from an untrusted source: a project that declares scripts then fails with a `ProjectException` instead of running them. It is `true` by default. Sub-projects listed in the project's options are imported with contexts that inherit the setting, so their scripts are refused too. They also use the script message and warning handlers of the project that lists them.
 
 ## Import a project
 
@@ -150,7 +156,9 @@ An ExternalFiles entry uses a direct path pair, for example `{"Source": "extras/
 
 ## Script interaction
 
-ProjectContext provides ScriptMessageHandler and ScriptWarningHandler for text output. Its default script interface does not open URLs or application dialogs. ScriptQuestion returns false; interactive prompts and ScriptOpenURL report that UI is unavailable.
+Scripts that a project declares run through `ScriptRunner` with a `ScriptGlobals` whose `Data`, `Project`, `MainThreadAction`, message and warning handlers and script root come from the `ProjectContext`. See [Scripts and ScriptGlobals](script-globals.md).
+
+ProjectContext provides ScriptMessageHandler and ScriptWarningHandler for text output. Its default script interface does not open URLs or application dialogs. ScriptQuestion returns false; interactive prompts and ScriptOpenURL report that UI is unavailable. Inside a project script, the short form `ScriptInputDialog(title, label, defaultInput, allowMultiline, showDialog)` returns the default when `showDialog` is false.
 
 A host needing dialogs must supply an appropriate IScriptInterface scripting environment. Do not assume G3MTool CLI defaults apply to ProjectContext: they are different hosts.
 

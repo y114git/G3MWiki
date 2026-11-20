@@ -1,70 +1,132 @@
 # Use G3MTool in scripts
 
-Run the CLI with explicit input and output paths. Check its exit code before consuming a result. Commands accept arguments directly; the interactive prompt is not needed for automation.
+Run the CLI with explicit input and output paths, and check its exit code before using a result. Commands take their arguments directly; the [interactive prompt](commands/README.md#interactive-prompt) is not needed. Use `G3MTool.exe` on Windows and `./G3MTool` on Linux and macOS.
 
-## Read a JSON result in PowerShell
+## Exit codes
 
-This example creates a resource patch and reads the output path from the result:
+| Code | Meaning |
+| --- | --- |
+| `0` | Success. A merge with conflicts also returns `0` |
+| `1` | Failure of the command, invalid arguments, or a failed batch item |
+| `130` | Cancelled with Ctrl+C |
+| other | `execute` with a program returns that program's exit code |
+
+## JSON results
+
+Add `--json` to get one JSON object on stdout and no progress text. Informational output is not printed, so stdout can be parsed as is. Keep stderr separate. One exception: when `info --json` cannot read a patch manifest, it prints a text warning and basic patch details instead of JSON and still exits with `0`. Do not assume that stdout is JSON from the exit code alone; parse it inside a try block.
+
+| Command | Fields |
+| --- | --- |
+| `patch create` | `success`, `command`, `original`, `modified`, `output`, `xdeltaFallback`, `statistics`, `warnings`. With `--xdelta`: `success`, `command`, `output`, `details.format`, `warnings` |
+| `patch apply` | `success`, `command`, `output`, `details` (`inputKind`, `data`, `patch`, `xdeltaFallback`), `warnings` |
+| `patch validate` | `success`, `command`, `patch`, `data`, `tool`, `createdAt`, `original`, `modified`, `statistics`, `applyPlan`, `resourceTypes`, `warnings` |
+| `patch merge` | `success`, `command`, `original`, `patches`, `output`, `applied`, `conflicts`, `autoMerged`, `warnings` |
+| `patch batch ...` | `success`, `command`, `total`, `completed`, `failed`, `deduplicated`, `items` |
+| `xpatch create`, `xpatch apply` | `success`, `command`, `output`, `details.format`, `warnings` |
+| `execute` (script) | `success`, `command`, `script`, `data`, `saved`, `exportDirectory`, `warnings` |
+| `execute` (program) | `success` (program exit code is 0), `command`, `program`, `exitCode`, `output`, `error`, `warnings` |
+| `execute xdelta` | `success`, `command`, `output`, `warnings` |
+| `diff` | `success`, `command`, `mode`, `file1`, `file2`, `output`, `differences`, `changed`, `new`, `deleted`, `textDiffs`, `byType`, `warnings` |
+| `info` | DATA: `File`, `Size`, `Game`, `BytecodeVersion`, `Version`, `GeneralInfo`, `Resources`. Patch: the manifest. No `success` field |
+
+A failure of G3MTool itself in `patch`, `xpatch`, `execute`, and `diff` (including `execute` failing to start a program) prints `{"success":false,"command":"<name>","error":"<message>"}` and exits with `1`. A program started by `execute` that exits with a nonzero code is not a G3MTool failure: the result is the program object above with `success` set to `false` and its `exitCode`, and G3MTool exits with that same code. `info` errors are text on stderr. Argument errors (missing argument, unknown option) and failures found before a batch starts are text, not JSON; always check the exit code first.
+
+## PowerShell
 
 ```powershell
-$resultText = & .\G3MTool.exe patch create original.win modified.win output.g3mpatch --json
-if ($LASTEXITCODE -ne 0) {
-	throw "Patch creation failed. See the command's error output."
-}
-$result = ($resultText -join "`n") | ConvertFrom-Json
-if (-not $result.success) {
-	throw "G3MTool reported an unsuccessful result."
-}
-$result.output
+$text = & .\G3MTool.exe patch create original.win modified.win out\change.g3mpatch --json
+if ($LASTEXITCODE -ne 0) { throw "patch create failed: $text" }
+$result = ($text -join "`n") | ConvertFrom-Json
+"{0} changed, {1} new, {2} deleted" -f $result.statistics.totalChanged, $result.statistics.totalNew, $result.statistics.totalDeleted
 ```
 
-Use the executable name and path from your release package. Keep stderr visible or capture it separately; do not merge it into the JSON text.
+Check a patch and stop on a hash mismatch:
 
-## Apply a patch from Python
+```powershell
+$v = (& .\G3MTool.exe patch validate change.g3mpatch --data original.win --json) | ConvertFrom-Json
+if (-not $v.success) { throw "invalid patch" }
+if ($v.original.md5 -ne (Get-FileHash original.win -Algorithm MD5).Hash.ToLower()) { throw "wrong original" }
+```
 
-An argument list preserves paths containing spaces without shell quoting:
+## Batch file
+
+```bat
+@echo off
+G3MTool.exe patch apply original.win change.g3mpatch out\patched.win
+if errorlevel 1 (
+  echo Apply failed
+  exit /b 1
+)
+```
+
+## Bash
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+./G3MTool patch create original.win modified.win out/change.g3mpatch --json > result.json
+./G3MTool patch apply original.win out/change.g3mpatch out/patched.win
+./G3MTool info out/patched.win --json | python3 -c 'import json,sys; print(json.load(sys.stdin)["Game"])'
+```
+
+With `set -e`, a nonzero exit code stops the script. Handle `130` (Ctrl+C) explicitly if you need to clean up:
+
+```bash
+code=0
+./G3MTool patch merge original.win a.g3mpatch b.g3mpatch --apply out/merged.win || code=$?
+if [ "$code" -eq 130 ]; then
+  echo "cancelled"
+  # remove files of your own here
+fi
+exit "$code"
+```
+
+## Python
+
+An argument list keeps paths with spaces intact:
 
 ```python
 import json
 import subprocess
 
-result = subprocess.run(
-	["./G3MTool", "patch", "apply", "original.win",
-	 "textures.g3mpatch", "output/patched.win", "--json"],
-	check=True,
-	capture_output=True,
-	text=True,
+run = subprocess.run(
+    ["./G3MTool", "patch", "apply", "original.win", "textures.g3mpatch", "output/patched.win", "--json"],
+    capture_output=True, text=True,
 )
-payload = json.loads(result.stdout)
-if not payload["success"]:
-	raise RuntimeError(payload)
-print(payload["output"])
+if run.returncode != 0:
+    raise RuntimeError(run.stdout or run.stderr)
+print(json.loads(run.stdout)["output"])
 ```
 
-On Windows, use `G3MTool.exe`. `check=True` raises `CalledProcessError` on a nonzero exit code; its `stderr` contains the captured error output.
+## Continuous integration
 
-## Command-specific output
+A GitHub Actions step on a Linux runner (download the release archive for your platform first, and keep original DATA files outside the repository):
 
-`--json` does not impose one schema on every command:
+```yaml
+- name: Check patch
+  run: |
+    chmod +x ./G3MTool
+    ./G3MTool patch validate patches/change.g3mpatch --json
+    ./G3MTool patch apply "$ORIGINAL_DATA" patches/change.g3mpatch out/patched.win
+    ./G3MTool diff "$ORIGINAL_DATA" out/patched.win reports --json
+- uses: actions/upload-artifact@v4
+  with:
+    name: diff-report
+    path: reports/
+```
 
-| Command | Result to inspect |
-| --- | --- |
-| `patch create` | `success`, `output`, `statistics`, and `warnings`. |
-| `patch apply` | `success`, `output`, `details`, and `warnings`. |
-| `patch validate` | `success`, compatibility data, and `warnings`. Use `--data` to check an original. |
-| `patch merge` | `success`, `output`, `applied`, `conflicts`, `autoMerged`, and `warnings`. |
-| `patch batch` | `success`, `total`, `completed`, `failed`, `deduplicated`, and per-job `items`. |
-| `diff` | `success`, the report's `output`, and counts such as `differences`, `changed`, `new`, and `deleted`. |
-| `info` | DATA metadata or the patch manifest itself. These objects do not have the patch-command `success` wrapper. |
+`patch validate` returning `0` does not prove that the patch applies to a given original; the apply step does. `diff` returns `0` whether or not differences exist, so read `differences` from its JSON when a build should fail on changes.
 
-DATA metadata from `info` uses keys such as `File` and `Resources`; patch manifests use keys such as `original`, `modified`, and `resources`. Treat the selected command and input type as part of your parser's contract.
+## Conflicts and batches
 
-`xpatch` and `execute` do not provide these JSON results. An executed program can write its own stdout.
+A merge that finds conflicts still exits with `0`. Read `conflicts` in the JSON result or the report. A report named `<output>.merge_log.md` is written automatically when conflicts exist; `--report <path>` chooses the location. See [patch merge](commands/patch.md#merge).
 
-## Failures, conflicts, and batches
+`patch batch` runs jobs in order and stops at the first failed item unless `--continue-on-error` is set. With it, later jobs still run, and the exit code is `1` when any item failed. Read `items[].success` and `items[].error` for each job. Jobs that repeat an identical `.g3mpatch` input are copied, not recomputed (`deduplicated`).
 
-A successful command returns exit code `0`; argument and tool failures return a nonzero code. A run stopped with Ctrl+C returns `130`. `execute` returns the external program's exit status. Error output is not guaranteed to be a JSON object, so inspect the exit code before parsing stdout.
+## Cancel and timeouts
 
-A successful merge can contain conflicts. Decide whether to accept them by checking `conflicts` and the [merge report](commands/patch.md#merge), rather than treating exit code `0` as proof that the mods agree.
+Ctrl+C returns `130` and leaves existing outputs unchanged. `execute` accepts `--timeout <seconds>` for scripts (exit code `1`, message `Script timed out after <hh:mm:ss>.`). xdelta calls made by G3MTool stop after 5 minutes. A program started with `execute` has no timeout from G3MTool; use the timeout of your CI system.
 
-`--continue-on-error` lets a batch run its remaining jobs after a failure. It does not turn the failed batch into a successful one. Keep successful outputs if needed, but report failed jobs to the caller.
+## Logs
+
+`--log <file>` writes a timestamped log (overwritten each run), also with `--json`. `--log default` writes `logs/<command>_<yyyyMMdd_HHmmss>.log` next to the executable, which can be read-only in some installs; pass an explicit path in CI.

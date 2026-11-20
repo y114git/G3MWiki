@@ -8,7 +8,7 @@ Choose **Create Mod** for an empty package or **Edit Mod** to open a G3M ZIP, De
 
 Supported G3M input configurations are converted into `mod_config.json 2.0.0`. Deltamod packages can contain JSON or TOML metadata and `Modding.XML` instructions. An ordinary ZIP or individual file starts a new mod with an empty configuration and its contents already bundled. Opening a configuration file alone does not include the files it references; add those files before exporting.
 
-The editor has **Metadata**, **Compatibility**, **Files**, **Placeholders**, and **Help** tabs. The [desktop editor guide](mod-editor.md) explains the corresponding configuration values.
+The editor has **Metadata**, **Compatibility**, **Files**, **Placeholders**, and **Help** tabs. The start page also offers **Download G3M (Recommended)**. Under the editor, **View mod_config.json** shows the file that will be written. The [desktop editor guide](mod-editor.md) explains the corresponding configuration values.
 
 ## Add files and actions
 
@@ -23,11 +23,11 @@ You can drop files or folders anywhere in the editor to bundle them. More specif
 | Placeholder path | Add one file or folder and use its package path. |
 | Source hash or target hash | Calculate the dropped file or folder's checksum without adding it to the ZIP. |
 
-Drag a bundled file onto a path or hash field to reuse it. Hover another tab during the drag to open that tab. Operations can also be dragged to reorder them or move them into groups; arrow controls provide the same ordering action without dragging.
+Drag a bundled file onto a path or hash field to reuse it. Hover another tab during the drag to open that tab. Operations are reordered or moved into groups by dragging only. With a row focused, the Up, Down, Home, and End keys select and focus another row but do not move the operation; there is no keyboard command for reordering.
 
 **Browse bundled ZIP** selects a file or folder within a ZIP already included in the package. A source hash can use that member's extracted contents. Hashes for members of other archive formats require desktop G3M.
 
-Choose the game from the list. **Custom game ID** lets you type the ID of a custom game instead, for example the one shown in G3M's [Game Manager](../games/game-manager.md). Author names use one line per author in the web editor. The mod ID is editable and follows the [ID rules](mod-config.md#top-level-fields). Keep the ID unchanged when editing a published mod.
+The **Files** tab has **Add operation**, **Add group**, and **Remove** (a group asks for confirmation). Tick **Include source hash** or **Include target hash** to store a checksum; **Calculate source hash** hashes the source, and **Calculate from original target file** hashes a file you pick. Choose the game from the list. **Custom game ID** lets you type the ID of a custom game instead, for example the one shown in G3M's [Game Manager](../games/game-manager.md). The game-specific tags **CYOP/AFOM** (Pizza Tower) and **FB-Addon** (FRICKBEARS3) are offered only for their game, or when already set. Author names use one line per author in the web editor. The mod ID is editable and follows the [ID rules](mod-config.md#top-level-fields). Keep the ID unchanged when editing a published mod.
 
 ## Save ZIP
 

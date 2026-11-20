@@ -7,8 +7,8 @@ The **Shortcut** action saves the current game, profile, selected mods, section 
 1. Configure the game path and select the intended profile.
 2. Select the mods and review **Priority & Steps**.
 3. Set Chapter Mode, direct section launch, Steam, or PortProton where applicable.
-4. Click **Shortcut** and review the summary.
-5. Choose whether plugin actions are included, and fill in any controls contributed by plugins.
+4. Click **Shortcut**. The **Create Shortcut** dialog summarizes the **Game**, **Mod** (**Vanilla (no mods)** when none is selected), **Launch method**, and **Direct launch**.
+5. Choose whether plugin actions are included (**Disable plugins actions**), and fill in any controls contributed by plugins.
 6. Save the launcher file.
 
 Shortcut files use `.vbs` on Windows, `.command` on macOS, and `.sh` on Linux. G3M makes the Unix launcher executable. Run only shortcut files whose contents and origin you trust.
@@ -20,3 +20,5 @@ The shortcut refers to the local G3M installation, profile, mod IDs, and install
 Shortcuts support several mods within a step as well as several steps. The saved selections remain tied to the referenced mod IDs; editing those mods changes the files used by the shortcut. Removing a mod or moving the G3M executable can make the shortcut unusable.
 
 Create another shortcut after changing the setup you want it to represent. For failures, inspect the shortcut log in the [logs directory](../advanced/logging.md).
+
+The shortcut uses the launch mode selected in the menu beside the main action button. After saving, G3M shows **Shortcut created:** with the path.

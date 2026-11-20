@@ -13,6 +13,6 @@ The main window has **Mods Browser**, **Library**, and **Settings** views. Setti
 
 ## Top bar
 
-The bar under the title holds **Settings**, the **Refresh** button, and the online counter. **Refresh** reloads the Library and the Mods Browser list, rereads the themes and, when Settings shows the Catalog, the catalog. It also fetches the server settings again, so a new announcement or an application update that was published while G3M was open appears, and it checks the GameBanana Remote Install queue at once instead of waiting for the next minute. Refresh does nothing while a refresh is already running.
+The bar under the title holds **Settings**, the **Refresh** button, the **Online: N** counter, and icon buttons for **BOOSTY**, **TELEGRAM**, and **DISCORD**. **Refresh** reloads the Library and the Mods Browser list, rereads the themes and, when Settings shows the Catalog, the catalog. It also fetches the server settings again, so a new announcement or an application update that was published while G3M was open appears, and it checks the GameBanana Remote Install queue at once instead of waiting for the next minute. Refresh does nothing while a refresh is already running.
 
 Hover an icon to read its tooltip. Use **Tab** to move keyboard focus and **Enter** or **Space** to activate a focused control. [Scaling](scaling.md) changes interface size; [appearance](../customization/README.md) controls colors, font, and media.

@@ -27,8 +27,8 @@ G3M attempts to locate supported installed games automatically. Set the path man
 ## Install and play a mod
 
 1. Find a mod in **Mods Browser**, open its details, and select a download. Alternatively, drop a mod archive or folder into the Library.
-2. Complete the import dialog. Files without a G3M configuration require you to specify the game and intended file operations.
-3. Open **Library**, locate the imported mod, and click **Use**.
+2. Complete the import dialog. Files without a G3M configuration open **Manual Mod Installation**. G3M first scans them and, when it can set up every file itself, installs the mod without opening the window (turn this off with **Always install through Manual installation** in **Settings > Mods Browser**).
+3. Open **Library**, locate the imported mod, and click **Use**. With **Use a mod right after it is installed** enabled, the mod is already on.
 4. Keep the normal **Launch** mode selected, and launch the game.
 5. Let G3M finish restoring files after the game closes before launching another session.
 
@@ -36,6 +36,21 @@ For several selected mods, review [Priority & Steps](mods/modpacks.md). A depend
 
 ## Find the main controls
 
-**Settings** controls game paths, appearance, download behavior, and the Catalog. The profile selector switches independent mod libraries. **Windows** opens auxiliary windows, including logs and the Support Packager. **Help > Getting Started** opens the guided tour.
+**Settings** controls game paths, appearance, download behavior, and the Catalog. The profile selector switches independent mod libraries. **Windows** opens **Log Viewer** and **Support Packager**. **Help** has **Changelog**, **Getting Started** (the guided tour), and **About**.
+
+![The main window with the Library open](images/getting-started-main-window.png)
+
+1. **Windows** and **Help**.
+2. **Settings**.
+3. The **Mods Browser** and **Library** tabs.
+4. The profile and game selectors.
+5. **Shortcut**, the main action button, and **Community**.
+
+**Help > Getting Started** opens the guided tour. It shows a numbered step, here step 1 of 25, and changes nothing in G3M.
+
+![The first step of the guided tour](images/getting-started-tour.png)
+
+1. **Skip** ends the tour.
+2. **Next** moves to the next step. **Back** returns to the previous one.
 
 G3M keeps settings and mods in a separate [data directory](advanced/data-directory.md). Replacing the application package does not replace that directory.

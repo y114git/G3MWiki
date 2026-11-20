@@ -18,6 +18,6 @@ A theme package calls the image `custom_logo.<extension>`. The catalog can use a
 
 ## Border radius
 
-**Border Radius** controls corner rounding, from 0 to 999 pixels in the settings interface. A value of 0 gives square corners. The rendered radius is limited by the size of each control.
+**Border Radius** controls corner rounding, from 0 to 999 pixels in the settings interface. A value of 0 gives square corners. The default is 7. The rendered radius is limited by the size of each control.
 
 Corner rounding does not change the outline's thickness. The standard theme-export field is `custom_border_radius`.

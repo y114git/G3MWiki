@@ -4,7 +4,22 @@ Identify the stage that fails before changing settings: startup, download, impor
 
 ## G3M does not start
 
-Check the [OS and architecture requirements](../getting-started.md) and keep release files together. If a configured data drive is unavailable, use the startup choices to retry or select an accessible location.
+Check the [OS and architecture requirements](../getting-started.md) and keep release files together. The Linux builds need glibc 2.38 or newer (Ubuntu 24.04, Debian 13, Fedora 39); on older systems G3M does not start.
+
+A startup failure shows a dialog titled **G3M** and is also appended to `g3m-startup-error.log` in the system temporary folder (readable by its owner only) and to `logs/g3m.log`. Each file is written only when its location is writable.
+
+| Message | Cause and action |
+| --- | --- |
+| Failed to initialize: ... | The data folder, log file, or temporary cleanup failed. Check the text after the colon: usually a read-only or full drive. Fix it or choose another [data location](data-directory.md). |
+| Another G3M window is open but did not answer. | A running G3M does not respond. Close it from the task manager and start again. |
+| Another G3M instance holds the startup lock. | A second start waited 30 seconds for the first one. Wait for it to finish starting or close it. |
+| Could not prepare the single-instance lock: ... | G3M cannot create the data folder. Check permissions and free space. |
+| Could not acquire the single-instance lock: ... | The lock file `g3m.instance.lock` cannot be written. Check the folder permissions. |
+| G3M data location unavailable | The custom data folder is missing or not writable. Choose **Try again** after reconnecting the drive, **Choose another folder**, or **Use default location**. |
+| Startup Error: An error occurred during startup: ... | The main window failed to build. Send `logs/g3m.log`. |
+| Main window did not become visible. | Same as above; the startup watchdog gave up. |
+
+`G3M --force-start` skips only the check for an already running game process at startup.
 
 Check whether G3M is already running. Do not delete session state to force a second instance. If a custom appearance asset or plugin is implicated, back up the data directory before making local changes.
 
@@ -22,7 +37,7 @@ For an invalid `mod_config.json`, compare the error with the [configuration refe
 
 ## A patch fails
 
-Use the original game version required by the mod. Binary patches often need exact original bytes. Check that another mod is not in the same step when the patch expects its already-applied result.
+If the message says **The patch ... does not fit the game file**, the patch was made for another game version, or for an original file that another mod already changed. Put mods that patch the same file into one step, or install the matching game version. Use the original game version required by the mod. Binary patches often need exact original bytes. Check that another mod is not in the same step when the patch expects its already-applied result.
 
 Run Diagnostics with a smaller selection. Verify G3MTool and xdelta paths if overridden, and inspect the patching log for the first tool error rather than just the final failure message.
 

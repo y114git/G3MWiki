@@ -17,13 +17,13 @@ An item shows its icon, name, description, author, version, and tags. The availa
 
 ## Plugins
 
-Use **Install** to download and install a package. Enable it separately. Use **Update** when an update is available, or **Delete** to remove its installed files. Local plugin packages can also appear in the installed list.
+Each plugin card has **Details** and **Download**, and badges **Enabled**, **Incompatible**, or **Local** (a plugin that exists only in the local plugins folder). Installed plugins show **Use** or **Unuse** to enable or disable them. In **Details**, use **Update** when an update is available, **Delete plugin** to remove its installed files, **Open Homepage**, and **Plugin Settings**. A plugin that needs a newer Plugin API shows **Update G3M recommended**; **Download anyway** continues. Local plugin packages can also appear in the installed list.
 
 See [Plugins](plugins.md) for API compatibility, dependencies, and the difference between loading and enabling code.
 
 ## Themes
 
-Use **Install** to save a theme package, **Apply** to use an installed theme, and **Delete** to remove its saved package. Installation does not require applying the theme immediately.
+Use **Download** to save a theme package, **Apply** to use an installed theme, and **Delete** to remove its saved package. Download does not require applying the theme immediately.
 
 Installed themes also remain available in **Settings > Appearance**. Deleting a saved theme package does not itself undo the appearance already applied to G3M. Apply another theme or reset the relevant appearance controls to change that appearance.
 

@@ -19,6 +19,18 @@ If the package also contains a `mod_versions/` folder, G3M asks which of its ver
 
 If a G3M mod is made for a game that G3M does not know, whether from a file, a link or the Mods Browser, G3M asks what to do before installing. **Install manually** treats the mod as a regular archive. **Add game** opens the custom game dialog with the game ID taken from the mod's `game` field and, for GameBanana downloads, the GameBanana game ID filled in. Enter the display name, the executable name and the data file name (a Steam App ID is optional), and the mod is installed as soon as the game exists. A game that was added earlier with the same ID needs no question.
 
+## Automatic installation of downloads
+
+When a download needs Manual installation, G3M first runs the automatic scan hidden. If every file gets an action and a destination, the mod goes straight to the Library without opening the window. Otherwise the download stays in **Downloads** as **Manual Install Required**, and the reason is written to the log as `Automatic installation declined: ...` (no game folder set, files not set up, no file that changes the game, or a detection error). Pizza Oven packages are offered a conversion instead.
+
+Three checkboxes in **Settings > Mods Browser > Downloads** control this:
+
+| Checkbox | Default | Effect |
+| --- | --- | --- |
+| **Always install through Manual installation** | Off | On: the window always opens. |
+| **Mark documents as info files automatically** | On | The scan sets `.md`, `.markdown`, `.html`, `.htm`, `.pdf`, and `.txt` files as info files. |
+| **Use a mod right after it is installed** | Off | A new mod is turned on at once, without selecting it and pressing **Use**. |
+
 Keep the original archive if you need an untouched copy. The installed mod uses the [current configuration format](mod-config.md).
 
 ## Files without configuration

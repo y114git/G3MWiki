@@ -10,6 +10,19 @@
 | Online count | Session presence requests to the G3M service |
 | Discord Rich Presence | Activity handoff to the local Discord client |
 
+## Endpoints
+
+| Service | Address |
+| --- | --- |
+| GameBanana API | `https://gamebanana.com/apiv11`, including the Remote Install queue at `/RemoteInstall/<member id>/<key>/<app id>` (read every 60 seconds) |
+| GameBanana downloads and images | `https://gamebanana.com/dl/<file id>`, `https://images.gamebanana.com/img/ss/...` |
+| GameBanana feeds | `https://api.gamebanana.com/Rss/<feed>?gameid=<id>` |
+| Catalog and G3M Verified list | `https://raw.githubusercontent.com/y114git/G3M/main/catalog/{plugins,themes,mods}/{plugins,themes,mods}.json` |
+| G3M online service | `getGlobalSettings` (updates and announcements), `submitAnnouncePoll`, `getClientState`, `presenceHeartbeat` under the service address built into the release |
+| Connectivity check | `http://connectivitycheck.gstatic.com` |
+
+Downloads retry up to 5 times. G3M sends no analytics.
+
 The online count uses a session identifier. Poll voting uses its own persistent local identity in hashed form. Requests also expose the connection information normally visible to their receiving server. Avoid interpreting a local Library as meaning the whole application makes no network requests.
 
 **Disable Discord Rich Presence** in Appearance prevents that integration from publishing G3M activity through Discord. It does not disable GameBanana, updates, or other internet features.

@@ -6,20 +6,26 @@ The five tabs are **Metadata**, **Compatibility**, **Files**, **Placeholders**, 
 
 ## Metadata
 
+![Mod Editor, Metadata tab](../images/mod-editor-metadata.png)
+
+1. The **Metadata** tab, next to **Compatibility**, **Files**, **Placeholders**, and **Help**.
+2. **Game**.
+3. **Mod tags**.
+4. **Save changes** (**Finish Creation** for a new mod).
+
 | Control | Use |
 | --- | --- |
 | Game | Select a built-in game or a visible custom game. The mod belongs to that game's library. |
-| Mod name | Name displayed in the library. |
-| Mod ID | Stable identifier used by the library, dependencies, and conflicts. Keep it unchanged for a published mod. |
-| Authors | Author names, separated by commas in the desktop editor. |
-| Short description | Description of the mod. |
-| Homepage | HTTP or HTTPS project or download page. |
+| Mod name | Name displayed in the library. Required; up to 128 characters. |
+| Mod authors | Author names, separated by commas. |
+| Description (max 200 chars) | Description of the mod. The label says 200, but the field accepts up to 16,384 characters. |
+| Homepage | HTTP or HTTPS project or download page. A direct download link is rejected. |
 | Icon | Bundled image path or HTTP or HTTPS image URL. **Browse** copies the picked image into the mod folder at once and replaces the mod's previous icon, unless a file operation uses it; Cancel brings the old icon back. A path typed by hand is copied when you save, and the old icon is replaced then. The preview updates when you edit the path or URL. |
-| Tags | Mark text edits, customization, gameplay changes, or other content. |
+| Mod tags | Checkboxes **Text Edit**, **Customization**, **Gameplay**, and **Other**. **CYOP/AFOM** appears only while Pizza Tower is selected and **FB-Addon** only while FRICKBEARS3 is selected; switching games clears the hidden tag. A new mod starts with **Other** ticked. |
 | Overall mod version | Version label for this package. |
-| Game version | Label describing the intended game release. |
+| Game Version | Label describing the intended game release. |
 
-A mod's ID is its stable identity in the library and in relationships. Editing an existing mod preserves that identity. A game-version label alone does not prevent a patch from running on a different data file. Use a target hash when an exact file is required.
+The desktop editor has no Mod ID field. A new mod receives an ID of the form `local_` plus 12 hexadecimal characters, and editing an existing mod keeps its ID. To choose an ID, use the [web editor](web-editor.md) or edit `mod_config.json`. A game-version label alone does not prevent a patch from running on a different data file. Use a target hash when an exact file is required.
 
 ## Compatibility
 
@@ -41,18 +47,24 @@ For an addon that requires an already applied base mod, use **Earlier step**. Pr
 
 ## Files
 
+![Mod Editor, Files tab](../images/mod-editor-files.png)
+
+1. **Add**, **Add group**, and **Remove**.
+2. **Processing order**, the list of operations.
+3. **Operation**, the settings of the selected row.
+4. **Source**, with **Target** below it.
+
 The left pane lists operations in processing order. The right pane edits the selected operation or group.
 
 | Control | Action |
 | --- | --- |
-| Add | Add an operation. Configure its type and paths before saving. |
-| Add group | Create a named group of operations. |
+| Add | Add an operation after the selected item (inside a selected group). It starts as **Overwrite** with `${mod_path}/` as source and `${game_path}/` as target. |
+| Add group | Ask for a group name and create the group. Names are unique, up to 128 characters, and groups nest up to 32 levels. |
 | Remove | Remove the selected operation or group. Removing a group removes its contained operations. |
-| Drag a row | Move an operation or group in the sequence, including into another group. |
-| Up and down arrows | Change the selected item's position without dragging. |
+| Drag a row | Move an operation or group in the sequence, including into another group. The editor has no up and down buttons and no keyboard command for reordering, so moving a row needs a pointer. |
 | Type | Choose patching, copying, extraction, a soft or hard variant, or information. |
-| Source | Select the input file or folder. A source inside the mod is stored as a `${mod_path}` path. |
-| Target | Select the destination. A trailing `/` identifies a directory. |
+| Source | Type a path, or use the folder button to pick a file. A file inside the mod is stored as a `${mod_path}` path. |
+| Target | Type a path, or use the folder button to pick a folder. A folder inside the game folder, game data folder, or home folder is stored with that placeholder and a trailing `/`. A folder elsewhere is stored as a device-specific path and a warning is shown. |
 | Include source hash | Store a checksum of the resolved source. |
 | Include target hash | Store a checksum of the resolved existing destination. |
 
@@ -76,4 +88,4 @@ The value begins with a built-in root and a path suffix. Names cannot duplicate 
 
 Saving checks the configuration and required paths. Invalid values receive an explanation so you can correct the affected operation or field. A valid package still needs a real test in the intended game, particularly when a patch depends on a particular game build.
 
-Saving a local mod writes it to the current profile. Use [Export](exporting.md) to share a ZIP. The browser editor has different save controls because it cannot write directly into a desktop library; see [Web editor](web-editor.md).
+Saving a local mod writes it to the current profile. The button reads **Finish Creation** for a new mod and **Save changes** for an existing one; a new mod needs a name, and a homepage, if given, must be an HTTP or HTTPS URL. For an existing mod the window also has **Delete Mod** (asks for confirmation, irreversible), **Export Mod**, **Open Mod Folder**, and **Switch version** (opens [Mod Versions](mod-versions.md)). **Export Mod** here writes the whole mod folder, including `mod_versions/`, to a ZIP; use the Library export action to choose which saved versions to include. See [Export](exporting.md) to share a ZIP. The browser editor has different save controls because it cannot write directly into a desktop library; see [Web editor](web-editor.md).

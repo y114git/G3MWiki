@@ -49,14 +49,14 @@ my-mod.zip
 | `homepage` | No | Absolute HTTP or HTTPS URL. |
 | `icon` | No | Bundled image path such as `${mod_path}/icon.png`, or an HTTP or HTTPS image URL. |
 | `game_version` | No | Human-readable label for the intended game version. It does not replace a file hash check. |
-| `tags` | No | Array containing `textedit`, `customization`, `gameplay`, `other`, `CYOP/AFOM` (Pizza Tower), or `FB-Addon` (FRICKBEARS3). Mod Editor offers the last two only for their game. When G3M imports a config, other labels are converted to the closest tag (`Translation` becomes `textedit`), unrecognized labels become `other`, and duplicates are removed. |
+| `tags` | No | Array containing `textedit`, `customization`, `gameplay`, `other`, `CYOP/AFOM` (Pizza Tower), or `FB-Addon` (FRICKBEARS3). The configuration accepts both for any game. Mod Editor shows **CYOP/AFOM** only while Pizza Tower is selected and **FB-Addon** only while FRICKBEARS3 is selected; the web editor does the same, but keeps a tag that is already set. Tag names are case-sensitive, and a configuration holds at most 64. When G3M imports a config, other labels are converted to the closest tag (`Translation` becomes `textedit`), unrecognized labels become `other`, and duplicates are removed. |
 | `placeholders` | No | Named paths built from the standard path roots. |
 | `dependencies` | No | Array of required mod IDs, optionally with an ordering condition. |
 | `conflicts` | No | Array of incompatible mod IDs, optionally with an ordering condition. |
 
 Unknown fields are rejected. Omit optional values that you do not use. Empty `tags`, `placeholders`, `dependencies`, and `conflicts` collections are not accepted. Optional placeholders and relationship collections also accept `null`.
 
-IDs contain lowercase ASCII letters, digits, underscores, or hyphens. They begin with a letter and contain at most 64 characters. This rule applies to both `id` and `game`. Do not change a published mod's ID when issuing another version.
+IDs contain lowercase ASCII letters, digits, underscores, or hyphens. They begin with a letter and contain at most 64 characters. This rule applies to both `id` and `game`. The ID `self` is reserved. Do not change a published mod's ID when issuing another version.
 
 Built-in game IDs are `deltarune`, `deltarunedemo`, `undertale`, `undertaleyellow`, `pizzatower`, `sugaryspire`, and `frickbears3`. A custom game's ID is the one entered when it was added, or one created from its display name that starts with `custom_`. See [Custom games](../games/custom-games.md).
 
@@ -267,6 +267,7 @@ The library offers relationship inspection and arrangement. An arrangement can r
 | Custom placeholders | 128. |
 | Dependencies or conflicts | 512 entries per collection. |
 | Authors | 64 entries, up to 128 characters each. |
+| Tags | 64 entries. |
 | Name, version, group name, game-version label | 128 characters. |
 | Description | 16,384 characters. |
 | URL | 2,048 characters. |

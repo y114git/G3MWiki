@@ -1,6 +1,8 @@
 # Mod Versions
 
-Open **Mod Versions** on a Library card to keep and switch between saved copies of that mod. Versions belong to the mod in the active profile.
+Open **Mod Versions** (the **Switch version** button in Mod Editor opens the same dialog) on a Library card to keep and switch between saved copies of that mod. Versions belong to the mod in the active profile.
+
+![Mod Versions with no saved versions](../images/mod-versions-dialog.png)
 
 ## Add a version
 
@@ -8,11 +10,11 @@ Open **Mod Versions** on a Library card to keep and switch between saved copies 
 
 For a GameBanana-backed mod, **Download from GameBanana** can fetch another available file into its version list. Importing a package with an already installed ID and choosing **Merge** also adds a version.
 
-Drop supported version files into the dialog to import them. Local archives are kept in the mod's `mod_versions/` folder.
+**Save current as version** asks for a name. **Import mod version** takes a ZIP, 7z, or RAR archive (**Choose file**) or a direct link (**Import from URL**, then **Load URL**). You can also drop files or links into the dialog. Each version is a ZIP in the mod's `mod_versions/` folder, named after the version. Characters other than letters, digits, space, `_`, `-`, and `.` become `_`, and a name already in use gets a number such as `Name (2)`.
 
 ## Switch or delete
 
-**Switch** replaces the current mod files with the selected version. Save the current files as a version first if you want to keep edits that are not already saved.
+**Switch** asks for confirmation and replaces the current mod files with the selected version. Save the current files as a version first if you want to keep edits that are not already saved.
 
 **Delete** removes that saved archive after confirmation. It does not switch the active mod to a different version.
 
