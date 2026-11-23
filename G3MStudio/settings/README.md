@@ -1,0 +1,26 @@
+# Settings
+
+Every page of the Settings window, the settings file and the defaults.
+
+- [Advanced settings](advanced.md)
+- [Appearance settings](appearance.md)
+- [Colors and themes](colors-and-themes.md)
+- [Decompiler settings](decompiler.md)
+- [Default values](defaults-table.md)
+- [Data file comparison settings](diff.md)
+- [Code editor settings](editor.md)
+- [Explorer settings](explorer-settings.md)
+- [Files and startup settings](files.md)
+- [Image editor settings](image.md)
+- [Mod base](mod-base.md)
+- [Plugins](plugins.md)
+- [Privacy and crash reports](privacy.md)
+- [Projects settings](projects.md)
+- [Prompts](prompts.md)
+- [Rooms and auto-tile settings](rooms-and-auto-tile.md)
+- [Run settings](run.md)
+- [Settings file](settings-file.md)
+- [Settings page](settings-overview.md)
+- [Keyboard shortcuts and mouse gestures](shortcuts-editor.md)
+- [Sound settings](sound.md)
+- [Update settings and channels](updates.md)

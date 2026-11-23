@@ -1,0 +1,28 @@
+# Projects and files
+
+Saving, projects, history, Git, patches, mods, running the game and recovery.
+
+- [Copy to Other Data File](copy-to.md)
+- [Find Dead Resources](dead-resources.md)
+- [Git panel](git.md)
+- [Guide: create a project from a data file](guide-create-project.md)
+- [Guide: recover after a crash](guide-recover-crash.md)
+- [Guide: run the game on Linux with Proton or Wine](guide-run-linux.md)
+- [Guide: share a mod](guide-share-mod.md)
+- [Guide: import from UTMT](guide-utmt-import.md)
+- [History, journal and crash recovery](history.md)
+- [Lost data file](lost-file.md)
+- [Mod packs and Compare Data Files](mod-packs.md)
+- [Mods and the mod base](mods.md)
+- [Outside changes, merge and conflicts](outside-changes.md)
+- [Projects and Project mode](overview.md)
+- [Export packages](packages.md)
+- [Patches](patches.md)
+- [The Project menu](project-menu.md)
+- [Project settings](project-settings.md)
+- [Run the game](run-game.md)
+- [Run on Linux and macOS](run-linux-macos.md)
+- [Run settings and profiles](run-settings.md)
+- [Saving and backups](saving.md)
+- [Snapshots](snapshots.md)
+- [Import a UTMT project](utmt-import.md)
