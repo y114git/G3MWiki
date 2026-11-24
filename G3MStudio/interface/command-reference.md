@@ -275,6 +275,7 @@ Conditions: "data file open" means any data file is loaded. "sound in front or s
 | `dock.toggleLeft` | Fold or Open Left Dock |  | data file open |
 | `dock.toggleRight` | Fold or Open Right Dock |  | data file open |
 | `dock.toggleBottom` | Fold or Open Bottom Dock |  | data file open |
+| `dock.cycleEditorTabs` | Move Editor Tabs |  | data file open |
 
 ## Organize commands (`organize.*`)
 
