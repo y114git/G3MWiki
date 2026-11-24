@@ -11,6 +11,7 @@ Click a section heading to collapse or expand it. G3M remembers which sections a
 | App | **Language** | Interface language. Translated views and plugin translations follow it. | Your system language if G3M has it, otherwise English |
 | App | **Beta Updates** | Include beta application updates in update checks. | Off |
 | App | **Fullscreen** | Toggle the main window's fullscreen state. | Off |
+| App | **Show Open in G3MStudio buttons** | Show the **Open in G3MStudio** button next to data files in [Modding Tools](../features/modding-tools.md). Off hides the button everywhere. | On |
 | App | **UI Scale** | Scale text and controls from 50% to 200% in steps of 10%. | 100% |
 | Advanced | **Show Reset Buttons** | Show the reset buttons. | Off |
 | Advanced | **G3M data location:** | Read-only path of the folder that holds G3M's settings, profiles, mods, downloads, themes, and plugins. Its browse button changes it. | Platform default |
