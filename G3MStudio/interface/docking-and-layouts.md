@@ -89,6 +89,8 @@ An empty list says "No saved layouts yet." A layout that cannot be read shows "T
 
 The editor area can hold up to 4 groups of tabs side by side. **Split Right** (`Ctrl+\`) moves the tab into a new group at the right. It does nothing when the group has only one tab or 4 groups exist. Drop a tab on a dock marker to split, or on the empty part of a tab strip to join that group. See [Tabs](tabs.md).
 
+The tabs of the editor groups sit along the top by default. **Settings > Appearance > Editor tabs** can show them as a list at the left or right of the editor instead, one tab per row, with a width set in **Width of the tab list**. **Show a picture in editor tabs** adds a small picture of the resource to each tab, in both layouts. The choice applies to every group, also to groups made later. See [Appearance settings](../settings/appearance.md).
+
 ## Troubleshooting
 
 - **A panel disappeared.** Use **View > Panels** or **Layout > Reset Layout**.

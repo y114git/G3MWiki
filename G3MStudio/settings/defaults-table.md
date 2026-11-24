@@ -14,6 +14,9 @@ This page lists every setting of `settings.json` with its default and its allowe
 | `sizes` | **Shape and size** | empty (density preset) | see [Appearance settings](appearance.md#density-and-shape-and-size) |
 | `animations` | **Animations** | empty (system default) | `Full`, `Medium`, `Minimal`, `Off` |
 | `tabButtons` | **Previous and next tab buttons** | `MenuLeft` | `MenuLeft`, `MenuRight`, `Hidden` |
+| `editorTabs` | **Editor tabs** | `Top` | `Top`, `Left`, `Right` |
+| `editorTabListWidth` | **Width of the tab list** | `170` | 80 to 400 |
+| `editorTabIcons` | **Show a picture in editor tabs** | Off | On, off |
 | `helpLevel` | **Explanatory text** | `All` | `All`, `Hints`, `Details`, `Off` |
 | `hoverPreviews` | **Show previews and IDs on hover** | true | true, false |
 | `showNullEntries` | **Show null entries in the resource tree** | false | true, false |
