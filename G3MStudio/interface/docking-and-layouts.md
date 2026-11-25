@@ -35,7 +35,7 @@ Commands that fill a panel, such as **Find Usages** or **Find in Code**, show th
 
 ### Showing a panel again
 
-**View > Panels > {panel}** shows a panel that was closed. A panel missing from the layout (closed, or from a layout saved before it existed) is added to the bottom dock. **Layout > Reset Layout** brings all back.
+**View > Panels > {panel}** shows a panel that was closed. A panel missing from the layout (closed, or from a layout saved before it existed) is added to the bottom dock; **Open Editors** is added to the left dock. **Layout > Reset Layout** brings all back.
 
 ### Floating
 
@@ -67,7 +67,7 @@ The chevron points to where the dock goes when it folds, and back to the edge wh
 | **Reset Layout** | Back to the default arrangement. Every panel returns. |
 | **Hide or Show All Docks**, **Fold or Open Left Dock**, **Fold or Open Right Dock**, **Fold or Open Bottom Dock** | See above. |
 
-Every preset keeps every panel and keeps the open editor tabs. These items need an open data file.
+Every preset keeps every panel and keeps the open editor tabs. A preset does not add **Open Editors**, but it keeps that panel when it is open. These items need an open data file.
 
 ### Saved layouts
 
@@ -89,7 +89,7 @@ An empty list says "No saved layouts yet." A layout that cannot be read shows "T
 
 The editor area can hold up to 4 groups of tabs side by side. **Split Right** (`Ctrl+\`) moves the tab into a new group at the right. It does nothing when the group has only one tab or 4 groups exist. Drop a tab on a dock marker to split, or on the empty part of a tab strip to join that group. See [Tabs](tabs.md).
 
-The tabs of the editor groups sit along the top by default. **Settings > Appearance > Editor tabs** can show them as a list at the left or right of the editor instead, one tab per row, with a width set in **Width of the tab list**. **Show a picture in editor tabs** adds a small picture of the resource to each tab, in both layouts. The choice applies to every group, also to groups made later. See [Appearance settings](../settings/appearance.md).
+The tabs of the editor groups sit along the top by default. **Settings > Appearance > Editor tabs** can show them as a list at the left or right of the editor instead, one tab per row, with a width set in **Width of the tab list**. **Show a picture in editor tabs** adds a small picture of the resource to each tab, in both layouts. The choice applies to every group, also to groups made later. For tabs anywhere in the layout, open the **Open Editors** panel (see [Panels](panels.md)): it lists the tabs, can sit in any dock or float, and can hide the tab strips. See [Appearance settings](../settings/appearance.md).
 
 ## Troubleshooting
 

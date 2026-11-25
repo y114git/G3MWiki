@@ -15,8 +15,9 @@ Panels are the dockable tool windows around the editor tabs. This page describes
 | Function Reference | `view.panel.reference` | Built-in GML functions and variables. The tab shows "Reference". |
 | History | `view.panel.history` | Edit history of the file. See [History](../projects/README.md). |
 | Git | `view.panel.git` | Git status of a project. See [Git](../projects/README.md). |
+| Open Editors | `view.panel.openeditors` | The open editor tabs as a list. Off by default. See [Open Editors](#open-editors). |
 
-**View > Panels** lists all nine. Choosing one shows it (or brings it to the front) and focuses it. Each is also in the command palette as "Show {panel}". A closed panel returns through this menu.
+**View > Panels** lists all ten. Choosing one shows it (or brings it to the front) and focuses it. Each is also in the command palette as "Show {panel}". A closed panel returns through this menu.
 
 ## Inspector
 
@@ -110,6 +111,20 @@ Lists built-in GML functions, variables and constants, plus the game's own funct
 | **Open in manual** | Opens the page in the GameMaker manual. |
 | **Find Usages** | Finds uses of the name in code. |
 | **Go to Definition** | Opens the definition of a game function. |
+
+## Open Editors
+
+A list of the open editor tabs, one row per tab, in the order of the editor groups. Open it from **View > Panels > Open Editors**. It is not part of the default layout, so it costs nothing until you open it. It opens at the left dock and, like any panel, can be dragged to another dock or floated into its own window. It comes back with a saved layout.
+
+| Action | Result |
+|---|---|
+| Click a row | Brings that tab to the front. |
+| Cross on a row, or middle click | Closes the tab. A pinned tab has no cross. |
+| Right click | The same menu as the tab itself (**Close Tab**, **Close Other Tabs**, **Close All Tabs**, **Pin Tab**, **Split Right** and the resource commands). |
+
+A preview tab is shown in italics, as in the tab strip. Each row starts with the small picture or type icon of its resource.
+
+The box **Hide Editor Tabs** at the top (also **Settings > Appearance > Hide editor tabs while Open Editors is open**) hides the tab strips of the editor groups, so the list replaces them and the editors get the height or width the tabs used. Closing the panel shows the strips again, so the tabs can never be lost. A hidden strip is not drawn or measured and has no pictures. `Ctrl+Tab` and the other tab commands work as before.
 
 ## Closing a panel
 

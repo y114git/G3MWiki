@@ -17,6 +17,7 @@ This page lists every setting of `settings.json` with its default and its allowe
 | `editorTabs` | **Editor tabs** | `Top` | `Top`, `Left`, `Right` |
 | `editorTabListWidth` | **Width of the tab list** | `170` | 80 to 400 |
 | `editorTabIcons` | **Show a picture in editor tabs** | Off | On, off |
+| `hideEditorTabs` | **Hide editor tabs while Open Editors is open** | Off | On, off |
 | `helpLevel` | **Explanatory text** | `All` | `All`, `Hints`, `Details`, `Off` |
 | `hoverPreviews` | **Show previews and IDs on hover** | true | true, false |
 | `showNullEntries` | **Show null entries in the resource tree** | false | true, false |

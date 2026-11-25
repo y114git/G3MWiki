@@ -244,6 +244,7 @@ Conditions: "data file open" means any data file is loaded. "sound in front or s
 | `view.panel.reference` | Function Reference |  | always |
 | `view.panel.history` | History |  | always |
 | `view.panel.git` | Git |  | always |
+| `view.panel.openeditors` | Open Editors |  | always |
 
 ## Go To commands (`go.*`)
 
