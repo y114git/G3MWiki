@@ -54,7 +54,7 @@ Select the two files and click **Compare**. G3M generates and opens a difference
 
 Next to a DATA file path in Patch, Merge, Info, and Diff, the **Open in G3MStudio** button appears once the path points to an existing `.win`, `.ios`, `.unx`, or `.droid` file. It opens the file in [G3MStudio](../../G3MStudio/README.md) through a `g3mstudio://` link.
 
-If the link does not work, G3M shows the reason, a short hint, and two buttons: **OK**, and **Download G3MStudio**, which opens the [G3MStudio page](https://github.com/y114git/G3MStudio). G3MStudio registers the link every time it starts, so starting it once is usually enough. Turn the button off with **Show Open in G3MStudio buttons** in [Settings](../interface/settings.md).
+If the link does not work, G3M shows the reason, a short hint, and two buttons: **OK**, and **Download G3MStudio**, which opens the [G3MStudio page](https://github.com/y114git/G3MStudio). G3MStudio registers the link every time it starts, so starting it once is usually enough.
 
 ## Errors
 

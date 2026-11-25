@@ -122,6 +122,10 @@ All file dialogs show all files. Titles are exact.
 
 If you cancel a dialog, the field keeps its text.
 
+### Open in G3MStudio
+
+Next to **Browse**, an **Open in G3MStudio** button (tooltip `Open this data file in G3MStudio`) appears on the original and main fields once the path points to an existing `.win`, `.ios`, `.droid`, or `.unx` file. It opens the file in [G3MStudio](../G3MStudio/README.md) through a `g3mstudio://` link. If the link cannot be opened, Activity shows an Error line with the reason and a hint: start G3MStudio once so it registers the link, or download it from https://github.com/y114git/G3MStudio.
+
 ## Progress and cancel
 
 When you press the run button, the operation card and run button are disabled, **Cancel** appears, and the bar is indeterminate with the text `Starting…` until the first progress report arrives. Then the bar shows the percentage and the text shows the current step. At the end, the text shows the result summary, the bar shows `100%` on success, and an empty bar with a dash as the percentage on failure, and Activity gets the summary and one `Output: <path>` line per written file.
