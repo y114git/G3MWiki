@@ -5,7 +5,7 @@ Create a .NET 10 application and reference the package:
 ```text
 dotnet new console --framework net10.0 --name DataInspector
 cd DataInspector
-dotnet add package G3MLib --version 1.1.6
+dotnet add package G3MLib --version 1.1.7
 ```
 
 The package id is `G3MLib` and it targets `net10.0`. It brings in `Magick.NET-Q8-AnyCPU`, `Microsoft.CodeAnalysis.CSharp.Scripting`, `Microsoft.CodeAnalysis.Scripting.Common` and `SharpZipLib`. See [Limits and defaults](limits-and-defaults.md#package).

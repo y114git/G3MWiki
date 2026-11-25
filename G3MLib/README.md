@@ -2,7 +2,7 @@
 
 G3MLib is a .NET library for reading and editing GameMaker DATA, compiling and decompiling GML, exporting resources, creating and applying patches, merging changes, and generating difference reports.
 
-The package id is `G3MLib`, the version is **1.1.6**, and its target framework is **.NET 10**. It has no application window or game launcher. An application using the library supplies its own interface, paths, progress display, and script interaction. See [Limits and defaults](limits-and-defaults.md) for the dependencies and [Host integration](hosting.md#embed-the-library-in-an-application) for the steps an application takes.
+The package id is `G3MLib`, the version is **1.1.7**, and its target framework is **.NET 10**. It has no application window or game launcher. An application using the library supplies its own interface, paths, progress display, and script interaction. See [Limits and defaults](limits-and-defaults.md) for the dependencies and [Host integration](hosting.md#embed-the-library-in-an-application) for the steps an application takes.
 
 | Task | Guide |
 | --- | --- |

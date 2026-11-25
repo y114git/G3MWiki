@@ -69,7 +69,7 @@ if (!comparison.Success)
 Console.WriteLine(comparison.OutputPath);
 ```
 
-A resource counts as changed when its content hash changes. The hash covers what a resource is, not where it sits: a sprite frame that only moved to another spot or page of the texture atlas, and a sound that only moved to another audio slot, hash the same while their pixels or audio match. A real pixel or audio change still shows. Hashes that older versions cached are rebuilt once (cache schema 4).
+A resource counts as changed when its content hash changes. The hash covers what a resource is, not where it sits: a sprite frame that only moved to another spot or page of the texture atlas, and a sound that only moved to another audio slot, hash the same while their pixels or audio match. An object hashes the same wherever it sits in the list, so a patch that deletes another object does not make it look changed. A real pixel or audio change still shows. Hashes that older versions cached are rebuilt once (cache schema 5).
 
 Inputs can be DATA or resource patch archives. `Standard` produces resource summaries and changed-file lists. `Full` adds detailed text, GML, JSON, and related resource comparisons.
 

@@ -34,7 +34,7 @@ G3MTool info interface.g3mpatch -v
 ```text
 G3M Patch: interface.g3mpatch
 Created: 2026-11-20T04:31:37.6076751Z
-Tool: G3MTool v1.3.6
+Tool: G3MTool v1.3.7
 
 Original:
   File: orig.win
