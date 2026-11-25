@@ -10,7 +10,7 @@ This page lists every menu of the menu bar with its items in order. Each item is
 - **Plugins** shows only when a plugin has added a command. It sits before **Layout** and **Help**.
 - Some commands have no menu item because another place holds them: the tab commands (right-click a tab), **Move Run Options to G3MStudio's Folder** and **Ask Again for All Prompts** (buttons in Settings). The palette and the shortcut editor still list them.
 - The transfer commands (import, copy, export) have one entry, **Transfer Resources...**. The single commands stay in the palette and the Explorer context menu.
-- Two submenus are not commands: **Open Recent** (File) and **Recent Projects** (Project).
+- Three submenus are not commands: **Open Recent** (File), **Recent Projects** (Project) and **Run Recent Script** (Tools).
 
 ## File
 
@@ -104,7 +104,9 @@ Create Patch..., Apply Patch..., Apply Mod..., Merge Patches..., Validate Patch.
 
 ## Tools
 
-Strings..., Room Order..., Texture Groups..., Audio Groups..., then Hex View of Data File..., Write Chunk Offset Map, Export Raw Chunk..., Replace Chunk from File..., Write Debug Data..., Disassembly of Code Entry..., then Repack Texture Pages..., Export Texture Page..., Replace Texture Page..., Resize Texture Page..., then Run Script..., Run C# Command..., Plugins....
+Strings..., Room Order..., Texture Groups..., Audio Groups..., then Hex View of Data File..., Write Chunk Offset Map, Export Raw Chunk..., Replace Chunk from File..., Write Debug Data..., Disassembly of Code Entry..., then Repack Texture Pages..., Export Texture Page..., Replace Texture Page..., Resize Texture Page..., then Run Script..., Run Recent Script, Run C# Command..., Plugins....
+
+**Run Recent Script** lists the last 10 scripts you ran, newest first, with **Clear Items** at the end. A script joins the list when you confirm the run, also when it was dropped on the window; **Run C# Command** does not add to it. The submenu is off without an open data file or a recent script. A script whose file is gone is removed when you pick it. **Run C# Command** starts with the last command in the box.
 
 ## Window
 

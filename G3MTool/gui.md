@@ -122,6 +122,8 @@ All file dialogs show all files. Titles are exact.
 
 If you cancel a dialog, the field keeps its text.
 
+Every file, folder and save dialog opens in the folder where you picked last, also after a restart. The folder is kept in `last-folder.txt` inside a `G3MTool` folder in your user app data folder. A folder that no longer exists is ignored and the dialog starts in its usual place.
+
 ### Open in G3MStudio
 
 Next to **Browse**, an **Open in G3MStudio** button (tooltip `Open this data file in G3MStudio`) appears on the original and main fields once the path points to an existing `.win`, `.ios`, `.droid`, or `.unx` file. It opens the file in [G3MStudio](../G3MStudio/README.md) through a `g3mstudio://` link. If the link cannot be opened, Activity shows an Error line with the reason and a hint: start G3MStudio once so it registers the link, or download it from https://github.com/y114git/G3MStudio.

@@ -10,6 +10,8 @@ Location per system: see [Data folder](../getting-started/user-data.md). It is `
 | --- | --- | --- |
 | `settings.json` | All settings, saved dock layouts, install id. | Kept. |
 | `recent.json` | Recent files and pins. Up to 50 unpinned entries. | Kept. |
+| `recent-scripts.json` | The last 10 scripts run (Tools > Run Recent Script). | Kept. **Clear Items** empties it. |
+| `last-folder.txt` | The folder of the last file, save or folder dialog. The next dialog opens there. | Kept. |
 | `backups/<key>/<file>.<n>` | Rotating copies of the data file made on save. Slot 1 is the newest. | **Settings** sets the count: default 3, range 1 to 100. |
 | `journal/<key>/journal.jsonl` | Edit journal that lets unsaved edits be recovered after a crash ("Unsaved edits recovered: {count}"). | Per file. |
 | `view/<key>.json`, `view/<key>.layers.json` | Open tabs, sizes and layer state per data file. | Kept. |
