@@ -2,7 +2,7 @@
 
 G3MTool creates, applies, combines, and inspects GameMaker resource patches. It also runs binary xdelta operations and C# scripts. It has two separate applications: a command-line application (CLI) and a graphical application (GUI).
 
-The command-line application is version **1.3.5**. The graphical application is version **1.0.5**. Both use G3MLib 1.1.5 for resource operations and are distributed under GPL-3.0.
+The command-line application is version **1.3.7**. The graphical application is version **1.0.7**. Both use G3MLib 1.1.7 for resource operations and are distributed under GPL-3.0.
 
 Release packages target Windows, Linux, and macOS on x64 and ARM64. Choose the matching operating system and processor from [GitHub releases](https://github.com/y114git/G3MTool/releases). Each package holds one self-contained executable (it includes the .NET runtime) and the license notices.
 

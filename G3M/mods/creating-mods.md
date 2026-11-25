@@ -21,7 +21,7 @@ For a byte-exact XDelta patch, select XDelta output or use `G3MTool xpatch creat
 
 ## Build the package
 
-1. Open **Add Mod** and create a mod, or use the [web editor](web-editor.md).
+1. Open **Add Mod**, then **Create Mod**, or use the [web editor](web-editor.md).
 2. In **Metadata**, select the game and enter a name, authors, and version.
 3. Add the patch file to the package.
 4. In **Files**, add a `patch` operation using `${mod_path}/my_mod.g3mpatch` as its source.

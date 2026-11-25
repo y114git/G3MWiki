@@ -53,7 +53,7 @@ The menu whose command ran last shows that item checked. The **Selection** menu 
 
 ## Main menu
 
-The **Image** menu appears while an image tab is in front. It groups the commands in submenus **Tools**, **Selection**, **Transform**, **Adjust**, **Canvas**, **Brush and colour**, **View** and **Frames**, **Layers**. Its entries are the commands in [Image tools](image-tools.md), plus **Discard Image Edits** and **Go to Original Resource**.
+The **Image** menu appears while an image tab is in front. It groups the commands in submenus **Tools**, **Selection**, **Transform**, **Adjust**, **Canvas**, **Brush and colour**, **View**, **Frames** and **Layers**. Its entries are the commands in [Image tools](image-tools.md), plus **Discard Image Edits** and **Go to Original Resource**.
 
 ## See also
 

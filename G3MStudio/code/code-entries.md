@@ -28,7 +28,7 @@ Behavior that depends on the kind of entry:
 
 **Import Code from a Folder...** and **Import Code from Files...** (in the File menu's transfer commands, group "Into this data file") read `.gml` and `.asm` files. The file name without its extension is the name of the code entry the file replaces. A folder gives every matching file in it and its sub folders.
 
-1. Choose the folder ("Folder with GML and assembly files") or the files ("Pick GML or assembly files").
+1. Choose the folder ("Folder with GML and assembly files") or the files ("Pick GML or assembly files"). The dialog opens in the folder of the last pick (kept in `last-folder.txt` in the user data folder).
 2. The preview asks "Replace the code of {count} entries from files?" and lists the names.
 3. A file that names no entry: you are asked whether to add an empty entry for each one and fill it from the file ("Yes adds an empty entry for each one and fills it from the file. No skips these files."). The new name must use letters, digits and underscores and not start with a digit.
 4. A file that cannot be imported (over 8 MB, binary, unreadable, or the same entry name twice as `.gml` and `.asm`) is listed. Yes imports the others, No imports nothing.
@@ -58,7 +58,8 @@ Buttons next to the text:
 | Button | What it does |
 |---|---|
 | **Go to Parent** | Opens the parent entry in its own tab. Edits and saves belong to the parent. |
-| **Details** / **Hide Details** | Shows or hides a line "Name: {name}" with the name of the entry. |
+| **Retry** | Decompiles the entry again. |
+| **Details** / **Hide Details** | Shows or hides six lines: "Name: {name}" (this entry), "Parent entry: {parent}", "Kind: {kind}" (function or anonymous function), "Arguments: {arguments}", "Locals: {locals}" and "Starts at byte {offset} of the parent, {length} bytes long". |
 
 A child entry has no **Switch to GML** button, because there is no GML to switch to. Saving the assembly of a child assembles the text instead of compiling GML.
 

@@ -2,7 +2,7 @@
 
 Blocklist hides matching entries from filtered mod results. It does not uninstall a mod or remove it from a saved launch selection.
 
-Open the Blocklist control, select a game or **Global**, choose a rule type, enter its value, and click **Add**. Select a rule and use **Remove** to delete it.
+Open the Blocklist control to open the **Blocklist Manager**. Select a game or **Global**, choose a rule type (**Prefix:**), enter its value in **Value:**, and click **Add**. Select a rule under **Current Entries** and use **Remove** to delete it. G3M asks you to confirm the removal.
 
 | Rule | Matching behavior | Example |
 | --- | --- | --- |

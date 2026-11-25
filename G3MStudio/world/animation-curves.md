@@ -11,7 +11,7 @@ An animation curve maps a position from 0 to 1 to a value. Sequences use curves 
 | **Preset** | Replaces the points with a preset: **Linear**, **Ease in**, **Ease out**, **Ease in and out**, **Step**, **Bounce**, **Bezier ease in**, **Bezier ease out**, **Bezier ease in and out**. |
 | Point list | The points of the channel. Selecting a row selects the point on the graph. |
 | **X**, **Value** | Position and value of the selected point, -1,000,000 to 1,000,000, step 0.1, 3 decimals. |
-| **Add point**, **Delete point** | Add or remove a point. |
+| **Add point**, **Delete point** | **Add point** adds a point one unit after the last point of the channel, with the same value, and selects it. **Delete point** removes the selected point. |
 
 Without a project the editor is read-only (`This view is read-only. Open the item from a project to edit it.`). Every edit is one undo step.
 

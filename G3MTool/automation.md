@@ -13,7 +13,7 @@ Run the CLI with explicit input and output paths, and check its exit code before
 
 ## JSON results
 
-Add `--json` to get one JSON object on stdout and no progress text. Informational output is not printed, so stdout can be parsed as is. Keep stderr separate. One exception: when `info --json` cannot read a patch manifest, it prints a text warning and basic patch details instead of JSON and still exits with `0`. Do not assume that stdout is JSON from the exit code alone; parse it inside a try block.
+Add `--json` to get one JSON object on stdout and no progress text. Informational output is not printed, so stdout can be parsed as is. Keep stderr separate. Do not assume that stdout is JSON from the exit code alone; parse it inside a try block.
 
 | Command | Fields |
 | --- | --- |
@@ -29,7 +29,7 @@ Add `--json` to get one JSON object on stdout and no progress text. Informationa
 | `diff` | `success`, `command`, `mode`, `file1`, `file2`, `output`, `differences`, `changed`, `new`, `deleted`, `textDiffs`, `byType`, `warnings` |
 | `info` | DATA: `File`, `Size`, `Game`, `BytecodeVersion`, `Version`, `GeneralInfo`, `Resources`. Patch: the manifest. No `success` field |
 
-A failure of G3MTool itself in `patch`, `xpatch`, `execute`, and `diff` (including `execute` failing to start a program) prints `{"success":false,"command":"<name>","error":"<message>"}` and exits with `1`. A program started by `execute` that exits with a nonzero code is not a G3MTool failure: the result is the program object above with `success` set to `false` and its `exitCode`, and G3MTool exits with that same code. `info` errors are text on stderr. Argument errors (missing argument, unknown option) and failures found before a batch starts are text, not JSON; always check the exit code first.
+A failure of G3MTool itself in `patch`, `xpatch`, `execute`, and `diff` (including `execute` failing to start a program), and `info` on a patch without a readable manifest, prints `{"success":false,"command":"<name>","error":"<message>"}` and exits with `1`. A program started by `execute` that exits with a nonzero code is not a G3MTool failure: the result is the program object above with `success` set to `false` and its `exitCode`, and G3MTool exits with that same code. DATA file errors of `info` are text on stderr, also with `--json`. Argument errors (missing argument, unknown option) and failures found before a batch starts are text, not JSON; always check the exit code first.
 
 ## PowerShell
 

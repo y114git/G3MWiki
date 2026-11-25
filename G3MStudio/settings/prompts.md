@@ -18,9 +18,10 @@ Each prompt is one row. A prompt that can be answered yes or no is a list with *
 | **Notice that a run uses a temporary copy** | Checkbox | Asks | Unchecked runs without the notice. Same as `warnTempRun`. |
 | **Risky edits and actions (yes: go on, no: refuse)** | List | **Ask** | **Ask**, **Always yes**, **Always no**. Same as the two risky-action options in [Advanced settings](advanced.md). |
 | **Going on with unsaved changes (yes: go on, no: refuse)** | List | **Ask** | all three |
-| **Save the target file before copying to it** | List | **Ask** | all three |
 | **Ask before the first save (always yes: save at once)** | Checkbox | Asks | |
 | **Saving in a project (yes: also sync the data file, no: save progress only; a remembered answer overrides the autosync setting)** | List | **Ask** | all three |
+| **Save the target file before copying to it** | List | **Ask** | all three |
+| **Keep folders, collections and tags when copying to another file** | List | **Ask** | all three |
 | **Delete a resource** | Checkbox | Asks | |
 | **Delete several resources** | Checkbox | Asks | |
 | **A resource in several folders** | Checkbox | Asks | |
@@ -32,7 +33,6 @@ Each prompt is one row. A prompt that can be answered yes or no is a list with *
 | **Move run options into G3MStudio's folder** | List | **Ask** | all three |
 | **Copying a timeline moment: always copy the code** | Checkbox | Asks | Unchecked: always copy. |
 | **Copying a timeline moment: always share the code entries** | Checkbox | Asks | Unchecked: always share. |
-| **Keep folders, collections and tags when copying to another file** | List | **Ask** | all three |
 
 Remembered answers are saved as `prompts` in [settings.json](settings-file.md), prompt id to `Yes` or `No`. A stored **No** for a prompt that cannot say no reads as asking. Unknown ids are dropped on load.
 

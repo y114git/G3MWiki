@@ -8,7 +8,7 @@ Double click a room in the Explorer. The room opens in a tab with a toolbar, a r
 
 The picture is drawn from the data file: instances show the sprite of their object, tiles and background layers show their pictures. A room the preview cannot read keeps its property list, but the picture stays black. The first time a room is shown it is fitted to the canvas. The zoom and position are remembered with the tab.
 
-Hovering the picture writes `x`, `y` and the snapped position into the status line under it, followed by the description of the element under the pointer. Hovering an instance shows a tip with its object name and instance id; hovering a cell of a tile layer shows `Tile {index} at {x}, {y}`.
+Hovering the picture writes `x`, `y` and the snapped position into the status line under it, followed by the description of the element under the pointer. Hovering an instance shows a tip with its object name, instance id, position, layer depth and whether it has creation code (`yes` or `no`); hovering a cell of a tile layer shows `Tile {index} at {x}, {y}`.
 
 ## Older rooms
 

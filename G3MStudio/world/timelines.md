@@ -14,11 +14,11 @@ The tab lists the moments of the timeline. Each moment is a row with:
 Below the moments:
 
 - **Shift moments** with `From step, by`: moves every moment from the given step on by a number of steps (-1,000,000 to 1,000,000). One undo step.
-- **Add moment** adds a moment one step after the last one.
+- **Add moment** adds a moment one step after the highest step in the timeline (step 0 when there is none).
 
 ## Copying a moment
 
-**Duplicate** copies the moment into the same timeline. **Copy to...** and **Move to...** open a menu of the other timelines (first 200). A copy keeps the code of the source or gets code of its own: the prompt `Copy moment` asks `Copy the code too, so the new moment has code entries of its own, or share the code entries so an edit shows in both moments?` with **Copy the code** and **Share the code**. The choice can be remembered with `Don't ask again`. Settings holds **Copying a timeline moment: always copy the code** and **Copying a timeline moment: always share the code entries**. See [Settings](../settings/README.md).
+**Duplicate** copies the moment into the same timeline. **Copy to...** and **Move to...** open a menu of the other timelines (first 200). The moment keeps its step and lands in the target timeline in step order. **Move to...** takes the moment out of the source, keeps its code entries and asks nothing. A copy keeps the code of the source or gets code of its own: the prompt `Copy moment` asks `Copy the code too, so the new moment has code entries of its own, or share the code entries so an edit shows in both moments?` with **Copy the code** and **Share the code**. The choice can be remembered with `Don't ask again`. Settings holds **Copying a timeline moment: always copy the code** and **Copying a timeline moment: always share the code entries**. See [Settings](../settings/README.md).
 
 The rest of the timeline's fields are in the [property list](property-grid.md); the moments list is left out of it.
 

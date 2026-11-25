@@ -46,7 +46,7 @@ Rest the pointer on a name (delay set by **Tooltip delay**, default 400 ms). The
 - A colour literal: `#RRGGBB` and the GML number.
 - For a `#macro` or enum of this text: its source line. For one declared in another entry: the declaring line and "defined in" the entry.
 - For built-in names: the signature and return type, a one-line description, the category, and flags such as "deprecated" and "read only". For functions of the game: the signature, the documented parameters, "game function" and where it is defined.
-- A plain classification when nothing else is known: "keyword", "local variable", "global variable", "variable", "asset", "built-in constant", "built-in variable".
+- A plain classification when nothing else is known: "keyword", "local variable", "global variable", "variable", "asset", "built-in constant", "built-in variable". For a local, a global or a variable this text assigns, the card adds the type of the first value when it can be told from a literal (`real`, `string`, `bool`, `array`, `struct`, `function`, `undefined`, or a constructor name), the summary of a `///` comment above the line, "line {line} of this code" and the use count.
 - For a resource name: the shared info card (kind, name or nickname, ID, picture) and under it how many times this code uses it ("N uses in this code").
 
 Typing, scrolling or leaving the text closes the card.

@@ -14,7 +14,7 @@ Throughout this wiki, `<data-root>` means this folder or the custom location sel
 
 Choose a folder and decide whether to copy existing data or use the selected folder without copying. G3M uses the chosen folder directly; it does not append another `G3M` folder.
 
-The current and chosen folders cannot contain one another. Copying does not overwrite conflicting destination entries and does not delete the source. G3M records a custom location in `data-root.json` inside the default folder (`version` 1 and the chosen `path`); the default folder always stays, and resetting the setting deletes that file. Restart after a successful change. Resetting the setting returns to the platform's default through the same selection flow.
+The current and chosen folders cannot contain one another. Copying stops with an error that lists any destination entry with the same name, and nothing is overwritten. Copying does not delete the source. G3M records a custom location in `data-root.json` inside the default folder (`version` 1 and the chosen `path`); the default folder always stays, and resetting the setting deletes that file. Restart after a successful change. Resetting the setting returns to the platform's default through the same selection flow.
 
 If the selected drive is unavailable or not writable at startup, the dialog **G3M data location unavailable** offers **Try again**, **Choose another folder**, and **Use default location**; Cancel stops G3M from starting. A shortcut launch reports the unavailable location rather than silently using a different profile library.
 
@@ -37,8 +37,9 @@ If the selected drive is unavailable or not writable at startup, the dialog **G3
 | `cache/G3MTool/` | Reusable analysis cache |
 | `settings/operation-session/` | Journal and backups of the modded session in progress; shortcut launches use `settings/operation-shortcut-session/` |
 | `g3m.instance.lock` | Lock that keeps a single G3M instance running |
+| `last_dialog_dir.txt` | Folder of the last file, save, or folder pick. File and folder dialogs open there. |
 
-Each profile's mod folders sit directly under its profile folder. A profile folder name keeps letters, digits, `_`, `-`, and spaces; other characters become `_`, and the name is cut at 80 characters. Custom appearance assets sit in `settings/` as `custom_background.*`, `custom_logo.*`, `custom_font.*`, `custom_startup_sound.*`, and `custom_background_music.*`.
+Each profile's mod folders sit directly under its profile folder. A profile folder name keeps letters, digits, `_`, `-`, and spaces; other characters become `_`, and the name is cut at 80 characters. On Windows, a reserved name such as `CON` gets a trailing `_`. Custom appearance assets sit in `settings/` as `custom_background.*`, `custom_logo.*`, `custom_font.*`, `custom_startup_sound.*`, and `custom_background_music.*`.
 
 A first start with an existing `DELTAHUB` data folder (same location rules, folder name `DELTAHUB`) asks whether to import it (**Import Data**) or start empty (**Start Fresh**).
 

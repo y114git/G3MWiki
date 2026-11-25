@@ -51,13 +51,15 @@ Replace all changes the strings that are shown. With an empty filter it says "Ty
 - **Add**: type the text in **Text of a new string...** and press **Add**. An empty box says "Type the text of the new string in the box next to Add first." The result is "String added."
 - **Delete**: removes the selected string. The result is "String deleted." Undo brings it back until you save.
 
-A string that nothing uses is deleted at once. A string that is used, or whose use is not known yet, asks first: "Delete this string?" with "This string is used, or G3MStudio cannot tell yet whether anything uses it. Deleting it can break the game or the data file. Undo brings it back until you save." If G3MStudio is set to refuse risky actions, the string is not deleted: "G3MStudio is set to refuse risky actions, so this string was not deleted. Allow them in Settings, or change the text instead." With no row selected, the tooltip says "Pick a string in the list first."
+A string that nothing uses is deleted at once. A string that is used, or whose use is not known yet, asks first: "Delete this string?" with "This string is used, or G3MStudio cannot tell yet whether anything uses it. Deleting it can break the game or the data file. Undo brings it back until you save." If G3MStudio is set to refuse risky actions, the string is not deleted: "G3MStudio is set to refuse risky actions, so this string was not deleted. Allow them in Settings, or change the text instead." The **Delete** tooltip tells what to expect: "Pick a string in the list first." with no row selected, "This string is used. Delete asks you to confirm first." for a used string, "The kind column is not ready yet, so G3MStudio cannot tell whether this string is used. Delete asks you to confirm first." while the index is building, and "Low-memory mode keeps the kind column off, so G3MStudio cannot tell whether this string is used. Delete asks you to confirm first." in low-memory mode.
 
 ## Export and import CSV
 
 **Export CSV...** writes the strings that are shown, so a filter limits the export. The file has the header `index,text` and one row per string, with the text in quotes and doubled quotes inside. The default file name is `string_table.csv`. The file is written as UTF-8 with a byte order mark and an existing file stays whole until the new one is complete. The result reads "{count} strings written to {name}."
 
 **Import CSV...** sets the text of strings by their number, as one undo step. The header line is optional, and a line that is not `number,text` is an error. Limit: a file larger than 64 MB is refused ("The CSV is too large to read (limit 64 MB)."). The result reads "Changed {count} strings, as one step. Numbers not in the table: {skipped}." Failures read "Could not import: {reason}" and "Could not export: {reason}".
+
+The file dialogs open in the folder of the last file or folder you picked (kept in `last-folder.txt` in the user data folder).
 
 Use export and import to translate or review a game's text outside G3MStudio. Keep the numbers: the number is what ties a row to a string.
 

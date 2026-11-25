@@ -1,6 +1,6 @@
 # About and changelog
 
-Open **Help > About** for the installed G3M version, application information, and project links.
+Open **Help > About** for the installed G3M version, application information, and project links. The dialog shows the version, plugin API version, language, operating system, Python version, and the G3M folder. It links to **Releases**, **Wiki**, and **Issues**.
 
 ![The About dialog](../images/about-dialog.png)
 

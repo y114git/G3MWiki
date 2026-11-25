@@ -20,6 +20,7 @@ Every public type of G3MLib 1.1.7 with the page that explains it. Types that are
 | `DataFile.GameMakerChunk` and the `GameMakerChunk<XXXX>` types (`FORM`, `GEN8`, `OPTN`, `LANG`, `EXTN`, `SOND`, `AGRP`, `SPRT`, `BGND`, `PATH`, `SCPT`, `GLOB`, `GMEN`, `SHDR`, `FONT`, `TMLN`, `OBJT`, `ROOM`, `UILR`, `DAFL`, `TPAG`, `CODE`, `VARI`, `FUNC`, `STRG`, `TXTR`, `AUDO`, `EMBI`, `TGIN`, `ACRV`, `SEQN`, `TAGS`, `FEDS`, `FEAT`, `PSEM`, `PSYS`, `2023List`), `GameMakerSingleChunk`, `GameMakerListChunk`, `GameMakerAlignUpdatedListChunk`, `GameMakerSimpleListChunk`, `GameMakerEmptyChunk`, `GameMakerUnsupportedChunk`, `GameMakerRawChunk`, `IGameMakerSingleChunk`, `IGameMakerListChunk`, `IGameMakerSimpleListChunk` | One type per chunk of the file format | [DATA files](data-files.md#model-types) |
 | `DataFile.GameMakerDebugData`, `GameMakerDebugIO`, `GameMakerDebugFORM`, `GameMakerDebugChunkDBGI`, `GameMakerDebugChunkINST`, `GameMakerDebugChunkLOCL`, `GameMakerDebugChunkSCPT`, `GameMakerDebugChunkSTRG` | Debugger data model and its reader and writer | [GML editing](gml.md#debugger-data) |
 | `DataFile.ModelsDebug.DebugDataGenerator`, `DebugDataMode` | Builds debugger data from a data file | [GML editing](gml.md#debugger-data) |
+| `DataFile.ModelsDebug.GameMakerDebugInfo` (with `DebugInfoPair`), `GameMakerInstanceVars`, `GameMakerScriptSource` | Parts of the debugger data model | [GML editing](gml.md#debugger-data) |
 | `DataFile.DataAccessGate` | Reader/writer gate for one data file | [Cancellation and threading](cancellation-and-threading.md#data-access-gate) |
 | `DataFile.ModelLock` | Host-side reader/writer lock | [Cancellation and threading](cancellation-and-threading.md#modellock) |
 | `DataFile.DataLookup` | Hash indexes over strings and named resources | [References and renaming](references.md#lookups-and-repair) |
@@ -74,7 +75,7 @@ The typed object model. Every resource list of `GameMakerData` holds these types
 | `DataFile.Compiler.CodeImportGroup`, `CodeImportMode`, `CodeImportResult`, `CodeOperationResult`, `CodeOperationStatus` | Queue and run code edits | [GML editing](gml.md#queue-code-changes) |
 | `DataFile.Compiler.CompileGroup`, `CompileResult`, `CompileError` | Replace-only compile, macros | [GML editing](gml.md#macros) |
 | `DataFile.Compiler.BuiltinList`, `FunctionInfo`, `VariableInfo` | Built-in function and variable tables | [GML editing](gml.md) |
-| `DataFile.Decompiler.GlobalDecompileContext`, `GameSpecificResolver`, `Assembler`, `Disassembler`, `DisassemblyLine` | Decompile and disassemble | [GML editing](gml.md#decompile-a-code-entry) |
+| `DataFile.Decompiler.GlobalDecompileContext`, `GameSpecificResolver`, `GameSpecificCondition`, `GameSpecificDefinition`, `Assembler`, `Disassembler`, `DisassemblyLine` | Decompile and disassemble, per-game rules | [GML editing](gml.md#decompile-a-code-entry) |
 
 ## Analyzer
 

@@ -40,6 +40,10 @@ Terms used across the G3MStudio wiki, for readers new to GameMaker. Entries are 
 
 **Mod pack.** A `.g3mpack` file that holds several patches.
 
+**Dead resource.** A resource nothing in the game uses. **Find Dead Resources...** lists the certainly unused ones.
+
+**Nickname.** A name you give a resource in the rename dialog. G3MStudio shows it instead of the real name.
+
 **Object.** A resource that defines a kind of game entity with events and a sprite.
 
 **Particle system.** A resource that describes particle effects.
@@ -53,6 +57,8 @@ Terms used across the G3MStudio wiki, for readers new to GameMaker. Entries are 
 **Problems panel.** The panel that collects warnings and errors from loading, saving and compiling.
 
 **Project.** A folder of resources linked to a data file for text editing and version control.
+
+**Read only lock.** A mark on a resource that makes G3MStudio refuse edits to it. Set in the inspector.
 
 **Recent file.** An entry in the Start page list. It can be pinned.
 

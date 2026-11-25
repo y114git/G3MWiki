@@ -14,7 +14,7 @@ G3MStudio is licensed under GPL-3.0-only.
 
 ## Platforms
 
-Windows, Linux and macOS, each on x64 and arm64, as a portable zip (see [Install](getting-started/install.md) and [Platforms](reference/platforms.md)). It is built on .NET 10 and Avalonia 12 and reads and writes data files with G3MLib 1.1.5. The interface comes in seven languages (see [Languages](getting-started/languages.md)).
+Windows, Linux and macOS, each on x64 and arm64, as a portable zip (see [Install](getting-started/install.md) and [Platforms](reference/platforms.md)). It is built on .NET 10 and Avalonia 12 and reads and writes data files with G3MLib 1.1.7. The interface comes in seven languages (see [Languages](getting-started/languages.md)).
 
 ## What it opens
 
@@ -26,7 +26,7 @@ Windows, Linux and macOS, each on x64 and arm64, as a portable zip (see [Install
 | `.droid` | Android games |
 | `audiogroupN.dat` | Audio group files |
 
-`.symbian` is registered as a data file type for "Open with". The file picker also offers all files, and the reader decides by content. The GameMaker versions that open are the ones G3MLib 1.1.5 reads. See [Opening a data file](getting-started/opening-files.md) and [File formats](reference/file-formats.md).
+`.symbian` is registered as a data file type for "Open with". The file picker also offers all files, and the reader decides by content. The GameMaker versions that open are the ones G3MLib 1.1.7 reads. See [Opening a data file](getting-started/opening-files.md) and [File formats](reference/file-formats.md).
 
 ## Where to start
 

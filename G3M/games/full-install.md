@@ -2,13 +2,13 @@
 
 **Full Install** downloads a game package into a folder you choose and sets the resulting installation as the selected game's path.
 
-The feature is available for DELTARUNEdemo, UNDERTALE Yellow, Sugary Spire, and FRICKBEARS3. It is disabled on macOS. It does not download paid games or appear for custom games.
+The feature is available for DELTARUNEdemo, UNDERTALE Yellow, Sugary Spire, and FRICKBEARS3. On macOS, checking **Full Install** shows *Game file installation is not available on macOS.* and clears the box. It does not download paid games or appear for custom games.
 
 ## Install a game
 
 1. Select a supported game and enable **Full Install**.
-2. Click the main install action.
-3. Choose the destination in the installation dialog.
+2. Click the main action button, which reads **Install**, and confirm the **Install <game> from scratch** prompt.
+3. Choose the folder to install into. G3M creates a subfolder named after the game inside it.
 4. Wait for the download and extraction to finish.
 5. Check the configured game folder and launch the installed game.
 

@@ -14,7 +14,7 @@ Configure the relevant game path first: conversion needs the correct original DA
 
 ## Patch
 
-Choose the format **Mode** and action **Create**, **Apply**, or **Convert**.
+Choose the **Mode** (`g3mpatch`, `xdelta`, or `csx`) and the action **Create**, **Apply**, or **Convert**.
 
 | Action | Inputs | Output |
 | --- | --- | --- |
@@ -48,7 +48,7 @@ Select a DATA file or patch and click **Get Info**. The output area displays met
 
 ## Diff
 
-Select the two files and click **Compare**. G3M generates and opens a difference report where possible. **Full report** includes detailed resource comparisons; it can take longer and produce a larger report.
+Select the two files and click **Compare**. G3M generates and opens a difference report where possible. **Full report** includes detailed resource comparisons; it can take longer and produce a larger report. The report window has **Export Report**.
 
 ## Open in G3MStudio
 

@@ -39,7 +39,7 @@ Nothing plays on its own. The controls above the strip:
 | **Onion skin** | Draws the neighbouring frames faintly behind the current one on the canvas. The image editor option sets how many (see [Image settings](image-settings.md)). |
 | **Lock origin** | See [Sprite editor](sprite-editor.md). |
 
-The editor timer runs at the speed of the sprite. A speed in frames per game frame counts as 30 game frames per second. The interval is kept between 0.25 and 240 frames per second.
+The editor timer runs at the speed of the sprite. A speed in frames per game frame counts as 30 game frames per second. A speed below 1 plays as 1. The interval is kept between 0.25 and 240 frames per second.
 
 ## Frame buttons
 
@@ -61,7 +61,7 @@ Deleting the last frame is a warned refusal: `Delete the last frame of {name}?` 
 Use **Import...** (frame strip) or **Import Sheet or Strip...** in the **Sprite** menu to add frames to the open sprite. Use **New Sprite from Sheet or Strip...** (File menu import entries, and the menu of the Sprites group in the Explorer) to make a new sprite instead.
 
 1. Pick a file (`Choose a sheet, strip or GIF`). PNG, BMP, GIF, JPEG and WebP are read. Other formats give `The picture format is not supported. Use PNG, BMP, GIF, JPEG or WebP.` A picture over 8192 pixels on a side is refused.
-2. In **Import sheet or strip**, choose **Cut by frame count** or **Cut by frame size** and set the fields. A summary shows the result: `{count} frames of {width} by {height} pixels.`
+2. In **Import sheet or strip**, choose **Cut by frame count** or **Cut by frame size** and set the fields. A summary shows the result: `{count} frames of {width} by {height} pixels.` For a GIF it reads `Animated GIF: {count} frames of {width} by {height} pixels.`
 3. Choose **Replace the current frames and take the new size** if the frames differ in size from the sprite or if you want to drop the old frames.
 4. Press **OK**.
 
@@ -79,7 +79,7 @@ Without **Replace**, the frames must have the size of the sprite: `The sprite is
 
 ## Replace a frame
 
-**Replace Sprite Frame...** in the Sprite menu replaces the picture of the selected frame. It asks for a picture (`Picture for the frame`). The result is one undoable step and the message `Frame {frame} of {sprite} replaced.` (see the note at the end). A file that cannot be read is refused before it reaches the history. For pictures of another size, edit the frame in the [image editor](image-editor.md), which fits the texture pages.
+**Replace Sprite Frame...** in the Sprite menu replaces the picture of the selected frame. It asks for a picture (`Picture for the frame`). The result is one undoable step and the message `Frame {frame} of {sprite} replaced.`. A file that cannot be read is refused before it reaches the history. For pictures of another size, edit the frame in the [image editor](image-editor.md), which fits the texture pages.
 
 ## Export as GIF
 
@@ -93,7 +93,7 @@ Without **Replace**, the frames must have the size of the sprite: `The sprite is
 
 The object editor shows a small player for a sprite with the buttons **Play** or **Pause**, **Stop**, **Loop** and a speed list (`0.5x`, `1x`, `2x`). It draws each frame at its place in the sprite's bounding box. With one frame it is disabled. The state is not saved.
 
-Before you press **Play** it shows the still picture of the sprite, which is the first frame with a visible pixel by default. **Stop** returns to that picture. The same still picture is used for Explorer rows, hover cards, Go To, search results and pickers. The room editor, the sprite editor canvas and the exports always use the real frames. Change the rule in **Settings** > **Appearance** > **Sprite previews start at** (**First visible frame** or **First frame**). See [Explorer settings](../settings/explorer-settings.md).
+Before you press **Play** it shows the still picture of the sprite, which is the first frame with a visible pixel by default. **Stop** returns to that picture. The same still picture is used for Explorer rows, hover cards, Go To, search results and pickers. The room editor, the sprite editor canvas and the exports always use the real frames. Change the rule in **Settings** > **Explorer** > **Sprite previews start at** (**First visible frame** or **First frame**). See [Explorer settings](../settings/explorer-settings.md).
 
 ## Limits
 
@@ -101,7 +101,7 @@ Before you press **Play** it shows the still picture of the sprite, which is the
 |---|---|
 | Picture side | 8192 pixels |
 | Frames from a sheet or GIF | 1024 |
-| One encoded picture | 64 MiB of PNG |
+| Frames of one import | 64 MiB of PNG in total |
 | Collision box edges | 0 to 65535 |
 
 ## Troubleshooting
@@ -110,6 +110,7 @@ Before you press **Play** it shows the still picture of the sprite, which is the
 |---|---|
 | `The frames differ in size.` | A set of frames with different sizes cannot be imported together. |
 | `There are no frames to import.` | The cut produced no frames. Check the offset, size and gaps. |
+| `The frames are {n} MB as PNG; the limit is {n} MB. Import fewer or smaller frames.` | The frames of one import hold more than 64 MiB as PNG. |
 | `The picture is larger than 8192 pixels on a side.` | Reduce the picture first. |
 
 ## See also

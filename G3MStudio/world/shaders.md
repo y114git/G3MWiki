@@ -4,7 +4,7 @@ A shader is a small program that runs on the graphics card. This page covers the
 
 ## Source tabs
 
-The shader tab shows one tab for each source the shader holds. The possible tabs are **GLSL ES vertex**, **GLSL ES fragment**, **GLSL vertex**, **GLSL fragment**, **HLSL9 vertex** and **HLSL9 fragment**. A source that is empty is not shown. Each tab is a code view with line numbers and GML-style colouring of comments, numbers and shared keywords. `Ctrl+F` opens find (with replace when the file is open for editing), the same panel as in the code tab. A bar under the view changes its height.
+The shader tab shows one tab for each source the shader holds. The possible tabs are **GLSL ES vertex**, **GLSL ES fragment**, **GLSL vertex**, **GLSL fragment**, **HLSL9 vertex** and **HLSL9 fragment**. A source that is empty or only blank is not shown. Each tab is a code view with line numbers and GML-style colouring of comments, numbers and shared keywords. `Ctrl+F` opens find (with replace when the file is open for editing), the same panel as in the code tab. A bar under the view changes its height.
 
 Without a project the sources are read-only. Otherwise two buttons sit above the view:
 
@@ -29,7 +29,7 @@ Under each source one line reports a light check. It is not a compiler: it misse
 | `The vertex shader does not set gl_Position` | GLSL vertex source without `gl_Position`. |
 | `The fragment shader does not set gl_FragColor` | GLSL fragment source with neither `gl_FragColor` nor `gl_FragData`. |
 
-HLSL9 sources get the brackets and `main` checks only.
+When several checks fail, the messages are joined with `; ` on the one line. HLSL9 sources get the brackets and `main` checks only. Only `//` and `/* */` comments are ignored.
 
 ## Make a shader
 

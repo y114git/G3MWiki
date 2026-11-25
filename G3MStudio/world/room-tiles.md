@@ -60,7 +60,7 @@ An auto-tile rule set turns Paint, Erase, Line, Rectangle and Fill into terrain 
 
 **Room** > **Export Tiles as CSV...** writes the selected tile layer: one line per row, cells separated by commas, each cell the tile value (0 is empty, flags are part of the number). The notice reads `Tiles of {layer} in {room} were saved to {path}.`
 
-**Room** > **Import Tiles from CSV...** reads such a file. It must have the same number of rows and columns as the layer and only whole non-negative numbers. Cells that differ are changed as one undo step: `Tiles changed in {layer}: {count}.` Otherwise: `The tile CSV was not used: {reason}` with a reason such as `The CSV has {n} rows; the layer has {m}.` or `Row {r}, column {c}: '{text}' is not a tile value.`
+**Room** > **Import Tiles from CSV...** reads such a file. It must have the same number of rows and columns as the layer and only whole non-negative numbers. Cells that differ are changed as one undo step: `Tiles changed in {layer}: {count}.` Otherwise: `The tile CSV was not used: {reason}` with a reason such as `The CSV has {n} rows; the layer has {m}.`, `Row {r} has {n} cells; the layer has {m}.` or `Row {r}, column {c}: '{text}' is not a tile value.`
 
 Both commands need a tile layer selected, else `Select a tile layer with a tile set first.`
 
@@ -70,9 +70,11 @@ Both commands need a tile layer selected, else `Select a tile layer with a tile 
 
 1. Choose **Choose image...** and pick a picture.
 2. Pick the **Tile set** (only tile sets with a picture are listed; with none, `The data file has no tile set with a picture.`).
-3. Type a **Layer name** (default `Tiles`, made unique).
+3. Type a **Layer name** (default `Tiles`, made unique with `_1`, `_2` and so on). **OK** stays disabled while no picture is chosen, or the name is empty or already used in the room.
 4. Read the summary: `{matched} cells match a tile. Cells with pixels that match no tile stay empty: {unmatched}.` plus the first few unmatched cells. If the picture is larger than the room: `The picture is larger than the room and is cut at the room edge.`
 5. Press **OK**. The layer goes in front of the others, as one undo step.
+
+The match is exact. The room is cut into cells the size of one tile, from its top left corner, and each cell of the picture is compared pixel by pixel with the tiles of the tile set. A cell with no visible pixel stays empty. A cell that matches no tile stays empty and is counted as unmatched. Tile 0 is never used, and flipped or rotated tiles are not tried. Of equal tiles the lowest index wins.
 
 Result notice: `Layer {layer} made from the picture: {matched} tiles placed, {unmatched} cells unmatched.`
 

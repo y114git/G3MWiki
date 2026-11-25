@@ -2,7 +2,7 @@
 
 ![The Files page of Settings with backups, startup mode and lost file options](../images/settings-files.png)
 
-The **Files** category covers backups, closing with unsaved changes, the window position, what happens at start, how G3MStudio finds a data file that moved, the file type association and the projects folder.
+The **Files** category covers backups, closing with unsaved changes, the window position, pre-releases in the update check, what happens at start, how G3MStudio finds a data file that moved, the file type association and the projects folder.
 
 ## Controls
 
@@ -11,6 +11,7 @@ The **Files** category covers backups, closing with unsaved changes, the window 
 | **Backups of the data file (1 to 100)** | Number | 3 | 1 to 100 | `backupCount` |
 | **Ask before closing with unsaved changes** | Checkbox | On | On, off | `askOnClose`. Off: closing keeps the changes in the journal without asking. |
 | **Open the window where it was closed** | Checkbox | On | On, off | `rememberWindow`. A window mostly off screen is not restored. |
+| **Also offer pre-releases when checking for updates** | Checkbox | Off | On, off | `updatePrereleases`. Off: **Help** > **Check for Updates...** offers stable releases only. A version lower than the running one is never offered. See [Update settings and channels](updates.md). |
 | **When G3MStudio starts** | List | **Reopen the last file, tabs and layout** | **Reopen the last file, tabs and layout**, **Show Home**, **Ask me** | `startup`: `Restore`, `Home`, `Ask`. A restore that fails goes to Home. |
 | **Look for a lost data file by its hash in nearby folders and the folders of recent files** | Checkbox | On | On, off | `lostFileSearch` |
 | **Use the found file without asking when exactly one has the same hash** | Checkbox | On | On, off | `lostFileAutoUse` |
@@ -34,7 +35,7 @@ The three lost-file options work together when a remembered data file is gone. S
 
 ## Restore defaults
 
-Resets **Backups of the data file (1 to 100)**, **Ask before closing with unsaved changes** and **Open the window where it was closed**. It leaves the start and lost-file rows and the folder alone.
+Resets **Backups of the data file (1 to 100)**, **Ask before closing with unsaved changes**, **Open the window where it was closed** and **Also offer pre-releases when checking for updates**. It leaves the start and lost-file rows and the folder alone.
 
 ## See also
 

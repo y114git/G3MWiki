@@ -40,7 +40,7 @@ A mouse button can be a gesture. The names are `Mouse1` (left), `Mouse2` (right)
 
 - A bare left or right click stays a click. `Mouse1` and `Mouse2` count as a gesture only with a modifier held, so the button you click to start the capture is not taken.
 - Only a real mouse makes a gesture. A touch tap or a pen is not read as a mouse button.
-- When a button is pressed, the command with that gesture runs. If several commands share it, the order is: a gesture you chose as the primary of a command, then any primary, then the command id.
+- When a button is pressed, the command with that gesture runs. If several commands share it, the order is: a gesture you chose as the primary of a command, then any primary, then the command id (aliases count after primaries).
 - The back and forward buttons (`Mouse4`, `Mouse5`) always step through tabs (`tabs.back`, `tabs.forward`) unless some command claims that button.
 
 ## Conflicts
@@ -52,7 +52,7 @@ When the main window applies saved shortcuts it also warns once per pair when a 
 - "{shortcut} is set for {user} and is also the default of {other}. {user} runs on that key."
 - "{shortcut} is set for {user} and is also used by {other}. {user} runs on that key."
 
-A key press runs the command in this order: a key you chose as a primary, then any primary, then an alias, then the command id.
+A key press runs the command in this order: a key you chose as a primary, then any primary, then the other commands that hold the key as an alias, each group by command id.
 
 ## Reset
 
@@ -80,8 +80,8 @@ Defaults are set by the command list, not by this page. Some of the ones tied to
 | `view.zoomIn` | **Zoom In** | `Ctrl++` |
 | `view.zoomOut` | **Zoom Out** | `Ctrl+-` |
 | `view.zoomReset` | **Reset Zoom** | `Ctrl+0` |
-| `tabs.back` | previous resource | `Alt+Left`, and `Mouse4` when no command claims it |
-| `tabs.forward` | next resource | `Alt+Right`, and `Mouse5` when no command claims it |
+| `tabs.back` | **Back** (**Window** menu) | `Alt+Left`, and `Mouse4` when no command claims it |
+| `tabs.forward` | **Forward** (**Window** menu) | `Alt+Right`, and `Mouse5` when no command claims it |
 | `go.object` | **Go to Object** | `Ctrl+F12`. Works while one instance is selected in a room. |
 | `go.sprite` | **Go to Sprite** | `Alt+Shift+F12`. Works while a selected instance, layer, object tab or object row shows a sprite or tile set. |
 | `edit.findUsages` | **Find Usages** | `Shift+F12` |

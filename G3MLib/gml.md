@@ -19,13 +19,13 @@ var text = new DecompileContext(context, code,
 Console.WriteLine(text);
 ```
 
-`DecompileContext.DecompileToSourceMap()` returns a `DecompiledSource(Text, Map)`. `SourceMap.Entries` lists every printed node with its text span and the bytecode it came from, and `SourceMap.Lines` converts offsets to line and column, so an editor can jump between text and instructions. `Disassembler.Disassemble(code, variables, locals, ignoreMissingCodeLocals, out lines)` returns a `DisassemblyLine(InstructionOffset, TextOffset, Line)` map for the assembly text. `ScriptGlobals.GetDecompiledText` wraps the decompiler for scripts.
+`DecompileContext.DecompileToSourceMap()` returns a `DecompiledSource(Text, Map)`. `SourceMap.Entries` lists every printed node with its text span and the bytecode it came from, and `SourceMap.Lines` converts offsets to line and column, so an editor can jump between text and instructions. `Disassembler.Disassemble(code, variables, locals, ignoreMissingCodeLocals, out lines)` returns the assembly text. The `out lines` list holds one `DisassemblyLine(InstructionOffset, TextOffset, Line)` per line, which maps the text to the instructions. `ScriptGlobals.GetDecompiledText` wraps the decompiler for scripts.
 
 Child code entries can belong to a parent code entry; do not treat each child as an independent top-level replacement. Games without supported GML bytecode cannot provide the same decompilation/editing flow.
 
 ## Queue code changes
 
-`CodeImportGroup` accepts a loaded model and optional shared GlobalDecompileContext/settings. Queue changes by a code object or exact code-entry name:
+`CodeImportGroup` accepts a loaded model and optional shared GlobalDecompileContext/settings. Queue changes by a code object or exact code-entry name. The find and replace methods take `caseSensitive` (default `true`):
 
 | Method | Change |
 | --- | --- |

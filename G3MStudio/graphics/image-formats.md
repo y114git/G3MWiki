@@ -26,7 +26,7 @@ Any other file gives `The picture format is not supported. Use PNG, BMP, GIF, JP
 | Included picture (loose file) | Keeps its type: png, jpg, jpeg, bmp or gif. JPEG has no transparency and a GIF keeps its first frame. |
 | Copy in the image editor | Also a bitmap on the system clipboard |
 
-Inside the data file, pictures are stored on texture pages in the file's own format. Studio decodes pages when needed. One encoded picture can be at most 64 MiB of PNG.
+Inside the data file, pictures are stored on texture pages in the file's own format. Studio decodes pages when needed. The frames of one sprite import can be at most 64 MiB as PNG in total.
 
 ## Limits
 
@@ -36,7 +36,7 @@ Inside the data file, pictures are stored on texture pages in the file's own for
 | Resize dialog and canvas handles | 1 to 4096 pixels |
 | Texture page side | 1 to 8192 pixels |
 | Sprite zoom in the sprite editor | 1x to 32x (up to 8192 screen pixels on a side) |
-| Image editor zoom | 1/256 up to 256x |
+| Image editor zoom | Up to 256x. Down to where the longest side is about 16 screen pixels, never below 1/256 |
 | Frames cut from a sheet or GIF | 1024 |
 | Layers per frame | 64 |
 | Layer stack picture side | 16384 pixels |

@@ -15,9 +15,10 @@ This page lists the windows that belong to the interface area: the title as show
 | Rename {count} entries | Organize > Rename with Pattern... | Bulk rename. |
 | Move to texture group, Move to audio group | Organize menu | Choose a group. |
 | Dead Resources | Organize > Find Dead Resources... | Resources nothing uses. |
-| Unsaved changes | Closing a file with edits | Save, or keep edits for later. |
+| Unsaved changes | Closing a file with edits | **Save** (**Sync changes** with a project), or **Do it later** to keep the edits in the journal. |
 | Data file not found | Opening a recent file that is gone | Locate or remove it. |
 | Save | Save with the ask-before-saving prompt | Choose save mode. |
+| Rename | Edit > Rename..., `F2` | New name, optional nickname. |
 | About G3MStudio | Help > About G3MStudio | Version info and **Copy Version Info**. |
 | Transfer Resources | File > Transfer Resources... | Import, export, copy, mods. See [Projects](../projects/README.md). |
 | Copy to Other Data File | Edit > Copy to Other Data File... | Copy resources between files. |
@@ -29,10 +30,10 @@ This page lists the windows that belong to the interface area: the title as show
 | Repack texture pages | Tools > Repack Texture Pages... | Rebuild texture pages. |
 | Generate sound, Record sound | Sound menu | See [Audio](../audio/README.md). |
 | Plugins | Tools > Plugins... | Manage plugins. |
-| Hex View of Data File | Tools > Hex View of Data File... | See [Code tools](../code/README.md). |
+| Hex view: {file} | Tools > Hex View of Data File... | See [Code tools](../code/README.md). |
 | Settings | File > Settings, `Ctrl+,` | Opens as a page over the work area, not a window. See [Settings](../settings/README.md). |
-| Getting Started, Interface Tour | Help menu | Onboarding. See [Getting started](../getting-started/README.md). |
-| Send Feedback, Report a Problem | Help menu | Send a report. |
+| Welcome to G3MStudio, Interface tour | Help > Getting Started..., Help > Interface Tour... | Onboarding. See [Getting started](../getting-started/README.md). |
+| Send Feedback | Help > Send Feedback... | Send a message. **Report a Problem...** opens the issue page in the browser instead of a window. |
 
 Floating panels also open as windows of their own (see [Docking and layouts](docking-and-layouts.md)).
 

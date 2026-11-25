@@ -18,7 +18,7 @@ Direct mode is the default. The status bar shows **Enable project** while the op
 
 ## What a project contains
 
-A project folder is created inside the projects folder as `<name>-<id>`, where `<name>` is the data file name made safe for a file system (spaces and invalid characters become `_`, at most 60 characters; names such as `CON` or `NUL` get a leading `_`) and `<id>` is 8 hex digits. It holds:
+A project folder is created inside the projects folder as `<name>-<id>`, where `<name>` is the data file name made safe for a file system (spaces and invalid characters become `_`, at most 60 characters; trailing dots are dropped; an empty name becomes `project`; names such as `CON` or `NUL` get a leading `_`) and `<id>` is 8 hex digits. It holds:
 
 - `<name>.g3mproj`, the project file that lists every resource.
 - One file or folder per resource (code as `.gml`, pictures as `.png`, and so on), written by the G3MLib project exporter.

@@ -24,7 +24,15 @@ The program folder is the folder of `G3MStudio.exe` or `G3MStudio` (the `Content
 | --- | --- |
 | `Scripts` | `.csx` files, subfolders included. When the folder holds any, **Tools > Run Script...** asks whether to pick a file or choose one from this folder. |
 | `projects` | Default root for new projects. |
-| `.g3mstudio-update` | Work files of an update, removed after a successful update (see [Updating](updating.md)). |
+| `.g3mstudio-update` | Work files of an update, removed at the next start after every update, good or failed (see [Updating](updating.md)). |
+
+## Recent lists
+
+`recent.json` holds the recent data files (see [Start page](start-page.md)). `recent-scripts.json` holds the last 10 scripts you ran, newest first. **Tools > Run Recent Script** lists them, and **Clear Items** empties the list. The list belongs to you, not to a data file.
+
+## Last folder
+
+File, save and folder dialogs open in the folder of the last pick. The folder is kept in `last-folder.txt` in the data folder, also after a restart. If that folder is gone, the dialogs start in their default place.
 
 ## Back up or reset
 

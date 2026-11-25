@@ -33,6 +33,6 @@ The standard report holds resource-level changes, changed text-file counts, reso
 
 With `--json` the object is `{"success":true,"command":"diff","mode":"full","file1":...,"file2":...,"output":...,"differences":1,"changed":1,"new":0,"deleted":0,"textDiffs":1,"byType":{"Rooms":{"changed":1,"new":0,"deleted":0}},"warnings":[]}`. `mode` is `standard` or `full`. Standard mode with differences adds a warning that unified hunks are omitted. On failure: `{"success":false,"command":"diff","error":...}`.
 
-Errors (stderr, exit code `1`): `Error: File not found: <path>` and other `Error: <reason>` lines. Ctrl+C cancels (exit code `130`).
+Text-mode errors go to stderr with exit code `1`: `Error: File not found: <path>` and other `Error: <reason>` lines. With `--json` the error is the JSON object above. Ctrl+C cancels (exit code `130`).
 
 Patch-to-patch comparison lists the declared and packaged resource changes. It does not show whether either patch applies to a given original.

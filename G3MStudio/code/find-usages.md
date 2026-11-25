@@ -13,7 +13,11 @@ All are in the **Edit** menu and the command palette.
 | **Find Unreferenced Assets** | none | The assets nothing in the file refers to. |
 | **Find Child Objects** | none | The objects whose parent is the selected object. |
 
-In a code tab, **Find Usages** is also in the context menu, and the **Function Reference** panel has a **Find Usages** button. The key works in a code tab for the name under the caret.
+In a code tab, **Find Usages** is also in the context menu, and the **Function Reference** panel has a **Find Usages** button. The key works in a code tab for the name under the caret. The Inspector button always searches the resource itself, never the word under the caret.
+
+## From the Explorer
+
+With one resource selected (or its tab in front), **Find Usages** lists the places that use it. With several resources selected, it lists the places that use any of them, apart from the selection itself. The panel names such a search by the number of selected resources.
 
 ## From code
 
@@ -31,6 +35,7 @@ Open it from **View > Panels > Usages**. Every Find Usages, **Find What It Uses*
 
 - "Looking for uses of {name}..." then "Places that use {name}: {count}." or "{name} is not used anywhere."
 - "Could not search for {name}: {reason}"
+- for **Find Unreferenced Assets**: "Looking for assets nothing uses...", "Could not search for unused assets: {reason}"
 - for **Find What It Uses**: "Looking for what {name} uses...", then "Assets used by {name}: {count}. Double click one to open it." or "{name} does not use any asset."
 
 An empty panel says "No usages to show yet. Use Find Usages on a resource."
@@ -57,7 +62,7 @@ Select several rows with `Ctrl+click` and `Shift+click`. For a more careful list
 
 ## Find Child Objects
 
-Lists the objects that name the selected object as their parent, in the Usages panel.
+Lists the objects that name the selected object as their parent, in the Usages panel. The status line uses the same texts as Find Usages ("Places that use {name}: {count}."). The command works on an object only.
 
 ## See also
 

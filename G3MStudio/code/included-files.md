@@ -30,24 +30,24 @@ Type in **Filter files** to narrow the list. With no files the view says "There 
 
 ## Buttons
 
-Buttons that need a file are disabled until one is selected ("Select a file in the list first.").
+Buttons that need a file are disabled until one is selected ("Select a file in the list first."). The file dialogs of **Add...**, **Replace...** and **Export...** open in the folder of the last pick (kept in `last-folder.txt` in the user data folder).
 
 | Button | What it does |
 |---|---|
 | **Add...** | Copies the files you choose into the folder. "Added {added} files, skipped {skipped} that already exist." A file that cannot be copied is reported ("Could not copy: {files}"). |
 | **Replace...** | Replaces the selected file with the content of a file you choose. |
 | **Export...** | Saves a copy of the selected file where you choose. |
-| **Edit...** | Opens the file in the editor that fits it: the code editor control for text, the sound player for audio. Double-click a row does the same. |
-| **Edit...** (picture) | Shown for picture files: opens the image editor on the file. Only for PNG, JPG, BMP or GIF ("Select a picture file (PNG, JPG, BMP or GIF) in the list first."). |
+| **Edit...** | Opens the file in a tab of the editor that fits it: the image editor for PNG, JPG, JPEG, BMP and GIF, a text editor for the JSON and text types, the sound player for OGG, WAV and MP3. Any other file does nothing. Double-click a row does the same. |
+| **Edit Image...** | Opens the image editor on the selected picture. Only for PNG, JPG, JPEG, BMP or GIF ("Select a picture file (PNG, JPG, BMP or GIF) in the list first."). |
 | **Rename...** | Asks "New name for {name}" and renames within its folder. |
-| **Delete** | Moves the file to the trash folder of G3MStudio's user data. That folder is the way back. |
+| **Delete** | Moves the file to the `trash` folder of G3MStudio's user data, into a sub folder named by the date and time. That folder is the way back. |
 | **Refresh** | Reads the folder again. |
 
 ## Undo and risky changes
 
 Changes here write straight to the game folder. They are not on the undo stack.
 
-A **Rename** or **Delete** of a file that a sound or a string names is refused first with a warning (the risky action question). You can go on, or cancel. If G3MStudio is set to refuse risky actions, it refuses. Saving a text, picture or audio edit into the game folder asks "Write the text into the game folder?", "Write the picture into the game folder?" or "Write the audio into the game folder?".
+A **Rename** or **Delete** of a file that a sound or a string names is refused first with a warning (the risky action question, "Rename {name} anyway?" or "Delete {name} anyway?"). You can go on, or cancel. If G3MStudio is set to refuse risky actions, it refuses. Saving a text, picture or audio edit into the game folder asks "Write the text into the game folder?", "Write the picture into the game folder?" or "Write the audio into the game folder?".
 
 Every path is checked to stay inside the game folder. A path that leaves it is refused: "'{path}' is outside the game folder and was not used."
 

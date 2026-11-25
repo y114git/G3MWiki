@@ -14,7 +14,7 @@ No. Profiles separate mods and selection state. Game paths and user-data paths a
 
 ## Why did a mod remain applied after closing the game?
 
-Check the launch mode. Launch and keep changes and Patching only retain changes deliberately. Normal Launch can also report a restoration conflict if files changed externally. Preserve recovery data and inspect the log.
+Check the launch mode. Launch and keep changes and Launch patching only retain changes deliberately. Normal Launch can also report a restoration conflict if files changed externally. Preserve recovery data and inspect the log.
 
 ## Does a downloaded mod immediately become active?
 

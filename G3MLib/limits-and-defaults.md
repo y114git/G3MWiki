@@ -33,7 +33,7 @@ The library has no application window, no game launcher and no xdelta executable
 | --- | --- |
 | `PatchService.CreatePatchAsync` `includeXdeltaFallback` | `false` |
 | `PatchService.ApplyPatchAsync` `allowXdeltaFallback` | `false` |
-| `PatchService.ApplyPatchAsync` `verifyModifiedHash` | `true` |
+| `PatchService.ApplyPatchAsync` `verifyModifiedHash` | `true` (checked only when `allowXdeltaFallback` is `true`) |
 | `PatchApplyOptions.ValidateBeforeApply` | `true` |
 | `XDeltaService` process timeout | 5 minutes |
 | `G3MProjectOptions.Mode` | `Full` |
@@ -60,10 +60,10 @@ The library has no application window, no game launcher and no xdelta executable
 | --- | --- |
 | Merge reference scans | Each pattern is stopped after 2 seconds, and a warning is logged. |
 | Temporary file name | `<target>.<id>.g3mtmp` next to the target. Each write has its own name. |
-| Stale temporary files | Files of the same target older than one day are removed at the next write of that target. |
+| Stale temporary files | Files of the same target older than one day are removed at the first write of that target in the process. |
 | Symlinked target | Written through, so the link stays. |
 | Output folder | `GameMakerIO.WriteAsync` to a path does not create a missing folder. `PatchInputService.WriteDataFile`, `G3MProjectService.Build`, patch archive writes and `G3MProjectService.Export` create it. |
-| Cache schema | `G3MCacheManifest.CurrentSchema` is 3. |
+| Cache schema | `G3MCacheManifest.CurrentSchema` is 5. |
 
 ## Compiler diagnostics
 

@@ -74,7 +74,7 @@ Pick the game with **Game:** and edit its paths. The button beside the selector 
 | Patching / Merging | **Clear G3MTool Cache** | After confirmation, deletes cached G3MTool analysis files. Patching can be slower until the cache is rebuilt. | |
 | Advanced | **Custom G3MTool:** | Use this G3MTool executable instead of the bundled one. | Empty |
 | Advanced | **Custom XDELTA:** | Pass this xdelta executable to G3MTool. | Empty |
-| Advanced | **Custom Wine:** | Preferred Wine executable on Linux and macOS. | Empty |
+| Advanced | **Custom Wine:** | Preferred Wine executable for Windows games. Shown on Linux and macOS only. | Empty |
 | Advanced | **Custom PortProton:** | PortProton command used when PortProton is enabled. Linux and macOS only. | Empty |
 
 ![Game settings tab](../images/settings-game.png)

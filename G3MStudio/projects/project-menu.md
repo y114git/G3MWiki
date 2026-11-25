@@ -43,7 +43,7 @@ The project item in the status bar shows the state and acts as a button:
 
 Result: a notification "Project created for {name}." appears and the status bar shows **Synced**. If G3MLib reports problems, a warning says "The project was created, but problems were reported: {count}. First: {first}". A resource that could not be exported is left out.
 
-While the export runs, staging folders are moved with retries and a copy fallback when a virus scanner holds them (G3MLib 1.1.5).
+While the export runs, staging folders are moved with retries and a copy fallback when a virus scanner holds them (G3MLib 1.1.7).
 
 Cancelling the export shows "Project export cancelled. Nothing was kept." and removes the folder. Edits you make during the export wait and run afterwards.
 

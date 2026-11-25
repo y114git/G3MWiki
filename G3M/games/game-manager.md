@@ -2,7 +2,7 @@
 
 Open **Game Manager** from the game controls or **Settings > Game**.
 
-The list contains built-in and custom games. Each row has a **Built-in**, **Custom**, or **Hidden** badge. Use the visibility control to choose which entries appear in the main selector, and reorder entries to arrange that selector. At least one game must remain visible.
+The list contains built-in and custom games. Each row has a **Built-in**, **Custom**, or **Hidden** badge, and shows its Steam App ID and GameBanana game ID when it has them. Clear the **Visible** checkbox to hide an entry from the main selector. Drag rows to reorder that selector. At least one game must remain visible.
 
 ![Game Manager](../images/game-manager-dialog.png)
 

@@ -7,7 +7,7 @@ This page lists every command, the options shared by all commands, exit codes, a
 | [`patch create`](patch.md#create) | Create a resource patch (or an xdelta patch) from a supported input |
 | [`patch apply`](patch.md#apply) | Write patched DATA |
 | [`patch validate`](patch.md#validate) | Check a resource patch, optionally against original DATA |
-| [`patch merge`](patch.md#merge) | Combine changes from two to 100 inputs |
+| [`patch merge`](patch.md#merge) | Combine changes from two to 100 patches |
 | [`patch batch create`, `apply`, `merge`](patch.md#batch-operations) | Run independent jobs against one original |
 | [`xpatch create`, `apply`](xpatch.md) | Create or apply a binary xdelta patch |
 | [`execute`](execute.md) | Run a CSX script, an external program, or raw xdelta arguments |
@@ -34,7 +34,7 @@ These options are accepted by every command, before or after the command name.
 
 A log file is overwritten on each run. Every line starts with `[yyyy-MM-dd HH:mm:ss.fff]`. If the log file cannot be opened, the CLI prints `Warning: Could not open log file '<path>': <reason>` and continues without a log.
 
-With `--json`, informational output, progress lines, and warnings are not printed. Errors of the `patch`, `xpatch`, `execute`, and `diff` commands are reported as JSON on stdout. `info` writes its errors as text to stderr.
+With `--json`, informational output, progress lines, and warnings are not printed. Errors of the `patch`, `xpatch`, `execute`, and `diff` commands are reported as JSON on stdout. `info` writes DATA file errors as text to stderr, also with `--json`. A patch without a readable manifest gets a JSON error on stdout.
 
 There are no environment variables and no configuration files. Defaults depend only on the arguments and on the folder of the executable.
 
@@ -70,7 +70,7 @@ Always pass explicit outputs in scripts.
 
 ## Interactive prompt
 
-Start the CLI without arguments. It prints `G3MTool (CLI) - 1.3.5 - by Y114` and `Type 'help' for available commands or 'exit' to quit`, then the prompt `(G3MTool) `.
+Start the CLI without arguments. It prints `G3MTool (CLI) - 1.3.7 - by Y114` and `Type 'help' for available commands or 'exit' to quit`, then the prompt `(G3MTool) `.
 
 | Input | Effect |
 | --- | --- |
@@ -80,6 +80,6 @@ Start the CLI without arguments. It prints `G3MTool (CLI) - 1.3.5 - by Y114` and
 | `exit`, `quit` | Leaves the prompt (case-insensitive) |
 | end of input (Ctrl+Z then Enter on Windows, Ctrl+D on Linux and macOS) | Leaves the prompt, exit code `0` |
 
-Double quotes group a path with spaces, and `""` passes an empty argument. The prompt is not a shell: it has no variables, pipelines, or redirection, and backslash is not an escape character. Each command starts with default options, so `--verbose` or `--json` must be repeated on every line. Ctrl+C cancels the running command and returns to the prompt.
+Double quotes group a path with spaces, and `""` passes an empty argument. The prompt is not a shell: it has no variables, pipelines, or redirection, and backslash is not an escape character. Each command starts with default options, so `--verbose` or `--json` must be repeated on every line. Ctrl+C cancels the running command and returns to the prompt. At an idle prompt, Ctrl+C ends the CLI.
 
 For scripts, see [Automation](../automation.md).

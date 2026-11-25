@@ -87,7 +87,7 @@ These commands run only while an image editor tab is in front. Every one can be 
 | Clear | `Delete` |
 | New Layer | `Ctrl+Shift+N` |
 | Undo, Redo | `Ctrl+Z`, `Ctrl+Y` (redo also `Ctrl+Shift+Z`) |
-| Apply (picture targets) | `Ctrl+S` |
+| Apply | `Ctrl+S` (the Save key, while edits wait) |
 | Rename layer | `F2` (renames the layer here, not the sprite) |
 | All other commands (transforms, adjustments, layer commands, **Discard Image Edits**, **Go to Original Resource**) | - |
 

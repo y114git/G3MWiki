@@ -53,7 +53,7 @@ All failures other than cancellation return exit code `1`.
 G3MTool execute ./asset-checker -- --input assets --strict
 ```
 
-The program starts directly, without a shell and without a console window. Its stdout and stderr are copied to yours as they arrive, and its exit code becomes the exit code of G3MTool. Pipes and redirects belong to the calling shell. If it cannot start: `Error executing <program>: <reason>`, exit code `1`. Ctrl+C kills the program and its child processes.
+The program starts directly, without a shell and without a console window. Its stdout and stderr are copied to yours as they arrive, and its exit code becomes the exit code of G3MTool. Pipes and redirects belong to the calling shell. If it cannot start, stderr shows `Error: Error executing <program>: <reason>` and the exit code is `1`. Ctrl+C kills the program and its child processes.
 
 With `--json`, program output is not echoed. One object is printed after the program ends: `{"success":<exit code is 0>,"command":"execute program","program":...,"exitCode":...,"output":...,"error":...,"warnings":[]}`.
 
@@ -63,4 +63,4 @@ With `--json`, program output is not echoed. One object is printed after the pro
 G3MTool execute xdelta --xdelta-path ./xdelta -- -d -s original.win change.xdelta output.win
 ```
 
-Runs the bundled xdelta (or `--xdelta-path`, which goes before the `--`) with exactly the arguments after `--`. Standard output and error are printed together after xdelta ends. A nonzero xdelta exit code gives `xdelta exited with code <n>` and G3MTool exit code `1`. The 5 minute limit and the other messages are the same as in [xpatch](xpatch.md#errors). With `--json`: `{"success":true,"command":"execute xdelta","output":...,"warnings":[]}`; on failure the xdelta text is inside the `error` field.
+Runs the bundled xdelta (or `--xdelta-path`, which goes before the `--`) with exactly the arguments after `--`. Standard output and error are printed together after xdelta ends. A nonzero xdelta exit code gives xdelta's error text, then `xdelta exited with code <n>`, and G3MTool exit code `1`. The 5 minute limit and the other messages are the same as in [xpatch](xpatch.md#errors). With `--json`: `{"success":true,"command":"execute xdelta","output":...,"warnings":[]}`; on failure `error` holds xdelta's stderr, then `xdelta exited with code <n>`.

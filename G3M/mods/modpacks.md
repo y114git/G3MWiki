@@ -8,7 +8,7 @@ The button is available when at least two mods are selected for the current scop
 
 Click a step to select it. Drag a mod within that step or into another step. **Up** and **Down** move the selected mod within its current step.
 
-**Add step** appends a step. **Remove step** moves that step's mods into the preceding step, or the following one if the first step is removed. It does not uninstall or unuse those mods. **Move step up** and **Move step down** change the order of whole steps.
+**Add Step** appends a step. **Remove Step** moves that step's mods into the preceding step, or the following one if the first step is removed. It does not uninstall or unuse those mods. **Move Step Up** and **Move Step Down** change the order of whole steps.
 
 Click **OK** to keep the arrangement. **Cancel** restores the arrangement from when the dialog opened. Empty steps do not create extra patching stages.
 
@@ -36,6 +36,8 @@ Example:
 Putting these into one step would compare both patches with the same starting file. It would not supply the patched base the addon expects.
 
 Dependencies and conflicts declared in [mod_config.json](mod-config.md) can describe required mods and their position. Review reported issues rather than guessing an order from the mod names.
+
+When a launch check finds a dependency problem, G3M can recommend an arrangement. Choose **Apply recommendation** to use it, or launch with the current order. A required mod that is installed but inactive can be activated from the same prompt. A missing one can be installed and activated from GameBanana, or the selection can launch without it.
 
 ## Check a selection
 

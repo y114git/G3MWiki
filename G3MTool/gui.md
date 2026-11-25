@@ -1,6 +1,6 @@
 # Graphical application
 
-The graphical application (`G3MToolGUI.exe` on Windows, `G3MToolGUI` on Linux and macOS, version 1.0.5) is one window. You choose an operation, fill in file paths, press the run button, and read the result in the Activity panel. It runs the same G3MLib operations as the [command-line application](commands/README.md), with its own file naming rules (see [Differences from the CLI](#differences-from-the-cli)).
+The graphical application (`G3MToolGUI.exe` on Windows, `G3MToolGUI` on Linux and macOS, version 1.0.7) is one window. You choose an operation, fill in file paths, press the run button, and read the result in the Activity panel. It runs the same G3MLib operations as the [command-line application](commands/README.md), with its own file naming rules (see [Differences from the CLI](#differences-from-the-cli)).
 
 The window starts at 850 x 680 pixels and cannot be made smaller than 760 x 560. It has no menu bar, no keyboard shortcuts of its own, and no drag and drop: paths are typed, pasted, or chosen with **Browse** and **Add files**. Inside dialogs, `Enter` presses the default button and `Esc` the cancel button.
 
@@ -24,7 +24,7 @@ The window starts at 850 x 680 pixels and cannot be made smaller than 760 x 560.
 
 | Control | Behavior |
 | --- | --- |
-| `G3MTool (GUI) - 1.0.5` | Application version (top left) |
+| `G3MTool (GUI) - 1.0.7` | Application version (top left) |
 | **Y114** link (the line `Made by Y114 with` and a heart symbol) | Opens https://y114.space in the default browser |
 | Boosty, Telegram, Discord icon buttons (top right, tooltips `Boosty`, `Telegram`, `Discord`) | Open https://boosty.to/y114, https://t.me/y_maintg, https://discord.gg/2MFdvFfD9a. If the browser cannot be started, Activity shows `Could not open link: <reason>` |
 
@@ -69,6 +69,9 @@ Field rules:
 - **Run a program** and **Run XDelta arguments** pass each line as one argument, with no shell interpretation and no quoting.
 - **Run a script**: with a data file chosen, **Output data** is required. The script's `OutputDir` is the folder of **Output data**, and `InputDir` is the first line of **Script arguments**. A script without a data file can run without an output.
 - The **Output** of **Create XDelta patch** and **Apply XDelta patch** is a file. Existing files are replaced for patch outputs; batch outputs never replace files (a `_2`, `_3`, ... suffix is added).
+- Batch file names: **Create a patch** batch writes `<input name>.g3mpatch` (`.xdelta` with **Create XDelta output**). **Apply a patch** batch writes `<original name>_<patch name><original extension>`. **Merge patches** batch writes `merge_01`, `merge_02`, ... (in line order) as `.win` files with the original's extension in the data output directory, and `.g3mpatch` files in the patch output directory.
+- A `.csx` file in **Modified input**, **Patch input**, or a merge patch line runs as a script first, against the original data file. The script's output file is used as the input.
+- **Inspect a file** reads a `.g3mpatch` or `.zip` file as a patch. Any other file is read as a data file.
 
 ![Merge patches with three patches in the additional field and the merge options](images/gui-merge-patches.png)
 
@@ -97,14 +100,14 @@ Checkboxes appear only where they apply.
 
 | Option | Shown for | Effect |
 | --- | --- | --- |
-| **Batch mode** | Create a patch, Apply a patch, Merge patches | Switches to the batch variant |
+| **Batch mode** | Create a patch, Apply a patch, Merge patches | Switches to the batch variant. Turned off again when the operation has no batch variant |
 | **Use XDelta fallback** | Create a patch, Apply a patch, and their batch variants | Embeds an xdelta copy (create) or tries it (apply). Same rules as `--xdelta-fallback` in [patch apply](commands/patch.md#apply) |
 | **Create XDelta output** | Create patch batch | Writes `.xdelta` files instead of `.g3mpatch`. With **Use XDelta fallback** it fails: `XDelta output cannot include an XDelta fallback.` |
 | **Continue after errors** | Batch variants | Runs the remaining items after a failure. Otherwise the batch stops at the first failed item |
 | **Merge GML code** | Merge patches, Merge patch batches | 3-way merge of GML code |
 | **Merge JSON properties** | Merge patches, Merge patch batches | Deep merge of JSON property files |
 | **Low-memory merge** | Merge patches | Sequential pipeline. Fails with `Sequential merge does not support code or property merging.` if combined with the two options above |
-| **Write detailed report** | Merge patches, Merge patch batches, Compare files | Merge: writes a Markdown report named `<output>.merge.md` next to the merged patch (or next to the data output when there is no patch output). Compare: full mode (text, GML, JSON differences) |
+| **Write detailed report** | Merge patches, Merge patch batches, Compare files | Merge: writes a Markdown report next to the merged patch, named `<patch name>.merge.md` (`merged.g3mpatch` gives `merged.merge.md`). Without a patch output it goes next to the data output. Compare: full mode (text, GML, JSON differences) |
 
 **Cache folder** (every operation): optional folder for `.g3mcache` analysis files.
 
@@ -130,7 +133,7 @@ Next to **Browse**, an **Open in G3MStudio** button (tooltip `Open this data fil
 
 ## Progress and cancel
 
-When you press the run button, the operation card and run button are disabled, **Cancel** appears, and the bar is indeterminate with the text `Starting…` until the first progress report arrives. Then the bar shows the percentage and the text shows the current step. At the end, the text shows the result summary, the bar shows `100%` on success, and an empty bar with a dash as the percentage on failure, and Activity gets the summary and one `Output: <path>` line per written file.
+When you press the run button, the operation card and run button are disabled, **Cancel** appears, and the bar is indeterminate with the text `Starting…` until the first progress report arrives. Then the bar shows the percentage and the text shows the current step, or `Working…` when no step name is known. At the end, the text shows the result summary, the bar shows `100%` on success, and an empty bar with a dash as the percentage on failure, and Activity gets the summary and one `Output: <path>` line per written file.
 
 **Cancel** requests cancellation and disables itself. It stops patch create, apply, validate, inspect, merge, compare, batch jobs, scripts (including a script waiting in a dialog or picker), XDelta runs, and external programs (killed together with their child processes). A half-written XDelta output is removed. Activity reports `Cancelled.` as a warning; a cancelled batch reports `Cancelled; <done>/<total> completed.` (with `; <n> failed` when some failed) and lists the files made so far.
 
@@ -154,10 +157,17 @@ Closing the window while an operation runs cancels it first (the text shows `Can
 | Compare files | `Report created: <n> difference(s).` |
 | Inspect a file | DATA: `<game> · bytecode <n> · <total> resources.` and log lines `Game`, `Bytecode`, and one `<Type>: <count>` line per resource type. Patch: `Patch: <n> changed, <n> new, <n> deleted.` |
 | XDelta create or apply | `XDelta patch created.` or `XDelta patch applied.` |
+| XDelta create or apply, failure | `XDelta creation failed.` or `XDelta application failed.`, followed by the xdelta error text |
 | Run XDelta arguments | `XDelta completed.` |
+| Run XDelta arguments, failure | `XDelta failed.`, followed by the xdelta error text |
 | Run a script | `Script completed.` |
+| Run a script, failure | The script's error text, or `Script execution failed: <message>` when the script throws |
 | Run a program | `Program completed.`, or `Program exited with code <n>.` |
 | Batches | `<done>/<total> completed; <failed> failed.` |
+
+On a build without a bundled xdelta, the operations that can use xdelta log a warning, and the XDelta operations fail with `No xdelta is bundled for <runtime id>. Use the Run a program operation with your own xdelta.`
+
+**Run a program** writes standard output to Activity as information lines and standard error as error lines. When the program cannot start, Activity shows `Unable to start program: <reason>` and the result is `Program exited with code -1.`
 
 Validate a patch with an original data file:
 
@@ -187,7 +197,7 @@ Shown as an error in Activity and in the progress text before anything runs:
 | Control | Behavior |
 | --- | --- |
 | Progress message, bar, percentage | Initially `Waiting for an operation.` and `0%` |
-| **Expand** / **Collapse** | **Expand** hides the top bar, page header, and operation card and enlarges the log (at least 220 pixels, about 85% of the window height). **Collapse** restores them. The log is 110 pixels high when collapsed |
+| **Expand** / **Collapse** | **Expand** hides the top bar, page header, and operation card and enlarges the log (at least 220 pixels, 85% of the window height minus 80 pixels). **Collapse** restores them. The log is 110 pixels high when collapsed |
 | **Save** | Save dialog `Save activity log`, suggested name `g3mtool.log`. Writes the whole log text. A file that cannot be written (a read-only folder, for example) adds an Error line to the log |
 | **Clear** (Activity) | Empties the log only |
 | Log panel | Selectable text (copy with the system shortcut). One line per message: `[HH:mm:ss] <Level>: <message>`. Information is green, Warning amber, Error red, other levels gray |
@@ -208,7 +218,7 @@ The log keeps up to 1,000,000 characters. When it grows past that, the oldest li
 
 ## Scripts and dialogs
 
-**Run a script** runs the script on a background thread, so the window stays responsive. There is no timeout; use **Cancel**. Console and `ScriptMessage` output appears in Activity as `[Script] <text>`, warnings as warnings. Script dialogs open over the main window:
+**Run a script** runs the script on a background thread, so the window stays responsive. There is no timeout; use **Cancel**. `ScriptMessage` and `SetUMTConsoleText` output appears in Activity as `[Script] <text>`, `ScriptWarning` output as a warning with the same prefix. `ScriptOpenURL` is not available in the GUI and fails the script. Script dialogs open over the main window:
 
 | Script call | Dialog |
 | --- | --- |
@@ -229,14 +239,14 @@ The log keeps up to 1,000,000 characters. When it grows past that, the oldest li
 2. **Cancel**, the script gets null.
 3. **OK**, the script gets the text.
 
-A cancelled picker or dialog returns null to the script. The script's file filter uses the pairs `Name|*.ext;*.ext2|Name2|*.ext3`; without a usable filter all files are shown. Scripts that call `ScriptInputDialog` in the GUI therefore behave differently from the CLI, where the default is returned. See [CSX scripting](csx-scripting.md).
+`SimpleTextInput` with `showDialog` set to false returns the default value without a dialog. A cancelled picker or dialog returns null to the script. The script's file filter uses the pairs `Name|*.ext;*.ext2|Name2|*.ext3`; without a usable filter all files are shown. Scripts that call `ScriptInputDialog` in the GUI therefore behave differently from the CLI, where the default is returned. See [CSX scripting](csx-scripting.md).
 
 ## Differences from the CLI
 
 | Topic | GUI | CLI |
 | --- | --- | --- |
 | Compare output | A report file path you choose | A folder; the file is named `diff_<timestamp>.md` |
-| Merge report | `<output>.merge.md`, only with **Write detailed report** | `<output>.merge_log.md`, also written when conflicts exist, or any path with `--report` |
+| Merge report | `<patch name>.merge.md`, only with **Write detailed report** | `<output>.merge_log.md`, also written when conflicts exist, or any path with `--report` |
 | Batch merge names | `merge_<nn>` (two digits) | `merge_<nnn>_<input names>` |
 | Merge without any output | Merged patch next to the original DATA file, named `merged_<yyyyMMdd_HHmmss>.g3mpatch` | The same |
 | Script timeout | none | `--timeout` |

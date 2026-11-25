@@ -15,7 +15,7 @@ Any of these starts it:
 - **Project > Open Project...** and choose the UTMT folder or its `project.json`.
 - Drop a UTMT project folder on the window.
 
-G3MStudio treats a path as a UTMT project when it holds a JSON file with a `Name` and at least one UTMT option key. A folder with one such `.json` file counts even if it is not called `project.json`. An unreadable path says "'{path}' is not a UTMT project: there is no project.json with a project name and options."
+G3MStudio treats a path as a UTMT project when it holds a JSON file with a `Name` and at least one UTMT option key. A folder with one such `.json` file counts even if it is not called `project.json`. An unreadable path says "\"{path}\" is not a UTMT project: there is no project.json with a project name and options."
 
 ## The dialog
 
@@ -40,6 +40,7 @@ When the project records the data file it was made from, G3MStudio compares size
 
 ## Checks before anything is written
 
+- The new folder must not be a file ("\"{path}\" is a file. Choose a folder.").
 - The new folder must be new or empty. It may hold only `.git`, `.gitignore` and `.gitattributes`. Otherwise: "\"{path}\" is not empty. Choose a new or empty folder."
 - The new folder and the UTMT folder must not contain each other.
 - The data file must not lie inside the new folder.

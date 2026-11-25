@@ -10,7 +10,7 @@ For a direct HTTPS download, prefix the complete URL:
 g3m://https://example.com/mods/interface-pack.zip
 ```
 
-The target must be an HTTP or HTTPS download. A mod's web page is not interchangeable with its archive URL. The parser treats a comma as the start of additional link data, so percent-encode commas belonging to a URL.
+The target must be an HTTP or HTTPS address. A GameBanana mod page works: G3M imports it from that page. Other web pages do not work. Use the archive's own download URL for those. The parser treats a comma as the start of additional link data, so percent-encode commas belonging to a URL.
 
 ## Local files
 
@@ -28,7 +28,7 @@ The [web editor](../mods/web-editor.md) uses this route after you download its Z
 
 The operating system must register G3M as the handler, and the browser can request permission to open an external application. If no application opens, use normal local import while checking that registration.
 
-While a game is running, G3M ignores import links and shows **The game is already running. Close it first.** `deltahub://` links are also accepted. Both schemes require review of the target and use the same download/import confirmation.
+While a game is running, G3M ignores import links and shows **The game is already running. Close it first.** Pairing links (`g3m://gb_pair/...`) still work during a game. `deltahub://` links are also accepted. Both schemes require review of the target and use the same download/import confirmation.
 
 ## GameBanana Remote Install
 
@@ -42,4 +42,4 @@ Only GameBanana files are accepted from the queue. The key is stored in G3M's se
 
 To switch to another GameBanana account, sign in to that account on GameBanana and use **Enroll & Pair** again. G3M asks the same question, and after you confirm, the new account replaces the previous one. The previous account's queue is no longer read.
 
-If GameBanana rejects the key, G3M stops checking the queue. **Refresh** tries again, and pairing again replaces the key.
+G3M reads two queues, one for the app ID `G3M` and one for `GameMakerModManager`. If GameBanana rejects the key for one of them, G3M stops reading that queue. When both are rejected, G3M stops checking. **Refresh** tries again, and pairing again replaces the key.

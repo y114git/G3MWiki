@@ -22,10 +22,10 @@ G3M shows this message after it has restored the files. If the restoration itsel
 
 ### Read-only files
 
-When G3M replaces a patched file and the target is read-only or briefly held by another program, it clears the read-only flag and retries up to four times, waiting 0.2 s longer each time. After the game closes, read-only temporary files and folders (Windows can mark folders read-only) are removed so that restoration and the next launch are not blocked.
+When G3M replaces a patched file and the target is read-only or briefly held by another program, it clears the read-only flag and tries up to four times in total, waiting 0.2 s, 0.4 s, and 0.6 s between tries. After the game closes, read-only temporary files and folders (Windows can mark folders read-only) are removed so that restoration and the next launch are not blocked.
 
 ## Changes made outside G3M
 
 Files altered after deployment are not overwritten by restoration unless you choose **Force restore**. Review [backup and restore](backup-and-restore.md) for conflict recovery. Avoid running another patcher or updating the game during an active G3M session.
 
-Use **Analyze Actual Launch Result** for a temporary application test. Use **Patching only** only when you want changes written to the actual installation and kept there.
+Use **Analyze Actual Launch Result** in the Diagnostics dialog to test the selected priority steps in an isolated game copy. The game does not start. Use **Launch patching only** only when you want changes written to the actual installation and kept there.

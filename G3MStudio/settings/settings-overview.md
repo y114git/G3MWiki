@@ -8,6 +8,7 @@ The Settings page is where every option of G3MStudio is changed. It opens as a p
 | --- | --- |
 | Open Settings | **File** > **Settings**, or `Ctrl+,` (`Cmd+,` on macOS). The command is also in the command palette as **Settings**. |
 | Open from the start page | The **Settings** button on the start page. |
+| Open one category | **Go To** (`Ctrl+T`, with a data file open) lists every category by name. Picking one opens Settings on that category. |
 | Close | The **Close** button at the top right of the page. |
 
 The command id is `settings.open`. Its shortcut can be changed in [Keyboard shortcuts](shortcuts-editor.md).

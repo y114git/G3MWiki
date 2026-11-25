@@ -1,6 +1,6 @@
 # Resource patch format
 
-A `.g3mpatch` file is a ZIP archive. It holds a manifest, `g3mpatch.json`, and the exported files of every resource that differs between an original and a modified GameMaker DATA file. This page describes the format as G3MLib 1.1.5 writes and reads it. Create patches with G3MTool instead of writing them by hand.
+A `.g3mpatch` file is a ZIP archive. It holds a manifest, `g3mpatch.json`, and the exported files of every resource that differs between an original and a modified GameMaker DATA file. This page describes the format as G3MLib 1.1.7 writes and reads it. Create patches with G3MTool instead of writing them by hand.
 
 ## Archive layout
 
@@ -31,8 +31,8 @@ The manifest is indented JSON with these keys.
 | Key | Contents |
 | --- | --- |
 | `createdAt` | UTC creation time, ISO 8601 (`2026-11-20T04:31:37.6076751Z`) |
-| `tool` | `name` and `version` of the program that wrote the patch (`G3MTool`, `1.3.5`) |
-| `library` | `name` and `version` of G3MLib (`G3MLib`, `1.1.5`). Omitted when not recorded |
+| `tool` | `name` and `version` of the program that wrote the patch (`G3MTool`, `1.3.7`) |
+| `library` | `name` and `version` of G3MLib (`G3MLib`, `1.1.7`). Omitted when not recorded |
 | `original`, `modified` | Description of each DATA file (below) |
 | `resources` | Changes grouped by resource type (below) |
 | `statistics` | `totalChanged`, `totalNew`, `totalDeleted`, `totalChangedFiles`, `totalNewFiles` |

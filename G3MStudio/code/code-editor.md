@@ -29,10 +29,12 @@ From top to bottom:
 | Button | What it does |
 |---|---|
 | **Save changes** | Compiles the text and writes it to the open data file as one undoable edit. Its tooltip reads "Save the code (shortcut)" with your current save key. It is disabled while nothing is pending. |
-| **Discard changes** | Throws away what you typed and shows the code stored in the data file again. |
+| **Discard changes** | Throws away what you typed and shows the code stored in the data file again. Disabled while nothing is pending. |
 | **Switch to assembly** / **Switch to GML** | Shows the entry as VM assembly, or back as GML. Unsaved changes are saved first (tooltip: "Saves unsaved changes first"). If that save fails, the view does not switch. |
 | **Outline** | Opens a list of the functions, enums, macros and regions of the entry. Choose one to move the caret there. An entry without any shows "No functions, enums or regions". The same list opens with **Go to Symbol in File** (`Ctrl+Shift+O`). |
 | **Copy Details** | Appears next to an error message. Copies the message text. |
+
+The message area also shows the reason when the code could not be shown: "Could not show the code of 'entry': reason".
 
 ### Saving and undo
 
@@ -55,7 +57,7 @@ The editor tokenizes the whole text 300 ms after you stop typing. Between a key 
 | Keyword | `if`, `var`, `function` and the like |
 | Function | Functions of the game and of this file |
 | Variable | Variables not declared in this entry |
-| Local variable | Names declared with `var` or as parameters |
+| Local variable | Names declared with `var` or `static`, or as parameters |
 | Global variable | `global.` names and `globalvar` names |
 | Constant | Macros and enum members |
 | Asset | Names of sprites, objects, rooms and other resources |
@@ -81,7 +83,7 @@ Hex colour literals (`$FF8800`, `0xFF8800`, `#FF8800`) and the `c_` colour const
 
 ## Typing helpers
 
-- Typing `(`, `[` or `{` adds the closing bracket when the next character is a closer, a space or the line end. Typing `"` or `'` adds the closing quote when the previous character is not a letter, digit or underscore and not the same quote.
+- Typing `(`, `[` or `{` adds the closing bracket when the next character is `)`, `]`, `}`, `;`, `,`, white space or the line end. Typing `"` or `'` adds the closing quote under the same condition on the next character, and when the previous character is not a letter, digit or underscore and not the same quote.
 - Typing a closing bracket or quote right before the same character steps over it.
 - `Ctrl+Space` opens the completion list; see [GML Intelligence](gml-intelligence.md).
 
@@ -100,22 +102,26 @@ Set in **Settings > Code editor**. Every open editor follows a change at once.
 | Color brackets by nesting level | on | |
 | Font ligatures in code | off | |
 | Show syntax problems while typing | on | |
-| Numbers that are assets (draw_sprite(5), sprite_index = 3) | Offer in the menu and by command | see [Replace Numbers with Asset Names](asset-numbers.md) |
+| Numbers that are assets (draw_sprite(5), sprite_index = 3) | Offer in the menu and by command | **Do nothing**, **Offer in the menu and by command**, **Show names when an entry opens**; see [Replace Numbers with Asset Names](asset-numbers.md) |
+| Also learn the functions of the game itself | on | see [Replace Numbers with Asset Names](asset-numbers.md) |
+| Asset types to replace | all types | see [Replace Numbers with Asset Names](asset-numbers.md) |
 | Tab width | 4 | 2 to 8 |
 | Tooltip delay | 400 ms | 300 to 3000 (one setting for tooltips and the code info card) |
+| Global script (runs at start, its functions can be called by name) | on | the default of the New Script window |
+| Search while typing in the Search panel, Context lines in search results, Most results listed | on, 1, 5000 | see [Find and Replace in Code](find-and-replace.md) |
 
 The live check skips entries longer than 200000 characters. Those are checked when you save.
 
 ## Context menu
 
-Right-click in the text. The caret first moves to the name under the pointer.
+Right-click in the text. The caret first moves to the name under the pointer. Groups are divided by separators.
 
-1. When the pointer is on a number: the resources with that index (click one to open it), and for a colour value the colour name.
-2. **Replace Numbers with Asset Names**, only when the option above is not "Do nothing" (see [Replace Numbers with Asset Names](asset-numbers.md)).
-3. **Go to Definition**, **Peek Definition**, **Find Usages**, **Help on Name**.
-4. **Rename Symbol**, **Quick Fix...**, **Toggle Line Comment**, **Tab In**, **Tab Out**.
-5. **Undo**, **Redo**.
-6. **Cut**, **Copy**, **Paste**, **Select All**.
+1. When the pointer is on a number: **Replace with {name}** when the number stands for an asset (not with the option "Do nothing", not in a read-only tab), then the resources with that index (click one to open it), and for a colour value a grayed "Colour: {name}" row. A decimal number counts as a colour only when it is a named one (`16777215` is `c_white`), a hex number when it has six digits.
+2. **Go to Definition**, **Peek Definition**, **Find Usages**, **Help on Name**.
+3. **Rename Symbol**, **Quick Fix...**, **Replace Numbers with Asset Names** (only when the option above is not "Do nothing"; see [Replace Numbers with Asset Names](asset-numbers.md)), **Toggle Line Comment**, **Tab In**, **Tab Out**.
+4. **Undo**, **Redo**.
+5. **Cut**, **Copy**, **Paste**, **Select All**.
+6. The commands that plugins add to the code menu, when a plugin has any and the tab is not read-only.
 7. The resource commands of the entry (rename, duplicate, copy name and the like).
 
 Items are grayed out when they do not apply, for example editing commands in a read-only tab.

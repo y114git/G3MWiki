@@ -28,6 +28,7 @@ In order. A group of items ends with a line.
 | | |
 | **Move Up**, **Move Down** | Entries that can move in their list. Each shows only when that direction is possible. |
 | **Delete Resource...** | Types that can be deleted, and table entries such as functions and variables |
+| **Paste into Folder** | After Delete, when something is cut and the entry is listed in a folder. |
 | | |
 | **New {type}...** | Types that can be created. Sounds also get **Generate Sound...** and **Record Sound...**. |
 
@@ -49,7 +50,7 @@ Right-click a heading such as **Sprites**:
 |---|---|
 | **New {type}...** | Types that can be created. Sounds also get **Generate Sound...** and **Record Sound...**. |
 | **Select Everything in the Group** | When the type has entries (not **Game**). |
-| **Export All {type} to a Folder...** | Types that can be exported to files. Choosing it for another type shows "{type} cannot be exported as files." |
+| **Export All {type} to a Folder...** | Types that can be exported to files; other types do not show it. |
 | **Import Pictures, Sounds and Scripts from Files...** | Sprites, Sounds, Scripts. |
 | **New Sprite from Sheet or Strip...** | Sprites. |
 | **Copy All Names** | Puts one name per line on the clipboard. Not for **Game**. |
@@ -107,7 +108,9 @@ Deleting a code entry that other code uses shows **Delete {name} and leave the c
 
 **New {type}...** (File > New, or the context menu) opens **New {type}** with **Name of the new {type}** and the button **Create**. **Duplicate Resource...** opens **Duplicate {name}** with **Name of the copy**. With several selected, copies are named `name_copy` and the notification reads "Resources copied: {count}."
 
-Two warnings stop a name until you press the button again:
+For a script the **New Script** window also has the check box "Global script (runs at start, its functions can be called by name)", which keeps its last state.
+
+Two warnings stop a name until you press the button again (see [Advanced settings](../settings/advanced.md) for the risky-action options: with the second one on the name goes through at once, with both off the name is refused):
 
 - "'{name}' is not a plain name (letters, digits and underscores, not starting with a digit). GML code cannot use it, and other tools may fail on it. Press the button again to use it anyway."
 - "A resource or code entry named '{name}' exists already. With two of one name, the editor and delete reach only the first. Press the button again to use the name twice anyway."

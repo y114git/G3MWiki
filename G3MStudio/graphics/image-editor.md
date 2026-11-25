@@ -30,7 +30,7 @@ By default the editor holds your edits in the tab with their own undo and redo. 
 
 | Control | Meaning |
 |---|---|
-| **Apply** | Writes the edits. Disabled with `No changes to apply yet. Draw something first.` when nothing is pending. For a picture target the shortcut is `Ctrl+S` (the Save key). |
+| **Apply** | Writes the edits. Disabled with `No changes to apply yet. Draw something first.` when nothing is pending. The shortcut is `Ctrl+S` (the Save key) while edits wait. |
 | **Discard** (`img.discard`, no default key) | Drops the edits since the editor opened or since the last Apply. If other edits came in after yours it says `Other edits came in after yours, so Discard cannot take back only yours. Use Undo.` |
 | Arrow beside Apply (**More actions**) | **New sprite from this frame...** and, for several frames, **New sprite from all frames...**. Both ask for a name and make a new sprite. The original stays as it is. Message: `Saved the picture as the new sprite {name}.` |
 | Closing the tab | With pending edits asks: `{name} has edits that are not applied. Apply them, or discard them?` with **Apply**, **Discard** and **Cancel**. |
@@ -39,6 +39,8 @@ By default the editor holds your edits in the tab with their own undo and redo. 
 If the sprite changed elsewhere after you started editing it, Apply asks: `{name} changed elsewhere after you started editing it. Applying replaces those changes with your edits. Apply anyway, or discard your edits?` Choose **Apply anyway** or **Discard my edits**. Cancel keeps the edits (`Your edits are kept and not applied. The sprite changed elsewhere.`). For a texture page, font or tile set the question is `The picture of {name} changed elsewhere after you opened it. Applying replaces that change with your picture. Apply anyway?` with the title **Picture changed**.
 
 If the picture changed under you while you drew, the edit is not written and the picture is read again: `The picture changed elsewhere while you drew, so this edit was not applied and the picture was read again.`
+
+Resizing the canvas, or adding, duplicating or deleting a frame, applies waiting edits first and says `Applied your edits first.` If that is refused it says `The sprite changed elsewhere, so your edits cannot be applied first. Apply or discard them, then try again.`
 
 The setting **Apply image edits immediately** (Settings, Image editor) sends each edit of a sprite straight into the workspace history instead. Then **Apply** only stops counting the edits as pending. See [Image settings](image-settings.md).
 
@@ -75,7 +77,7 @@ A canvas size change flattens the layers in the command, so the editor shows the
 
 | Item | Behaviour |
 |---|---|
-| Zoom | The buttons **-**, **+**, **Fit** and **1:1**. Steps are powers of 2 and 1.5 times them, from 1/256 up to 256x. Fit is a whole zoom up to 64x for a small picture. `Ctrl` with the wheel zooms around the pointer. The wheel scrolls, with `Shift` sideways. A horizontal wheel or a touchpad swipe pans sideways. |
+| Zoom | The buttons **-**, **+**, **Fit** and **1:1**. Steps are powers of 2 and 1.5 times them, up to 256x and down to where the longest side is about 16 screen pixels (never below 1/256). Fit is a whole zoom up to 64x for a small picture. `Ctrl` with the wheel zooms around the pointer. The wheel scrolls, with `Shift` sideways. A horizontal wheel or a touchpad swipe pans sideways. |
 | Pan | The **Hand** tool, `Space` with the left button, or the middle button. The arrow keys scroll when there is no selection (32 pixels, with `Shift` 128). |
 | **Grid** | Fine lines from 6x zoom. The heavier lines every **Grid cell size** pixels (default 16) show while a cell is at least 8 screen pixels. |
 | **Tile preview** | Draws the picture repeated around itself, to check that it tiles. |

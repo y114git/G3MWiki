@@ -15,7 +15,9 @@ G3MStudio opens GameMaker data files: the single file that holds a game's sprite
 
 The picker (**File > Open**) filters the type **GameMaker data** (`*.win`, `*.unx`, `*.ios`, `*.droid`, `audiogroup*.dat`) and also offers all files. The reader decides by content, not by extension, so a renamed file opens when it is a data file.
 
-The GameMaker versions that open are the ones the reading library G3MLib 1.1.5 handles. G3MStudio shows the format version of an open file (for example on its Recent card). A file that cannot be read gives the error below.
+The GameMaker versions that open are the ones the reading library G3MLib 1.1.7 handles. G3MStudio shows the format version of an open file (for example on its Recent card). A file that cannot be read gives the error below.
+
+The picker opens in the folder of the last pick, also after a restart (see [Data folder](user-data.md)).
 
 ## Ways to open a file
 

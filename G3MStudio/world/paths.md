@@ -12,9 +12,9 @@ The canvas draws the path with its points. A read-only view (opened without a pr
 | Click a point | Selects it. |
 | Drag a point | Moves it, as one undo step. If several points are picked, the whole group moves. |
 | `Ctrl`+click a point | Adds or removes it from the picked points. |
-| `Delete` | Deletes the selected point, or all picked points when several are picked. Deleting all points is a risky edit and asks first. |
+| `Delete` | Deletes the selected point, or all picked points when several (but not all) are picked. Deleting the last remaining point is a risky edit and asks first, because a path needs at least one point (`Delete the last point of {name}?`). |
 | Middle or right button drag | Pans. |
-| Wheel | Zooms (0.1 to 64) around the pointer. A horizontal wheel or a touchpad swipe pans sideways. |
+| Wheel | Zooms (0.1 to 64) around the pointer. `Shift`+wheel, a horizontal wheel or a touchpad swipe pans sideways. |
 
 ## Side column
 
@@ -23,15 +23,15 @@ The canvas draws the path with its points. A read-only view (opened without a pr
 | Point list | `1  x, y` per point. Selecting a row selects the point on the canvas. |
 | **X**, **Y** | Position of the selected point, whole numbers, -100000 to 100000. Disabled with `Select a point in the list or on the canvas first.` when none is selected. |
 | **Speed %** | Speed of the selected point, 0 to 10000 (100 means factor 1). |
-| **Reverse** | Reverse the order of the picked points, or all points when none is picked. |
-| **Mirror** | Mirror the picked points (or all) horizontally. |
-| **Flip** | Flip the picked points (or all) vertically. |
+| **Reverse** | Reverses the order of all points, whatever is picked. |
+| **Mirror** | Mirrors the picked points (or all when none is picked) horizontally, about the centre of their bounds. |
+| **Flip** | Flips the picked points (or all) vertically, about the centre of their bounds. |
 | **Reset view** | Fits the path to the canvas again. |
 | **Room behind the path** | Draws the outline and instance positions of a room behind the path. Editor state only, nothing is saved. |
 | **Snap to grid** | Grid step in path units for new and dragged points. 0 keeps whole units. Maximum 1024, step 8. |
 | **Closed** | Joins the last point to the first. |
 | **Smooth** | Draws the path as a curve. |
-| **Move all** with **X** and **Y** | Shifts every point by that amount. |
+| **Move all** with **X** and **Y** | Shifts every point by that amount (-100000 to 100000 each). Nothing happens when both are 0. |
 
 Point positions are rounded to whole numbers. Every change is one undo step. See [Property list](property-grid.md) for the remaining path fields.
 

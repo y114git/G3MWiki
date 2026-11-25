@@ -19,7 +19,7 @@ The layout summary reads, for example: `Tile size: 16 x 16. Columns: 8. Tiles: 6
 
 ## The picture
 
-The zoom slider runs from 1x to 8x. The tab opens at the largest whole zoom that fits. The picture sits on a chequer pattern that shows transparent pixels.
+The picture area is 260 pixels high. Drag the bar under it to change the height. The zoom slider runs from 1x to 8x (`Ctrl` + wheel zooms too). The tab opens at the largest whole zoom that fits. The picture sits on a chequer pattern that shows transparent pixels.
 
 | Control | What it does |
 |---|---|
@@ -38,7 +38,7 @@ A new picture of the same size replaces the old one in place. A picture of anoth
 - **Show tile grid (borders and separation)** outlines every cell in cyan. Use it to check the tile size, border and separation: a wrong value shows as cells that miss the artwork.
 - **Show tile indices** draws the number of each tile in its corner.
 
-Both are view options. They are not saved.
+Both draw at most the first 16384 tiles. Both are view options. They are not saved.
 
 ## View in columns
 
@@ -56,7 +56,7 @@ Pick a tile (click it or select its row), then press **Find rooms using this til
 
 ## Animated tiles
 
-The **Animated tiles** section appears when the tile set has animation data. It has:
+The **Animated tiles** section is always folded in the tab, but it holds controls only when the tile set has animation data. It has:
 
 | Control | Meaning |
 |---|---|

@@ -24,7 +24,7 @@ Sound properties named in the property lists: Audio ID, Audio File, Audio Group,
 
 ## Sound menu
 
-The **Sound** menu shows while a sound tab is in front. No command has a default shortcut. You can assign shortcuts in the shortcuts editor (see [Settings](../settings/README.md)).
+The **Sound** menu shows while a sound tab is in front or a sound is selected in the Explorer. No command has a default shortcut. You can assign shortcuts in the shortcuts editor (see [Settings](../settings/README.md)).
 
 | Command | What it does | Needs |
 |---|---|---|
@@ -34,7 +34,7 @@ The **Sound** menu shows while a sound tab is in front. No command has a default
 | Record Sound... | Opens the [recorder](recording.md) | An open file |
 | Export Audio... | Saves the audio of the sound to a file | A sound with audio in the data file |
 | Export All Audio... | Saves the audio of every sound to a folder | An open file |
-| Play or Pause Sound | Same as the Play button | A sound tab in front |
+| Play or Pause Sound | Same as the Play button | A sound tab in front (else `Select a sound first.`) |
 | Stop Sound | Same as Stop | A sound tab in front |
 | Loop Sound | Toggles Loop | A sound tab in front |
 

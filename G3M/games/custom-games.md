@@ -9,7 +9,7 @@ Open **Game Manager** and choose its add action (**Add custom game**). In Manual
 | Field | Value |
 | --- | --- |
 | Display name | The name shown in the game selector |
-| Game ID | Optional short ID that mod configurations store, such as `examplegame`. Lowercase letters, digits, underscores, and hyphens; it starts with a letter and has at most 64 characters. IDs of built-in games cannot be used. Leave it empty to have one created from the display name. |
+| Game ID | Optional short ID that mod configurations store, such as `examplegame`. Lowercase letters, digits, underscores, and hyphens; it starts with a letter and has at most 64 characters. IDs of built-in games and `self` cannot be used. Leave it empty to have one created from the display name. |
 | Executable or app name | Exact executable filename, such as `ExampleGame.exe`, or macOS bundle name, such as `ExampleGame.app`. |
 | Target DATA file name | Exact GameMaker resource filename, such as `data.win`, `game.unx`, or `game.ios`. |
 | Steam App ID | Optional numeric application ID for Steam launching |
@@ -29,6 +29,6 @@ Custom entries have a game path, user-data path, executable override, mod select
 
 A custom game has one section. It does not provide chapter splitting, direct chapter launching, or Full Install. Adding an entry does not add support for a game engine other than GameMaker or make an unsupported DATA format readable.
 
-Hide an entry when you want to keep it without displaying it in the main selector. The delete confirmation has **Remove from registry only** and **Remove and clean related data** choices. Cleanup also removes related profile selections and saved Game Versions. It does not uninstall the game. Export any Game Versions you want to retain before choosing cleanup.
+Hide an entry when you want to keep it without displaying it in the main selector. The delete confirmation has **Remove from registry only** and **Remove and clean related data** choices. Cleanup also removes the game's mod selections and mod steps from every profile, and its saved Game Versions. It does not uninstall the game. Export any Game Versions you want to retain before choosing cleanup.
 
 When you install a G3M mod made for a game that is not set up, G3M shows **Game not added** with **Add game** and **Install manually**. **Add game** opens this form with the game's ID filled in from the mod, and the mod installs as soon as you save.

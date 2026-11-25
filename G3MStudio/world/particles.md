@@ -4,13 +4,13 @@ A particle system is a set of emitters that spawn small moving pictures. This pa
 
 ## Preview
 
-The preview simulates the system 60 times a second while the tab is shown. When no particle is left for a while it starts again, so systems made of bursts keep playing. It is an approximation of the game's own result. A drag bar under it sets its height. **Restart** restarts the simulation.
+The preview simulates the system 60 times a second while the tab is shown. When no particle is left for a while it starts again, so systems made of bursts keep playing. It is an approximation of the game's own result. Any edit of the system starts it again. A drag bar under it sets its height. **Restart** restarts the simulation. With **Settings** > **Appearance** > **Animations** set to **Off**, the preview does not run: it shows the system as it looks after 40 steps.
 
-Drag an emitter's region in the preview to move it. The change is one undo step. It moves the region centre relative to the system origin.
+Drag an emitter's region in the preview to move it (only emitters that are on can be picked). The change is one undo step. It moves the region centre relative to the system origin.
 
 ## Emitters
 
-Under the preview each emitter is a collapsible row with a one-line summary: name, `on` or `off`, emit mode and count (`x{count}`), shape and region size. Opening a row shows the property list of that emitter. Controls on the row:
+Under the preview each emitter is a collapsible row with a one-line summary: name, `on` or `off`, emit mode and count (`x{count}`), shape and the region centre (`x x y`, for example `0 x 0`). Opening a row shows the property list of that emitter. Controls on the row:
 
 | Control | What it does |
 | --- | --- |
@@ -21,7 +21,7 @@ Under the preview each emitter is a collapsible row with a one-line summary: nam
 | **Duplicate** | Copies the emitter. |
 | **Remove** | Deletes the emitter. |
 
-Under the list: **Add emitter** adds an emitter with default settings, and **Copy GML** copies GML code that rebuilds the system to the clipboard. Every change is one undo step. Without a project the list is text only.
+Under the list: **Add emitter** adds an emitter with default settings, and **Copy GML** copies GML code to the clipboard that rebuilds the system with the `part_*` functions, one particle type and one emitter for each emitter that is on. Every change is one undo step. Without a project the list is text only.
 
 The other fields of the system are in the [property list](property-grid.md); the emitter list is left out of it. A particle system placed in a room is an element of an asset layer. See [Room instances and elements](room-instances.md#asset-layer-elements).
 

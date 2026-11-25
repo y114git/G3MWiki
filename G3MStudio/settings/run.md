@@ -21,7 +21,7 @@ The **Run** category sets how the game starts from G3MStudio. Every control save
 | **Run profile** | List and **Delete profile** | **Default** | saved profiles | `activeRunProfile` |
 | **Profile name** with **Save as profile** | Text and button | empty | | `runProfiles` |
 | **Where run options are stored** | List | **G3MStudio's folder** | **G3MStudio's folder**, **Next to the data file** | `runOptionsLocation` (`StudioFolder`, `BesideDataFile`) |
-| **Project file**: **Save these options for this data file**, **Move run options** | Buttons | | | See below. |
+| **Project file**: **Save these options for this data file**, **Move Run Options to G3MStudio's Folder** | Buttons | | | See below. |
 
 ## Hand-over to another process
 
@@ -47,7 +47,7 @@ Example for a game started from a chapter folder that needs the `mus` folder one
 
 ## Compatibility group
 
-The group titled **Compatibility (Windows games on Linux and macOS)** is shown on every system. On Windows the detection line reads "Not needed on Windows."
+The group titled **Compatibility (Windows games on Linux and macOS)** sits on the page between **Runtime folders (separated by semicolons)** and **Write the game log (-debugoutput)**. It is shown on every system. On Windows the detection line reads "Not needed on Windows."
 
 | Label | Control | Default | Saved as |
 | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ A profile stores the runner, arguments, debug output flag, working folder, envir
 
 ## Project file
 
-**Save these options for this data file** writes the current run options to a project run file for the open data file, in the place chosen by **Where run options are stored**. With no file open it says "Open a data file first." A file written next to the data file is trusted automatically for the owner who wrote it. **Move run options** copies options found next to the data file into the G3MStudio folder (`run.migrateOptions`). Files next to a data file that you did not write ask for approval before they are used, because they can name any program; hashes you approved are kept in `trustedRunFiles`.
+**Save these options for this data file** writes the current run options to a project run file for the open data file, in the place chosen by **Where run options are stored**. With no file open it says "Open a data file first." A file written next to the data file is trusted automatically for the owner who wrote it. **Move Run Options to G3MStudio's Folder** (command `run.migrateOptions`) asks "Copy these run options into G3MStudio's folder? They then need no approval. The file next to the data file stays and is no longer used." and, after you accept, reports "Run options moved to G3MStudio's folder." With no run file next to the data file it says "No run options file next to the data file." The question can be silenced (see [Prompts](prompts.md)). Files next to a data file that you did not write ask for approval before they are used, because they can name any program; hashes you approved are kept in `trustedRunFiles`.
 
 ## Restore defaults
 

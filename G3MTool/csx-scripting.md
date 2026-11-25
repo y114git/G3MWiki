@@ -1,6 +1,6 @@
 # CSX scripting
 
-A `.csx` file is a C# script that runs against optional loaded GameMaker DATA. Both G3MTool applications run scripts through the G3MLib 1.1.5 script runner, so a script sees the same globals and helpers in the CLI and in the GUI. Only the interactive helpers differ (see [CLI and GUI behavior](#cli-and-gui-behavior)).
+A `.csx` file is a C# script that runs against optional loaded GameMaker DATA. Both G3MTool applications run scripts through the G3MLib 1.1.7 script runner, so a script sees the same globals and helpers in the CLI and in the GUI. Only the interactive helpers differ (see [CLI and GUI behavior](#cli-and-gui-behavior)).
 
 A script has the permissions of the user who runs it: it can read and write files, start programs, and use the network. G3MTool does not sandbox it. Run only scripts you trust.
 

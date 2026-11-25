@@ -14,7 +14,7 @@ G3M backs up affected existing files and records files added by a modded session
 
 If another process changes a tracked file, G3M does not overwrite it silently. It asks whether to restore anyway. **Force restore** puts G3M's backup copies back over the external changes. **Keep external changes** leaves the files as they are, deletes the session's backups, and lets the game launch. This includes changes made by a game, external editor, updater, or another modding tool.
 
-**Launch and keep changes** and **Patching only** intentionally retain deployed files. Their confirmation is a choice to keep changes, rather than a request for normal post-exit restoration.
+**Launch and keep changes** and **Launch patching only** intentionally retain deployed files. Their confirmation is a choice to keep changes, rather than a request for normal post-exit restoration.
 
 ## Interrupted sessions
 

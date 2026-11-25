@@ -2,7 +2,7 @@
 
 The code editor has commands that change whole lines, comment code, or change letter case. Each command is one change in the text, so one editor undo takes it back. This page describes what each one does. Keys are in [Editor Shortcuts](editor-shortcuts.md).
 
-All commands on this page do nothing in a read-only tab. Where a command works on "the lines of the selection", a selection that ends at the very start of a line does not include that line. With no selection, the caret line is used.
+The commands that change text do nothing in a read-only tab. The commands under "Selection and brackets" work there. Where a command works on "the lines of the selection", a selection that ends at the very start of a line does not include that line. With no selection, the caret line is used.
 
 ## Comments
 

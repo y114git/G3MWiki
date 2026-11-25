@@ -11,7 +11,7 @@ Open it from **File** > **Settings**, then choose **Appearance**.
 | Label | Control | Default | Allowed values | What it does |
 | --- | --- | --- | --- | --- |
 | **Language** | List | English (`en`) | The languages installed with the app: English, Russian, Spanish, Japanese, Korean, Simplified Chinese, Traditional Chinese | Switches every label, menu and message at once. Saved as `language`. See [Languages](../getting-started/languages.md). |
-| **Interface scale** | List | **Auto** | **Auto**, 50 %, 60 %, 70 %, 75 %, 80 %, 90 %, 100 %, 110 %, 125 %, 150 %, 175 %, 200 % | Scales the whole window. A value set by **Zoom In** or **Zoom Out** that is not in the list (for example 127 from an Auto scale of 117) also shows in its sorted place. Saved as `uiScale` (0 means Auto, otherwise 50 to 200). |
+| **Interface scale** | List | **Auto** | **Auto**, 50 %, 60 %, 70 %, 75 %, 80 %, 90 %, 100 %, 110 %, 125 %, 150 %, 175 %, 200 % | Scales the whole window. A value set by **Zoom In** or **Zoom Out** that is not in the list (for example 125 from an Auto scale of 115) also shows in its sorted place. Saved as `uiScale` (0 means Auto, otherwise 50 to 200). |
 | (under the scale) | Text | | | **In use: {percent}%** shows the scale the window uses now. |
 | **Density** | List | **Comfortable** | **Compact**, **Comfortable**, **Spacious** | Sets the control, row and tab heights, spacing and text sizes together. Your own values in **Shape and size** win over it. Saved as `density`. |
 | **Font family (empty uses the theme font)** | List | **Default** | **Default**, every system font, every font you added | Font of the interface. **Default** is the theme font (Arial, Liberation Sans, Segoe UI and CJK fallbacks). Saved as `fontFamily`. |
@@ -31,7 +31,7 @@ Open it from **File** > **Settings**, then choose **Appearance**.
 
 Scale is a percentage of the normal size.
 
-- **Auto** computes a value from the screen. The screen height in logical pixels is compared with 1080 and the difference is applied at half strength. A 4K screen at 100 % system scaling gets 150 %, a 1440p screen gets about 117 %. The result is rounded to steps of 5 and kept between 80 and 200. It is also capped so the window stays at least 960 units wide after scaling.
+- **Auto** computes a value from the screen. The screen height in logical pixels is compared with 1080 and the difference is applied at half strength. A 4K screen at 100 % system scaling gets 150 %, a 1440p screen gets 115 %. The result is rounded to steps of 5 and kept between 80 and 200. It is also capped so the window stays at least 960 units wide after scaling.
 - A fixed percentage ranges from 50 to 200.
 - Shortcuts: **Zoom In** (`Ctrl++`), **Zoom Out** (`Ctrl+-`) and **Reset Zoom** (`Ctrl+0`) change the scale in steps of 10 percent points between 50 and 200. **Reset Zoom** returns to **Auto**. These commands appear in the **View** menu and can be rebound.
 - The window gets a minimum size of 840 by 460 at 100 %, grown with the scale but never beyond the screen.
@@ -111,7 +111,7 @@ The added fonts also show in the **Code font** list of [Code editor settings](ed
 
 ## Restore defaults
 
-**Restore defaults** on this category resets: **Interface scale**, **Font family**, **Font weight**, **Density**, **Explanatory text**, **Animations**, **Editor tabs**, **Width of the tab list**, **Show a picture in editor tabs**, **Hide editor tabs while Open Editors is open**, **Show null entries in the resource tree**, **Show previews and IDs on hover**, all own sizes, and these Explorer options: **Show the Explorer as folders instead of resource types**, **Show counts in the Explorer**, **Open folders and collections when they appear**, **Hide code that cannot be decompiled (and scripts using it)**, **Hide broken resources and entries with errors**, the two data list options (**Open Strings, Variables and the other data lists when I search** and **Leave out the data lists**), the three entry visibility rows and **Default sort order of the Explorer**.
+**Restore defaults** on this category resets: **Interface scale**, **Font family**, **Font weight**, **Density**, **Explanatory text**, **Animations**, **Editor tabs**, **Width of the tab list**, **Show a picture in editor tabs**, **Hide editor tabs while Open Editors is open**, **Show null entries in the resource tree**, **Show previews and IDs on hover**, all own sizes, and these Explorer options: **Show the Explorer as folders instead of resource types**, **Show counts in the Explorer**, **Open folders and collections when they appear**, **Hide code that cannot be decompiled (and scripts using it)**, **Hide broken resources and entries with errors**, the two data list options (**Open Strings, Variables and the other data lists when I search** and **Leave out the data lists**), the three entry visibility rows, **Default sort order of the Explorer** and **Sprite previews start at**.
 
 It does not reset **Language**, **Previous and next tab buttons** or **Size of the Explorer icons at 100% zoom**.
 

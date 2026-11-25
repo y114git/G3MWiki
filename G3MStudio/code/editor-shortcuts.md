@@ -54,11 +54,13 @@ Details on what each line command does are in [Line Edits](line-edits.md).
 | Find in Code... | `Ctrl+Shift+F` | Opens the Search panel for all code. |
 | Replace in Code... | `Ctrl+Shift+H` | Opens the Search panel in replace mode. |
 | Find Usages | `Shift+F12` | Finds the uses of the name or resource. See [Find Usages](find-usages.md). |
-| Rename | `F2` | In a code tab, renames the name under the caret ([Rename Symbol](rename-symbol.md)). Elsewhere it renames the selected resource. |
-| Go To | `Ctrl+T` | Opens the Go To window. See [Go To and Project Symbols](project-symbols.md). |
-| Quick Open | `Ctrl+P` | Finds a resource by name. |
+| Rename... | `F2` | In a code tab, renames the name under the caret ([Rename Symbol](rename-symbol.md)). Elsewhere it renames the selected resource. |
+| Go to... | `Ctrl+T` | Opens the Go To window (**View** menu). See [Go To and Project Symbols](project-symbols.md). |
+| Go to Resource... | `Ctrl+P` | Finds a resource by name (**View** menu). |
+| Replace Numbers with Asset Names in All Code... | none | In the **Edit** menu. See [Replace Numbers with Asset Names](asset-numbers.md). |
 | Save | `Ctrl+S` | In a code tab with pending changes, applies them. |
 | Documentation | `F1` | Opens the documentation. |
+| Run Game | `F5` | Runs the game. See [Run the game](../projects/run-game.md). |
 
 ## Keys inside the find box
 

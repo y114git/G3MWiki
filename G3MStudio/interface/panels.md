@@ -13,8 +13,8 @@ Panels are the dockable tool windows around the editor tabs. This page describes
 | Output | `view.panel.output` | Messages of G3MStudio and lines of the running game. |
 | Usages | `view.panel.usages` | Where an entry is used, what it uses, and unused assets. |
 | Function Reference | `view.panel.reference` | Built-in GML functions and variables. The tab shows "Reference". |
-| History | `view.panel.history` | Edit history of the file. See [History](../projects/README.md). |
-| Git | `view.panel.git` | Git status of a project. See [Git](../projects/README.md). |
+| History | `view.panel.history` | Edit history of the file. See [History](../projects/history.md). |
+| Git | `view.panel.git` | Git status of a project. See [Git](../projects/git.md). |
 | Open Editors | `view.panel.openeditors` | The open editor tabs as a list. Off by default. See [Open Editors](#open-editors). |
 
 **View > Panels** lists all ten. Choosing one shows it (or brings it to the front) and focuses it. Each is also in the command palette as "Show {panel}". A closed panel returns through this menu.
@@ -39,14 +39,19 @@ With nothing selected it says "Select a resource in the Explorer." For a folder,
 
 ## Search (find and replace in code)
 
-Search looks through the code of every entry in the data file. Open it with **Edit > Find in Code...** (`Ctrl+Shift+F`) or **Edit > Replace in Code...** (`Ctrl+Shift+H`, focuses the replace box).
+Search looks through the code of every entry in the data file. Open it with **Edit > Find in Code...** (`Ctrl+Shift+F`) or **Edit > Replace in Code...** (`Ctrl+Shift+H`, opens and focuses the replace box). The full description is on [Find and Replace in Code](../code/find-and-replace.md). In short:
 
-1. Type text in **Find in code**.
-2. Set options: **Match case**, **Whole word**, **Regular expression**.
-3. Press `Enter` or **Search**. The status shows "Searching... {done} of {total} entries" and then "Matches: {hits}. Entries searched: {entries}." **Cancel** stops a running search ("Search cancelled."). A new search cancels the one before.
-4. Double-click a result, or press `Enter` on it, to open the entry at that line in a tab of its own.
+| Control | Function |
+|---|---|
+| Arrow left of the query box | **Show or hide Replace**. Opens the **Replace with** box. |
+| **Find in code** | The text to find. The search starts about 120 ms after the last key, unless **Settings > Code editor > Search while typing in the Search panel** is off. `Enter` searches at once. |
+| **Match case**, **Whole word**, **Regular expression** | Options of the query. |
+| Scope list (tooltip "Where to search") | **All code**, **Current entry**, **Selected entries**, **Objects only**, **Scripts only**, **Rooms only**. |
+| Entries box | Name patterns to include, or to leave out with a leading `!`. |
+| **Replace with**, **Preserve case**, **Replace**, **Replace all** | Replace, with a preview in the list. **Replace all** asks for a go-ahead first. |
+| **Search**, **Cancel** | Search now. **Cancel** shows while a search runs and stops it ("Search cancelled."). A new search cancels the one before. |
 
-Results read `entry(line)  text`. Right-click a result: **Open**, **Copy** (one line), **Copy all**. Copy keeps the real entry name, not the nickname.
+The status shows "Searching... {done} of {total} entries, {hits} matches so far" while it runs and then "{hits} results in {entries} entries" (or "No results."). Results are grouped by entry; a double-click or `Enter` on a row opens the entry at that line in a tab of its own. Right-click a result: **Open**, **Copy** (one line), **Copy all**. Copy keeps the real entry name, not the nickname. `F4` and `Shift+F4` open the next and the previous match.
 
 Unreadable entries are skipped: "Entries that could not be read and were skipped: {count}." An invalid pattern shows "This pattern is not valid: {reason}". A pattern that is too slow shows "The pattern takes too long on a line. Make it simpler."
 
@@ -54,10 +59,7 @@ In low-memory mode the search decompiles one entry at a time. Text typed in open
 
 ### Replace
 
-1. Type the new text in **Replace with**.
-2. Press `Enter` in that box, or **Preview replace**. Each matching line is listed with its new text (`old  ->  new`) and a check box.
-3. Use **All** and **None**, or the boxes, to choose lines. The count reads "{chosen} of {total} selected".
-4. Press **Replace selected**.
+With the replace box open every row shows its old text struck out and the new text after it, and has a check box. **Replace** changes the selected row (the first checked row when none is selected). **Replace all** asks "Replace {matches} matches in {entries} entries? One Undo takes them all back." and then writes every checked row.
 
 The replacement is one undo step. The status reads "Replaced {lines} lines in {entries} entries. Undo takes it back in one step." Entries that no longer compile after the change stay as they were: "Left unchanged because they do not compile: {entries}." Entries whose code changed after the preview are skipped: "Skipped because the code changed since the preview: {entries}."
 
@@ -88,7 +90,9 @@ Shows the result of **Edit > Find Usages** (`Shift+F12`), **Find What It Uses**,
 | Find What It Uses | "Assets used by {name}: {count}. Double click one to open it." Or "{name} does not use any asset." |
 | Find Unreferenced Assets | "Assets that are not used anywhere: {count}." Or "No asset is unused." |
 
-Double-click a row, or press `Enter`, to open the entry that holds the reference. A row for code shows the line when it is ready. When unsaved code does not compile it is left out: "Unsaved text of {entry} does not compile and was left out of the search. The results show its saved state."
+With a code editor in front, **Find Usages** searches the word under the caret (a resource, or a variable or function used in code). With several Explorer entries selected it lists the places outside the selection that use any of them. The Inspector button and the Explorer menu always search the resource itself.
+
+While a search runs the status reads "Looking for uses of {name}...", "Looking for what {name} uses..." or "Looking for assets nothing uses...". A failed search reads "Could not search for {name}: {reason}" or "Could not search for unused assets: {reason}". Double-click a row, or press `Enter`, to open the entry that holds the reference. A row for code shows the line when it is ready. When unsaved code does not compile it is left out: "Unsaved text of {entry} does not compile and was left out of the search. The results show its saved state."
 
 Under unreferenced assets two buttons appear:
 
@@ -119,10 +123,10 @@ A list of the open editor tabs, one row per tab, in the order of the editor grou
 | Action | Result |
 |---|---|
 | Click a row | Brings that tab to the front. |
-| Cross on a row, or middle click | Closes the tab. A pinned tab has no cross. |
+| Cross on a row (tooltip "Close Editor"), middle click, or `Delete` on the selected row | Closes the tab. A pinned tab has no cross and ignores both keys. |
 | Right click | The same menu as the tab itself (**Close Tab**, **Close Other Tabs**, **Close All Tabs**, **Pin Tab**, **Split Right** and the resource commands). |
 
-A preview tab is shown in italics, as in the tab strip. Each row starts with the small picture or type icon of its resource.
+With no tab open the list reads "No editors open". A preview tab is shown in italics, as in the tab strip. Each row starts with the small picture or type icon of its resource.
 
 The box **Hide Editor Tabs** at the top (also **Settings > Appearance > Hide editor tabs while Open Editors is open**) hides the tab strips of the editor groups, so the list replaces them and the editors get the height or width the tabs used. Closing the panel shows the strips again, so the tabs can never be lost. A hidden strip is not drawn or measured and has no pictures. `Ctrl+Tab` and the other tab commands work as before.
 

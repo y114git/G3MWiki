@@ -14,14 +14,14 @@ Press `Ctrl+F` with a code tab in front. A find box opens at the top of the edit
 | Use regular expressions | | Read the text as a regular expression. |
 | Find next | `F3` | Goes to the next match. |
 | Find previous | `Shift+F3` | Goes to the previous match. |
-| Switch between find and replace | | Shows or hides the Replace... box. |
-| Replace... box | | The text that replaces a match. |
+| Switch between find and replace | | Shows or hides the Replace with... box. |
+| Replace with... box | | The text that replaces a match. |
 | Replace next | `Alt+R` | Replaces the current match. |
 | Replace all | `Alt+A` | Replaces every match in the entry. |
 
 The find box starts in replace mode. Replacing changes the text in the tab like typing does, so use **Save changes** to apply it, or the editor's undo to take it back. In a read-only tab nothing is replaced. The "n matches" counter is shown in English in every language.
 
-`Ctrl+F` in other views opens the find box of that view (text files, shader sources and the like).
+`Ctrl+F` in other views opens the find box of that view (text files, shader sources and the like). With the focus in the Explorer, or when no code tab is in front, it moves to the Explorer filter instead.
 
 ## Search in all code
 
@@ -29,13 +29,13 @@ Open the **Search** panel with **Find in Code...** (`Ctrl+Shift+F`) or **Replace
 
 G3MStudio decompiles every top-level code entry (child functions are part of their parent's text) and lists the lines that match. Entries with unsaved typing in a tab are saved first, as **Save changes** does. Entries that cannot be decompiled are skipped and counted.
 
-The panel keeps its query, options, scope, folded entries and the last 20 queries while it is hidden and shown again. Press `Up` or `Down` in the query box to walk through the recent queries.
+The panel keeps its query, options, scope, folded entries and the last 20 queries while it is hidden and shown again. Press `Up` or `Down` in the query box to walk through the recent queries. `Esc` in the query box clears it. A query joins the list when the query box loses the focus.
 
 ### Search while you type
 
-The search starts about 120 ms after the last key and replaces the one that is still running. The status line reads "Searching... 120 of 5000 entries, 31 matches so far" and the list fills while it runs. At the end it reads "{hits} results in {entries} entries". You can turn this off in **Settings > Editor** and search with `Enter` or **Search** instead. **Cancel** stops a running search ("Search cancelled.").
+The search starts about 120 ms after the last key and replaces the one that is still running. The status line reads "Searching... 120 of 5000 entries, 31 matches so far" and the list fills while it runs. At the end it reads "{hits} results in {entries} entries". You can turn this off in **Settings > Code editor** with **Search while typing in the Search panel** and search with `Enter` or **Search** instead. **Cancel** stops a running search ("Search cancelled.").
 
-An invalid regular expression shows its error under the query box at once and the list stays empty until the pattern parses. A pattern that runs longer than 1 second on a line stops with "The pattern takes too long on a line. Make it simpler."
+The regular expression matches one line at a time, so a pattern cannot span lines (`\n` never matches). An invalid regular expression shows its error under the query box at once and the list stays empty until the pattern parses. A pattern that runs longer than 1 second on a line stops with "The pattern takes too long on a line. Make it simpler."
 
 ### Options and scope
 
@@ -44,16 +44,16 @@ An invalid regular expression shows its error under the query box at once and th
 | **Match case** | off | Case matters. |
 | **Whole word** | off | The match must not touch a letter, digit or underscore. |
 | **Regular expression** | off | The query is a .NET regular expression. |
-| Scope list | **All code** | **All code**, **Current entry** (the code tab in front), **Selected entries** (code entries, or the objects, scripts and rooms selected in the Explorer), **Objects only**, **Scripts only**, **Rooms only**. |
-| Entries box | empty | Name patterns separated by commas or spaces. `*` and `?` are wildcards. A pattern without them matches part of a name. A leading `!` leaves matching entries out. |
+| Scope list | **All code** | **All code**, **Current entry** (the code tab in front), **Selected entries** (code entries, or the objects, scripts and rooms selected in the Explorer), **Objects only** (`gml_Object_`), **Scripts only** (`gml_Script_` and `gml_GlobalScript_`), **Rooms only** (`gml_Room_` and `gml_RoomCC_`). |
+| Entries box | empty | Name patterns separated by commas, semicolons or spaces. `*` and `?` are wildcards. A pattern without them matches part of a name. A leading `!` leaves matching entries out. Case does not matter. `Enter` in the box searches. |
 
 Example: `gml_Object_obj_*, !*_Draw_*` searches the events of every object except Draw events.
 
 ### Read the results
 
-Results are grouped by code entry. Each heading shows the entry name and its number of matches. Click a heading, or press `Enter` on it, to fold or unfold it. Folded headings stay folded when you type more of the query. Under a heading each row shows the line number and the line with the match in bold. A line with several matches is one row. A long line is cut to start a little before the first match, with an ellipsis. The lines above and below the match are shown dimmed, as many as **Settings > Editor > Context lines in search results** says (0 to 3, default 1).
+Results are grouped by code entry. Each heading shows the entry name and its number of matches. Click a heading, or press `Enter` on it, to fold or unfold it. Folded headings stay folded when you type more of the query. Under a heading each row shows the line number and the line with the match in bold. A line with several matches is one row. A long line is cut to start a little before the first match, with an ellipsis. The lines above and below the match are shown dimmed, as many as **Settings > Code editor > Context lines in search results** says (0 to 3, default 1).
 
-The list stops at **Most results listed** (default 5000). The last row then reads "Showing the first 5000 results. Show more"; press it to list 5000 more.
+The list stops at **Most results listed** in the same section (500 to 100000, default 5000). The last row then reads "Showing the first 5000 results. Show more"; press it to list 5000 more.
 
 - Double-click a row, or press `Enter`, to open the entry with the caret at the match and the match selected. It opens as a tab of its own, not as a preview.
 - `Up` and `Down` move between rows. `Down` in the query box moves into the list, `Up` on the first row goes back to the query box. `Left` and `Right` fold and unfold a heading.
@@ -70,10 +70,10 @@ The first search decompiles every entry. The text is kept in a cache so the next
 
 ### Replace in all code
 
-1. Press the arrow left of the query box (or `Ctrl+Shift+H`) to open the **Replace with** box.
+1. Press the arrow left of the query box (**Show or hide Replace**, or `Ctrl+Shift+H`) to open the **Replace with** box.
 2. Type the text to find, then the replacement. Every row now shows what would change: the old text struck out in red, the new text after it in green. Nothing is written yet. A plain search replaces the literal text. With **Regular expression**, group references such as `$1` or `\1` work in the replacement. **Preserve case** gives a replacement the case of what it replaces: `foo`, `Foo` and `FOO` become `bar`, `Bar` and `BAR`.
 3. Uncheck the rows you want to keep. A check box on a heading checks or unchecks the whole entry.
-4. **Replace** changes the selected row (the first checked row when none is selected). **Replace all** (`Ctrl+Alt+Enter` in the replace box) asks "Replace {matches} matches in {entries} entries? One Undo takes them all back." and writes the checked rows when you press **Replace**.
+4. **Replace** (or `Enter` in the replace box) changes the selected row (the first checked row when none is selected). **Replace all** (`Ctrl+Alt+Enter` in the replace box) asks "Replace {matches} matches in {entries} entries? One Undo takes them all back." and writes the checked rows when you press **Replace**.
 
 ![The Search panel with a replace preview: the old text struck out in red, the new text in green, a check box on every row](../images/search-replace-preview.png)
 

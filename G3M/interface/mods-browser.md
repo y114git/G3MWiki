@@ -15,7 +15,7 @@ The bar above the list has these controls:
 | **Show NSFW** | Allows mature mods in results. |
 | Blocklist button | Opens the [Blocklist](../features/blocklist.md). |
 | Downloads button | Opens [Downloads](../features/downloads.md). |
-| Search button | Asks for text matching names, descriptions, authors, and more. While a search is active, the button clears it (tooltip **Clear search**). |
+| Search button | Asks for text matching names, descriptions, authors, and more. While a search is active, the button clears it (tooltip **Clear search: '<text>'**). |
 
 ![The Mods Browser header and filters bar](../images/mods-browser-filters.png)
 

@@ -114,6 +114,7 @@ The other `image` keys are the remembered values of the Resize and Import Sheet 
 | `backupCount` | 3 | 1 to 100 |
 | `askOnClose` | true | true, false |
 | `rememberWindow` | true | true, false |
+| `updatePrereleases` | false | true, false |
 | `startup` | `Restore` | `Restore`, `Home`, `Ask` |
 | `lostFileSearch` | true | true, false |
 | `lostFileAutoUse` | true | true, false |

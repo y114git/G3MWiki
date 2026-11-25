@@ -2,7 +2,7 @@
 
 ## Which original file should I use?
 
-The game release and platform the patch was made from. A `.g3mpatch` records the original's MD5 (`original.md5`). `patch validate <patch> --data <file>` prints `Data file hash doesn't match original - patch may not apply correctly` when it differs. xdelta needs the exact original bytes.
+The game release and platform the patch was made from. A `.g3mpatch` records the original's MD5 (`original.md5`). `patch validate <patch> --data <file>` prints a `[Warning]` line, `Data file hash doesn't match original - patch may not apply correctly`, when it differs. The line is not printed with `--json`. xdelta needs the exact original bytes.
 
 ## Does merge apply patches one after another?
 
@@ -46,7 +46,7 @@ Install xdelta3 and pass `--xdelta-path <path>`. The bundled copy is extracted t
 
 ## `xdelta exited with code 1`
 
-The patch does not fit the file it was applied to (different game release, or an already patched file), or an argument is wrong. The text printed before this line is xdelta's own message.
+The patch does not fit the file it was applied to (different game release, or an already patched file), or an argument is wrong. The `Error:` line printed before this line is xdelta's own error text.
 
 ## Is a successful output ready to play?
 

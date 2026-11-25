@@ -33,7 +33,7 @@ The element list sits beside the canvas behind a splitter. It lists the elements
 
 - A row reads `inst_00000001 : obj_player  (x, y)` for an instance, or the element kind, its name and position for the others.
 - Clicking a row selects the element on the canvas and the reverse. Hovering a row shows a card for the object, sprite, sequence or particle system.
-- The search box (`Search instances...`) keeps rows whose text contains the typed text, ignoring case. It matches the name and the nickname.
+- The search box (`Search instances...`) keeps rows whose text contains the typed text, ignoring case. It searches the whole row text (instance id, object or element name, position), by real name and by nickname.
 - **Show all** and **Hide all** set every row's check box.
 - The check box of a row shows or hides that element on the canvas. Its tooltip: `Shown in the editor. Clear the box to hide this element here only; the room file is not changed and the setting is lost when the room closes.`
 

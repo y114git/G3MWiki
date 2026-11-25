@@ -22,7 +22,7 @@ Each option is a block headed `name = value`; opening it shows its property list
 
 Every file, function, argument and option row has **Move up**, **Move down** and **Remove**. Up is disabled on the first entry and down on the last. Each is one undo step.
 
-Removing a function that code calls is a risky edit: G3MStudio asks first and removes it only if you confirm. A failed edit leaves the data unchanged.
+Removing a function that code calls, or a file that holds such a function, is a risky edit: G3MStudio asks first and removes it only if you confirm. Without that prompt the refusal reads `'{name}' is called from code: change that code first, or allow risky actions in Settings > Advanced to remove it anyway.` A failed edit leaves the data unchanged.
 
 Extensions cannot be duplicated. They can be created (**File** > **New**) and deleted. See [Resource management](resources.md).
 

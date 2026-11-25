@@ -20,7 +20,7 @@ G3MTool xpatch create original.bin modified.bin change.xdelta
 G3MTool xpatch apply original.bin change.xdelta result.bin
 ```
 
-Text output prints the input and output paths, then `Patch created successfully: <output>` or `Patch applied successfully: <output>`.
+Text output starts with `Creating xdelta patch...` or `Applying xdelta patch...`, then lists the original, the modified file or patch, and the output. It ends with `Patch created successfully: <output>` or `Patch applied successfully: <output>`.
 
 With `--json` each command prints one object, success or failure:
 
@@ -40,7 +40,7 @@ Every failure returns exit code `1`.
 | `Original file not found: <path>` | Missing original (create or apply) |
 | `Modified file not found: <path>` | Missing modified file |
 | `Patch file not found: <path>` | Missing patch |
-| `xdelta exited with code <n>` | xdelta rejected the input; its own message is printed before this line. A patch applied to a different original usually fails this way |
+| `xdelta exited with code <n>` | xdelta rejected the input. Its error text is printed first, with an `Error:` prefix in text mode, then this line. A patch applied to a different original usually fails this way |
 | `xdelta timed out after 300s and was terminated` | xdelta ran longer than 5 minutes |
 | `xdelta executable not found: <path>` | Bad `--xdelta-path` |
 | `No xdelta is bundled for <platform>. Install xdelta3 and pass --xdelta-path <path>.` | The build has no bundled xdelta for this platform |

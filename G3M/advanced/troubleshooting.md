@@ -16,8 +16,8 @@ A startup failure shows a dialog titled **G3M** and is also appended to `g3m-sta
 | Could not prepare the single-instance lock: ... | G3M cannot create the data folder. Check permissions and free space. |
 | Could not acquire the single-instance lock: ... | The lock file `g3m.instance.lock` cannot be written. Check the folder permissions. |
 | G3M data location unavailable | The custom data folder is missing or not writable. Choose **Try again** after reconnecting the drive, **Choose another folder**, or **Use default location**. |
-| Startup Error: An error occurred during startup: ... | The main window failed to build. Send `logs/g3m.log`. |
-| Main window did not become visible. | Same as above; the startup watchdog gave up. |
+| Dialog titled **Startup Error**, message "An error occurred during startup: ..." | The main window failed to build. Send `logs/g3m.log`. |
+| "An error occurred during startup: Main window did not become visible." | The startup watchdog gave up before the window appeared. Send `logs/g3m.log`. |
 
 `G3M --force-start` skips only the check for an already running game process at startup.
 
@@ -29,7 +29,7 @@ Read the Downloads record. Check the source URL, network connection, destination
 
 ## A package needs manual setup
 
-The archive may lack supported configuration. Use **Continue setup** or [Manual Mod Installation](../mods/importing.md#files-without-configuration), select the game, and assign an action to each file or folder. Use **Skip** for bundled files that should not be installed. A game web page is not a download archive.
+The archive may lack supported configuration. Use **Continue Setup** on the Downloads item, or [Manual Mod Installation](../mods/importing.md#files-without-configuration), select the game, and assign an action to each file or folder. Use **Skip** for bundled files that should not be installed. A game web page is not a download archive.
 
 A patch verification warning allows **Save** or **Cancel**. Check the selected destination and required game version before saving anyway. If a save button is disabled, hover over it for the reason. Incomplete choices and an active check or save still prevent saving.
 

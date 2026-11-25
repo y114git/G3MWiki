@@ -46,7 +46,7 @@ What a new resource starts with:
 
 ### Names
 
-The name must be free. An unusual name (not letters, digits and underscores, or starting with a digit) is warned about once: `'{name}' is not a plain name (letters, digits and underscores, not starting with a digit). GML code cannot use it, and other tools may fail on it. Press the button again to use it anyway.` A name that is already taken gives `A resource or code entry named '{name}' exists already. With two of one name, the editor and delete reach only the first. Press the button again to use the name twice anyway.` The Settings risk option can allow or refuse these names without asking.
+The name must be free. An unusual name (not letters, digits and underscores, or starting with a digit) is warned about once: `'{name}' is not a plain name (letters, digits and underscores, not starting with a digit). GML code cannot use it, and other tools may fail on it. Press the button again to use it anyway. Undo removes it until you save.` A name that is already taken gives `A resource or code entry named '{name}' exists already. With two of one name, the editor and delete reach only the first. Press the button again to use the name twice anyway. Undo removes it until you save.` The Settings risk option can allow or refuse these names without asking.
 
 ## Duplicate
 

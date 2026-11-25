@@ -8,7 +8,7 @@ The arrow beside the main action button opens a menu that selects what G3M does 
 | **Launch and keep changes** | Yes | No |
 | **Launch patching only** | No | No |
 
-The latter two modes ask for confirmation because they leave mod changes in place. Use a separate game installation when producing a patched copy or testing persistent changes.
+The latter two modes ask for confirmation because they leave mod changes in place. The prompt is titled **Keep patched files?**, and its default answer is No. Use a separate game installation when producing a patched copy or testing persistent changes.
 
 ## Launch
 

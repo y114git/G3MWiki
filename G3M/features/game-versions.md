@@ -6,14 +6,14 @@ Open the Game Versions control near the game selector. The dialog's game selecto
 
 ## Create
 
-Use the add control and choose **Create Game Version**. Enter a name and select the profile option:
+Use the add control and choose **Create Game Version**. Enter a name and set **Apply profile:**:
 
 - **None** saves the files currently in the configured game folder.
 - A named profile builds a snapshot with that profile's selected mods applied to a temporary copy. The real installation is not the patching output for this operation.
 
 For a clean baseline, choose **None** while the game folder contains the clean installation. A folder that already contains kept mod changes produces a snapshot of those changes.
 
-The game executable and configured executable override are protected from snapshot replacement. Saves outside the installation folder are not included. Keep those separately if you need a complete backup of a playthrough.
+The game executable and configured executable override are not included in a snapshot. **Full file replacement on apply** never deletes them either. Saves outside the installation folder are not included. Keep those separately if you need a complete backup of a playthrough.
 
 ## Apply
 
@@ -25,10 +25,10 @@ Applying a snapshot changes the game folder, not the active profile's installed 
 
 ## Import, export, and delete
 
-**Import Game Version** reads an exported version ZIP with `game_version_data.json`. An arbitrary game ZIP without that manifest is not a Game Versions export. The game recorded in the manifest must match the selected game.
+**Import Game Version** reads a version archive from a local file (**Choose file**) or a direct link (**Import from URL**, then **Load URL**). The archive must be an exported version ZIP with `game_version_data.json`. An arbitrary game ZIP without that manifest is not a Game Versions export. The game recorded in the manifest must match the selected game.
 
 Export copies the saved archive for external storage. Delete removes the saved record and archive after confirmation; it does not remove the game installation.
 
-Use **Cancel** on a working record to request cancellation. A missing-archive status means the indexed file is unavailable. An error recorded while creating a patched snapshot deserves inspection before you use that snapshot as a baseline.
+Use **Cancel** on a working record to request cancellation. The **Archive missing** status means the indexed file is unavailable. An error recorded while creating a patched snapshot deserves inspection before you use that snapshot as a baseline.
 
 Archives and their index live in `game_versions/` under the [data directory](../advanced/data-directory.md).

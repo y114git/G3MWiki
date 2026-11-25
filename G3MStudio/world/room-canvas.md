@@ -21,7 +21,7 @@ The room canvas is the picture at the top of a room tab. This page lists the too
 
 The grid starts with the grid size stored in the room. With **Settings** > **Use one grid for every room** the grid size of Settings is used instead. See [Settings](../settings/README.md). A grid size you type in the toolbar stays for that tab until the setting changes.
 
-Zoom runs from 6.25% to 3200%. **Fit** never goes above 800%, so a small room is not blown up. The zoom, the position, the grid size and the Grid and Snap states of each room are saved with the project view and come back when the room is opened again.
+Zoom runs from 6.25% to 3200%. **Fit** never goes above 100%, so a small room is not blown up. The `F` key goes up to 800%. The zoom, the position, the grid size and the Grid and Snap states of each room are saved with the project view and come back when the room is opened again.
 
 ![A room tab with one instance selected and the Inspector showing its fields](../images/room-editor-instance-inspector.png)
 
@@ -52,7 +52,7 @@ Messages: `This room has no instance layer. Add one in the layers panel first.` 
 | Right click a guide line | Removes it. |
 | Right click elsewhere | Opens the context menu. |
 
-Guide lines are part of the view only. They are not stored in the room.
+Guide lines are part of the view only. They are not stored in the room. When you drag elements, the origin of the first selected element snaps to a guide within 8 screen pixels, whether **Snap** is on or off.
 
 Moving, scaling, rotating and the other gestures are each one undoable edit. Handles appear only with the **Select** tool.
 
@@ -70,7 +70,7 @@ The canvas must have focus (click it).
 | `Ctrl+A` | Select every unlocked, visible element. |
 | `X` | Flip the selected instances horizontally (without Ctrl). |
 | `Y` | Flip the selected instances vertically (without Ctrl). |
-| `F` | Focus the view on the selection. |
+| `F` | Zoom and scroll so the selection fills the view (up to 800%). |
 | `Escape` | Clear the selection. |
 | `G`, `Shift+G`, `V` | Grid, snap, views. |
 | `Ctrl++`, `Ctrl+-`, `Ctrl+0`, `Ctrl+Shift+0` | Zoom in, zoom out, fit, 100%. |

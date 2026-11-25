@@ -8,14 +8,14 @@ The main window holds the menu bar, the work area with the docked panels and edi
 |---|---|---|
 | Back and forward buttons | Left of the menu bar | Step through the tabs in the order they were in front. They run **Previous Tab (History)** and **Next Tab (History)**. |
 | Menu bar | Top | One menu per command group. See [Menus](menus.md). |
-| Start page | Centre, while no data file is open | Recent files and the buttons Open Data File, Open Project, New Project and Settings. See [Start page](../getting-started/start-page.md). |
+| Start page | Centre, while no data file is open | Recent files and the buttons **Open Data File...**, **Open Project...**, **New Project...** and **Settings**. See [Start page](../getting-started/start-page.md). |
 | Work area | Centre, while a data file is open | The dock layout with panels and editor tabs. See [Docking and layouts](docking-and-layouts.md). |
 | Fold chevrons | A 20 px strip at the left, right and bottom edge | One chevron folds or opens that dock. |
 | Status bar | Bottom | Status message, asset ID, memory, run state, project button and notifications button. See [Status bar](status-bar.md). |
 | Toasts | Bottom right, over the work area | Short messages that fade out. See [Notifications](notifications.md). |
 | Progress overlay | Over the work area | Shown while a file opens or an export runs, with a **Cancel** button. The message and the bar are centered; a long message wraps, and a very long name in it is shortened in the middle. |
 
-The window opens at 1100 by 700 pixels. A settings page, when open, covers the work area (see [Settings](../settings/README.md)).
+On the first start the window opens centred at 85 percent of the work area of the screen (at least 640 by 480). Later starts open it where it was closed, unless **Open the window where it was closed** is off in the Settings (see [Files settings](../settings/files.md)); then it opens at the 85 percent size again. A window mostly off screen is not restored. The window cannot be made smaller than 840 by 460 pixels at 100 percent interface scale (the minimum grows with the scale, but never past the screen). A settings page, when open, covers the work area (see [Settings](../settings/README.md)).
 
 ![The G3MStudio main window with the Explorer, a room tab, the Inspector and the bottom dock](../images/main-window.png)
 
@@ -31,7 +31,15 @@ The asterisk after the workspace name marks unsaved changes. The first part is l
 
 ## Opening files by drag and drop
 
-Drop a data file anywhere on the main window to open it. Only files from this computer are accepted. A drop from another source shows: "Only files from this computer can be opened. Drop a data file from a folder." If the file is open in another G3MStudio window the message is "'{name}' is in use by another G3MStudio window. Finish there first."
+Drop a file anywhere on the main window. What happens depends on the file and on what is in front:
+
+- A `.csx` file with a data file open runs as a script, after the same confirmation as **Tools > Run Script...**.
+- With a data file open, pictures, sounds and GML files become new resources.
+- One picture dropped on a sprite tab replaces the selected frame. One picture dropped on a picture resource, or one sound dropped on a sound or audio tab, replaces that picture or audio.
+- An UTMT project (its folder or `project.json`) is converted, not opened (see [Import a UTMT project](../projects/utmt-import.md)).
+- Any other file opens as a data file. With several files, only the first one opens.
+
+Only files from this computer are accepted. A drop from another source shows: "Only files from this computer can be opened. Drop a data file from a folder." If the file is open in another G3MStudio window the message is "'{name}' is in use by another G3MStudio window. Finish there first."
 
 ## Full screen
 
@@ -50,11 +58,13 @@ Try it: open a small sprite, hold `Ctrl` and turn the wheel over a pixel. The pi
 `F6` moves the keyboard focus to the next region and `Shift+F6` to the previous one. The regions, in order, are:
 
 1. Menu bar
-2. Editor area
-3. Bottom panels
-4. Status bar
+2. The active panel of the left dock
+3. Editor area
+4. The active panel of the right dock
+5. Bottom panels
+6. Status bar
 
-A screen reader announces "Focus: {region}" after each move.
+A region that is hidden or empty (a folded dock, no editor open) is skipped. Without focus in any region, `F6` starts at the menu bar and `Shift+F6` at the status bar. A screen reader announces "Focus: {region}" after each move. A dock panel is named by its title, for example "Explorer".
 
 ## Narrow windows
 

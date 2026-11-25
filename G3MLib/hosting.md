@@ -99,7 +99,7 @@ Console.WriteLine(ModdingMetadata.LibraryVersion);
 
 ## File writes
 
-Data files, patch archives, project files and audio group files are written to a temporary file next to the target (`<target>.<id>.g3mtmp`) and swapped in, so a failed write keeps the old file. A symlinked target keeps its link, and temporary files of the same target older than one day (left by a crash) are removed at the next write. `GameMakerIO.WriteAsync` to a path needs an existing folder. See [Limits and defaults](limits-and-defaults.md#timing-and-file-behaviour).
+Data files, patch archives, project files and audio group files are written to a temporary file next to the target (`<target>.<id>.g3mtmp`) and swapped in, so a failed write keeps the old file. A symlinked target keeps its link, and temporary files of the same target older than one day (left by a crash) are removed at the first write of that target in the process. `GameMakerIO.WriteAsync` to a path needs an existing folder. See [Limits and defaults](limits-and-defaults.md#timing-and-file-behaviour).
 
 ## Output and concurrency
 

@@ -1,6 +1,6 @@
 # Exporting mods
 
-Use the export action on a Library mod to create a ZIP package. The package contains its configuration and bundled files, so another G3M installation can import it into a profile.
+Use the export action on a Library mod to create a ZIP package. The package contains its configuration and bundled files, so another G3M installation can import it into a profile. File dialogs open in the folder of your last pick.
 
 ## Saved versions
 

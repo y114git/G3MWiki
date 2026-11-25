@@ -4,7 +4,7 @@ Import adds a mod to the active profile's Library. Downloading an archive and im
 
 ## Choose a source
 
-Use **Add Mod > Import**, drop files or folders into the Library, or select a download in Mods Browser. The import dialog accepts local content and download URLs. A URL must point to downloadable content, rather than a web page containing a download button.
+Open **Add Mod**, then **Import Mod**. You can also drop files or folders into the Library, or select a download in Mods Browser. The import dialog accepts local content and download URLs. A URL must point to downloadable content, rather than a web page containing a download button. File dialogs open in the folder of your last pick.
 
 Supported archive inputs include ZIP, 7z, RAR, TAR and compressed TAR variants, and LZMA where applicable. A package with `mod_config.json` supplies its own metadata and operations. G3M can also open supported DATA files, `.g3mpatch`, `.xdelta`, `.vcdiff`, and `.csx` inputs for manual configuration.
 
@@ -21,7 +21,7 @@ If a G3M mod is made for a game that G3M does not know, whether from a file, a l
 
 ## Automatic installation of downloads
 
-When a download needs Manual installation, G3M first runs the automatic scan hidden. If every file gets an action and a destination, the mod goes straight to the Library without opening the window. Otherwise the download stays in **Downloads** as **Manual Install Required**, and the reason is written to the log as `Automatic installation declined: ...` (no game folder set, files not set up, no file that changes the game, or a detection error). Pizza Oven packages are offered a conversion instead.
+When a download needs Manual installation, G3M first runs the automatic scan hidden. If every file gets an action and a destination, the mod goes straight to the Library without opening the window. Otherwise the download stays in **Downloads** as **Manual Install Required**, and the reason is written to the log as `Automatic installation declined: ...` (no game folder set, an invalid file list, files not set up, no file that changes the game, or a detection error). Pizza Oven packages are offered a conversion instead.
 
 Three checkboxes in **Settings > Mods Browser > Downloads** control this:
 
@@ -51,7 +51,7 @@ Matching replacement files and documentation can also receive actions automatica
 | Extract | Place a folder's or archive's contents into a destination folder or supported writable archive. |
 | Skip | Keep the item in the package without installing it. |
 
-Choose an action for every file or folder and a destination where required. Expand a folder to configure its files individually, or assign an action to the whole folder. Use **Ctrl** + click to select several rows and set their actions or destinations together. **Browse** selects a destination file or folder and stores the appropriate folder reference.
+Choose an action for every file or folder and a destination where required. Expand a folder to configure its files individually, or assign an action to the whole folder. Use **Ctrl** + click to select several rows and set their actions or destinations together. **Browse...** selects a destination file or folder and stores the appropriate folder reference.
 
 The filter searches the file list. **Hide configured files** shows only items that still need a choice; G3M remembers this option between installations and restarts.
 
@@ -69,6 +69,6 @@ Several dropped inputs without configuration can be collected into one manual in
 
 ## An installed ID already exists
 
-The duplicate dialog offers **Merge** and **Replace**. Merge saves the incoming package as a version of the installed mod; it does not combine both configurations into one launch selection. Replace installs the incoming package in place of the existing mod.
+G3M does not ask when the ID is already installed. It saves the incoming package as a version of the installed mod and shows a message. The installed files stay as they are, and the installed mod keeps its launch selection.
 
-Save or export the current mod if you want an independent backup. Review [Mod Versions](mod-versions.md) before switching to a merged import.
+Save or export the current mod if you want an independent backup. See [Mod Versions](mod-versions.md) to switch to the saved version.

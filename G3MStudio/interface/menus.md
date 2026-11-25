@@ -6,7 +6,7 @@ This page lists every menu of the menu bar with its items in order. Each item is
 
 - An item is greyed out when its command does not apply. For example most items are off until a data file is open. The tooltip of an item shows its name and shortcut, also while it is off.
 - A **New** item that stays off while a file is open means the data file has no section for that type. Its tooltip says: "This data file has no section for {type}, so it cannot hold a new one."
-- The menus **Sprite**, **Sound**, **Font**, **Tile Set**, **Room**, **Image** and **Code** show only while a tab or the Explorer selection of their kind is in front. They sit between **Project** and **Run** in the bar.
+- The menus **Sprite**, **Sound**, **Font**, **Tile Set**, **Room**, **Image** and **Code** show only while their kind of resource is in front: a sprite, room, image editor or code editor tab, or a sound, font or tile set that is the front tab or the Explorer selection. They sit between **Project** and **Run** in the bar.
 - **Plugins** shows only when a plugin has added a command. It sits before **Layout** and **Help**.
 - Some commands have no menu item because another place holds them: the tab commands (right-click a tab), **Move Run Options to G3MStudio's Folder** and **Ask Again for All Prompts** (buttons in Settings). The palette and the shortcut editor still list them.
 - The transfer commands (import, copy, export) have one entry, **Transfer Resources...**. The single commands stay in the palette and the Explorer context menu.
@@ -40,11 +40,11 @@ New Folder..., Move to Folder..., Add to Another Folder..., Cut, Paste into Fold
 
 ## View
 
-Command Palette..., Go to Resource..., Go to..., Reveal in Explorer, then the **Panels** submenu (Explorer, Search, Inspector, Problems, Output, Usages, Function Reference, History, Git), then Zoom In, Zoom Out, Reset Zoom, Toggle Full Screen, then Focus Next Region, Focus Previous Region.
+Command Palette..., Go to Resource..., Go to..., Reveal in Explorer, then the **Panels** submenu (Explorer, Search, Inspector, Problems, Output, Usages, Function Reference, History, Git, Open Editors), then Zoom In, Zoom Out, Reset Zoom, Toggle Full Screen, then Focus Next Region, Focus Previous Region.
 
 ## Project
 
-Open Project..., Recent Projects, Close Project, then New Project..., Enable Project, then Sync to Data File, Resolve Outside Changes..., then Project Settings..., Change Data File Location..., Disable Project.... **New Project...** and **Enable Project** work only while no project is linked; the others only while one is. See [Projects](../projects/README.md).
+Open Project..., Recent Projects, Close Project, then New Project..., Enable Project, then Sync to Data File, Resolve Outside Changes..., then Project Settings..., Change Data File Location..., Disable Project... (the last item). **New Project...** and **Enable Project** work only while a data file is open and no project is linked; the others, except **Open Project...**, only while one is linked. See [Projects](../projects/README.md).
 
 ## Sprite
 
@@ -56,7 +56,7 @@ Visible with a sound in front or selected. Edit Audio..., Replace Audio..., Gene
 
 ## Font and Tile Set
 
-**Font**: Edit Image..., Replace Font File.... **Tile Set**: Edit Image....
+Visible with a font or a tile set in front or selected. **Font**: Edit Image..., Replace Font File.... **Tile Set**: Edit Image....
 
 ## Room
 
@@ -114,11 +114,13 @@ Next Tab, Previous Tab, Previous Tab (History), Next Tab (History), Back, Forwar
 
 ## Layout
 
-G3MStudio Layout, Wide Editor Layout, Code Layout, Canvas Layout, Minimal Layout, then Save Layout..., Saved Layouts..., Reset Layout, then Hide or Show All Docks, Fold or Open Left Dock, Fold or Open Right Dock, Fold or Open Bottom Dock. The items are listed flat. See [Docking and layouts](docking-and-layouts.md).
+G3MStudio Layout, Wide Editor Layout, Code Layout, Canvas Layout, Minimal Layout, then Save Layout..., Saved Layouts..., Reset Layout, then Hide or Show All Docks, Fold or Open Left Dock, Fold or Open Right Dock, Fold or Open Bottom Dock, then Move Editor Tabs. The items are listed flat. See [Docking and layouts](docking-and-layouts.md).
 
 ## Help
 
 Getting Started..., Interface Tour..., Documentation, Check for Updates..., then Send Feedback..., Report a Problem..., Copy Diagnostics, then Open Data Folder, Open Logs Folder, then About G3MStudio.
+
+**Documentation** (`F1`) opens this wiki in the browser. **Report a Problem...** opens the issue page of the project in the browser. **Copy Diagnostics** copies the diagnostics text and shows "Diagnostics copied to the clipboard." **Open Data Folder** opens the folder with G3MStudio's own files; **Open Logs Folder** opens its `crashes` folder. When no browser or file manager can start, a toast gives the address or path instead. **Check for Updates...** runs only when you choose it (see [Updating](../getting-started/updating.md)).
 
 ## See also
 

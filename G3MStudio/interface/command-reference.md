@@ -10,6 +10,7 @@ Every action in G3MStudio is a command with an ID, a name and an optional defaul
 - **Works when** is the condition that must hold. The command is greyed out in menus and missing from the palette while it does not hold. A shortcut for it does nothing.
 - Keys written `Num +` are on the number pad.
 - A command can have extra keys (aliases) that run it too. The built-in ones are shown after "also".
+- Three menu entries are submenus, not commands, so they have no ID: **File > Open Recent**, **Project > Recent Projects** and **Tools > Run Recent Script** (the last 10 scripts run, with **Clear Items** at the end). See [Menus](menus.md).
 - Plugins can add commands. They appear in the **Plugins** menu and in the palette, with the title the plugin gives.
 
 Conditions: "data file open" means any data file is loaded. "sound in front or selected" means the active tab, or the Explorer selection, is a sound; the same holds for fonts and picture resources.

@@ -20,7 +20,7 @@ The five tabs are **Metadata**, **Compatibility**, **Files**, **Placeholders**, 
 | Mod authors | Author names, separated by commas. |
 | Description (max 200 chars) | Description of the mod. The label says 200, but the field accepts up to 16,384 characters. |
 | Homepage | HTTP or HTTPS project or download page. A direct download link is rejected. |
-| Icon | Bundled image path or HTTP or HTTPS image URL. **Browse** copies the picked image into the mod folder at once and replaces the mod's previous icon, unless a file operation uses it; Cancel brings the old icon back. A path typed by hand is copied when you save, and the old icon is replaced then. The preview updates when you edit the path or URL. |
+| Icon | Bundled image path or HTTP or HTTPS image URL. **Browse...** copies the picked image into the mod folder at once and replaces the mod's previous icon, unless a file operation uses it; Cancel brings the old icon back. A path typed by hand is copied when you save, and the old icon is replaced then. The preview updates when you edit the path or URL. |
 | Mod tags | Checkboxes **Text Edit**, **Customization**, **Gameplay**, and **Other**. **CYOP/AFOM** appears only while Pizza Tower is selected and **FB-Addon** only while FRICKBEARS3 is selected; switching games clears the hidden tag. A new mod starts with **Other** ticked. |
 | Overall mod version | Version label for this package. |
 | Game Version | Label describing the intended game release. |
@@ -34,16 +34,16 @@ The **Dependencies** and **Conflicts** lists each have **Add** and **Remove** co
 | Order choice | Configuration value |
 | --- | --- |
 | No order | Bare mod ID. |
-| Before | `id:before` |
-| After | `id:after` |
-| Earlier step | `id:before-step` |
-| Later step | `id:after-step` |
+| Before this mod | `id:before` |
+| After this mod | `id:after` |
+| In an earlier step | `id:before-step` |
+| In a later step | `id:after-step` |
 | Earlier in this step | `id:before-priority` |
 | Later in this step | `id:after-priority` |
 
-The ID names the other mod. Dependency conditions require that mod to be selected in the specified position. Conflict conditions report a problem when the other mod is selected in the specified position. See [relationship rules](mod-config.md#dependencies-and-conflicts) for the precise position checks.
+The ID names the other mod. Enter a local mod ID, or paste a GameBanana mod or WIP page URL. G3M stores the URL as `gb_mod_<id>` or `gb_wip_<id>`. Dependency conditions require that mod to be selected in the specified position. Conflict conditions report a problem when the other mod is selected in the specified position. See [relationship rules](mod-config.md#dependencies-and-conflicts) for the precise position checks.
 
-For an addon that requires an already applied base mod, use **Earlier step**. Priority within one step chooses which conflicting changes win; it does not create a separate patched base for an addon.
+For an addon that requires an already applied base mod, use **In an earlier step**. Priority within one step chooses which conflicting changes win; it does not create a separate patched base for an addon.
 
 ## Files
 

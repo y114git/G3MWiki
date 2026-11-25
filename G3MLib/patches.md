@@ -55,7 +55,7 @@ if (!applied.Success)
 }
 ```
 
-`allowXdeltaFallback` defaults to false and controls trying the embedded binary alternative first. `verifyModifiedHash` defaults to true; retain normal checking unless the host has a specific, documented reason to change it. Resource reconstruction and binary reproduction have different guarantees.
+`allowXdeltaFallback` defaults to false and controls trying the embedded binary alternative first. `verifyModifiedHash` defaults to true; retain normal checking unless the host has a specific, documented reason to change it. The check compares the output with the manifest's modified hash only when `allowXdeltaFallback` is also true, so with the default `false` it has no effect. Resource reconstruction and binary reproduction have different guarantees.
 
 The output can include external audio groups. Test it with the corresponding runner and resources rather than assuming the main `.win` file is the whole game.
 

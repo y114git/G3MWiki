@@ -14,7 +14,7 @@
 
 | Service | Address |
 | --- | --- |
-| GameBanana API | `https://gamebanana.com/apiv11`, including the Remote Install queue at `/RemoteInstall/<member id>/<key>/<app id>` (read every 60 seconds) |
+| GameBanana API | `https://gamebanana.com/apiv11`, including the Remote Install queue at `/RemoteInstall/<member id>/<key>/<app id>` (read every 60 seconds; app ID `G3M`, then `GameMakerModManager`) |
 | GameBanana downloads and images | `https://gamebanana.com/dl/<file id>`, `https://images.gamebanana.com/img/ss/...` |
 | GameBanana feeds | `https://api.gamebanana.com/Rss/<feed>?gameid=<id>` |
 | Catalog and G3M Verified list | `https://raw.githubusercontent.com/y114git/G3M/main/catalog/{plugins,themes,mods}/{plugins,themes,mods}.json` |

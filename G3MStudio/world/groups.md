@@ -16,7 +16,7 @@ Two lists: **Groups** on the left and **Members** on the right. Selecting a grou
 | **Move picked to** | Box that picks the target group. |
 | **Move** | Moves the members you selected (the list takes several) to the target group. Notice: `Moved {count} to {group}.` Disabled with `Pick a target group and at least one member first.` until both are set. |
 | **Name** box with **New group** | Creates a group with that name. Enter in the box does the same. Notice: `Group {name} created.` Disabled with `Type a group name first.` |
-| **Rename group** | Renames the selected group to the typed name. Notice: `Group renamed to {name}.` Disabled with `Pick a group in the list first.` when none is selected. |
+| **Rename group** | Renames the selected group to the typed name. Notice: `Group renamed to {name}.` Disabled with `Type a group name first.` while the name box is empty, else with `Pick a group in the list first.` when none is selected. |
 
 For audio groups the members are sounds. Each change is one undo step, and the window follows undo and redo.
 

@@ -8,7 +8,7 @@ A GameMaker data file (a `FORM` file) is a sequence of chunks such as `GEN8`, `S
 
 Choose **Tools > Hex View of Data File...** (needs an open data file that exists on disk). The window is titled "Hex view: {file}". It shows the saved file, not unsaved edits: "{bytes} bytes on disk. This is the saved file, not unsaved edits. Patches change the file only when you write them."
 
-Each row holds 16 bytes: the offset in hex, the bytes in groups of four, and the same bytes as text with `.` for bytes that are not printable. The offset column is as wide as the file size needs. The file is read in blocks, so big files open at once.
+Each row holds 16 bytes: the offset in hex, the bytes in groups of four, and the same bytes as text with `.` for bytes that are not printable. The offset column has 8 hex digits, or 12 for a file over 4 GB. The file is read in blocks, so big files open at once.
 
 ### Move and search
 
@@ -43,7 +43,7 @@ The view works only on the data file that is open. For another one: "The data fi
 
 **Tools > Export Raw Chunk...** saves the data of one chunk of the file on disk as a `.bin` file.
 
-1. Choose the chunk ("Chunk of the data file on disk").
+1. Choose the chunk ("Chunk of the data file on disk"). The save and open dialogs of both chunk commands start in the folder of the last pick (`last-folder.txt` in the user data folder).
 2. Choose where to save ("Save the chunk bytes as").
 3. The result reads "Chunk {name} written to {file}."
 

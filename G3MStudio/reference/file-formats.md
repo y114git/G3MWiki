@@ -8,6 +8,7 @@ This page lists the file kinds G3MStudio reads or writes. Detail for each kind i
 | --- | --- | --- | --- |
 | GameMaker data file | `.win`, `.unx`, `.ios`, `.droid` (`.symbian` is registered for "Open with") | Yes | Yes, by **Save** (see [Saving](../projects/saving.md)) |
 | Audio group file | `audiogroupN.dat` | Yes | Not by the picker; groups beside the data file are read for sounds |
+| Backup of a chunk or hex edit | `<name>.bak` | | Copy of the data file made before a chunk replace or a hex view save |
 | Temporary save file | `<name>.g3mnew` | | Written during a save, then moved over the target |
 | Temporary picture file | `<name>.<32 hex>.g3mtmp` | | Written while an included picture is replaced |
 
@@ -28,7 +29,9 @@ This page lists the file kinds G3MStudio reads or writes. Detail for each kind i
 | Kind | Extension | Use |
 | --- | --- | --- |
 | Pictures | `.png` | Sprites, textures, room images. |
-| Audio | `.wav`, `.ogg` | Sound import and export. |
+| Audio | `.wav`, `.ogg`, `.mp3` | Sound import and export. MP3 is import only and is converted to OGG. |
+| Fonts | `.ttf`, `.otf` | Replacing a font with a TrueType or OpenType file. |
+| Animated pictures | `.gif` | Sprite export. |
 | Code | `.gml` | Code import and export. |
 | Tables | `.csv` | Strings and room tiles. |
 | Scripts | `.csx` | C# scripts run from **Tools > Run Script** or dropped on the window. |

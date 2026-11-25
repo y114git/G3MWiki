@@ -38,8 +38,8 @@ A resource used only by other dead resources is not found. Delete the dead ones 
 ## Delete
 
 1. Uncheck anything you want to keep in the safe list.
-2. Press **Delete all safe**. The question reads "Delete {count} dead resources" with the count per type.
-3. G3MStudio scans again first. A resource that is used or doubtful by now, or whose type cannot be deleted, is skipped and named ("cannot be deleted here", "no longer certainly unused").
+2. Press **Delete all safe**. The question is titled "Delete {count} dead resources" and reads "Delete {count} resources that nothing uses?", then the count per type and "One Undo brings them back."
+3. G3MStudio scans again first. A resource that is used or doubtful by now, or whose type cannot be deleted, is skipped and named after "Skipped {count}:" ("cannot be deleted here", "no longer certainly unused").
 4. The deletion is one undo step, and tabs of deleted resources close. The result reads "Deleted {count} dead resources." or "Nothing was deleted."
 
 Press **Scan again** after any change.

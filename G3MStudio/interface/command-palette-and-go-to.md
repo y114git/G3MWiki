@@ -17,7 +17,7 @@ All three are also in the **View** menu. The window is 880 px wide, centred over
 1. Type a name. Results update on every key.
 2. Move with `Up` and `Down`. The selection wraps at both ends.
 3. Press `Enter` (or double-click) to open the selected entry. Press `Shift+Enter` to open it in a split beside the tab in front.
-4. The right half previews the selected entry (see below).
+4. The right half previews the selected entry (see below). The box shows the hint "Type a name. o: objects, @ symbols, # strings, > commands, t: tabs" until you type.
 
 If the focus is in the result list, typing or `Backspace` goes back to the text box.
 
@@ -90,8 +90,8 @@ Prefixes are not case sensitive. Text after the prefix is trimmed.
 ## What is searched
 
 - **Resources** and **code entries** show their nickname when they have one. The real name matches too.
-- **Commands**: only commands that work right now. A command with extra search text also matches that text: **Apply Patch...** matches "Apply Patch to the Current Data File, Save Patched Data File as New", **Apply Mod...** the same with "Mod", and **Run Script...** matches "Run Script from the Scripts Folder, Run Script File".
-- **Settings** pages: Appearance, Colors, Code editor, Image editor, Rooms, Decompiler, Files, Projects, Run, Advanced, Privacy, Prompts, Mod base, Keyboard shortcuts. Choosing one opens that page.
+- **Commands**: only commands that work right now. A panel command is named "Show {panel}" and an image editor command carries its menu path, for example "Image > Selection > Copy". A command with extra search text also matches that text: **Apply Patch...** matches "Apply Patch to the Current Data File, Save Patched Data File as New", **Apply Mod...** the same with "Mod", and **Run Script...** matches "Run Script from the Scripts Folder, Run Script File".
+- **Settings** pages: Appearance, Colors, Code editor, Image editor, Sound, Data file comparison, Rooms, Auto-tile, Decompiler, Files, Projects, Run, Advanced, Privacy, Prompts, Mod base, Keyboard shortcuts. Choosing one opens that page.
 - **Tabs**: the open editor tabs.
 - **Reference**: the built-in functions and variables with a one-line description. Choosing one opens the **Function Reference** panel on it.
 
@@ -120,7 +120,10 @@ The preview shows:
 | Code entry | The first 40 lines of the decompiled code |
 | String | The text, cut at 600 characters |
 | Command | Name and shortcut |
-| Function, variable, reference | Name and description |
+| Function or variable of the data file | Name and the word Functions or Variables |
+| Reference entry | Name and description |
+| Settings page | Its name |
+| Open tab | Name and type, or the decompiled code for a code tab |
 
 ## Troubleshooting
 

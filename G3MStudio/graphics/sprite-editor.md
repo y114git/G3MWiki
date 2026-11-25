@@ -21,7 +21,7 @@ A hint under the canvas shows the handle keys: `Drag an edge or corner of the pi
 | Item | How to use it |
 |---|---|
 | Origin cross | Drag it. The new origin is stored when you release the button. |
-| Collision box | Eight handles (corners and edge middles) and a body. Drag a handle to resize and the body to move. The box stays inside the picture and is at least one pixel. Shown only in Manual mode (see below). |
+| Collision box | Eight handles (corners and edge middles) and a body. Drag a handle to resize and the body to move. The box stays inside the picture and is at least one pixel. It is always drawn. Dragging it switches the mask to Manual mode (see below). |
 | Nine-slice guides | Four dashed lines, shown when **Nine slice** is on. Drag a guide. Opposite guides never cross. |
 | Outer handles | Handles outside the picture change the canvas size (see below). |
 | `Esc` | Cancels a drag in progress. |
@@ -76,7 +76,7 @@ What the shapes do:
 
 From GameMaker 2024.6 the stored mask covers only the box. Older files store a mask for the whole picture. Studio writes the right form for the file version.
 
-The command **Recalculate Collision Mask** builds the masks again from the frame pictures with tolerance 0 (a pixel is solid above alpha 0). It keeps as many masks as the sprite had and changes only the mask bytes. **Import Mask...** and **Export Mask...** are described on the next page.
+The command **Recalculate Collision Mask** builds the masks again from the frame pictures with tolerance 0 (a pixel is solid above alpha 0). It keeps as many masks as the sprite had and changes only the mask bytes. The message is `Collision mask of {sprite} rebuilt from its frames.` **Import Mask...** and **Export Mask...** are described on the next page.
 
 ### Nine slice
 

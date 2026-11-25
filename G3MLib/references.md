@@ -28,7 +28,7 @@ Other lookups:
 | Member | Result |
 | --- | --- |
 | `ReferenceIndex.FindTileUses(data, tileSet, tileIndex)` | Every tile layer cell that uses a tile of a tileset, as `TileUse(Room, Layer, X, Y)`. |
-| `index.ClassifyString(string)` | A `StringUse`: `ResourceName`, `CodeLiteral`, `VariableName`, `FunctionName`, `Other` or `Unused`. |
+| `index.ClassifyString(GameMakerString)` | A `StringUse`: `ResourceName`, `CodeLiteral`, `VariableName`, `FunctionName`, `Other` or `Unused`. |
 | `CodeScan.Scan(data, code)` | The variables, functions, string literals and asset references of one code entry as a `CodeScanResult`. |
 | `AudioIndex.Unreferenced(data, groupId, entryCount)` | Ids of audio entries in a group that no sound uses. |
 

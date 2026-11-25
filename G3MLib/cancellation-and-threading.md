@@ -40,7 +40,7 @@ What a cancelled call leaves behind:
 | `CodeImportGroup.Import(mode, progress, token)` in `Apply` mode | The data may hold part of the operations. Discard it. |
 | `CompileGroup.Check(token)` | Nothing changed. |
 | `CompileGroup.Compile(token)` | The data may hold part of the operations. Discard it. |
-| `ScriptRunner.RunAsync` | Returns `ScriptRunResult.Cancelled`. The data may hold part of what the script did. |
+| `ScriptRunner.RunAsync` | Returns a result with `Cancelled` set. The same happens when its `timeout` passes. The data may hold part of what the script did. |
 | `ResourceCloneService.Clone` | The token only stops the wait for the data gate. |
 | `ReferenceIndex.Build`, `RenameService.PlanRenames`, `TexturePageRepacker.Plan`, `ChunkDigests.Compute`, `DebugDataGenerator.Generate`, `G3MProjectService.OpenAsync`, `AudioGroupFile.Open` | Throw. They only read. |
 | `AudioGroupFile.Save` | Throws. The file is written through a temporary file, so an existing target stays as it was. |

@@ -68,7 +68,7 @@ G3MTool patch apply <data> <patch> [output] [--xdelta-fallback] [--cache <dir>]
 | `patch` | required | `.g3mpatch`, `.zip`, `.xdelta`, `.vcdiff`, `.csx`, or a DATA file |
 | `output` | file with the DATA file's name next to the executable | Output DATA. Written through a temporary file, so a failure keeps an existing output |
 | `--xdelta-fallback` | off | Use the embedded xdelta copy of a `.g3mpatch` (see below) |
-| `--cache <dir>` | none | Reuse `.g3mcache` analysis when the patch input must be converted first |
+| `--cache <dir>` | none | Reuse `.g3mcache` analysis when a DATA file is the patch input. Xdelta and `.csx` inputs do not use it |
 
 Without `--xdelta-fallback` the embedded xdelta copy is not read. With it, G3MTool tries the embedded copy first (it is skipped with a warning when the DATA file's MD5 differs from the recorded original). If that fails it continues with the normal resource apply. After a normal apply it compares the output MD5 with the recorded modified MD5 and, on a difference, tries the embedded copy.
 
@@ -95,7 +95,7 @@ Messages:
 | `Saved data validation failed: <details>` | The written file did not read back |
 | `Failed to apply patch: <reason>` | Any other failure |
 
-Warning `Data file hash doesn't match original - patch may not apply correctly` appears in `patch validate` when `--data` is not the original the patch was made from.
+In `patch validate`, a `[Warning]` line with `Data file hash doesn't match original - patch may not apply correctly` appears when `--data` is not the original the patch was made from. It is not printed with `--json`.
 
 ## Validate
 
@@ -127,7 +127,7 @@ Messages: `Patch file not found: <path>`, `Invalid patch: g3mpatch.json not foun
 G3MTool patch merge <original> <patch1> <patch2> [patch3 ...] [options]
 ```
 
-Two to 100 inputs, lowest priority first. Every input is derived from the same original, then merged. Inputs can be `.g3mpatch`, `.xdelta`, `.vcdiff`, `.csx`, or DATA files.
+Two to 100 patch inputs after the original, lowest priority first. Every input is derived from the same original, then merged. Inputs can be `.g3mpatch`, `.xdelta`, `.vcdiff`, `.csx`, or DATA files.
 
 | Option | Short | Meaning |
 | --- | --- | --- |

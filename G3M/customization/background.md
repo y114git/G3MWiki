@@ -1,6 +1,6 @@
 # Background
 
-Select or remove a background in **Settings > Appearance > Graphics**. **Disable background** hides the configured media without deleting the selection.
+Select or remove a background in **Settings > Appearance > Graphics**. **Disable background** in **Settings > Appearance > Advanced** hides the configured media without deleting the selection.
 
 G3M accepts static images, animated GIFs, and videos. Image choices include PNG, JPEG, GIF, BMP, ICO, and WebP. Video choices include MP4, WebM, AVI, MKV, MOV, M4V, 3GP, MPG, MPEG, FLV, and WMV. Playback also depends on the platform's media support and the codec used in the file.
 

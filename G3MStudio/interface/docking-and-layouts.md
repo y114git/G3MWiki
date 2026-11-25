@@ -23,7 +23,7 @@ Each panel has a header with a title and buttons:
 | Menu (three dots) | "More options" | Opens the panel menu. |
 | Close | "Close panel" | Removes the panel from the layout. |
 
-The panel menu has: **Float**, **Dock**, **Dock as tab**, **Move to** (**Left dock**, **Right dock**, **Bottom dock**), **Auto hide**, **Close**. For a floating panel **Dock** puts it back at its old place.
+The panel menu has: **Float**, **Dock**, **Dock as tab**, **Auto hide**, **Move to** (**Left dock**, **Right dock**, **Bottom dock**), **Close**. For a floating panel **Dock** puts it back at its old place.
 
 Panels can also be dragged by their header or tab onto the markers that appear over a dock. A panel is never narrower than 160 px; a smaller space scrolls it. The Function Reference needs at least 360 by 220 px. A bottom dock is at least 140 px high. A floating panel window is at least 320 by 220 px.
 
@@ -48,7 +48,7 @@ Choose **Float** in the panel menu, or drag a panel out of the window. A floatin
 A fold gives a dock a share of 0 and keeps its old share for opening again.
 
 - The chevron strips at the left, right and bottom edge of the work area fold or open that dock. The tooltip shows the command and its key: **Fold or Open Left Dock**, **Fold or Open Right Dock**, **Fold or Open Bottom Dock**.
-- **Layout > Hide or Show All Docks** (`Ctrl+Alt+H`) folds all docks, or opens all when every dock is folded or only some are.
+- **Layout > Hide or Show All Docks** (`Ctrl+Alt+H`) folds all docks while any dock is open, and opens all docks when every dock is folded.
 - **Window > Show All Windows** opens every dock and every panel.
 
 The chevron points to where the dock goes when it folds, and back to the edge when it is folded.
@@ -66,6 +66,7 @@ The chevron points to where the dock goes when it folds, and back to the edge wh
 | **Saved Layouts...** | Opens the **Saved layouts** window. |
 | **Reset Layout** | Back to the default arrangement. Every panel returns. |
 | **Hide or Show All Docks**, **Fold or Open Left Dock**, **Fold or Open Right Dock**, **Fold or Open Bottom Dock** | See above. |
+| **Move Editor Tabs** | Steps the **Settings > Appearance > Editor tabs** choice one further: along the top, list at the left, list at the right, and back to the top. |
 
 Every preset keeps every panel and keeps the open editor tabs. A preset does not add **Open Editors**, but it keeps that panel when it is open. These items need an open data file.
 

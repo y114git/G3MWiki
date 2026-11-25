@@ -65,7 +65,7 @@ PatchInputService.WriteDataFile(data, "output/edited.win", "original.win");
 
 Resource objects refer to other resources and shared strings. Reordering, deleting, or creating collections can require more than assigning a numeric field. Use resource/project import, patch services, or the [reference tools](references.md) for changes with companion files and references.
 
-`data["Rooms"]` provides a resource collection by its property name. Unknown names throw; typed properties are preferable when the resource type is known at compile time. `data.ByName(name, ignoreCase = false)` finds a named resource in any list, `IndexOf(resource)` and `IndexOfByName(name)` give its index.
+`data["Rooms"]` provides a resource collection by its property name. Unknown names throw `MissingMemberException`; typed properties are preferable when the resource type is known at compile time. `data.ByName(name, ignoreCase = false)` finds a named resource in any list, `IndexOf(resource)` and `IndexOfByName(name)` give its index.
 
 Dispose loaded DATA after use. Reopen the result with GameMakerIO and test with the matching game runner before distributing it.
 
