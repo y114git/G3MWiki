@@ -1,6 +1,6 @@
 # API index
 
-Every public type of G3MLib 1.1.5 with the page that explains it. Types that are plain data holders appear in groups. Namespaces start with `G3MLib.`.
+Every public type of G3MLib 1.1.6 with the page that explains it. Types that are plain data holders appear in groups. Namespaces start with `G3MLib.`.
 
 ## DataFile: reading and writing
 

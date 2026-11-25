@@ -112,7 +112,7 @@ G3MTool patch validate interface.g3mpatch --data original.win
 ```text
 Validating G3M patch: C:\mods\interface.g3mpatch
 Patch is valid.
-  Tool: G3MTool v1.3.5
+  Tool: G3MTool v1.3.6
   Created: 2026-11-20T04:31:37.6076751Z
   Resources: 1 changed, 0 new, 0 deleted
 ```

@@ -69,6 +69,8 @@ if (!comparison.Success)
 Console.WriteLine(comparison.OutputPath);
 ```
 
+A resource counts as changed when its content hash changes. The hash covers what a resource is, not where it sits: a sprite frame that only moved to another spot or page of the texture atlas, and a sound that only moved to another audio slot, hash the same while their pixels or audio match. A real pixel or audio change still shows. Hashes that older versions cached are rebuilt once (cache schema 4).
+
 Inputs can be DATA or resource patch archives. `Standard` produces resource summaries and changed-file lists. `Full` adds detailed text, GML, JSON, and related resource comparisons.
 
 `DiffResult` exposes `Success`, `Error`, `OutputPath`, `DifferenceCount`, `Mode`, the nullable totals `TotalChanged`, `TotalNew`, `TotalDeleted` and `TextDiffCount`, and `ByType`, a dictionary of resource type to `DiffTypeSummary` (`Changed`, `New`, `Deleted`). Check `Success` before using optional totals. Equal inputs are a successful comparison, rather than an error. `DiffReportMode` is `Standard` or `Full`; the cache parameter is `G3MCacheOptions`.
