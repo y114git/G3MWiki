@@ -19,6 +19,10 @@ Your colors are saved as `colors` in [settings.json](settings-file.md), key to `
 
 Clicking a swatch opens the picker. It has two pages:
 
+![The Spectrum page of the color picker with the color square, hue strip and transparency strip](../images/color-picker-spectrum.png)
+
+![The Components page of the color picker with RGB sliders, transparency and the hex box](../images/color-picker-components.png)
+
 | Page | What it holds |
 | --- | --- |
 | Spectrum | A color square, a hue strip and a transparency strip. |
