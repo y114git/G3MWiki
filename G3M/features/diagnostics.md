@@ -28,7 +28,7 @@ The resulting views are **Actual Steps**, **Actual Resources**, and **Actual Fil
 
 Use the resource search to find a name, operation, or mod. Select a result to read its details.
 
-**Cancel Analysis** requests cancellation. **Export Exact Report** asks for an HTML destination and writes the HTML report and an accompanying JSON report. Check warnings, failed operations, incomplete scans, and inaccessible paths before treating the analysis as successful.
+**Cancel Analysis** requests cancellation. **Export Exact Report** asks for an HTML destination and writes the HTML report, in the language of G3M, and an accompanying JSON report. Failed steps show the cause and a fix, for example that a patch was made for another game version. The technical output stays in the G3M log. Check warnings, failed operations, incomplete scans, and inaccessible paths before treating the analysis as successful.
 
 ## What the result establishes
 

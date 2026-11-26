@@ -12,8 +12,8 @@ The **Critical**, **Major**, and **Minor** headings group the entries and collap
 | G3MPatch apply failed | A resource patch could not apply cleanly. | The game version, original resource state, and preceding mod steps. |
 | Merge failed | G3MTool could not combine the selected inputs. | The merge log or report and the smallest selection that reproduces the failure. |
 | Steam may launch a different game folder | Steam can start an installation other than the folder G3M patched. | Whether the configured game path matches Steam's installation. |
-| Other patching warning | An operation reports a patching or merging risk. | The specific details in the prompt and operation log. |
-| Mod uses direct absolute paths | A mod names machine-specific filesystem locations. | Whether those locations are intended and whether you trust the mod's author. |
+| Other patching warning | An operation reports a patching or merging risk. Each line names the operation, the file it is about and what to do. | The listed file, and the operation log for the technical details. |
+| Mod uses direct absolute paths | A mod reads or writes a fixed path outside your game folder, game data folder and its own folder. Paths inside those folders never trigger it. | Whether the listed locations are intended and whether you trust the mod's author. |
 | Required mods are missing | A selected mod needs mods that are not installed, or installing them did not work. | The mod's requirements on its page, and whether the required mods exist for the selected game. |
 | Required mods are not active | A selected mod needs installed mods that are not in the selection. G3M offers to activate them. | Whether you want those mods in this launch. |
 | Mod order can be improved | The order of the selected mods differs from the order their authors recommend. | The proposed order. Choose **Apply recommendation**, **Launch without changes**, or **Cancel**. |
