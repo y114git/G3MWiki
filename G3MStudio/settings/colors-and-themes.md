@@ -1,19 +1,30 @@
 # Colors and themes
 
-The **Colors** category changes the colors of the interface, the canvases and the code editor. Each color has a swatch, a `#RRGGBB` box and a **Reset** button. A change shows at once.
+The **Colors** category changes the colors of the interface, the canvases and the code editor. Each color has a swatch button, a hex box and a **Reset** button. A change shows at once, with no restart.
 
-There is one built-in theme (dark, green accent). You change it color by color, or import a theme file.
+There is one built-in theme (dark, green accent). You change it color by color, or import a theme file. When you give **Window** a light color, Studio switches to the light variant of its controls by itself, and back to the dark variant when the color is dark again or reset. Colors that no row covers (for example the text of every control) follow the **Text** colors.
 
 ## Controls on each row
 
 | Control | What it does |
 | --- | --- |
 | Label | The color name from the tables below. |
-| Swatch | Shows the color in use. |
-| Text box | Holds `#RRGGBB` (7 characters). Press `Enter` or leave the box to apply. A text that is not `#RRGGBB` goes back to the color in use. |
+| Swatch | Shows the color in use. Click it to open the color picker. |
+| Text box | Holds `#RRGGBB`, or `#AARRGGBB` when the color is transparent (`AA` is the transparency, `FF` is solid). A valid code applies after you stop typing for about half a second, or when you leave the box. A text that is not a color goes back to the color in use. |
 | **Reset** | Removes your color and returns to the theme color. Disabled while the color is not changed. |
 
-Your colors are saved as `colors` in [settings.json](settings-file.md), key to `#RRGGBB`. Unknown keys and invalid values are dropped on load.
+Your colors are saved as `colors` in [settings.json](settings-file.md), key to `#RRGGBB` or `#AARRGGBB`. Unknown keys and invalid values are dropped on load.
+
+## The color picker
+
+Clicking a swatch opens the picker. It has two pages:
+
+| Page | What it holds |
+| --- | --- |
+| Spectrum | A color square, a hue strip and a transparency strip. |
+| Components | **RGB** and **HSV** sliders with number boxes, a transparency slider (**A**) and a hex box. |
+
+The color changes while you drag, and Studio applies it when you pause, so the window stays smooth. Closing the picker keeps the color. Colors of text, borders and fills accept transparency. The colors that Studio derives from another one (the hover, pressed and selected fills, the text on the accent) are computed from the solid part of that color.
 
 ## Colors by group
 
@@ -30,7 +41,7 @@ Defaults are the theme values.
 | **Focus ring** | `Select` | `#ECEDEF` |
 | **Selected row** | `Selection.Bg` | `#039D5B` (follows the accent) |
 
-The accent also sets the border, the text accent color and the fills of primary buttons. **Hover**, **Pressed** and **Selected row** follow the accent until you pick a color for them. Fills are lightened or darkened until text on them reaches a 4.5:1 contrast.
+The accent also sets the border, the fills of primary buttons and the dock accents (the line under the chosen tab, the frame of the editor area and the highlight of a splitter). **Hover**, **Pressed** and **Selected row** follow the accent until you pick a color for them. Fills are lightened or darkened until text on them reaches a 4.5:1 contrast.
 
 ### Surfaces
 
@@ -40,6 +51,7 @@ The accent also sets the border, the text accent color and the fills of primary 
 | **Panel** | `Bg.Surface` | `#222222` |
 | **Input field** | `Bg.Sunken` | `#1B1B1B` |
 | **Raised area** | `Bg.Raised` | `#2B3431` |
+| **Menus and pop-ups** | `Bg.Overlay` | `#282828` (follows **Window** until you choose a color) |
 
 ### Text
 
@@ -48,6 +60,15 @@ The accent also sets the border, the text accent color and the fills of primary 
 | **Text** | `Text.Main` | `#E8E9EB` |
 | **Quiet text** | `Text.Muted` | `#B2B8C2` |
 | **Text on accent** | `Text.OnAccent` | `#0F0F0F` |
+| **Accent text** | `Text.Accent` | `#6DE985` (follows the accent: a lighter shade of it) |
+
+### Disabled controls
+
+| Label | Key | Default |
+| --- | --- | --- |
+| **Disabled fill** | `Disabled.Bg` | `#333333` |
+| **Disabled text** | `Disabled.Text` | `#888888` |
+| **Disabled border** | `Disabled.Border` | `#555555` |
 
 ### Status
 
@@ -120,7 +141,7 @@ A file that cannot be used leaves the note "The theme file was not used: {reason
 
 ## Advanced overrides
 
-Any token of the theme can be set in `settings.json` under `overrides`, for example `"Bg.Overlay": "#E61B1B1B"` or `"Radius.Window": "10"`. Values are read in the kind of the token: a color (with or without transparency), a number, a corner radius, a thickness or a font family such as `"Font.Code": "Fira Code"`. A token the theme does not have, or a value that does not read, is ignored. Numbers must be from 0 to 1000 (0 to 20 for a thickness, 0 to 50 for a radius). The note in **Advanced** repeats this; see [Advanced settings](advanced.md).
+Any token of the theme can be set in `settings.json` under `overrides`, for example `"Danger.Fill": "#CCF44336"` or `"Radius.Window": "10"`. Values are read in the kind of the token: a color (with or without transparency), a number, a corner radius, a thickness or a font family such as `"Font.Code": "Fira Code"`. A token the theme does not have, or a value that does not read, is ignored. Numbers must be from 0 to 1000 (0 to 20 for a thickness, 0 to 50 for a radius). The note in **Advanced** repeats this; see [Advanced settings](advanced.md).
 
 ## Restore defaults
 
