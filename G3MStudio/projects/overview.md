@@ -44,7 +44,7 @@ When you open a data file, G3MStudio looks for its project in this order:
 
 If the project folder or its `.g3mproj` file is gone, the file opens in Direct mode and **Enable project** exports it again.
 
-When a file without a project opens, G3MStudio looks for a closed project beside it (same file recorded, a `.g3mproj` in the data folder, or in the folder above when its base file has the same name or content). If it finds one, a notification offers **Open project**. Otherwise a notification asks once per data file path: "Keep a full copy of this game's resources in a project, with history?" with the action **Enable project**.
+When a file without a project opens, G3MStudio looks for a closed project beside it (same file recorded, a `.g3mproj` in the data folder, or in the folder above when its base file has the same name or content). If it finds one, a notification offers **Open project**. Otherwise a notification asks once per data file path: "Keep this game's resources in a project, with history?" with the action **Enable project**, which asks for the [project type](project-types.md) unless one is remembered.
 
 ![The Project menu open with the status bar showing Synced](../images/project-menu.png)
 
