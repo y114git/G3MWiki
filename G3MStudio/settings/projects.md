@@ -1,11 +1,12 @@
 # Projects settings
 
-The **Projects** category holds the default autosave and autosync rules for new projects. Changing them also changes the open project. The page note reads: "These are the defaults for new projects; changing them also changes the open project."
+The **Projects** category holds the kind of new projects and the default autosave and autosync rules for them. Changing them also changes the open project. The page note reads: "These are the defaults for new projects; changing them also changes the open project."
 
 ## Controls
 
 | Label | Control | Default | Allowed values | Saved as |
 | --- | --- | --- | --- | --- |
+| **New project type** | List | **Ask each time** | **Ask each time**, **Full**, **Delta** | `newProjectKind` (`Ask`, `Full`, `Delta`). The kind **Enable project** makes without asking; **New Project...** and the UTMT import always show the choice. See [Full or Delta projects](../projects/project-types.md). |
 | **Autosave to the project** | List and number | **After a delay**, 2 seconds | **Off**, **After a delay**, **When the window loses focus**, **On save**; 1 to 3600 seconds | `project.autoSave`, `project.autoSaveSeconds` |
 | **Autosync to the data file** | List and number | **On save**, 30 seconds | the same four triggers; 1 to 3600 seconds | `project.autoSync`, `project.autoSyncSeconds` |
 
@@ -15,7 +16,7 @@ Autosave writes changed resources into the project. Autosync writes the data fil
 
 ## Restore defaults
 
-Resets the `project` object.
+Resets the `project` object and `newProjectKind`.
 
 ## See also
 

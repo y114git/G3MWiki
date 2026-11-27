@@ -13,6 +13,7 @@ The **Project** menu opens, creates, syncs and ends [projects](overview.md). Thi
 | **Sync to Data File** | Project on | Writes the project, then writes the data file from memory and takes a [snapshot](snapshots.md). |
 | **Resolve Outside Changes...** | Project on | Decides what to do with a data file that another program changed, and takes in edits made in the project folder (see [Outside changes](outside-changes.md)). |
 | **Project Settings...** | Project on | Opens the [autosave and autosync settings](project-settings.md). |
+| **Change Project Type...** | Project on | Turns the project from Full into Delta or back. See [Full or Delta projects](project-types.md#change-the-project-type). |
 | **Change Data File Location...** | Project on | Moves, copies or recreates the data file somewhere else. |
 | **Disable Project...** | Project on | Ends Project mode and asks whether to keep or delete the project. |
 | **Recent Projects** | Always | Lists up to 10 known projects whose folder still exists. Shows "No recent projects." when there are none. |

@@ -46,7 +46,7 @@ Messages: `This room has no instance layer. Add one in the layers panel first.` 
 | Drag the round handle above the box | Rotates the selected instances in whole degrees. With **Snap** on or `Shift` held, in steps of 15 degrees. |
 | `Alt`+drag from an instance | Paints copies of that instance along the path. One undo step. |
 | Drag a view outline | Moves or resizes that view's camera (the view must be enabled in the room). |
-| Middle button drag, or `Space` and drag | Pans. |
+| Pan button drag (middle unless changed in [Image editor settings](../settings/image.md)), or `Space` and drag | Pans. |
 | Wheel | Scrolls up and down. `Shift`+wheel scrolls sideways. A horizontal wheel or a touchpad swipe pans sideways. `Ctrl`+wheel zooms at the pointer. |
 | Drag from a ruler into the room | Adds a guide line. |
 | Right click a guide line | Removes it. |

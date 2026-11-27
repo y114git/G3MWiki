@@ -25,7 +25,7 @@ When it is done, the data file opens again and a notification says "Merged the o
 
 ## The question
 
-When the data file itself changed, the dialog **Data file changed outside** says "{name} was changed by another program since the project was last synced. Bring its changes into the project, replace the data file with the project, or keep both apart?"
+When the data file itself changed, the dialog **Data file changed outside** says "{name} was changed by another program since the project was last synced. Bring its changes into the project, replace the data file with the project, or keep both apart?" For a Delta project, replacing treats the new file as a new version of the game and builds your changes over it; see [Move a mod to a new game version](project-types.md#move-a-mod-to-a-new-game-version).
 
 | Button | Result |
 |---|---|

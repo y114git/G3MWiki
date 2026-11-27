@@ -119,6 +119,7 @@
 ## Projects
 
 * [Projects and Project mode](projects/overview.md)
+* [Full or Delta projects](projects/project-types.md)
 * [The Project menu](projects/project-menu.md)
 * [Saving and backups](projects/saving.md)
 * [History, journal and crash recovery](projects/history.md)

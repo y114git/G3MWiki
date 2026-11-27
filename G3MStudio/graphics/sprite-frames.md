@@ -95,6 +95,10 @@ The object editor shows a small player for a sprite with the buttons **Play** or
 
 Before you press **Play** it shows the still picture of the sprite, which is the first frame with a visible pixel by default. **Stop** returns to that picture. The same still picture is used for Explorer rows, hover cards, Go To, search results and pickers. The room editor, the sprite editor canvas and the exports always use the real frames. Change the rule in **Settings** > **Explorer** > **Sprite previews start at** (**First visible frame** or **First frame**). See [Explorer settings](../settings/explorer-settings.md).
 
+## Frames from an area of a texture page
+
+A frame does not have to come from a file. If your sprites are drawn on a sheet that is already in the game, open that page under **Embedded Textures**, hold `Shift` and drag over the picture, then press **New sprite from area** or **Add area to sprite...**. The frame points at the area you picked: no new page is made and no pixels are copied. See [Textures and texture pages](textures.md).
+
 ## Limits
 
 | Limit | Value |

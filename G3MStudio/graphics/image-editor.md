@@ -78,7 +78,7 @@ A canvas size change flattens the layers in the command, so the editor shows the
 | Item | Behaviour |
 |---|---|
 | Zoom | The buttons **-**, **+**, **Fit** and **1:1**. Steps are powers of 2 and 1.5 times them, up to 256x and down to where the longest side is about 16 screen pixels (never below 1/256). Fit is a whole zoom up to 64x for a small picture. `Ctrl` with the wheel zooms around the pointer. The wheel scrolls, with `Shift` sideways. A horizontal wheel or a touchpad swipe pans sideways. |
-| Pan | The **Hand** tool, `Space` with the left button, or the middle button. The arrow keys scroll when there is no selection (32 pixels, with `Shift` 128). |
+| Pan | The **Hand** tool, `Space` with the left button, or the pan button (the middle button unless [Image editor settings](../settings/image.md) say otherwise). The arrow keys scroll when there is no selection (32 pixels, with `Shift` 128). |
 | **Grid** | Fine lines from 6x zoom. The heavier lines every **Grid cell size** pixels (default 16) show while a cell is at least 8 screen pixels. |
 | **Tile preview** | Draws the picture repeated around itself, to check that it tiles. |
 | **Onion skin** | Draws the frames before and after, faint, under the picture. How many frames and how faint is set in Settings (default 1 frame, 35 percent). |

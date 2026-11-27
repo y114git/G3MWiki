@@ -53,7 +53,7 @@ With a selection tool, `Shift` adds the new shape to the selection and `Alt` cut
 
 | Input | Effect |
 |---|---|
-| Middle button, or `Space` with the left button | Pan the view with any tool. |
+| Pan button (middle unless changed in settings), or `Space` with the left button | Pan the view with any tool. |
 | `Ctrl` + wheel | Zoom around the pointer. |
 | Wheel | Scroll. `Shift` + wheel scrolls sideways. A horizontal wheel or a touchpad swipe pans sideways. |
 | `Ctrl` + click | Pick a colour with any tool except the picker. |

@@ -24,6 +24,7 @@ Colors are written `#RRGGBB` or `#RRGGBBAA`. An empty box keeps the theme color.
 | **Checkerboard colours (light, dark)** | Two texts | empty | | `image.checkerLight`, `image.checkerDark`. Also colors the grid behind pictures in resource tabs. |
 | **Canvas background colour** | Text | empty | | `image.canvasBackground` |
 | **Handle size (pixels)** | Number | 3 | 1 to 12 | `image.handleSize` (control points of polygons, curves and the lasso) |
+| **Pan the view with** | List | Middle button | Middle, back or forward button | `image.sheetPanButton` (`Mouse3`, `Mouse4` or `Mouse5`). The button that drags the view in the image editor, the room editor, the path editor, a texture page, a page item picture, a tile palette and a sprite canvas. Over those views the button only pans, even when a shortcut uses it. |
 
 The keys sit under `image` in [settings.json](settings-file.md).
 

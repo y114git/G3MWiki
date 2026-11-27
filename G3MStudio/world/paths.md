@@ -13,7 +13,7 @@ The canvas draws the path with its points. A read-only view (opened without a pr
 | Drag a point | Moves it, as one undo step. If several points are picked, the whole group moves. |
 | `Ctrl`+click a point | Adds or removes it from the picked points. |
 | `Delete` | Deletes the selected point, or all picked points when several (but not all) are picked. Deleting the last remaining point is a risky edit and asks first, because a path needs at least one point (`Delete the last point of {name}?`). |
-| Middle or right button drag | Pans. |
+| Pan button (middle unless changed in [Image editor settings](../settings/image.md)) or right button drag | Pans. |
 | Wheel | Zooms (0.1 to 64) around the pointer. `Shift`+wheel, a horizontal wheel or a touchpad swipe pans sideways. |
 
 ## Side column

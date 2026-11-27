@@ -4,7 +4,7 @@ G3MStudio converts an UndertaleModTool (UTMT) 0.9 project into a G3MStudio proje
 
 ## What a UTMT project is
 
-A UTMT project is a change set over a data file: a `project.json` main file and folders such as `code`, `objects`, `rooms`, `sprites`, `sounds`. G3MStudio applies it to the original data file in memory, then writes the result as a full G3MStudio project and as a data file.
+A UTMT project is a change set over a data file: a `project.json` main file and folders such as `code`, `objects`, `rooms`, `sprites`, `sounds`. G3MStudio applies it to the original data file in memory, then writes the result as a G3MStudio project and as a data file. The project can be **Delta** (the default here: only what the UTMT project changes, like the UTMT project itself) or a **Full**.
 
 Recognised project folders: `backgrounds`, `fonts`, `shaders`, `sounds`, `sprites`, `animcurves`, `code`, `objects`, `particlesystems`, `paths`, `rooms`, `scripts`, `sequences`.
 
@@ -25,6 +25,7 @@ The dialog **Open UTMT project** says "Convert this UndertaleModTool project int
 |---|---|
 | **Original data file of the game** | The data file the project was made for. Press **Browse...** ("Choose the original data file"). |
 | **New project folder** | An empty or new folder. The suggested folder is the name of the project inside the projects folder (`name`, then `name-2`, `name-3` when taken). **Browse...** opens "Choose the new project folder". |
+| **Project type** | **Delta** or **Full**, each with what it is good and bad at, and **Remember my choice**. See [Full or Delta projects](project-types.md). |
 | **Create a Git repository in the new folder** | On by default when Git is installed, off and disabled when it is not. |
 | **Run the project scripts ({detail}). They run with your user rights.** | Shown only when the project lists scripts. Off by default. |
 
@@ -51,7 +52,7 @@ When the project records the data file it was made from, G3MStudio compares size
 The progress bar shows the current stage: "reading the data file", "applying the project", "writing the data file", "writing the project", "setting up Git". Then:
 
 1. The result data file is written into `build` inside the new folder (with files such as audio groups the project wrote next to it).
-2. The project is exported to the new folder, with a resource count.
+2. The project is exported to the new folder, with a resource count. A Delta project compares the result with the original data file and writes only what differs; the original is kept as the project's base.
 3. Original code sources from the UTMT `code` folder replace the exported decompiled text, so comments and layout are kept.
 4. With Git: a repository is created and one commit is made with the message `Import UTMT project {name}`. An existing repository is kept and nothing is committed.
 5. The project is registered for the data file in `build`.

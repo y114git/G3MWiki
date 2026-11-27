@@ -28,6 +28,16 @@ A pack re-applies to other versions of the game and lets the user review conflic
 
 Others use **Mods > Apply Mod Pack...** (see [Mod packs](mod-packs.md)).
 
+## Share the project with your team
+
+A [Delta project](project-types.md) holds only your changes, so its folder (or its Git repository) can go to your team without the game's assets.
+
+1. Make the project with **Delta**, or convert a UTMT project with **Delta** (see [Import a UTMT project](utmt-import.md)).
+2. Share the project folder, for example through Git (see [Git panel](git.md)).
+3. Each teammate uses **Project > Open Project...**, picks the folder, and then picks their own copy of the game's original data file. G3MStudio builds the changes into it and opens it.
+
+When the game is updated, open the new data file and choose **Replace data file with project** to build the changes over it (see [Move a mod to a new game version](project-types.md#move-a-mod-to-a-new-game-version)).
+
 ## Share a patch only
 
 Use **Mods > Create Patch...** for a bare `.g3mpatch` file. See [Patches](patches.md).
@@ -39,6 +49,7 @@ Use **Mods > Create Patch...** for a bare `.g3mpatch` file. See [Patches](patche
 
 ## See also
 
+- [Full or Delta projects](project-types.md)
 - [Mods and the mod base](mods.md)
 - [Mod packs and Compare Data Files](mod-packs.md)
 - [Patches](patches.md)

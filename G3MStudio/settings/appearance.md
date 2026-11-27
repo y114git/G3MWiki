@@ -47,6 +47,7 @@ The page is its own preview: the scale applies the moment you pick it.
 | Explorer list | The zoom slider, 10 percent points a notch, 50 to 250 percent | Yes, as `explorerZoom` (default 100) |
 | Sprite tab | The zoom of the picture | Yes, as `spriteZoom` (1 to 32, 0 means not set yet). A sprite opens at the zoom you used last |
 | Picture views, image editor canvas, room editor, path editor | The zoom of the canvas | Per tab |
+| Texture page tab, tile palette | The zoom of the picture (page: 0.25x to 8x) | Per tab |
 | Sound waveform | The time axis | No |
 | Code editor | The text size, 8 to 32 | Yes, as **Text size** in [Code editor settings](editor.md) |
 

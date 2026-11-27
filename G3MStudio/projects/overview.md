@@ -1,6 +1,6 @@
 # Projects and Project mode
 
-A project is a folder of files that holds a full copy of the resources of one data file, plus a history of every sync. This page explains what Project mode is, what it keeps on disk and how it differs from editing the data file directly.
+A project is a folder of files that holds the resources of one data file, plus a history of every sync. A **Full** holds every resource; a **Delta** project holds only what you changed (see [Full or Delta projects](project-types.md)). This page explains what Project mode is, what it keeps on disk and how it differs from editing the data file directly.
 
 ## Direct mode and Project mode
 
@@ -20,8 +20,8 @@ Direct mode is the default. The status bar shows **Enable project** while the op
 
 A project folder is created inside the projects folder as `<name>-<id>`, where `<name>` is the data file name made safe for a file system (spaces and invalid characters become `_`, at most 60 characters; trailing dots are dropped; an empty name becomes `project`; names such as `CON` or `NUL` get a leading `_`) and `<id>` is 8 hex digits. It holds:
 
-- `<name>.g3mproj`, the project file that lists every resource.
-- One file or folder per resource (code as `.gml`, pictures as `.png`, and so on), written by the G3MLib project exporter.
+- `<name>.g3mproj`, the project file that lists the resources in the folder.
+- One file or folder per resource (in a Delta project, per changed resource) (code as `.gml`, pictures as `.png`, and so on), written by the G3MLib project exporter.
 - Optional Git files when you use the [Git panel](git.md): `.git`, `.gitignore` and `.gitattributes`.
 
 The program keeps the rest in its own data folder, not in the project, under `projects/<id>/`:
@@ -31,6 +31,7 @@ The program keeps the rest in its own data folder, not in the project, under `pr
 | `base.g3mproj` | The project as it was at the last sync. It is the base of the three-way merge. |
 | `snapshots/*.json` and `objects/` | The [snapshot history](snapshots.md). |
 | `merge/` | Scratch space while an outside change is merged. |
+| `original/` | Delta projects: the compressed copy of the game's own data file and the list of its resources. |
 
 The list of known projects is `projects.json` in the same data folder. A damaged list loses the list of projects, not their folders.
 
@@ -49,7 +50,7 @@ When a file without a project opens, G3MStudio looks for a closed project beside
 
 ## Settings that apply to projects
 
-**Settings > Projects** holds the defaults for new projects: the **Projects folder**, **Autosave to the project** and **Autosync to the data file**. Changing them also changes the open project. The same options are in **Project > Project Settings...** (see [Project settings](project-settings.md)).
+**Settings > Projects** holds the defaults for new projects: the **New project type**, the **Projects folder**, **Autosave to the project** and **Autosync to the data file**. Changing them also changes the open project. The same options are in **Project > Project Settings...** (see [Project settings](project-settings.md)).
 
 ## Limits
 
@@ -59,6 +60,7 @@ When a file without a project opens, G3MStudio looks for a closed project beside
 
 ## See also
 
+- [Full or Delta projects](project-types.md)
 - [The Project menu](project-menu.md)
 - [Project settings](project-settings.md)
 - [Outside changes, merge and conflicts](outside-changes.md)
